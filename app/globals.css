@@ -30,7 +30,7 @@
   --font-relost: 'Relost Brush', cursive;
   --font-grifter: 'Grifter', sans-serif;
 
-  /* Font Sizes - Base (Mobile First) */
+  /* Font Sizes - Base Scale (Mobile First) */
   --font-xs: 12px;
   --font-sm: 14px;
   --font-base: 16px;
@@ -44,6 +44,20 @@
   --font-7xl: 72px;
   --font-8xl: 96px;
   --font-9xl: 128px;
+
+  /* Semantic Font Sizes - Makkelijker te gebruiken */
+  /* SCHABO Titels */
+  --font-title-hero: var(--font-6xl);         /* Hero hoofdtitel */
+  --font-title-section: var(--font-5xl);      /* Sectie titels */
+  --font-title-number: var(--font-9xl);       /* Grote nummers zoals "800" */
+
+  /* Grifter Paragrafen */
+  --font-paragraph: var(--font-sm);           /* Normale body tekst */
+  --font-nav: var(--font-base);               /* Navigatie links */
+  --font-small: var(--font-xs);               /* Kleine tekst */
+
+  /* Relost Brush Handgeschreven */
+  --font-handwritten: var(--font-2xl);        /* Buttons, menu, accenten */
 
   /* Colors */
   --background: #ece8e3;

@@ -92,6 +92,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .titleText {
+    font-size: var(--font-lg);
+  }
+}
+
 .menuRow {
   display: flex;
   gap: 16px;
@@ -200,5 +206,11 @@
 @media (min-width: 768px) {
   .subtitleText {
     color: #e7e6e2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subtitleText {
+    font-size: var(--font-base);
   }
 }

@@ -73,11 +73,11 @@
 }
 
 .title {
-  font-size: var(--font-5xl);
+  font-size: var(--font-6xl);
   color: black;
   text-transform: uppercase;
   line-height: 0.94;
-  max-width: 620px;
+  max-width: 701px;
   font-family: var(--font-schabo);
   font-weight: 100;
 }
