@@ -1,0 +1,243 @@
+.container {
+  background: #181818;
+  border: 1px solid #737373;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    border: 0;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 20px 28px;
+    max-width: 413px;
+  }
+}
+
+.stepRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .stepRow {
+    gap: 16px;
+  }
+}
+
+.stepLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepText {
+  color: #459bb0;
+  font-size: 12px;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: 'Relost Brush', cursive;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .stepText {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stepText {
+    font-size: 16px;
+  }
+}
+
+.progressBar {
+  background: rgba(231, 230, 226, 0.2);
+  height: 8px;
+  flex: 1;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  background: #459bb0;
+  height: 100%;
+  transition: all 0.3s;
+  border-radius: 9999px;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titleText {
+  color: #e7e6e2;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  text-transform: capitalize;
+  line-height: 1.25;
+  font-family: var(--font-grifter);
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .titleText {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 1024px) {
+  .titleText {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .titleText {
+    font-size: 20px;
+  }
+}
+
+.menuRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .menuRow {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menuRow {
+    gap: 32px;
+  }
+}
+
+.dropdownContainer {
+  position: relative;
+  flex: 1;
+  max-width: 240px;
+}
+
+.dropdownImage {
+  position: relative;
+  aspect-ratio: 233 / 59;
+  width: 100%;
+}
+
+.dropdownImage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dropdownText {
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-family: 'Relost Brush', cursive;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .dropdownText {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dropdownText {
+    font-size: 18px;
+  }
+}
+
+.arrowButton {
+  position: relative;
+  transition: transform 0.2s;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.arrowButton:hover {
+  transform: scale(1.1);
+}
+
+.arrowButton:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+  .arrowButton {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .arrowButton {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.arrowButton img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.subtitleRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subtitleText {
+  color: #8f8f8f;
+  font-size: 12px;
+  letter-spacing: -0.025em;
+  line-height: 1.625;
+  font-weight: 400;
+  font-family: var(--font-grifter);
+}
+
+@media (min-width: 768px) {
+  .subtitleText {
+    color: #e7e6e2;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
