@@ -155,7 +155,7 @@
   display: none;
   gap: 24px;
   align-items: center;
-  font-size: 16px;
+  font-size: var(--font-base);
   color: white;
   font-family: var(--font-grifter);
   font-weight: 400;
@@ -170,13 +170,6 @@
 @media (min-width: 1280px) {
   .desktopNav {
     gap: 40px;
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .desktopNav {
-    font-size: 20px;
   }
 }
 
@@ -191,13 +184,13 @@
 }
 
 .menuButton {
-  font-size: 24px;
+  font-size: var(--font-2xl);
   color: white;
   background: none;
   border: none;
   cursor: pointer;
   transform: rotate(-1.113deg);
-  font-family: 'Relost Brush', cursive;
+  font-family: var(--font-relost);
   font-weight: 400;
   transition: color 0.3s;
   padding: 0;
@@ -205,24 +198,6 @@
 
 .menuButton:hover {
   color: #459bb0;
-}
-
-@media (min-width: 640px) {
-  .menuButton {
-    font-size: 30px;
-  }
-}
-
-@media (min-width: 768px) {
-  .menuButton {
-    font-size: 32px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .menuButton {
-    font-size: 40px;
-  }
 }
 
 .mainContent {
@@ -258,7 +233,7 @@
 }
 
 .heading {
-  font-size: 50px;
+  font-size: var(--font-6xl);
   color: white;
   text-transform: uppercase;
   line-height: 0.9;
@@ -267,37 +242,20 @@
   font-weight: 100;
 }
 
-@media (min-width: 640px) {
-  .heading {
-    font-size: 60px;
-    line-height: 0.95;
-  }
-}
-
-@media (min-width: 768px) {
-  .heading {
-    font-size: 72px;
-  }
-}
-
 @media (min-width: 1024px) {
   .heading {
-    font-size: 72px;
     max-width: 768px;
   }
 }
 
 @media (min-width: 1280px) {
   .heading {
-    font-size: 80px;
     max-width: 1024px;
   }
 }
 
 @media (min-width: 1536px) {
   .heading {
-    font-size: 100px;
-    line-height: 96px;
     max-width: 1280px;
   }
 }

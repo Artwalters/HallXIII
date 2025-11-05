@@ -85,17 +85,16 @@
   position: absolute;
   top: -40px;
   right: -48px;
-  font-size: 32px;
+  font-size: var(--font-2xl);
   color: black;
   transform: rotate(-10deg);
-  font-family: 'Relost Brush', cursive;
+  font-family: var(--font-relost);
 }
 
 @media (min-width: 768px) {
   .m2Text {
     top: -48px;
     right: -56px;
-    font-size: 36px;
   }
 }
 
@@ -103,12 +102,11 @@
   .m2Text {
     top: -56px;
     right: -64px;
-    font-size: 40px;
   }
 }
 
 .numberText {
-  font-size: 140px;
+  font-size: var(--font-9xl);
   line-height: 0.7;
   color: black;
   text-transform: uppercase;
@@ -117,32 +115,8 @@
   font-weight: 100;
 }
 
-@media (min-width: 640px) {
-  .numberText {
-    font-size: 160px;
-  }
-}
-
-@media (min-width: 768px) {
-  .numberText {
-    font-size: 180px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .numberText {
-    font-size: 200px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .numberText {
-    font-size: 233px;
-  }
-}
-
 .descriptionText {
-  font-size: 50px;
+  font-size: var(--font-5xl);
   line-height: 0.94;
   color: black;
   text-transform: uppercase;
@@ -150,24 +124,6 @@
   align-self: flex-end;
   font-family: var(--font-schabo);
   font-weight: 100;
-}
-
-@media (min-width: 640px) {
-  .descriptionText {
-    font-size: 60px;
-  }
-}
-
-@media (min-width: 768px) {
-  .descriptionText {
-    font-size: 70px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .descriptionText {
-    font-size: 80px;
-  }
 }
 
 /* Swiper Slider */
@@ -271,23 +227,11 @@
 
 .ctaText {
   font-family: var(--font-relost);
-  font-size: 28px;
+  font-size: var(--font-2xl);
   color: black;
   text-align: center;
   white-space: nowrap;
   line-height: 1;
-}
-
-@media (min-width: 768px) {
-  .ctaText {
-    font-size: 32px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .ctaText {
-    font-size: 36px;
-  }
 }
 
 .ctaUnderline {
