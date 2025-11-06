@@ -1,7 +1,7 @@
 .section {
   background-color: #B8AFA1;
   position: relative;
-  padding: clamp(80px, 12vw, 140px) 0;
+  padding: clamp(120px, 16vw, 200px) 0;
   overflow: hidden;
 }
 
@@ -24,7 +24,7 @@
 
 .container {
   position: relative;
-  max-width: 1800px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 32px;
   z-index: 10;

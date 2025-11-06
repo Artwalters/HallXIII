@@ -1,26 +1,26 @@
 .section {
   background: var(--section-bg);
   position: relative;
-  padding: 80px 0;
+  padding: 120px 0;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 100px 0;
+    padding: 140px 0;
   }
 }
 
 @media (min-width: 1024px) {
   .section {
-    padding: 120px 0;
+    padding: 180px 0;
   }
 }
 
 .container {
   position: relative;
   z-index: 20;
-  max-width: 1800px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 16px;
 }

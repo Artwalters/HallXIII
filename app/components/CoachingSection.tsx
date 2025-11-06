@@ -74,88 +74,154 @@ export default function CoachingSection() {
     if (!topMarqueeRef.current || !bottomMarqueeRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Top Marquee with seamless infinite loop
+      // Pro Marquee Implementation - Top (Left Direction)
       const topMarqueeContent = topMarqueeRef.current?.querySelector(`.${styles.marqueeContent}`);
+      const topMarqueeScroll = topMarqueeRef.current?.querySelector(`.${styles.marqueeScroll}`) as HTMLElement;
 
-      if (topMarqueeContent) {
-        // Create infinite loop timeline
-        const topLoop = gsap.timeline({
+      if (topMarqueeContent && topMarqueeScroll) {
+        // Configuration
+        const speed = 15;
+        const direction = -1; // -1 for left, 1 for right
+        const scrollSpeed = 10;
+        const duplicate = 2;
+
+        // Duplicate marquee content for seamless loop
+        if (duplicate > 0) {
+          const fragment = document.createDocumentFragment();
+          for (let i = 0; i < duplicate; i++) {
+            fragment.appendChild(topMarqueeContent.cloneNode(true));
+          }
+          topMarqueeScroll.appendChild(fragment);
+        }
+
+        // Responsive speed multiplier
+        const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
+        const marqueeSpeed = speed * ((topMarqueeContent as HTMLElement).offsetWidth / window.innerWidth) * speedMultiplier;
+
+        // Setup scroll container for parallax effect
+        topMarqueeScroll.style.marginLeft = `${scrollSpeed * -1}%`;
+        topMarqueeScroll.style.width = `${(scrollSpeed * 2) + 100}%`;
+
+        // Get all marquee items (including duplicates)
+        const topMarqueeItems = topMarqueeRef.current?.querySelectorAll(`.${styles.marqueeContent}`);
+
+        // Basis marquee animation on all items
+        const topAnimation = gsap.to(topMarqueeItems, {
+          xPercent: -100,
           repeat: -1,
-        });
+          duration: marqueeSpeed,
+          ease: 'linear'
+        }).totalProgress(0.5);
 
-        topLoop.to(topMarqueeContent, {
-          x: '-50%',
-          duration: 60,
-          ease: 'none',
-        });
+        // Set initial direction
+        gsap.set(topMarqueeItems, { xPercent: direction === 1 ? 100 : -100 });
+        topAnimation.timeScale(direction);
+        topAnimation.play();
 
-        let topDirection = 1; // 1 = left (default), -1 = right
-
-        // Scroll trigger controls the speed and direction based on scroll velocity
+        // ScrollTrigger for direction inversion
         ScrollTrigger.create({
           trigger: topMarqueeRef.current,
           start: 'top bottom',
           end: 'bottom top',
           onUpdate: (self) => {
-            const velocity = self.getVelocity();
-
-            // Update direction based on scroll direction with higher threshold
-            if (Math.abs(velocity) > 200) {
-              topDirection = velocity > 0 ? 1 : -1;
-            }
-
-            const speedModifier = Math.abs(velocity) / 300;
-            const clampedSpeed = Math.min(3, speedModifier);
-
-            gsap.to(topLoop, {
-              timeScale: topDirection * (1 + clampedSpeed),
-              duration: 0.8,
-              ease: 'power2.out',
-            });
-          },
+            const isInverted = self.direction === 1; // Scrolling down
+            const currentDirection = isInverted ? -direction : direction;
+            topAnimation.timeScale(currentDirection);
+          }
         });
+
+        // Extra parallax scroll effect
+        const topScrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: topMarqueeRef.current,
+            start: '0% 100%',
+            end: '100% 0%',
+            scrub: 0
+          }
+        });
+
+        const scrollStart = direction === -1 ? scrollSpeed : -scrollSpeed;
+        const scrollEnd = -scrollStart;
+
+        topScrollTl.fromTo(topMarqueeScroll,
+          { x: `${scrollStart}vw` },
+          { x: `${scrollEnd}vw`, ease: 'none' }
+        );
       }
 
-      // Bottom Marquee with seamless infinite loop
+      // Pro Marquee Implementation - Bottom (Right Direction)
       const bottomMarqueeContent = bottomMarqueeRef.current?.querySelector(`.${styles.marqueeContent}`);
+      const bottomMarqueeScroll = bottomMarqueeRef.current?.querySelector(`.${styles.marqueeScroll}`) as HTMLElement;
 
-      if (bottomMarqueeContent) {
-        // Create infinite loop timeline
-        const bottomLoop = gsap.timeline({
+      if (bottomMarqueeContent && bottomMarqueeScroll) {
+        // Configuration
+        const speed = 15;
+        const direction = 1; // -1 for left, 1 for right
+        const scrollSpeed = 10;
+        const duplicate = 2;
+
+        // Duplicate marquee content for seamless loop
+        if (duplicate > 0) {
+          const fragment = document.createDocumentFragment();
+          for (let i = 0; i < duplicate; i++) {
+            fragment.appendChild(bottomMarqueeContent.cloneNode(true));
+          }
+          bottomMarqueeScroll.appendChild(fragment);
+        }
+
+        // Responsive speed multiplier
+        const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
+        const marqueeSpeed = speed * ((bottomMarqueeContent as HTMLElement).offsetWidth / window.innerWidth) * speedMultiplier;
+
+        // Setup scroll container for parallax effect
+        bottomMarqueeScroll.style.marginLeft = `${scrollSpeed * -1}%`;
+        bottomMarqueeScroll.style.width = `${(scrollSpeed * 2) + 100}%`;
+
+        // Get all marquee items (including duplicates)
+        const bottomMarqueeItems = bottomMarqueeRef.current?.querySelectorAll(`.${styles.marqueeContent}`);
+
+        // Basis marquee animation on all items
+        const bottomAnimation = gsap.to(bottomMarqueeItems, {
+          xPercent: -100,
           repeat: -1,
-        });
+          duration: marqueeSpeed,
+          ease: 'linear'
+        }).totalProgress(0.5);
 
-        bottomLoop.to(bottomMarqueeContent, {
-          x: '-50%',
-          duration: 60,
-          ease: 'none',
-        });
+        // Set initial direction
+        gsap.set(bottomMarqueeItems, { xPercent: direction === 1 ? 100 : -100 });
+        bottomAnimation.timeScale(direction);
+        bottomAnimation.play();
 
-        let bottomDirection = 1; // 1 = left (default), -1 = right
-
-        // Scroll trigger controls the speed and direction based on scroll velocity
+        // ScrollTrigger for direction inversion
         ScrollTrigger.create({
           trigger: bottomMarqueeRef.current,
           start: 'top bottom',
           end: 'bottom top',
           onUpdate: (self) => {
-            const velocity = self.getVelocity();
-
-            // Update direction based on scroll direction with higher threshold
-            if (Math.abs(velocity) > 200) {
-              bottomDirection = velocity > 0 ? 1 : -1;
-            }
-
-            const speedModifier = Math.abs(velocity) / 300;
-            const clampedSpeed = Math.min(3, speedModifier);
-
-            gsap.to(bottomLoop, {
-              timeScale: bottomDirection * (1 + clampedSpeed),
-              duration: 0.8,
-              ease: 'power2.out',
-            });
-          },
+            const isInverted = self.direction === 1; // Scrolling down
+            const currentDirection = isInverted ? -direction : direction;
+            bottomAnimation.timeScale(currentDirection);
+          }
         });
+
+        // Extra parallax scroll effect
+        const bottomScrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: bottomMarqueeRef.current,
+            start: '0% 100%',
+            end: '100% 0%',
+            scrub: 0
+          }
+        });
+
+        const scrollStart = direction === -1 ? scrollSpeed : -scrollSpeed;
+        const scrollEnd = -scrollStart;
+
+        bottomScrollTl.fromTo(bottomMarqueeScroll,
+          { x: `${scrollStart}vw` },
+          { x: `${scrollEnd}vw`, ease: 'none' }
+        );
       }
     });
 
@@ -166,13 +232,15 @@ export default function CoachingSection() {
     <section className={styles.section}>
       {/* Top Marquee */}
       <div ref={topMarqueeRef} className={styles.marqueeContainer}>
-        <div className={styles.marqueeContent}>
-          <span className={styles.marqueeText}>
-            Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
-          </span>
-          <span className={styles.marqueeText}>
-            Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
-          </span>
+        <div className={styles.marqueeScroll}>
+          <div className={styles.marqueeContent}>
+            <span className={styles.marqueeText}>
+              Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
+            </span>
+            <span className={styles.marqueeText}>
+              Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
+            </span>
+          </div>
         </div>
       </div>
 
@@ -249,13 +317,15 @@ export default function CoachingSection() {
 
       {/* Bottom Marquee */}
       <div ref={bottomMarqueeRef} className={styles.marqueeContainer}>
-        <div className={styles.marqueeContent}>
-          <span className={styles.marqueeText}>
-            - onze partners - expertise in de sport - onze partners - expertise in de sport -
-          </span>
-          <span className={styles.marqueeText}>
-            - onze partners - expertise in de sport - onze partners - expertise in de sport -
-          </span>
+        <div className={styles.marqueeScroll}>
+          <div className={styles.marqueeContent}>
+            <span className={styles.marqueeText}>
+              - onze partners - expertise in de sport - onze partners - expertise in de sport -
+            </span>
+            <span className={styles.marqueeText}>
+              - onze partners - expertise in de sport - onze partners - expertise in de sport -
+            </span>
+          </div>
         </div>
       </div>
 

@@ -1,0 +1,298 @@
+.section {
+  background-color: #ffffff;
+  padding: clamp(80px, 12vw, 140px) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+}
+
+/* Title Wrapper */
+.titleWrapper {
+  text-align: left;
+  margin-bottom: 0;
+  position: absolute;
+  left: clamp(32px, 4vw, 64px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  max-width: 400px;
+}
+
+/* Section Title */
+.sectionTitle {
+  font-family: var(--font-schabo);
+  font-size: clamp(100px, 12vw, 180px);
+  font-weight: normal;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 0.85;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-relost);
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: normal;
+  color: #000000;
+  line-height: 1;
+  margin: clamp(16px, 2vw, 24px) 0 0 0;
+  display: block;
+}
+
+/* Flick Cards Slider */
+.flickGroup {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 700px;
+  padding-right: clamp(60px, 8vw, 120px);
+}
+
+.relativeObject {
+  opacity: 0;
+  pointer-events: none;
+  width: 47em;
+  position: relative;
+}
+
+.relativeObjectBefore {
+  padding-top: 75%;
+}
+
+.collection {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.list {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.item {
+  position: absolute;
+}
+
+.card {
+  color: #ffffff;
+  user-select: none;
+  background-color: #1a1a1a;
+  border-radius: 1em;
+  justify-content: center;
+  align-items: center;
+  width: 23.5em;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cardBefore {
+  padding-top: 150%;
+}
+
+.cardMedia {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image {
+  pointer-events: none;
+  object-fit: cover;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.name {
+  font-family: var(--font-schabo);
+  letter-spacing: -0.025em;
+  font-size: clamp(3em, 4vw, 4em);
+  font-weight: normal;
+  line-height: 1;
+  position: absolute;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.quote {
+  font-family: var(--font-relost);
+  font-size: clamp(1.2em, 1.8vw, 1.8em);
+  color: #ffffff;
+  line-height: 1.3;
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  right: 2em;
+  text-align: left;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.roleButton {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 0.375em;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 4em);
+  height: 3.25em;
+  text-decoration: none;
+  display: flex;
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+}
+
+.role {
+  font-family: var(--font-relost);
+  color: #ffffff;
+  font-size: clamp(0.9em, 1vw, 1em);
+  font-weight: normal;
+  text-transform: lowercase;
+}
+
+.dragger {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.flickGroup[data-flick-drag-status="grabbing"] .dragger {
+  cursor: grabbing;
+}
+
+/* Position Slides - Opacity Transitions */
+.item .cardMedia {
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+}
+
+.item[data-flick-cards-item-status="2-before"] .cardMedia,
+.item[data-flick-cards-item-status="2-after"] .cardMedia {
+  transition: opacity 0.2s ease;
+  opacity: 0.75;
+}
+
+.item[data-flick-cards-item-status="active"] .cardMedia {
+  opacity: 1;
+}
+
+/* Animate Button */
+.item .roleButton {
+  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translate(0%, 50%) rotate(0.001deg);
+}
+
+.item[data-flick-cards-item-status="active"] .roleButton {
+  opacity: 1;
+  transform: translate(0%, 0%) rotate(0.001deg);
+}
+
+/* Show quote on active card */
+.item[data-flick-cards-item-status="active"] .quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .titleWrapper {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    text-align: center;
+    max-width: 100%;
+    margin-bottom: clamp(40px, 6vw, 60px);
+  }
+
+  .flickGroup {
+    justify-content: center;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 20em;
+  }
+
+  .name {
+    font-size: 3em;
+  }
+
+  .roleButton {
+    height: 2.75em;
+  }
+
+  .role {
+    font-size: 0.85em;
+  }
+
+  .quote {
+    font-size: 1em;
+    top: 1.5em;
+    left: 1.5em;
+    right: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 18em;
+  }
+
+  .name {
+    font-size: 2.5em;
+  }
+
+  .flickGroup {
+    min-height: 500px;
+  }
+
+  .quote {
+    font-size: 0.9em;
+    top: 1.2em;
+    left: 1.2em;
+    right: 1.2em;
+  }
+
+  .sectionTitle {
+    font-size: clamp(70px, 16vw, 100px);
+  }
+}

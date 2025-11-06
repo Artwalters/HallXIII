@@ -1,12 +1,12 @@
 .section {
   background-color: #000000;
-  padding: clamp(80px, 12vw, 140px) 0;
+  padding: clamp(120px, 16vw, 200px) 0;
   position: relative;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1800px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -70,8 +70,8 @@
 /* Grid Container */
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(50px, 6vw, 100px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(50px, 7vw, 100px);
   position: relative;
   z-index: 2;
 }
@@ -79,40 +79,50 @@
 @media (min-width: 768px) {
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
+    gap: clamp(60px, 7vw, 110px);
   }
 }
 
 @media (min-width: 1024px) {
   .gridContainer {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1280px) {
-  .gridContainer {
-    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(70px, 8vw, 140px);
   }
 }
 
 /* Review Item */
 .reviewItem {
   position: relative;
-  transition: transform 0.3s ease;
   cursor: pointer;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease, z-index 0s;
 }
 
 .reviewItem:hover {
-  transform: rotate(0deg) !important;
   z-index: 10;
   filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
 }
+
+/* Subtiele random vertical offsets voor organisch effect */
+.reviewItem:nth-child(1) { transform: translateY(-15px); }
+.reviewItem:nth-child(2) { transform: translateY(20px); }
+.reviewItem:nth-child(3) { transform: translateY(-8px); }
+.reviewItem:nth-child(4) { transform: translateY(25px); }
+.reviewItem:nth-child(5) { transform: translateY(-18px); }
+.reviewItem:nth-child(6) { transform: translateY(12px); }
+.reviewItem:nth-child(7) { transform: translateY(-22px); }
+.reviewItem:nth-child(8) { transform: translateY(18px); }
+.reviewItem:nth-child(9) { transform: translateY(-10px); }
+.reviewItem:nth-child(10) { transform: translateY(15px); }
+.reviewItem:nth-child(11) { transform: translateY(-25px); }
+.reviewItem:nth-child(12) { transform: translateY(8px); }
 
 /* Polaroid Card */
 .polaroid {
   background-color: transparent;
   padding: 0;
-  transition: transform 0.3s ease;
+  will-change: transform;
+  transform-origin: top center;
 }
 
 /* Image Wrapper */
@@ -178,21 +188,47 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .gridContainer {
-    gap: clamp(40px, 5vw, 60px);
+    gap: clamp(50px, 6vw, 80px);
   }
 
   .reviewText {
     font-size: 10px;
   }
+
+  .reviewItem {
+    max-width: 100%;
+  }
+
+  /* Minder extreme offsets op tablet */
+  .reviewItem:nth-child(1) { transform: translateY(-10px); }
+  .reviewItem:nth-child(2) { transform: translateY(15px); }
+  .reviewItem:nth-child(3) { transform: translateY(-5px); }
+  .reviewItem:nth-child(4) { transform: translateY(18px); }
+  .reviewItem:nth-child(5) { transform: translateY(-12px); }
+  .reviewItem:nth-child(6) { transform: translateY(8px); }
+  .reviewItem:nth-child(7) { transform: translateY(-15px); }
+  .reviewItem:nth-child(8) { transform: translateY(12px); }
+  .reviewItem:nth-child(9) { transform: translateY(-8px); }
+  .reviewItem:nth-child(10) { transform: translateY(10px); }
+  .reviewItem:nth-child(11) { transform: translateY(-18px); }
+  .reviewItem:nth-child(12) { transform: translateY(5px); }
 }
 
 @media (max-width: 480px) {
   .gridContainer {
-    grid-template-columns: 1fr;
-    gap: clamp(30px, 5vw, 40px);
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(40px, 6vw, 60px);
   }
 
   .reviewText {
-    font-size: 9px;
+    font-size: 8px;
+  }
+
+  /* Minimale offsets op mobiel */
+  .reviewItem:nth-child(odd) { transform: translateY(-8px); }
+  .reviewItem:nth-child(even) { transform: translateY(8px); }
+
+  .container {
+    padding: 0 20px;
   }
 }

@@ -55,6 +55,16 @@ export default function CTASection() {
 
   return (
     <section className={styles.section} ref={sectionRef}>
+      {/* Texture Overlay */}
+      <div className={styles.overlay}>
+        <Image
+          src="/assets/overlays/overlay.jpg"
+          alt=""
+          fill
+          className={styles.overlayImage}
+        />
+      </div>
+
       <div className={styles.container}>
         {/* Content Wrapper - centered */}
         <div className={styles.contentWrapper}>

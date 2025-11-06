@@ -8,8 +8,15 @@
 .marqueeContainer {
   width: 100%;
   overflow: hidden;
-  padding: var(--spacing-xl) 0;
+  padding: clamp(60px, 8vw, 100px) 0;
   position: relative;
+}
+
+.marqueeScroll {
+  width: 100%;
+  display: flex;
+  position: relative;
+  will-change: transform;
 }
 
 .marqueeContent {
@@ -44,7 +51,7 @@
 
 /* Container */
 .container {
-  max-width: 1800px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 32px;
 }

@@ -1,7 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import styles from './ReviewSection.module.css';
+
+gsap.registerPlugin(InertiaPlugin);
 
 const frames = [
   '/assets/frames poloroid/frame 1.png',
@@ -134,8 +139,104 @@ const reviewItems = [
 ];
 
 export default function ReviewSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Only run on devices with fine pointer (desktop/mouse)
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Configuration (tweak these for feel)
+    const rotationMultiplier = 15;  // multiplies normalized torque for rotation speed
+    const inertiaResistance = 1500; // higher = stops sooner (natuurlijke pendulum afname)
+
+    // Pre-build clamp functions for performance
+    const clampRot = gsap.utils.clamp(-35, 35); // beperk de maximale rotatie voor subtiele schommel
+
+    // Velocity tracking
+    let prevX = 0, prevY = 0;
+    let velX = 0, velY = 0;
+    let rafId: number | null = null;
+
+    // Track pointer velocity (throttled to RAF)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        velX = e.clientX - prevX;
+        velY = e.clientY - prevY;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        rafId = null;
+      });
+    };
+
+    section.addEventListener('mousemove', handleMouseMove);
+
+    // Attach hover inertia to each polaroid element
+    const items = section.querySelectorAll('[data-momentum-hover-element]');
+
+    items.forEach((el) => {
+      const target = el.querySelector('[data-momentum-hover-target]') as HTMLElement;
+      if (!target) return;
+
+      el.addEventListener('mouseenter', (e: Event) => {
+        const mouseEvent = e as MouseEvent;
+
+        // Compute offset from center to pointer
+        const { left, top, width, height } = target.getBoundingClientRect();
+        const centerX = left + width / 2;
+        const centerY = top + height / 2;
+        const offsetX = mouseEvent.clientX - centerX;
+        const offsetY = mouseEvent.clientY - centerY;
+
+        // Compute raw torque (px²/frame)
+        const rawTorque = offsetX * velY - offsetY * velX;
+
+        // Normalize torque so rotation ∝ pointer speed (deg/sec)
+        const leverDist = Math.hypot(offsetX, offsetY) || 1;
+        const angularForce = rawTorque / leverDist;
+
+        // Calculate and clamp rotation velocity only (pendulum effect)
+        const rotationVelocity = clampRot(angularForce * rotationMultiplier);
+
+        // Apply GSAP inertia tween - only rotation for pendulum/swing effect
+        gsap.to(target, {
+          inertia: {
+            rotation: {
+              velocity: rotationVelocity,
+              end: 0,
+              ease: 'sine.out'
+            },
+            resistance: inertiaResistance
+          },
+          duration: 1.8,
+          ease: 'power1.out'
+        });
+      });
+    });
+
+    return () => {
+      section.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
-    <section className={styles.section}>
+    <section ref={sectionRef} className={styles.section} data-momentum-hover-init="">
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
@@ -145,13 +246,17 @@ export default function ReviewSection() {
 
         {/* Klanten Reviews Grid */}
         <div className={styles.gridContainer}>
-          {reviewItems.map((item, index) => (
+          {(isMobile ? reviewItems.slice(0, 6) : reviewItems.slice(0, 9)).map((item, index) => (
             <div
               key={item.id}
               className={styles.reviewItem}
-              style={{ transform: `rotate(${item.rotation}deg)` }}
+              data-momentum-hover-element=""
             >
-              <div className={styles.polaroid}>
+              <div
+                className={styles.polaroid}
+                data-momentum-hover-target=""
+                style={{ transform: `rotate(${item.rotation}deg)` }}
+              >
                 <div className={styles.imageWrapper}>
                   <Image
                     src={item.image}
