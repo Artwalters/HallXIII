@@ -17,85 +17,132 @@ export default function ExpertiseSection() {
   useEffect(() => {
     if (!containerRef.current || !leftColumnRef.current || !middleColumnRef.current || !rightColumnRef.current) return;
 
-    // Check screen size for responsive values
-    const getAnimationValues = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        // Mobile
-        return {
-          leftStart: -200,
-          leftEnd: -80,
-          middleStart: -50,
-          middleEnd: -150,
-          rightStart: -180,
-          rightEnd: -120,
-        };
-      } else if (width < 1024) {
-        // Medium
-        return {
-          leftStart: -350,
-          leftEnd: -120,
-          middleStart: -100,
-          middleEnd: -300,
-          rightStart: -320,
-          rightEnd: -180,
-        };
-      } else {
-        // Large+
-        return {
-          leftStart: -450,
-          leftEnd: -200,
-          middleStart: -150,
-          middleEnd: -550,
-          rightStart: -400,
-          rightEnd: -280,
-        };
-      }
-    };
-
-    const values = getAnimationValues();
-
     const ctx = gsap.context(() => {
-      // Set initial positions immediately
-      gsap.set(leftColumnRef.current, { y: values.leftStart });
-      gsap.set(middleColumnRef.current, { y: values.middleStart });
-      gsap.set(rightColumnRef.current, { y: values.rightStart });
+      // Configuration
+      const speed = 200; // base animation speed in seconds
+      const leftDirection = -1; // -1 for down, 1 for up
+      const middleDirection = 1; // opposite of left
+      const rightDirection = -1; // same as left
+      const scrollSpeed = 10; // parallax strength
+      const duplicate = 2;
 
-      // Left column - scroll down with faster speed
-      gsap.to(leftColumnRef.current, {
-        y: values.leftEnd,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.8,
+      // Duplicate collections for seamless loop
+      const duplicateCollection = (column: HTMLDivElement) => {
+        const collection = column.querySelector('[data-collection]') as HTMLDivElement;
+        if (!collection) return;
+
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < duplicate; i++) {
+          fragment.appendChild(collection.cloneNode(true));
+        }
+        column.appendChild(fragment);
+      };
+
+      duplicateCollection(leftColumnRef.current);
+      duplicateCollection(middleColumnRef.current);
+      duplicateCollection(rightColumnRef.current);
+
+      // Responsive speed multiplier
+      const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
+      const adjustedSpeed = speed * speedMultiplier;
+
+      // Get all collection items for each column
+      const leftCollections = leftColumnRef.current.querySelectorAll('[data-collection]');
+      const middleCollections = middleColumnRef.current.querySelectorAll('[data-collection]');
+      const rightCollections = rightColumnRef.current.querySelectorAll('[data-collection]');
+
+      // Base animations for continuous scroll - animate ALL collections
+      const leftAnimation = gsap.to(leftCollections, {
+        yPercent: -100,
+        repeat: -1,
+        duration: adjustedSpeed,
+        ease: 'linear'
+      }).totalProgress(0.5);
+
+      const middleAnimation = gsap.to(middleCollections, {
+        yPercent: -100,
+        repeat: -1,
+        duration: adjustedSpeed * 1.4,
+        ease: 'linear'
+      }).totalProgress(0.5);
+
+      const rightAnimation = gsap.to(rightCollections, {
+        yPercent: -100,
+        repeat: -1,
+        duration: adjustedSpeed * 1.2,
+        ease: 'linear'
+      }).totalProgress(0.5);
+
+      // Set initial direction
+      gsap.set(leftCollections, { yPercent: leftDirection === 1 ? 100 : -100 });
+      gsap.set(middleCollections, { yPercent: middleDirection === 1 ? 100 : -100 });
+      gsap.set(rightCollections, { yPercent: rightDirection === 1 ? 100 : -100 });
+
+      leftAnimation.timeScale(leftDirection);
+      middleAnimation.timeScale(middleDirection);
+      rightAnimation.timeScale(rightDirection);
+
+      leftAnimation.play();
+      middleAnimation.play();
+      rightAnimation.play();
+
+      // ScrollTrigger for direction inversion
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          const isInverted = self.direction === 1; // Scrolling down
+          const currentLeftDir = isInverted ? -leftDirection : leftDirection;
+          const currentMiddleDir = isInverted ? -middleDirection : middleDirection;
+          const currentRightDir = isInverted ? -rightDirection : rightDirection;
+
+          leftAnimation.timeScale(currentLeftDir);
+          middleAnimation.timeScale(currentMiddleDir);
+          rightAnimation.timeScale(currentRightDir);
         }
       });
 
-      // Middle column - scroll up with slowest speed
-      gsap.to(middleColumnRef.current, {
-        y: values.middleEnd,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.2,
-        }
-      });
+      // Extra parallax scroll effect on columns
+      const leftScrollStart = leftDirection === -1 ? scrollSpeed : -scrollSpeed;
+      const middleScrollStart = middleDirection === -1 ? scrollSpeed : -scrollSpeed;
+      const rightScrollStart = rightDirection === -1 ? scrollSpeed : -scrollSpeed;
 
-      // Right column - scroll down with medium speed
-      gsap.to(rightColumnRef.current, {
-        y: values.rightEnd,
-        ease: 'none',
+      gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
+          start: '0% 100%',
+          end: '100% 0%',
+          scrub: 0
         }
-      });
+      }).fromTo(leftColumnRef.current,
+        { y: `${leftScrollStart}vh` },
+        { y: `${-leftScrollStart}vh`, ease: 'none' }
+      );
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: '0% 100%',
+          end: '100% 0%',
+          scrub: 0
+        }
+      }).fromTo(middleColumnRef.current,
+        { y: `${middleScrollStart}vh` },
+        { y: `${-middleScrollStart}vh`, ease: 'none' }
+      );
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: '0% 100%',
+          end: '100% 0%',
+          scrub: 0
+        }
+      }).fromTo(rightColumnRef.current,
+        { y: `${rightScrollStart}vh` },
+        { y: `${-rightScrollStart}vh`, ease: 'none' }
+      );
     });
 
     return () => ctx.revert();
@@ -125,40 +172,73 @@ export default function ExpertiseSection() {
           <div className={styles.columnsContainer}>
             {/* Left Column - Scrolls Down */}
             <div ref={leftColumnRef} className={styles.column}>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+              <div data-collection className={styles.imageCollection}>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
               </div>
             </div>
 
             {/* Middle Column - Scrolls Up */}
             <div ref={middleColumnRef} className={styles.column}>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+              <div data-collection className={styles.imageCollection}>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
               </div>
             </div>
 
             {/* Right Column - Scrolls Down */}
             <div ref={rightColumnRef} className={styles.column}>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.imageWrapper}>
-                <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+              <div data-collection className={styles.imageCollection}>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
+                <div className={styles.imageWrapper}>
+                  <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                </div>
               </div>
             </div>
           </div>

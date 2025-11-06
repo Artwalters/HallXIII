@@ -113,11 +113,25 @@
   letter-spacing: 0;
 }
 
+/* CTA Wrapper - contains button and lid worden */
+.ctaWrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(60px, 10vh, 120px);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .ctaWrapper {
+    gap: clamp(80px, 12vw, 180px);
+  }
+}
+
 /* Button Wrapper */
 .buttonWrapper {
-  position: absolute;
-  left: clamp(50px, 6vw, 100px);
-  bottom: clamp(30px, 4vh, 50px);
   display: flex;
   align-items: center;
   gap: 22px;
@@ -161,9 +175,7 @@
 
 /* LID WORDEN Text */
 .lidText {
-  position: absolute;
-  right: clamp(50px, 6vw, 100px);
-  bottom: clamp(30px, 4vh, 50px);
+  flex-shrink: 0;
 }
 
 .lidWordenText {
@@ -185,28 +197,21 @@
 
   .contentWrapper {
     transform: translateY(-6vh);
-  }
-
-  .numberWrapper {
-    transform: translate(-50%, calc(-50% - 40px));
+    flex-direction: column;
+    align-items: center;
   }
 
   .mainTextWrapper {
-    transform: translateX(-50%);
-    top: 140px;
-    text-align: center;
+    text-align: left;
   }
 
-  .buttonWrapper {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 140px;
+  .mainText {
+    text-align: left;
   }
 
-  .lidText {
-    right: 50%;
-    transform: translateX(50%);
-    bottom: 60px;
+  .ctaWrapper {
+    bottom: clamp(80px, 12vh, 140px);
+    gap: clamp(30px, 4vw, 60px);
   }
 }
 
@@ -217,29 +222,28 @@
 
   .contentWrapper {
     transform: translateY(-4vh);
-  }
-
-  .bigNumber {
-    font-size: 200px;
-  }
-
-  .mainText {
-    font-size: 56px;
-  }
-
-  .numberWrapper {
-    transform: translate(-50%, calc(-50% - 60px));
+    flex-direction: column;
+    align-items: center;
+    gap: -20px;
   }
 
   .mainTextWrapper {
-    top: 100px;
+    text-align: left;
+    margin-top: -20px;
   }
 
-  .buttonWrapper {
-    bottom: 100px;
+  .mainText {
+    font-size: clamp(70px, 18vw, 95px);
+    text-align: left;
   }
 
-  .lidText {
-    bottom: 40px;
+  .bigNumber {
+    font-size: clamp(320px, 70vw, 420px);
+  }
+
+  .ctaWrapper {
+    bottom: 20px;
+    gap: clamp(24px, 4vw, 40px);
+    flex-direction: column;
   }
 }

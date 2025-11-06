@@ -23,42 +23,9 @@ export default function CommunitySection() {
           <p className={styles.topLine}>gedreven door</p>
         </div>
 
-        {/* Main Community Text with Images */}
+        {/* Main Community Text */}
         <div className={styles.communityWrapper}>
           <h2 className={styles.communityText}>COMMUNITY</h2>
-
-          {/* Image 1 - Top Center */}
-          <div className={styles.image1}>
-            <Image
-              src="/assets/community-1.jpg"
-              alt="Community"
-              fill
-              sizes="(max-width: 768px) 200px, 300px"
-              className={styles.image}
-            />
-          </div>
-
-          {/* Image 2 - Bottom Left */}
-          <div className={styles.image2}>
-            <Image
-              src="/assets/community-2.jpg"
-              alt="Community"
-              fill
-              sizes="(max-width: 768px) 180px, 250px"
-              className={styles.image}
-            />
-          </div>
-
-          {/* Image 3 - Bottom Right */}
-          <div className={styles.image3}>
-            <Image
-              src="/assets/community-3.jpg"
-              alt="Community"
-              fill
-              sizes="(max-width: 768px) 200px, 320px"
-              className={styles.image}
-            />
-          </div>
         </div>
 
         {/* Social Media Section */}

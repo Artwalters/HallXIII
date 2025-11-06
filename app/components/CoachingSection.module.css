@@ -27,7 +27,7 @@
 
 .marqueeText {
   font-family: var(--font-schabo);
-  font-size: clamp(90px, 11vw, 160px);
+  font-size: clamp(180px, 22vw, 320px);
   color: #ffffff;
   text-transform: uppercase;
   white-space: nowrap;
@@ -39,6 +39,12 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+@media (min-width: 768px) {
+  .marqueeText {
+    font-size: clamp(90px, 11vw, 160px);
+  }
 }
 
 /* Divider */
@@ -157,7 +163,7 @@
 
 .linkText {
   font-family: var(--font-relost);
-  font-size: clamp(16px, 1.5vw, 20px);
+  font-size: var(--font-2xl);
   font-weight: normal;
   color: #ffffff;
   line-height: 1;

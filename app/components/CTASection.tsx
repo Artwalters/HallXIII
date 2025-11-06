@@ -126,22 +126,24 @@ export default function CTASection() {
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className={styles.buttonWrapper}>
-          <button className={styles.ctaButton}>
-            <span>beginnen met coaching</span>
-          </button>
-          <div className={styles.arrowCircle}>
-            <svg width="100%" height="100%" viewBox="0 0 57 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="28.5" cy="29" r="28.5" fill="#285A66"/>
-              <path d="M20 29H37M37 29L30 22M37 29L30 36" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+        {/* CTA Section */}
+        <div className={styles.ctaWrapper}>
+          <div className={styles.buttonWrapper}>
+            <button className={styles.ctaButton}>
+              <span>beginnen met coaching</span>
+            </button>
+            <div className={styles.arrowCircle}>
+              <svg width="100%" height="100%" viewBox="0 0 57 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28.5" cy="29" r="28.5" fill="#285A66"/>
+                <path d="M20 29H37M37 29L30 22M37 29L30 36" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
-        </div>
 
-        {/* LID WORDEN Text */}
-        <div className={styles.lidText}>
-          <p className={styles.lidWordenText}>lid worden?</p>
+          {/* LID WORDEN Text */}
+          <div className={styles.lidText}>
+            <p className={styles.lidWordenText}>lid worden?</p>
+          </div>
         </div>
       </div>
     </section>

@@ -127,15 +127,15 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 150px;
+  height: 100px;
   pointer-events: none;
   z-index: 10;
-  background: linear-gradient(to bottom, #f0ebe6 0%, rgba(240, 235, 230, 0.8) 40%, transparent 100%);
+  background: linear-gradient(to bottom, #f0ebe6 0%, rgba(240, 235, 230, 0.738) 19%, rgba(240, 235, 230, 0.541) 34%, rgba(240, 235, 230, 0.382) 47%, rgba(240, 235, 230, 0.278) 56.5%, rgba(240, 235, 230, 0.194) 65%, rgba(240, 235, 230, 0.126) 73%, rgba(240, 235, 230, 0.075) 80.2%, rgba(240, 235, 230, 0.042) 86.1%, rgba(240, 235, 230, 0.021) 91%, rgba(240, 235, 230, 0.008) 95.2%, rgba(240, 235, 230, 0.002) 98.2%, transparent 100%);
 }
 
 @media (min-width: 768px) {
   .topGradient {
-    height: 200px;
+    height: 130px;
   }
 }
 
@@ -144,15 +144,15 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
+  height: 100px;
   pointer-events: none;
   z-index: 10;
-  background: linear-gradient(to top, #f0ebe6 0%, rgba(240, 235, 230, 0.8) 40%, transparent 100%);
+  background: linear-gradient(to top, #f0ebe6 0%, rgba(240, 235, 230, 0.738) 19%, rgba(240, 235, 230, 0.541) 34%, rgba(240, 235, 230, 0.382) 47%, rgba(240, 235, 230, 0.278) 56.5%, rgba(240, 235, 230, 0.194) 65%, rgba(240, 235, 230, 0.126) 73%, rgba(240, 235, 230, 0.075) 80.2%, rgba(240, 235, 230, 0.042) 86.1%, rgba(240, 235, 230, 0.021) 91%, rgba(240, 235, 230, 0.008) 95.2%, rgba(240, 235, 230, 0.002) 98.2%, transparent 100%);
 }
 
 @media (min-width: 768px) {
   .bottomGradient {
-    height: 200px;
+    height: 130px;
   }
 }
 
@@ -181,26 +181,36 @@
 
 .column {
   flex: 1;
+  position: relative;
+  will-change: transform;
+}
+
+.imageCollection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
+  will-change: transform;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 768px) {
-  .column {
-    gap: 24px;
+  .imageCollection {
+    gap: 32px;
+    margin-bottom: 32px;
   }
 }
 
 @media (min-width: 1024px) {
-  .column {
-    gap: 32px;
+  .imageCollection {
+    gap: 40px;
+    margin-bottom: 40px;
   }
 }
 
 @media (min-width: 1280px) {
-  .column {
-    gap: 34px;
+  .imageCollection {
+    gap: 48px;
+    margin-bottom: 48px;
   }
 }
 
