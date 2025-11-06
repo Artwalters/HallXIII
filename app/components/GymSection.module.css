@@ -83,7 +83,7 @@
 
 .m2Text {
   position: absolute;
-  top: -40px;
+  top: -16px;
   right: -48px;
   font-size: var(--font-2xl);
   color: black;
@@ -93,14 +93,14 @@
 
 @media (min-width: 768px) {
   .m2Text {
-    top: -48px;
+    top: -16px;
     right: -56px;
   }
 }
 
 @media (min-width: 1024px) {
   .m2Text {
-    top: -56px;
+    top: -16px;
     right: -64px;
   }
 }
@@ -113,6 +113,7 @@
   text-align: center;
   font-family: var(--font-schabo);
   font-weight: 100;
+  transform: translateY(-45px);
 }
 
 @media (min-width: 768px) {
@@ -137,6 +138,42 @@
   .numberText {
     font-size: 310px;
   }
+}
+
+/* Slot machine counter */
+.counterContainer {
+  display: inline-flex;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.digitWrapper {
+  overflow: hidden;
+  height: 0.85em;
+  line-height: 0.85;
+  display: inline-block;
+  position: relative;
+  top: 0.12em;
+  margin-left: -10px;
+}
+
+.digitWrapper:first-child {
+  margin-left: 0;
+}
+
+.digitColumn {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transform: translateY(1%);
+}
+
+.digitColumn span {
+  display: block;
+  height: 0.85em;
+  line-height: 0.85;
+  text-align: center;
 }
 
 .descriptionText {

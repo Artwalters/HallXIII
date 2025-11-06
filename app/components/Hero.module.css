@@ -184,6 +184,10 @@
 }
 
 .menuButton {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
   font-size: var(--font-2xl);
   color: white;
   background: none;
@@ -198,6 +202,17 @@
 
 .menuButton:hover {
   color: #459bb0;
+}
+
+.menuText {
+  line-height: 1;
+}
+
+.menuUnderline {
+  height: 6px;
+  margin-top: -6px;
+  width: 90%;
+  filter: brightness(0) invert(1);
 }
 
 .mainContent {

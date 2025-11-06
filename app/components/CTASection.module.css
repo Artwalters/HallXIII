@@ -1,0 +1,218 @@
+.section {
+  background-color: #4687B0;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(32px, 5vw, 80px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content Wrapper - centers both elements as a group */
+.contentWrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 2vw;
+  position: relative;
+}
+
+/* 013 Number */
+.numberWrapper {
+  flex-shrink: 0;
+}
+
+.bigNumber {
+  font-family: var(--font-schabo);
+  font-size: 36vw;
+  font-weight: normal;
+  color: #285A66;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* Slot machine counter */
+.counterContainer {
+  display: inline-flex;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.digitWrapper {
+  overflow: hidden;
+  height: 0.85em;
+  line-height: 0.85;
+  display: inline-block;
+  position: relative;
+  top: 0.12em;
+  margin-left: -0.05em;
+}
+
+.digitWrapper:first-child {
+  margin-left: 0;
+}
+
+.digitColumn {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transform: translateY(1%);
+}
+
+.digitColumn span {
+  display: block;
+  height: 0.85em;
+  line-height: 0.85;
+  text-align: center;
+}
+
+/* Main Text */
+.mainTextWrapper {
+  flex-shrink: 0;
+  margin-bottom: 30px;
+}
+
+.mainText {
+  font-family: var(--font-schabo);
+  font-size: 11vw;
+  font-weight: normal;
+  color: #285A66;
+  line-height: 0.90;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* Button Wrapper */
+.buttonWrapper {
+  position: absolute;
+  left: clamp(120px, 15vw, 215px);
+  bottom: clamp(80px, 12vh, 160px);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* CTA Button */
+.ctaButton {
+  background-color: #285A66;
+  color: #ffffff;
+  font-family: var(--font-relost);
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: normal;
+  padding: clamp(18px, 2vw, 21px) clamp(20px, 2.5vw, 25px);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-transform: lowercase;
+  line-height: 1.6;
+}
+
+.ctaButton:hover {
+  background-color: #3A6A76;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Arrow Circle */
+.arrowCircle {
+  width: clamp(48px, 4vw, 58px);
+  height: clamp(48px, 4vw, 58px);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.arrowCircle:hover {
+  transform: scale(1.1);
+}
+
+/* LID WORDEN Text */
+.lidText {
+  position: absolute;
+  right: clamp(80px, 10vw, 160px);
+  bottom: clamp(80px, 12vh, 160px);
+}
+
+.lidWordenText {
+  font-family: var(--font-relost);
+  font-size: clamp(32px, 3vw, 40px);
+  color: #285A66;
+  margin: 0;
+  transform: rotate(-8.4deg);
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    min-height: 700px;
+    padding: clamp(80px, 12vw, 120px) 0;
+  }
+
+  .numberWrapper {
+    transform: translate(-50%, calc(-50% - 40px));
+  }
+
+  .mainTextWrapper {
+    transform: translateX(-50%);
+    top: 140px;
+    text-align: center;
+  }
+
+  .buttonWrapper {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 140px;
+  }
+
+  .lidText {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    min-height: 600px;
+  }
+
+  .bigNumber {
+    font-size: 200px;
+  }
+
+  .mainText {
+    font-size: 56px;
+  }
+
+  .numberWrapper {
+    transform: translate(-50%, calc(-50% - 60px));
+  }
+
+  .mainTextWrapper {
+    top: 100px;
+  }
+
+  .buttonWrapper {
+    bottom: 100px;
+  }
+
+  .lidText {
+    bottom: 40px;
+  }
+}

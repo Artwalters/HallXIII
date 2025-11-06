@@ -23,26 +23,32 @@ export default function ExpertiseSection() {
       if (width < 768) {
         // Mobile
         return {
-          leftRightStart: -200,
-          leftRightEnd: -100,
+          leftStart: -200,
+          leftEnd: -80,
           middleStart: -50,
           middleEnd: -150,
+          rightStart: -180,
+          rightEnd: -120,
         };
       } else if (width < 1024) {
         // Medium
         return {
-          leftRightStart: -350,
-          leftRightEnd: -150,
+          leftStart: -350,
+          leftEnd: -120,
           middleStart: -100,
           middleEnd: -300,
+          rightStart: -320,
+          rightEnd: -180,
         };
       } else {
         // Large+
         return {
-          leftRightStart: -450,
-          leftRightEnd: -250,
+          leftStart: -450,
+          leftEnd: -200,
           middleStart: -150,
           middleEnd: -550,
+          rightStart: -400,
+          rightEnd: -280,
         };
       }
     };
@@ -51,23 +57,23 @@ export default function ExpertiseSection() {
 
     const ctx = gsap.context(() => {
       // Set initial positions immediately
-      gsap.set(leftColumnRef.current, { y: values.leftRightStart });
+      gsap.set(leftColumnRef.current, { y: values.leftStart });
       gsap.set(middleColumnRef.current, { y: values.middleStart });
-      gsap.set(rightColumnRef.current, { y: values.leftRightStart });
+      gsap.set(rightColumnRef.current, { y: values.rightStart });
 
-      // Left column - scroll down
+      // Left column - scroll down with faster speed
       gsap.to(leftColumnRef.current, {
-        y: values.leftRightEnd,
+        y: values.leftEnd,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 0.8,
         }
       });
 
-      // Middle column - scroll up
+      // Middle column - scroll up with slowest speed
       gsap.to(middleColumnRef.current, {
         y: values.middleEnd,
         ease: 'none',
@@ -75,13 +81,13 @@ export default function ExpertiseSection() {
           trigger: containerRef.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 1.2,
         }
       });
 
-      // Right column - scroll down
+      // Right column - scroll down with medium speed
       gsap.to(rightColumnRef.current, {
-        y: values.leftRightEnd,
+        y: values.rightEnd,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,

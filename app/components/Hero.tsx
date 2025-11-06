@@ -59,7 +59,14 @@ export default function Hero() {
 
           {/* Menu Button - Responsive */}
           <button className={styles.menuButton}>
-            menu
+            <span className={styles.menuText}>menu</span>
+            <Image
+              src="/assets/underline-1.svg"
+              alt=""
+              width={80}
+              height={5}
+              className={styles.menuUnderline}
+            />
           </button>
         </nav>
 

@@ -1,6 +1,10 @@
 import Hero from './components/Hero';
 import ExpertiseSection from './components/ExpertiseSection';
 import GymSection from './components/GymSection';
+import CoachingSection from './components/CoachingSection';
+import CommunitySection from './components/CommunitySection';
+import ReviewSection from './components/ReviewSection';
+import CTASection from './components/CTASection';
 
 export default function Home() {
   return (
@@ -8,6 +12,10 @@ export default function Home() {
       <Hero />
       <ExpertiseSection />
       <GymSection />
+      <CoachingSection />
+      <CommunitySection />
+      <ReviewSection />
+      <CTASection />
     </main>
   );
 }

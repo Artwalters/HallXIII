@@ -1,0 +1,249 @@
+.section {
+  background-color: #000000;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Marquee Styles */
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.marqueeContent {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marqueeText {
+  font-family: var(--font-schabo);
+  font-size: clamp(90px, 11vw, 160px);
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0;
+  line-height: 1;
+  padding-right: var(--spacing-xl);
+  margin-top: 100px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 48px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    padding: 0 64px;
+  }
+}
+
+/* Coaching Item */
+.coachingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(60px, 12vw, 120px) 0;
+  gap: clamp(120px, 15vw, 231px);
+}
+
+/* Text Content */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 60px);
+  max-width: 650px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vw, 14px);
+}
+
+.category {
+  font-family: var(--font-schabo);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: normal;
+  color: #3b3b3b;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.title {
+  font-family: var(--font-schabo);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: normal;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin: 0;
+  letter-spacing: normal;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: clamp(60px, 7vw, 100px);
+  }
+}
+
+.description {
+  font-family: var(--font-grifter);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 1.9;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .description {
+    font-size: clamp(16px, 1.4vw, 18px);
+  }
+}
+
+/* Link */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  width: max-content;
+  margin-top: var(--spacing-sm);
+}
+
+.linkText {
+  font-family: var(--font-relost);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 94px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+/* Image Wrapper */
+.imageWrapper {
+  position: relative;
+  width: 650px;
+  height: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.image {
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .coachingItem {
+    gap: 80px;
+  }
+
+  .imageWrapper {
+    width: 520px;
+    height: 640px;
+  }
+}
+
+@media (max-width: 968px) {
+  .coachingItem {
+    flex-direction: column;
+    gap: clamp(40px, 6vw, 60px);
+    padding: clamp(50px, 8vw, 80px) 0;
+  }
+
+  .textContent {
+    max-width: 100%;
+    order: 1;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: clamp(400px, 60vw, 520px);
+    order: 2;
+  }
+
+  .marqueeText {
+    font-size: clamp(70px, 14vw, 100px);
+  }
+}
+
+@media (max-width: 640px) {
+  .coachingItem {
+    padding: clamp(40px, 6vw, 60px) 0;
+    gap: clamp(30px, 5vw, 40px);
+  }
+
+  .textContent {
+    gap: clamp(24px, 4vw, 32px);
+  }
+
+  .header {
+    gap: clamp(8px, 1.5vw, 12px);
+  }
+
+  .marqueeContainer {
+    padding: clamp(40px, 6vw, 60px) 0;
+  }
+
+  .marqueeText {
+    font-size: clamp(56px, 13vw, 80px);
+  }
+
+  .imageWrapper {
+    height: clamp(280px, 75vw, 360px);
+  }
+}
