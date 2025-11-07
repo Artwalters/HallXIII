@@ -408,62 +408,22 @@ export default function CoachingSlider() {
           <h2 className={styles.sliderTitle}>DE COACHES<br />VAN HALL13</h2>
           <div className={styles.sliderOverlayNav}>
             <button aria-label="previous slide" data-slider-button="prev" className={styles.sliderBtn}>
-              <svg
-                className={styles.sliderBtnCircle}
-                preserveAspectRatio="none"
-                width="100%"
-                height="100%"
-                overflow="visible"
-                viewBox="0 0 70 72"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M69.1436 22.2025C65.4076 8.98887 49.8314 2.14891 38.8715 0.578002C35.0487 0.0298209 22.5473 -1.762 12.4304 5.88799C-1.86464 16.6961 -3.89792 40.6729 6.68181 55.9647C13.3189 65.5619 26.5973 74.1528 39.6402 71.5183C50.3645 69.3501 57.3695 60.3133 59.5681 57.4824C63.3082 52.6551 65.0274 48.1592 66.0812 45.3447C68.3335 39.3106 71.5529 30.7075 69.1477 22.2025H69.1436Z"
-                  fill="rgba(24, 24, 24, 0.2)"
+              <div className={styles.sliderBtnPrev}>
+                <Image
+                  src="/assets/arrow-vector.svg"
+                  alt="Previous"
+                  width={56}
+                  height={58}
                 />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                viewBox="0 0 17 12"
-                fill="none"
-                className={styles.sliderBtnArrow}
-              >
-                <path
-                  d="M6.28871 12L7.53907 10.9111L3.48697 6.77778H16.5V5.22222H3.48697L7.53907 1.08889L6.28871 0L0.5 6L6.28871 12Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+              </div>
             </button>
             <button aria-label="next slide" data-slider-button="next" className={styles.sliderBtn}>
-              <svg
-                className={styles.sliderBtnCircle}
-                preserveAspectRatio="none"
-                width="100%"
-                height="100%"
-                overflow="visible"
-                viewBox="0 0 70 72"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M69.1436 22.2025C65.4076 8.98887 49.8314 2.14891 38.8715 0.578002C35.0487 0.0298209 22.5473 -1.762 12.4304 5.88799C-1.86464 16.6961 -3.89792 40.6729 6.68181 55.9647C13.3189 65.5619 26.5973 74.1528 39.6402 71.5183C50.3645 69.3501 57.3695 60.3133 59.5681 57.4824C63.3082 52.6551 65.0274 48.1592 66.0812 45.3447C68.3335 39.3106 71.5529 30.7075 69.1477 22.2025H69.1436Z"
-                  fill="rgba(24, 24, 24, 0.2)"
-                />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                viewBox="0 0 17 12"
-                fill="none"
-                className={`${styles.sliderBtnArrow} ${styles.next}`}
-              >
-                <path
-                  d="M6.28871 12L7.53907 10.9111L3.48697 6.77778H16.5V5.22222H3.48697L7.53907 1.08889L6.28871 0L0.5 6L6.28871 12Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+              <Image
+                src="/assets/arrow-vector.svg"
+                alt="Next"
+                width={56}
+                height={58}
+              />
             </button>
           </div>
         </div>
