@@ -1,0 +1,470 @@
+.sliderSection {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  background-color: #ece8e3;
+}
+
+.sliderMain {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+  overflow: hidden;
+}
+
+.sliderMain::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to left, #ece8e3 30%, rgba(236, 232, 227, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sliderWrap {
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.sliderList {
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  display: flex;
+  position: relative;
+}
+
+.sliderSlide {
+  aspect-ratio: 13 / 16;
+  flex: none;
+  width: 650px;
+  height: 800px;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  position: relative;
+  opacity: 1;
+}
+
+.sliderSlide.active {
+  opacity: 1;
+}
+
+.sliderSlideInner {
+  border-radius: 0.5em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gradient Overlay */
+.slideGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content Container */
+.slideContent {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 1.5em;
+  opacity: 1;
+}
+
+/* Logo bovenin */
+.slideLogo {
+  position: relative;
+  width: clamp(100px, 15vw, 165px);
+  height: clamp(32px, 5vw, 52px);
+  margin-top: 1em;
+}
+
+.slideLogoPart1 {
+  position: absolute;
+  height: 100%;
+  left: 4%;
+  top: 0;
+  width: 92%;
+}
+
+.slideLogoPart2 {
+  position: absolute;
+  height: 90%;
+  left: 0;
+  top: 3%;
+  width: 100%;
+}
+
+/* Bottom container voor naam en rol */
+.slideBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  width: 100%;
+}
+
+/* Name Styling - onderaan */
+.slideName {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.slideNameFirst,
+.slideNameLast {
+  font-family: var(--font-schabo);
+  font-size: clamp(60px, 6vw, 100px);
+  font-weight: 100;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Stop Motion Button */
+.btnStopMotion {
+  pointer-events: auto;
+  color: #459bb0;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  transform: rotate(-1deg) scale(1);
+  transition: 0.5s cubic-bezier(0.35, 1.75, 0.6, 1);
+  width: fit-content;
+  align-self: center;
+}
+
+.btnStopMotion:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.btnStopMotionInner {
+  grid-column-gap: 0.5em;
+  grid-row-gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  position: relative;
+  padding: 0.75em 1.5em 0.75em 1.2em;
+  z-index: 1;
+}
+
+.btnStopMotionBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.btnStopMotionBackSvg {
+  width: 300%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+}
+
+.btnStopMotion:hover .btnStopMotionBackSvg {
+  animation: spriteBackground 0.45s steps(3, end) infinite;
+}
+
+.btnStopMotionIcon {
+  color: #ffe224;
+  flex-shrink: 0;
+  width: 1.5em;
+  margin-left: -0.25em;
+  margin-right: -0.25em;
+  position: relative;
+  overflow: hidden;
+}
+
+.before100 {
+  padding-top: 100%;
+}
+
+.btnStopMotionIconSvg {
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  animation: sprite 0.45s steps(4, end) infinite;
+}
+
+.btnStopMotionP {
+  color: #efeeec;
+  margin-bottom: 0;
+  padding-top: 0;
+  font-size: 1em;
+  font-weight: 500;
+  position: relative;
+  font-family: var(--font-relost);
+  text-transform: lowercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btnStopMotion:hover .btnStopMotionP {
+  animation: wiggle 0.3s steps(2, end) infinite;
+}
+
+/* Animaties */
+@keyframes sprite {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes spriteBackground {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: rotate(1deg);
+  }
+  to {
+    transform: rotate(-1deg);
+  }
+}
+
+.sliderOverlay {
+  z-index: 2;
+  color: #181818;
+  background-image: linear-gradient(90deg, #ece8e3 85%, rgba(236, 232, 227, 0));
+  justify-content: flex-start;
+  align-items: center;
+  width: 36vw;
+  height: 100%;
+  padding-left: 10em;
+  padding-top: -10em;
+  display: flex;
+  position: absolute;
+  inset: 0% auto 0% 0%;
+}
+
+.sliderOverlayInner {
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 49.125em;
+  display: flex;
+}
+
+.sliderOverlayCount {
+  grid-column-gap: 0.2em;
+  grid-row-gap: 0.2em;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 4.5em;
+  font-weight: 700;
+  display: flex;
+}
+
+.sliderCountCol {
+  height: 1em;
+  overflow: hidden;
+}
+
+.sliderCountHeading {
+  width: 2ch;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: var(--font-schabo);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.sliderCountDivider {
+  background-color: #181818;
+  width: 2px;
+  height: 0.75em;
+  transform: rotate(15deg);
+}
+
+.sliderTitle {
+  font-family: var(--font-schabo);
+  font-size: 6em;
+  font-weight: 100;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #181818;
+  margin: 0;
+  max-width: 100%;
+}
+
+.sliderOverlayNav {
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  display: flex;
+}
+
+.sliderBtn {
+  color: #181818;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  width: 4em;
+  height: 4em;
+  padding: 0;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sliderBtn:hover {
+  transform: scale(1.1);
+}
+
+.sliderBtnCircle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.sliderBtnArrow {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 1em;
+  height: 0.75em;
+}
+
+.sliderBtnArrow.next {
+  transform: rotate(180deg);
+}
+
+@media screen and (max-width: 1200px) {
+  .sliderSlide {
+    width: 520px;
+    height: 640px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .sliderMain {
+    position: relative;
+  }
+
+  .sliderMain::after {
+    width: 100px;
+  }
+
+  .sliderSlide {
+    width: 70vw;
+    height: clamp(400px, 60vw, 520px);
+  }
+
+  .sliderOverlay {
+    width: 100%;
+    position: relative;
+    inset: auto;
+    padding-bottom: 2em;
+  }
+
+  .sliderOverlayInner {
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+    height: auto;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .sliderMain::after {
+    width: 80px;
+  }
+
+  .sliderOverlay {
+    padding-left: 1.25em;
+  }
+
+  .sliderSlide {
+    width: 85vw;
+    height: clamp(280px, 75vw, 360px);
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .slideLogo {
+    width: clamp(80px, 20vw, 120px);
+    height: clamp(26px, 6vw, 38px);
+  }
+
+  .slideBottom {
+    gap: 1em;
+  }
+
+  .slideNameFirst,
+  .slideNameLast {
+    font-size: clamp(40px, 10vw, 70px);
+  }
+
+  .btnStopMotion {
+    font-size: 0.85em;
+  }
+
+  .btnStopMotionInner {
+    padding: 0.65em 1.2em 0.65em 1em;
+  }
+
+  .btnStopMotionIcon {
+    width: 1.2em;
+  }
+
+  .btnStopMotionP {
+    font-size: 1em;
+  }
+
+  .sliderOverlayCount {
+    font-size: 3em;
+  }
+
+  .sliderTitle {
+    font-size: 3em;
+  }
+}
