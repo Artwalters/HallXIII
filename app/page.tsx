@@ -15,9 +15,20 @@ export default function Home() {
       <GymSection />
       <CoachingSection />
       <CoachingSlider />
-      <CommunitySection />
-      <ReviewSection />
-      <CTASection />
+
+      {/* Wrapper met gradient achtergrond voor Community section */}
+      <div style={{
+        background: 'linear-gradient(to bottom, var(--color-cream) 0%, var(--color-black) 100%)',
+        position: 'relative'
+      }}>
+        <CommunitySection />
+      </div>
+
+      {/* Zwarte achtergrond voor onderste secties */}
+      <div style={{ backgroundColor: 'var(--color-black)' }}>
+        <ReviewSection />
+        <CTASection />
+      </div>
     </main>
   );
 }
