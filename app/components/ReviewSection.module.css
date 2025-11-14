@@ -1,6 +1,6 @@
 .section {
   background-color: var(--color-black);
-  padding: 10rem 0; /* 160px / 16 = 10rem - scales with Osmo */
+  padding: 10rem 0 15rem 0; /* 160px top, 240px bottom / 16 = 10rem, 15rem - more spacing at bottom */
   position: relative;
   overflow: hidden;
 }
@@ -71,7 +71,8 @@
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 5rem; /* 80px / 16 = 5rem - scales with Osmo */
+  column-gap: 5rem; /* 80px / 16 = 5rem - horizontal spacing */
+  row-gap: 8rem; /* 128px / 16 = 8rem - vertical spacing between rows */
   position: relative;
   z-index: 2;
 }
@@ -79,14 +80,16 @@
 @media (min-width: 768px) {
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
-    gap: 5.5rem; /* 88px / 16 = 5.5rem */
+    column-gap: 5.5rem; /* 88px / 16 = 5.5rem */
+    row-gap: 9rem; /* 144px / 16 = 9rem */
   }
 }
 
 @media (min-width: 1024px) {
   .gridContainer {
     grid-template-columns: repeat(3, 1fr);
-    gap: 6.5rem; /* 104px / 16 = 6.5rem */
+    column-gap: 6.5rem; /* 104px / 16 = 6.5rem */
+    row-gap: 10rem; /* 160px / 16 = 10rem */
   }
 }
 

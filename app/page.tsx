@@ -5,7 +5,7 @@ import CoachingSection from './components/CoachingSection';
 import CoachingSlider from './components/CoachingSlider';
 import CommunitySection from './components/CommunitySection';
 import ReviewSection from './components/ReviewSection';
-import CTASection from './components/CTASection';
+import CTAFooterCombined from './components/CTAFooterCombined';
 
 export default function Home() {
   return (
@@ -24,11 +24,13 @@ export default function Home() {
         <CommunitySection />
       </div>
 
-      {/* Zwarte achtergrond voor onderste secties */}
+      {/* Zwarte achtergrond voor ReviewSection */}
       <div style={{ backgroundColor: 'var(--color-black)' }}>
         <ReviewSection />
-        <CTASection />
       </div>
+
+      {/* CTA en Footer gecombineerd */}
+      <CTAFooterCombined />
     </main>
   );
 }

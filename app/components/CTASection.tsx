@@ -55,17 +55,18 @@ export default function CTASection() {
 
   return (
     <section className={styles.section} ref={sectionRef}>
-      {/* Texture Overlay */}
-      <div className={styles.overlay}>
-        <Image
-          src="/assets/overlays/overlay.jpg"
-          alt=""
-          fill
-          className={styles.overlayImage}
-        />
-      </div>
+      <div className={styles.clippedContent}>
+        {/* Texture Overlay */}
+        <div className={styles.overlay}>
+          <Image
+            src="/assets/overlays/overlay.jpg"
+            alt=""
+            fill
+            className={styles.overlayImage}
+          />
+        </div>
 
-      <div className={styles.container}>
+        <div className={styles.container}>
         {/* Content Wrapper - centered */}
         <div className={styles.contentWrapper}>
           {/* 013 Number with Counter Animation */}
@@ -145,6 +146,7 @@ export default function CTASection() {
             <p className={styles.lidWordenText}>lid worden?</p>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
