@@ -136,10 +136,10 @@ export default function GymSection() {
               </div>
             </h2>
           </div>
-          <h3 className={styles.descriptionText}>
+          <h2 className={styles.descriptionText}>
             waar jij je<br />
             kunt uitleven
-          </h3>
+          </h2>
         </div>
 
         {/* Swiper Slider */}

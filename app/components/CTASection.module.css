@@ -1,10 +1,10 @@
 .section {
-  background-color: #4687B0;
+  background-color: var(--color-primary);
   position: relative;
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  min-height: 600px;
+  min-height: 37.5rem; /* 600px / 16 = 37.5rem */
 }
 
 /* Texture Overlay */
@@ -28,7 +28,7 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 clamp(32px, 5vw, 80px);
+  padding: 0 5rem; /* 80px max / 16 = 5rem */
   position: relative;
   display: flex;
   align-items: center;
@@ -40,21 +40,21 @@
 .contentWrapper {
   display: flex;
   align-items: flex-end;
-  gap: 0vw;
+  gap: 0;
   position: relative;
   transform: translateY(-8vh);
 }
 
-/* 013 Number */
+/* 013 Number - VW BASED (BEHOUDEN) */
 .numberWrapper {
   flex-shrink: 0;
 }
 
 .bigNumber {
   font-family: var(--font-schabo);
-  font-size: 36vw;
+  font-size: 36vw; /* VW behouden voor dramatisch effect */
   font-weight: normal;
-  color: #285A66;
+  color: var(--color-dark-primary);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -96,17 +96,17 @@
   text-align: center;
 }
 
-/* Main Text */
+/* Main Text - VW BASED (BEHOUDEN) */
 .mainTextWrapper {
   flex-shrink: 0;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem; /* 30px / 16 = 1.875rem */
 }
 
 .mainText {
   font-family: var(--font-schabo);
-  font-size: 11vw;
+  font-size: 11vw; /* VW behouden voor consistente scaling */
   font-weight: normal;
-  color: #285A66;
+  color: var(--color-dark-primary);
   line-height: 0.90;
   margin: 0;
   text-transform: uppercase;
@@ -118,15 +118,15 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: clamp(60px, 10vh, 120px);
+  bottom: 7.5rem; /* 120px / 16 = 7.5rem */
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem; /* 40px / 16 = 2.5rem */
 }
 
 @media (min-width: 1024px) {
   .ctaWrapper {
-    gap: clamp(80px, 12vw, 180px);
+    gap: 11.25rem; /* 180px / 16 = 11.25rem */
   }
 }
 
@@ -134,19 +134,19 @@
 .buttonWrapper {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 1.375rem; /* 22px / 16 = 1.375rem */
 }
 
 /* CTA Button */
 .ctaButton {
-  background-color: #285A66;
-  color: #ffffff;
+  background-color: var(--color-dark-primary);
+  color: var(--color-white);
   font-family: var(--font-relost);
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: var(--relost-button-size); /* Global Relost button/link size */
   font-weight: normal;
-  padding: clamp(18px, 2vw, 21px) clamp(20px, 2.5vw, 25px);
+  padding: 1.3125rem 1.5625rem; /* 21px / 16 = 1.3125rem, 25px / 16 = 1.5625rem */
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem; /* 8px / 16 = 0.5rem */
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -155,15 +155,15 @@
 }
 
 .ctaButton:hover {
-  background-color: #3A6A76;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-primary);
+  transform: translateY(-0.125rem); /* 2px / 16 = 0.125rem */
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2); /* 10px, 30px */
 }
 
 /* Arrow Circle */
 .arrowCircle {
-  width: clamp(48px, 4vw, 58px);
-  height: clamp(48px, 4vw, 58px);
+  width: 3.625rem; /* 58px / 16 = 3.625rem */
+  height: 3.625rem;
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -180,8 +180,8 @@
 
 .lidWordenText {
   font-family: var(--font-relost);
-  font-size: clamp(32px, 3vw, 40px);
-  color: #285A66;
+  font-size: var(--relost-button-size); /* Global Relost button/link size */
+  color: var(--color-dark-primary);
   margin: 0;
   transform: rotate(-8.4deg);
   line-height: 0.95;
@@ -191,8 +191,8 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .section {
-    min-height: 700px;
-    padding: clamp(80px, 12vw, 120px) 0;
+    min-height: 43.75rem; /* 700px / 16 = 43.75rem */
+    padding: 7.5rem 0; /* 120px / 16 = 7.5rem */
   }
 
   .contentWrapper {
@@ -210,40 +210,53 @@
   }
 
   .ctaWrapper {
-    bottom: clamp(80px, 12vh, 140px);
-    gap: clamp(30px, 4vw, 60px);
+    bottom: 8.75rem; /* 140px / 16 = 8.75rem */
+    gap: 3.75rem; /* 60px / 16 = 3.75rem */
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    min-height: 600px;
+    min-height: 37.5rem; /* 600px / 16 = 37.5rem */
+  }
+
+  .container {
+    padding: 0 2rem; /* 32px / 16 = 2rem - smaller on mobile */
   }
 
   .contentWrapper {
     transform: translateY(-4vh);
     flex-direction: column;
     align-items: center;
-    gap: -20px;
+    gap: -1.25rem; /* -20px / 16 = -1.25rem */
   }
 
   .mainTextWrapper {
     text-align: left;
-    margin-top: -20px;
+    margin-top: -1.25rem; /* -20px / 16 = -1.25rem */
   }
 
   .mainText {
-    font-size: clamp(70px, 18vw, 95px);
+    font-size: 18vw; /* VW behouden - mobiel heeft meer ruimte nodig */
     text-align: left;
   }
 
   .bigNumber {
-    font-size: clamp(320px, 70vw, 420px);
+    font-size: 70vw; /* VW behouden - mobiel heeft meer ruimte nodig */
   }
 
   .ctaWrapper {
-    bottom: 20px;
-    gap: clamp(24px, 4vw, 40px);
+    bottom: 1.25rem; /* 20px / 16 = 1.25rem */
+    gap: 2.5rem; /* 40px / 16 = 2.5rem */
     flex-direction: column;
+  }
+
+  .ctaButton {
+    padding: 1.125rem 1.25rem; /* 18px, 20px */
+  }
+
+  .arrowCircle {
+    width: 3rem; /* 48px / 16 = 3rem */
+    height: 3rem;
   }
 }

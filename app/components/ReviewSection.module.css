@@ -1,29 +1,29 @@
 .section {
-  background-color: #000000;
-  padding: clamp(120px, 16vw, 200px) 0;
+  background-color: var(--color-black);
+  padding: 10rem 0; /* 160px / 16 = 10rem - scales with Osmo */
   position: relative;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 100rem; /* 1600px / 16 = 100rem */
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 2rem; /* 32px / 16 = 2rem */
   position: relative;
 }
 
 /* Title Wrapper */
 .titleWrapper {
   text-align: center;
-  margin-bottom: clamp(60px, 8vw, 100px);
+  margin-bottom: 5rem; /* 80px / 16 = 5rem - scales with Osmo */
 }
 
 /* Section Title */
 .sectionTitle {
   font-family: var(--font-relost);
-  font-size: clamp(120px, 15vw, 220px);
+  font-size: var(--font-h1); /* Osmo design system */
   font-weight: normal;
-  color: #ffffff;
+  color: var(--color-white);
   text-transform: uppercase;
   line-height: 0.95;
   margin: 0;
@@ -33,37 +33,37 @@
 /* Subtitle */
 .subtitle {
   font-family: var(--font-relost);
-  font-size: clamp(20px, 2.5vw, 32px);
+  font-size: var(--font-h4); /* Osmo design system */
   font-weight: normal;
-  color: #ffffff;
+  color: var(--color-white);
   line-height: 1;
-  margin: clamp(8px, 1.5vw, 16px) 0 0 0;
+  margin: 1.5rem 0 0 0; /* 24px / 16 = 1.5rem */
   transform: rotate(-1deg);
   display: inline-block;
-  margin-left: -150px;
+  margin-left: -9.375rem; /* -150px / 16 = -9.375rem */
 }
 
 @media (min-width: 640px) {
   .container {
-    padding: 0 24px;
+    padding: 0 1.5rem; /* 24px / 16 = 1.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 0 32px;
+    padding: 0 2rem; /* 32px / 16 = 2rem */
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    padding: 0 48px;
+    padding: 0 3rem; /* 48px / 16 = 3rem */
   }
 }
 
 @media (min-width: 1536px) {
   .container {
-    padding: 0 64px;
+    padding: 0 4rem; /* 64px / 16 = 4rem */
   }
 }
 
@@ -71,7 +71,7 @@
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(50px, 7vw, 100px);
+  gap: 5rem; /* 80px / 16 = 5rem - scales with Osmo */
   position: relative;
   z-index: 2;
 }
@@ -79,14 +79,14 @@
 @media (min-width: 768px) {
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(60px, 7vw, 110px);
+    gap: 5.5rem; /* 88px / 16 = 5.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   .gridContainer {
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(70px, 8vw, 140px);
+    gap: 6.5rem; /* 104px / 16 = 6.5rem */
   }
 }
 
@@ -94,28 +94,28 @@
 .reviewItem {
   position: relative;
   cursor: pointer;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0.625rem 1.875rem rgba(0, 0, 0, 0.3)); /* 10px, 30px */
   transition: filter 0.3s ease, z-index 0s;
 }
 
 .reviewItem:hover {
   z-index: 10;
-  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 1.25rem 3.125rem rgba(0, 0, 0, 0.5)); /* 20px, 50px */
 }
 
 /* Subtiele random vertical offsets voor organisch effect */
-.reviewItem:nth-child(1) { transform: translateY(-15px); }
-.reviewItem:nth-child(2) { transform: translateY(20px); }
-.reviewItem:nth-child(3) { transform: translateY(-8px); }
-.reviewItem:nth-child(4) { transform: translateY(25px); }
-.reviewItem:nth-child(5) { transform: translateY(-18px); }
-.reviewItem:nth-child(6) { transform: translateY(12px); }
-.reviewItem:nth-child(7) { transform: translateY(-22px); }
-.reviewItem:nth-child(8) { transform: translateY(18px); }
-.reviewItem:nth-child(9) { transform: translateY(-10px); }
-.reviewItem:nth-child(10) { transform: translateY(15px); }
-.reviewItem:nth-child(11) { transform: translateY(-25px); }
-.reviewItem:nth-child(12) { transform: translateY(8px); }
+.reviewItem:nth-child(1) { transform: translateY(-0.9375rem); } /* -15px */
+.reviewItem:nth-child(2) { transform: translateY(1.25rem); } /* 20px */
+.reviewItem:nth-child(3) { transform: translateY(-0.5rem); } /* -8px */
+.reviewItem:nth-child(4) { transform: translateY(1.5625rem); } /* 25px */
+.reviewItem:nth-child(5) { transform: translateY(-1.125rem); } /* -18px */
+.reviewItem:nth-child(6) { transform: translateY(0.75rem); } /* 12px */
+.reviewItem:nth-child(7) { transform: translateY(-1.375rem); } /* -22px */
+.reviewItem:nth-child(8) { transform: translateY(1.125rem); } /* 18px */
+.reviewItem:nth-child(9) { transform: translateY(-0.625rem); } /* -10px */
+.reviewItem:nth-child(10) { transform: translateY(0.9375rem); } /* 15px */
+.reviewItem:nth-child(11) { transform: translateY(-1.5625rem); } /* -25px */
+.reviewItem:nth-child(12) { transform: translateY(0.5rem); } /* 8px */
 
 /* Polaroid Card */
 .polaroid {
@@ -174,25 +174,33 @@
   width: 85%;
   text-align: center;
   z-index: 3;
-  padding: 8px;
+  padding: 0.5rem; /* 8px / 16 = 0.5rem */
+}
+
+/* Frame 4 heeft meer ruimte onderaan, dus caption lager */
+.reviewItem[data-frame-index="3"] .caption {
+  bottom: -5%;
 }
 
 .reviewText {
-  font-family: var(--font-grifter);
-  font-size: clamp(11px, 1.2vw, 13px);
-  color: #000000;
-  line-height: 1.4;
+  font-size: var(--font-body-large); /* Osmo design system - larger for handwriting */
+  color: var(--color-black);
+  line-height: 1.5;
   margin: 0;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .gridContainer {
-    gap: clamp(50px, 6vw, 80px);
+  .section {
+    padding: 7.5rem 0; /* 120px / 16 = 7.5rem */
   }
 
-  .reviewText {
-    font-size: 10px;
+  .titleWrapper {
+    margin-bottom: 3.75rem; /* 60px / 16 = 3.75rem */
+  }
+
+  .gridContainer {
+    gap: 4rem; /* 64px / 16 = 4rem */
   }
 
   .reviewItem {
@@ -200,35 +208,39 @@
   }
 
   /* Minder extreme offsets op tablet */
-  .reviewItem:nth-child(1) { transform: translateY(-10px); }
-  .reviewItem:nth-child(2) { transform: translateY(15px); }
-  .reviewItem:nth-child(3) { transform: translateY(-5px); }
-  .reviewItem:nth-child(4) { transform: translateY(18px); }
-  .reviewItem:nth-child(5) { transform: translateY(-12px); }
-  .reviewItem:nth-child(6) { transform: translateY(8px); }
-  .reviewItem:nth-child(7) { transform: translateY(-15px); }
-  .reviewItem:nth-child(8) { transform: translateY(12px); }
-  .reviewItem:nth-child(9) { transform: translateY(-8px); }
-  .reviewItem:nth-child(10) { transform: translateY(10px); }
-  .reviewItem:nth-child(11) { transform: translateY(-18px); }
-  .reviewItem:nth-child(12) { transform: translateY(5px); }
+  .reviewItem:nth-child(1) { transform: translateY(-0.625rem); } /* -10px */
+  .reviewItem:nth-child(2) { transform: translateY(0.9375rem); } /* 15px */
+  .reviewItem:nth-child(3) { transform: translateY(-0.3125rem); } /* -5px */
+  .reviewItem:nth-child(4) { transform: translateY(1.125rem); } /* 18px */
+  .reviewItem:nth-child(5) { transform: translateY(-0.75rem); } /* -12px */
+  .reviewItem:nth-child(6) { transform: translateY(0.5rem); } /* 8px */
+  .reviewItem:nth-child(7) { transform: translateY(-0.9375rem); } /* -15px */
+  .reviewItem:nth-child(8) { transform: translateY(0.75rem); } /* 12px */
+  .reviewItem:nth-child(9) { transform: translateY(-0.5rem); } /* -8px */
+  .reviewItem:nth-child(10) { transform: translateY(0.625rem); } /* 10px */
+  .reviewItem:nth-child(11) { transform: translateY(-1.125rem); } /* -18px */
+  .reviewItem:nth-child(12) { transform: translateY(0.3125rem); } /* 5px */
 }
 
 @media (max-width: 480px) {
-  .gridContainer {
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(40px, 6vw, 60px);
+  .section {
+    padding: 6rem 0; /* 96px / 16 = 6rem */
   }
 
-  .reviewText {
-    font-size: 8px;
+  .titleWrapper {
+    margin-bottom: 3rem; /* 48px / 16 = 3rem */
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem; /* 48px / 16 = 3rem */
   }
 
   /* Minimale offsets op mobiel */
-  .reviewItem:nth-child(odd) { transform: translateY(-8px); }
-  .reviewItem:nth-child(even) { transform: translateY(8px); }
+  .reviewItem:nth-child(odd) { transform: translateY(-0.5rem); } /* -8px */
+  .reviewItem:nth-child(even) { transform: translateY(0.5rem); } /* 8px */
 
   .container {
-    padding: 0 20px;
+    padding: 0 1.25rem; /* 20px / 16 = 1.25rem */
   }
 }

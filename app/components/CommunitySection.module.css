@@ -1,7 +1,7 @@
 .section {
-  background-color: #B8AFA1;
+  background-color: var(--color-beige);
   position: relative;
-  padding: clamp(120px, 16vw, 200px) 0;
+  padding: 10rem 0; /* 160px / 16 = 10rem - scales with Osmo */
   overflow: hidden;
 }
 
@@ -24,49 +24,49 @@
 
 .container {
   position: relative;
-  max-width: 1600px;
+  max-width: 100rem; /* 1600px / 16 = 100rem */
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 2rem; /* 32px / 16 = 2rem */
   z-index: 10;
 }
 
 @media (min-width: 640px) {
   .container {
-    padding: 0 24px;
+    padding: 0 1.5rem; /* 24px / 16 = 1.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 0 32px;
+    padding: 0 2rem; /* 32px / 16 = 2rem */
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    padding: 0 48px;
+    padding: 0 3rem; /* 48px / 16 = 3rem */
   }
 }
 
 @media (min-width: 1536px) {
   .container {
-    padding: 0 64px;
+    padding: 0 4rem; /* 64px / 16 = 4rem */
   }
 }
 
 /* Top Text */
 .topText {
   position: absolute;
-  top: clamp(20px, 4vw, 40px);
-  left: clamp(32px, 8vw, 120px);
+  top: 2rem; /* 32px / 16 = 2rem - scales with Osmo */
+  left: 5rem; /* 80px / 16 = 5rem - scales with Osmo */
   text-align: left;
   z-index: 10;
 }
 
 .topLine {
   font-family: var(--font-relost);
-  font-size: clamp(24px, 2.5vw, 36px);
-  color: #3D3935;
+  font-size: var(--font-h4); /* Osmo design system */
+  color: var(--color-dark-brown);
   text-transform: uppercase;
   line-height: 1.1;
   margin: 0;
@@ -80,7 +80,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: clamp(600px, 80vh, 1000px);
+  min-height: 50rem; /* 800px / 16 = 50rem - scales with Osmo */
   padding: 0;
   z-index: 101;
   isolation: isolate;
@@ -88,16 +88,16 @@
 
 @media (min-width: 1024px) {
   .communityWrapper {
-    margin-top: 60px;
+    margin-top: 3.75rem; /* 60px / 16 = 3.75rem */
   }
 }
 
 /* Main Community Text */
 .communityText {
   font-family: var(--font-schabo);
-  font-size: 27vw;
+  font-size: 27vw; /* VW behouden voor dramatisch effect - schaalt perfect met viewport */
   font-weight: normal;
-  color: #3D3935;
+  color: var(--color-dark-brown);
   text-transform: uppercase;
   line-height: 1;
   margin: 0;
@@ -115,8 +115,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(16px, 2vw, 24px);
-  margin-top: clamp(10px, 2vw, 20px);
+  gap: 1.25rem; /* 20px / 16 = 1.25rem - scales with Osmo */
+  margin-top: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
   justify-content: center;
   position: relative;
   z-index: 10;
@@ -124,8 +124,8 @@
 
 .socialText {
   font-family: var(--font-schabo);
-  font-size: clamp(32px, 4vw, 56px);
-  color: #3D3935;
+  font-size: var(--font-h3); /* Osmo design system */
+  color: var(--color-dark-brown);
   text-transform: uppercase;
   margin: 0;
   line-height: 1;
@@ -134,13 +134,13 @@
 .socialIcons {
   display: flex;
   flex-direction: row;
-  gap: clamp(12px, 2vw, 20px);
+  gap: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
   align-items: center;
 }
 
 .socialIcon {
-  width: clamp(50px, 6vw, 70px);
-  height: clamp(50px, 6vw, 70px);
+  width: 3.75rem; /* 60px / 16 = 3.75rem - scales with Osmo */
+  height: 3.75rem; /* 60px / 16 = 3.75rem */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,17 +160,34 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .section {
+    padding: 7.5rem 0; /* 120px / 16 = 7.5rem */
+  }
+
   .topText {
-    top: 20px;
-    right: 20px;
+    top: 1.25rem; /* 20px / 16 = 1.25rem */
+    left: 1.5rem; /* 24px / 16 = 1.5rem */
+  }
+
+  .topLine {
+    font-size: 1.5rem; /* 24px / 16 = 1.5rem */
   }
 
   .communityWrapper {
-    min-height: 500px;
+    min-height: 31.25rem; /* 500px / 16 = 31.25rem */
   }
 
   .socialSection {
     flex-direction: column;
-    gap: 24px;
+    gap: 1.5rem; /* 24px / 16 = 1.5rem */
+  }
+
+  .socialText {
+    font-size: 2rem; /* 32px / 16 = 2rem */
+  }
+
+  .socialIcon {
+    width: 3rem; /* 48px / 16 = 3rem */
+    height: 3rem;
   }
 }

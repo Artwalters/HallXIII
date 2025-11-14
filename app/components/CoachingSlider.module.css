@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   position: relative;
-  background-color: #ece8e3;
+  background-color: var(--color-cream);
 }
 
 .sliderMain {
@@ -21,9 +21,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 120px;
+  width: 7.5rem; /* 120px / 16 = 7.5rem */
   height: 100%;
-  background: linear-gradient(to left, #ece8e3 30%, rgba(236, 232, 227, 0) 100%);
+  background: linear-gradient(to left, var(--color-cream) 30%, rgba(236, 232, 227, 0) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -47,10 +47,10 @@
 .sliderSlide {
   aspect-ratio: 13 / 16;
   flex: none;
-  width: 650px;
-  height: 800px;
-  padding-left: 1.25em;
-  padding-right: 1.25em;
+  width: 40.625rem; /* 650px / 16 = 40.625rem */
+  height: 50rem; /* 800px / 16 = 50rem */
+  padding-left: 1.25rem; /* 20px / 16 = 1.25rem */
+  padding-right: 1.25rem;
   position: relative;
   opacity: 1;
 }
@@ -60,7 +60,7 @@
 }
 
 .sliderSlideInner {
-  border-radius: 0.5em;
+  border-radius: 0.5rem; /* 8px / 16 = 0.5rem */
   width: 100%;
   height: 100%;
   position: relative;
@@ -91,16 +91,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 2em 1.5em;
+  padding: 2rem 1.5rem; /* 32px, 24px */
   opacity: 1;
 }
 
 /* Logo bovenin */
 .slideLogo {
   position: relative;
-  width: clamp(100px, 15vw, 165px);
-  height: clamp(32px, 5vw, 52px);
-  margin-top: 1em;
+  width: 10rem; /* 160px / 16 = 10rem - scales with Osmo */
+  height: 3.125rem; /* 50px / 16 = 3.125rem */
+  margin-top: 1rem; /* 16px / 16 = 1rem */
 }
 
 .slideLogoPart1 {
@@ -125,7 +125,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
+  gap: 1.5rem; /* 24px / 16 = 1.5rem */
   width: 100%;
 }
 
@@ -138,18 +138,18 @@
 .slideNameFirst,
 .slideNameLast {
   font-family: var(--font-schabo);
-  font-size: clamp(60px, 6vw, 100px);
+  font-size: var(--font-h2); /* Osmo design system */
   font-weight: 100;
   line-height: 0.9;
   margin: 0;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-white);
 }
 
 /* Stop Motion Button */
 .btnStopMotion {
   pointer-events: auto;
-  color: #459bb0;
+  color: var(--color-primary);
   cursor: pointer;
   padding: 0;
   font-weight: 400;
@@ -168,14 +168,14 @@
 }
 
 .btnStopMotionInner {
-  grid-column-gap: 0.5em;
-  grid-row-gap: 0.5em;
+  grid-column-gap: 0.5rem; /* 8px / 16 = 0.5rem */
+  grid-row-gap: 0.5rem;
   justify-content: center;
   align-items: center;
   height: 100%;
   display: flex;
   position: relative;
-  padding: 0.75em 1.5em 0.75em 1.2em;
+  padding: 0.75rem 1.5rem 0.75rem 1.2rem; /* 12px, 24px, 12px, 19.2px */
   z-index: 1;
 }
 
@@ -203,11 +203,11 @@
 }
 
 .btnStopMotionIcon {
-  color: #ffe224;
+  color: var(--color-accent-yellow);
   flex-shrink: 0;
-  width: 1.5em;
-  margin-left: -0.25em;
-  margin-right: -0.25em;
+  width: 1.5rem; /* 24px / 16 = 1.5rem */
+  margin-left: -0.25rem; /* -4px / 16 = -0.25rem */
+  margin-right: -0.25rem;
   position: relative;
   overflow: hidden;
 }
@@ -227,10 +227,10 @@
 }
 
 .btnStopMotionP {
-  color: #efeeec;
+  color: var(--color-cream);
   margin-bottom: 0;
   padding-top: 0;
-  font-size: 1em;
+  font-size: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
   font-weight: 500;
   position: relative;
   font-family: var(--font-relost);
@@ -267,14 +267,14 @@
 
 .sliderOverlay {
   z-index: 2;
-  color: #181818;
-  background-image: linear-gradient(90deg, #ece8e3 85%, rgba(236, 232, 227, 0));
+  color: var(--color-dark-primary);
+  background-image: linear-gradient(90deg, var(--color-cream) 85%, rgba(236, 232, 227, 0));
   justify-content: flex-start;
   align-items: center;
   width: 36vw;
   height: 100%;
-  padding-left: 10em;
-  padding-top: -10em;
+  padding-left: 10rem; /* 160px / 16 = 10rem - scales with Osmo */
+  padding-top: -10rem;
   display: flex;
   position: absolute;
   inset: 0% auto 0% 0%;
@@ -284,23 +284,23 @@
   flex-flow: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 49.125em;
+  height: 49.125rem; /* 786px / 16 = 49.125rem */
   display: flex;
 }
 
 .sliderOverlayCount {
-  grid-column-gap: 0.2em;
-  grid-row-gap: 0.2em;
+  grid-column-gap: 0.2rem; /* 3.2px / 16 = 0.2rem */
+  grid-row-gap: 0.2rem;
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
-  font-size: 4.5em;
+  font-size: 4.5rem; /* 72px / 16 = 4.5rem - scales with Osmo */
   font-weight: 700;
   display: flex;
 }
 
 .sliderCountCol {
-  height: 1em;
+  height: 1rem; /* 16px / 16 = 1rem */
   overflow: hidden;
 }
 
@@ -309,41 +309,41 @@
   margin-top: 0;
   margin-bottom: 0;
   font-family: var(--font-schabo);
-  font-size: 1em;
+  font-size: 1rem; /* 16px / 16 = 1rem */
   font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
 }
 
 .sliderCountDivider {
-  background-color: #181818;
+  background-color: var(--color-dark-primary);
   width: 2px;
-  height: 0.75em;
+  height: 0.75rem; /* 12px / 16 = 0.75rem */
   transform: rotate(15deg);
 }
 
 .sliderTitle {
   font-family: var(--font-schabo);
-  font-size: 6em;
+  font-size: 6rem; /* 96px / 16 = 6rem - scales with Osmo */
   font-weight: 100;
   line-height: 1.1;
   text-transform: uppercase;
-  color: #181818;
+  color: var(--color-dark-primary);
   margin: 0;
   max-width: 100%;
 }
 
 .sliderOverlayNav {
-  grid-column-gap: 2em;
-  grid-row-gap: 2em;
+  grid-column-gap: 2rem; /* 32px / 16 = 2rem */
+  grid-row-gap: 2rem;
   display: flex;
 }
 
 .sliderBtn {
   background-color: transparent;
   border: none;
-  width: 5em;
-  height: 5em;
+  width: 5rem; /* 80px / 16 = 5rem - scales with Osmo */
+  height: 5rem;
   padding: 0;
   display: flex;
   cursor: pointer;
@@ -360,8 +360,8 @@
 
 @media screen and (max-width: 1200px) {
   .sliderSlide {
-    width: 520px;
-    height: 640px;
+    width: 32.5rem; /* 520px / 16 = 32.5rem */
+    height: 40rem; /* 640px / 16 = 40rem */
   }
 }
 
@@ -376,14 +376,14 @@
   }
 
   .sliderMain::after {
-    width: 100px;
+    width: 6.25rem; /* 100px / 16 = 6.25rem */
   }
 
   .sliderSlide {
     width: 90vw;
-    height: clamp(450px, 70vw, 600px);
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+    height: 60vw; /* Fluid height voor tablet */
+    padding-left: 0.75rem; /* 12px / 16 = 0.75rem */
+    padding-right: 0.75rem;
   }
 
   .sliderOverlay {
@@ -391,7 +391,7 @@
     position: relative;
     inset: auto;
     order: 1;
-    padding: 2em 2em 1.5em 2em;
+    padding: 2rem 2rem 1.5rem 2rem; /* 32px, 32px, 24px, 32px */
     background-image: none;
   }
 
@@ -400,7 +400,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5em;
+    gap: 1.5rem; /* 24px / 16 = 1.5rem */
   }
 
   .sliderOverlayCount {
@@ -409,11 +409,11 @@
 
   .sliderTitle {
     text-align: left;
-    font-size: 3.5em;
+    font-size: 3.5rem; /* 56px / 16 = 3.5rem */
   }
 
   .sliderOverlayNav {
-    gap: 1.5em;
+    gap: 1.5rem; /* 24px / 16 = 1.5rem */
     margin-left: auto;
   }
 }
@@ -443,69 +443,69 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 30px;
+    width: 1.875rem; /* 30px / 16 = 1.875rem */
     height: 100%;
-    background: linear-gradient(to right, #ece8e3 30%, rgba(236, 232, 227, 0) 100%);
+    background: linear-gradient(to right, var(--color-cream) 30%, rgba(236, 232, 227, 0) 100%);
     pointer-events: none;
     z-index: 1;
   }
 
   .sliderMain::after {
-    width: 30px;
+    width: 1.875rem; /* 30px / 16 = 1.875rem */
   }
 
   .sliderOverlay {
-    padding: 1.5em 1.25em 1em 1.25em;
+    padding: 1.5rem 1.25rem 1rem 1.25rem; /* 24px, 20px, 16px, 20px */
   }
 
   .sliderSlide {
     width: 85vw;
-    height: clamp(480px, 105vw, 620px);
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    height: 105vw; /* Fluid height voor mobiel */
+    padding-left: 0.5rem; /* 8px / 16 = 0.5rem */
+    padding-right: 0.5rem;
   }
 
   .slideContent {
-    padding: 1.5em 1.25em;
+    padding: 1.5rem 1.25rem; /* 24px, 20px */
   }
 
   .slideLogo {
-    width: clamp(90px, 22vw, 130px);
-    height: clamp(28px, 7vw, 42px);
+    width: 8rem; /* 128px / 16 = 8rem */
+    height: 2.5rem; /* 40px / 16 = 2.5rem */
   }
 
   .slideBottom {
-    gap: 1.25em;
+    gap: 1.25rem; /* 20px / 16 = 1.25rem */
   }
 
   .slideNameFirst,
   .slideNameLast {
-    font-size: clamp(45px, 11vw, 75px);
+    font-size: 2.5rem; /* 40px / 16 = 2.5rem - scales with Osmo */
   }
 
   .btnStopMotion {
-    font-size: 0.9em;
+    font-size: 0.9rem; /* 14.4px / 16 = 0.9rem */
   }
 
   .btnStopMotionInner {
-    padding: 0.7em 1.3em 0.7em 1.1em;
+    padding: 0.7rem 1.3rem 0.7rem 1.1rem; /* 11.2px, 20.8px, 11.2px, 17.6px */
   }
 
   .btnStopMotionIcon {
-    width: 1.3em;
+    width: 1.3rem; /* 20.8px / 16 = 1.3rem */
   }
 
   .btnStopMotionP {
-    font-size: 1em;
+    font-size: 1rem; /* 16px / 16 = 1rem */
   }
 
   .sliderTitle {
-    font-size: 2.5em;
+    font-size: 2.5rem; /* 40px / 16 = 2.5rem */
     line-height: 1;
   }
 
   .sliderBtn {
-    width: 4.5em;
-    height: 4.5em;
+    width: 4.5rem; /* 72px / 16 = 4.5rem */
+    height: 4.5rem;
   }
 }

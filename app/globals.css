@@ -23,6 +23,95 @@
   font-display: swap;
 }
 
+/* ------------------------- Osmo Scaling System -------------------------  */
+/* Professional rem-based scaling system for consistent typography and spacing */
+
+/* Desktop (992px - 1920px) */
+:root {
+  --size-unit: 16; /* body font-size in design - no px */
+  --size-container-ideal: 1440; /* screen-size in design - no px */
+  --size-container-min: 992px;
+  --size-container-max: 1920px;
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+  /* Typography Scale - Osmo Design System */
+  --font-h1: 9rem;     /* 84px - Main page titles */
+  --font-h2: 7rem;      /* 72px - Section titles */
+  --font-h3: 6rem;        /* 48px - Subsection titles */
+  --font-h4: 2rem;        /* 32px - Small titles */
+  --font-body: 1rem;      /* 16px - Body text */
+  --font-body-large: 1.125rem; /* 18px - Large body text */
+  --font-body-small: 0.875rem; /* 14px - Small body text */
+  --relost-button-size: 1.75rem; /* 28px - Relost buttons/links */
+
+  /* Font Weights - Osmo Design System */
+  --font-weight-grifter-body: 700; /* Bold weight for Grifter body text */
+
+  /* Standard Breakpoints */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1280px;
+}
+
+/* Tablet (768px - 991px) */
+@media screen and (max-width: 991px) {
+  :root {
+    --size-container-ideal: 834; /* screen-size in design - no px */
+    --size-container-min: 768px;
+    --size-container-max: 991px;
+
+    /* Adjust typography for tablet */
+    --font-h1: 5rem;    /* 72px */
+    --font-h2: 3.75rem;   /* 60px */
+    --font-h3: 2.5rem;    /* 40px */
+    --font-h4: 1.75rem;   /* 28px */
+    --font-body: 1rem;    /* 16px - Same as desktop */
+    --font-body-large: 1.125rem; /* 18px - Same as desktop */
+    --font-body-small: 0.875rem; /* 14px - Same as desktop */
+    --relost-button-size: 1.5rem; /* 24px - Relost buttons/links */
+  }
+}
+
+/* Mobile Landscape (480px - 767px) */
+@media screen and (max-width: 767px) {
+  :root {
+    --size-container-ideal: 550; /* screen-size in design - no px */
+    --size-container-min: 480px;
+    --size-container-max: 767px;
+
+    /* Adjust typography for mobile */
+    --font-h1: 3.75rem;   /* 60px */
+    --font-h2: 3rem;      /* 48px */
+    --font-h3: 2rem;      /* 32px */
+    --font-h4: 1.5rem;    /* 24px */
+    --font-body: 0.875rem; /* 14px */
+    --font-body-large: 1rem; /* 16px */
+    --font-body-small: 0.75rem; /* 12px */
+    --relost-button-size: 1.375rem; /* 22px - Relost buttons/links */
+  }
+}
+
+/* Mobile Portrait (320px - 479px) */
+@media screen and (max-width: 479px) {
+  :root {
+    --size-container-ideal: 390; /* screen-size in design - no px */
+    --size-container-min: 320px;
+    --size-container-max: 479px;
+
+    /* Typography same as Mobile Landscape */
+    --font-h1: 3.75rem;   /* 60px */
+    --font-h2: 3rem;      /* 48px */
+    --font-h3: 2rem;      /* 32px */
+    --font-h4: 1.5rem;    /* 24px */
+    --font-body: 0.875rem; /* 14px */
+    --font-body-large: 1rem; /* 16px */
+    --font-body-small: 0.75rem; /* 12px */
+    --relost-button-size: 1.375rem; /* 22px - Relost buttons/links */
+  }
+}
+
 /* CSS Variables */
 :root {
   /* Font Families */
@@ -30,118 +119,34 @@
   --font-relost: 'Relost Brush', cursive;
   --font-grifter: 'Grifter', sans-serif;
 
-  /* Font Sizes - Base Scale (Mobile First) */
-  --font-xs: 12px;
-  --font-sm: 14px;
-  --font-base: 16px;
-  --font-lg: 18px;
-  --font-xl: 20px;
-  --font-2xl: 24px;
-  --font-3xl: 30px;
-  --font-4xl: 36px;
-  --font-5xl: 48px;
-  --font-6xl: 60px;
-  --font-7xl: 72px;
-  --font-8xl: 96px;
-  --font-9xl: 128px;
+  /* ========== DESIGN SYSTEM COLORS ========== */
+  /* Based on Figma Design Guide */
 
-  /* Semantic Font Sizes - Makkelijker te gebruiken */
-  /* SCHABO Titels */
-  --font-title-hero: var(--font-6xl);         /* Hero hoofdtitel */
-  --font-title-section: var(--font-5xl);      /* Sectie titels */
-  --font-title-number: var(--font-9xl);       /* Grote nummers zoals "800" */
+  /* Primary Brand Color */
+  --color-primary: #316E7D;           /* rgba(49, 110, 125, 1) - Teal */
 
-  /* Grifter Paragrafen */
-  --font-paragraph: var(--font-sm);           /* Normale body tekst */
-  --font-nav: var(--font-base);               /* Navigatie links */
-  --font-small: var(--font-xs);               /* Kleine tekst */
+  /* Darks */
+  --color-dark-primary: #142D33;      /* rgba(20, 45, 51, 1) - Very Dark Blue */
+  --color-dark-brown: #332E27;        /* rgba(51, 46, 39, 1) - Warm Dark */
+  --color-dark-gray: #323232;         /* rgba(50, 50, 50, 1) - Dark Gray */
+  --color-black: #000000;             /* rgba(0, 0, 0, 1) - Pure Black */
 
-  /* Relost Brush Handgeschreven */
-  --font-handwritten: var(--font-2xl);        /* Buttons, menu, accenten */
+  /* Neutrals */
+  --color-beige: #BCAB8E;             /* rgba(188, 171, 142, 1) - Warm Beige */
+  --color-cream: #F0EBE6;             /* rgba(240, 235, 230, 1) - Light Cream */
+  --color-white: #FFFFFF;             /* rgba(255, 255, 255, 1) - Pure White */
 
-  /* Colors */
-  --background: #ece8e3;
+  /* Accent */
+  --color-accent-yellow: #ffe224;     /* Button highlights */
+
+  /* ========== LEGACY COMPATIBILITY ========== */
+  /* Old variable names mapped to new design system */
+  --background: var(--color-cream);
   --foreground: #171717;
-  --accent-cyan: #459bb0;
-  --dark-bg: #181818;
-  --light-text: #e7e6e2;
-  --section-bg: #f0ebe6;
-}
-
-/* Font Size Scaling - Tablet (768px+) */
-@media (min-width: 768px) {
-  :root {
-    --font-xs: 12px;
-    --font-sm: 14px;
-    --font-base: 16px;
-    --font-lg: 20px;
-    --font-xl: 24px;
-    --font-2xl: 28px;
-    --font-3xl: 36px;
-    --font-4xl: 48px;
-    --font-5xl: 60px;
-    --font-6xl: 72px;
-    --font-7xl: 84px;
-    --font-8xl: 112px;
-    --font-9xl: 144px;
-  }
-}
-
-/* Font Size Scaling - Desktop (1024px+) */
-@media (min-width: 1024px) {
-  :root {
-    --font-xs: 12px;
-    --font-sm: 14px;
-    --font-base: 18px;
-    --font-lg: 22px;
-    --font-xl: 26px;
-    --font-2xl: 32px;
-    --font-3xl: 40px;
-    --font-4xl: 56px;
-    --font-5xl: 72px;
-    --font-6xl: 84px;
-    --font-7xl: 96px;
-    --font-8xl: 128px;
-    --font-9xl: 160px;
-  }
-}
-
-/* Font Size Scaling - Large Desktop (1280px+) */
-@media (min-width: 1280px) {
-  :root {
-    --font-xs: 12px;
-    --font-sm: 14px;
-    --font-base: 18px;
-    --font-lg: 24px;
-    --font-xl: 28px;
-    --font-2xl: 36px;
-    --font-3xl: 48px;
-    --font-4xl: 64px;
-    --font-5xl: 80px;
-    --font-6xl: 96px;
-    --font-7xl: 108px;
-    --font-8xl: 144px;
-    --font-9xl: 180px;
-  }
-}
-
-/* Font Size Scaling - XL Desktop (1536px+) */
-@media (min-width: 1536px) {
-  :root {
-    --font-xs: 12px;
-    --font-sm: 14px;
-    --font-base: 20px;
-    --font-lg: 26px;
-    --font-xl: 32px;
-    --font-2xl: 40px;
-    --font-3xl: 56px;
-    --font-4xl: 72px;
-    --font-5xl: 96px;
-    --font-6xl: 112px;
-    --font-7xl: 128px;
-    --font-8xl: 160px;
-    --font-9xl: 200px;
-  }
+  --accent-cyan: var(--color-primary);
+  --dark-bg: var(--color-dark-primary);
+  --light-text: var(--color-cream);
+  --section-bg: var(--color-cream);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -167,6 +172,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-grifter);
+  font-size: var(--size-font); /* Osmo scaling system - scales proportionally */
 }
 
 a {

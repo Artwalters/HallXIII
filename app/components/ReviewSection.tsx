@@ -15,6 +15,30 @@ const frames = [
   '/assets/frames poloroid/frame4.png',
 ];
 
+const handwritingFonts = [
+  '"Handlee", cursive',
+  '"Gochi Hand", cursive',
+  '"Edu NSW ACT Cursive", cursive',
+  '"Shadows Into Light", cursive',
+  '"Gloria Hallelujah", cursive',
+  '"Reenie Beanie", cursive',
+];
+
+const textRotations = [
+  -1.5,
+  2,
+  -0.8,
+  1.2,
+  -2.2,
+  1.8,
+  -1.2,
+  0.9,
+  -1.8,
+  1.5,
+  -0.5,
+  2.2,
+];
+
 const reviewItems = [
   {
     id: 1,
@@ -25,6 +49,8 @@ const reviewItems = [
     rotation: 2,
     frameIndex: 2,
     flipFrame: false,
+    fontFamily: handwritingFonts[0],
+    textRotation: textRotations[0],
   },
   {
     id: 2,
@@ -35,6 +61,8 @@ const reviewItems = [
     rotation: -5,
     frameIndex: 0,
     flipFrame: true,
+    fontFamily: handwritingFonts[1],
+    textRotation: textRotations[1],
   },
   {
     id: 3,
@@ -45,6 +73,8 @@ const reviewItems = [
     rotation: 4,
     frameIndex: 3,
     flipFrame: false,
+    fontFamily: handwritingFonts[2],
+    textRotation: textRotations[2],
   },
   {
     id: 4,
@@ -55,6 +85,8 @@ const reviewItems = [
     rotation: -2,
     frameIndex: 1,
     flipFrame: true,
+    fontFamily: handwritingFonts[3],
+    textRotation: textRotations[3],
   },
   {
     id: 5,
@@ -65,6 +97,8 @@ const reviewItems = [
     rotation: 6,
     frameIndex: 0,
     flipFrame: false,
+    fontFamily: handwritingFonts[4],
+    textRotation: textRotations[4],
   },
   {
     id: 6,
@@ -75,6 +109,8 @@ const reviewItems = [
     rotation: -3,
     frameIndex: 2,
     flipFrame: true,
+    fontFamily: handwritingFonts[5],
+    textRotation: textRotations[5],
   },
   {
     id: 7,
@@ -85,6 +121,8 @@ const reviewItems = [
     rotation: 3,
     frameIndex: 3,
     flipFrame: true,
+    fontFamily: handwritingFonts[0],
+    textRotation: textRotations[6],
   },
   {
     id: 8,
@@ -95,6 +133,8 @@ const reviewItems = [
     rotation: -4,
     frameIndex: 1,
     flipFrame: false,
+    fontFamily: handwritingFonts[1],
+    textRotation: textRotations[7],
   },
   {
     id: 9,
@@ -105,6 +145,8 @@ const reviewItems = [
     rotation: 1,
     frameIndex: 2,
     flipFrame: false,
+    fontFamily: handwritingFonts[2],
+    textRotation: textRotations[8],
   },
   {
     id: 10,
@@ -115,6 +157,8 @@ const reviewItems = [
     rotation: -6,
     frameIndex: 3,
     flipFrame: true,
+    fontFamily: handwritingFonts[3],
+    textRotation: textRotations[9],
   },
   {
     id: 11,
@@ -125,6 +169,8 @@ const reviewItems = [
     rotation: 5,
     frameIndex: 0,
     flipFrame: true,
+    fontFamily: handwritingFonts[4],
+    textRotation: textRotations[10],
   },
   {
     id: 12,
@@ -135,6 +181,8 @@ const reviewItems = [
     rotation: -1,
     frameIndex: 1,
     flipFrame: false,
+    fontFamily: handwritingFonts[5],
+    textRotation: textRotations[11],
   },
 ];
 
@@ -189,51 +237,61 @@ export default function ReviewSection() {
     // Attach hover inertia to each polaroid element
     const items = section.querySelectorAll('[data-momentum-hover-element]');
 
-    items.forEach((el) => {
+    const handleMouseEnter = (el: Element) => (e: Event) => {
       const target = el.querySelector('[data-momentum-hover-target]') as HTMLElement;
       if (!target) return;
 
-      el.addEventListener('mouseenter', (e: Event) => {
-        const mouseEvent = e as MouseEvent;
+      const mouseEvent = e as MouseEvent;
 
-        // Compute offset from center to pointer
-        const { left, top, width, height } = target.getBoundingClientRect();
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-        const offsetX = mouseEvent.clientX - centerX;
-        const offsetY = mouseEvent.clientY - centerY;
+      // Compute offset from center to pointer
+      const { left, top, width, height } = target.getBoundingClientRect();
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      const offsetX = mouseEvent.clientX - centerX;
+      const offsetY = mouseEvent.clientY - centerY;
 
-        // Compute raw torque (px²/frame)
-        const rawTorque = offsetX * velY - offsetY * velX;
+      // Compute raw torque (px²/frame)
+      const rawTorque = offsetX * velY - offsetY * velX;
 
-        // Normalize torque so rotation ∝ pointer speed (deg/sec)
-        const leverDist = Math.hypot(offsetX, offsetY) || 1;
-        const angularForce = rawTorque / leverDist;
+      // Normalize torque so rotation ∝ pointer speed (deg/sec)
+      const leverDist = Math.hypot(offsetX, offsetY) || 1;
+      const angularForce = rawTorque / leverDist;
 
-        // Calculate and clamp rotation velocity only (pendulum effect)
-        const rotationVelocity = clampRot(angularForce * rotationMultiplier);
+      // Calculate and clamp rotation velocity only (pendulum effect)
+      const rotationVelocity = clampRot(angularForce * rotationMultiplier);
 
-        // Apply GSAP inertia tween - only rotation for pendulum/swing effect
-        gsap.to(target, {
-          inertia: {
-            rotation: {
-              velocity: rotationVelocity,
-              end: 0,
-              ease: 'sine.out'
-            },
-            resistance: inertiaResistance
+      // Apply GSAP inertia tween - only rotation for pendulum/swing effect
+      gsap.to(target, {
+        inertia: {
+          rotation: {
+            velocity: rotationVelocity,
+            end: 0,
+            ease: 'sine.out'
           },
-          duration: 1.8,
-          ease: 'power1.out'
-        });
+          resistance: inertiaResistance
+        },
+        duration: 1.8,
+        ease: 'power1.out'
       });
+    };
+
+    // Store event handlers for cleanup
+    const handlers: Array<{ el: Element; handler: (e: Event) => void }> = [];
+
+    items.forEach((el) => {
+      const handler = handleMouseEnter(el);
+      el.addEventListener('mouseenter', handler);
+      handlers.push({ el, handler });
     });
 
     return () => {
       section.removeEventListener('mousemove', handleMouseMove);
+      handlers.forEach(({ el, handler }) => {
+        el.removeEventListener('mouseenter', handler);
+      });
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section ref={sectionRef} className={styles.section} data-momentum-hover-init="">
@@ -251,6 +309,7 @@ export default function ReviewSection() {
               key={item.id}
               className={styles.reviewItem}
               data-momentum-hover-element=""
+              data-frame-index={item.frameIndex}
             >
               <div
                 className={styles.polaroid}
@@ -277,7 +336,7 @@ export default function ReviewSection() {
                   </div>
                   {/* Caption positioned over frame bottom */}
                   <div className={styles.caption}>
-                    <p className={styles.reviewText}>{item.review}</p>
+                    <p className={styles.reviewText} style={{ fontFamily: item.fontFamily, transform: `rotate(${item.textRotation}deg)` }}>{item.review}</p>
                   </div>
                 </div>
               </div>

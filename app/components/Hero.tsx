@@ -74,7 +74,8 @@ export default function Hero() {
         <div className={styles.mainContent}>
           {/* Heading - Responsive Typography */}
           <h1 className={styles.heading}>
-            de hal waar sport en expertise samen komen.
+            de hal waar sport en<br />
+            expertise samen komen.
           </h1>
 
           {/* Onboarding Form */}

@@ -1,11 +1,11 @@
 .container {
-  background: #181818;
-  border: 1px solid #737373;
+  background: var(--color-dark-primary);
+  border: 1px solid var(--color-dark-gray);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 16px 20px;
-  border-radius: 8px;
+  gap: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
+  padding: 1rem 1.25rem; /* 16px, 20px / 16 = 1rem, 1.25rem */
+  border-radius: 0.5rem; /* 8px / 16 = 0.5rem */
   width: 100%;
   flex-shrink: 0;
 }
@@ -13,28 +13,28 @@
 @media (min-width: 768px) {
   .container {
     border: 0;
-    gap: 16px;
-    padding: 20px 24px;
-    border-radius: 12px;
+    gap: 1rem; /* 16px / 16 = 1rem */
+    padding: 1.25rem 1.5rem; /* 20px, 24px / 16 = 1.25rem, 1.5rem */
+    border-radius: 0.75rem; /* 12px / 16 = 0.75rem */
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 20px 28px;
-    max-width: 413px;
+    padding: 1.25rem 1.75rem; /* 20px, 28px / 16 = 1.25rem, 1.75rem */
+    max-width: 25.8125rem; /* 413px / 16 = 25.8125rem */
   }
 }
 
 .stepRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
 }
 
 @media (min-width: 768px) {
   .stepRow {
-    gap: 16px;
+    gap: 1rem; /* 16px / 16 = 1rem */
   }
 }
 
@@ -46,8 +46,8 @@
 }
 
 .stepText {
-  color: #459bb0;
-  font-size: var(--font-xs);
+  color: var(--color-primary);
+  font-size: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
   letter-spacing: -0.025em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -57,14 +57,14 @@
 
 .progressBar {
   background: rgba(231, 230, 226, 0.2);
-  height: 8px;
+  height: 0.5rem; /* 8px / 16 = 0.5rem - scales with Osmo */
   flex: 1;
   border-radius: 9999px;
   overflow: hidden;
 }
 
 .progressFill {
-  background: #459bb0;
+  background: var(--color-primary);
   height: 100%;
   transition: all 0.3s;
   border-radius: 9999px;
@@ -77,13 +77,13 @@
 }
 
 .titleText {
-  color: #e7e6e2;
-  font-size: var(--font-sm);
+  color: var(--color-cream);
+  font-size: 0.875rem; /* 14px / 16 = 0.875rem - scales with Osmo */
   letter-spacing: 0.025em;
   text-transform: capitalize;
   line-height: 1.25;
   font-family: var(--font-grifter);
-  font-weight: 400;
+  font-weight: var(--font-weight-grifter-body);
 }
 
 @media (min-width: 768px) {
@@ -94,32 +94,32 @@
 
 @media (min-width: 1024px) {
   .titleText {
-    font-size: var(--font-lg);
+    font-size: 1.125rem; /* 18px / 16 = 1.125rem - scales with Osmo */
   }
 }
 
 .menuRow {
   display: flex;
-  gap: 16px;
+  gap: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
   align-items: center;
 }
 
 @media (min-width: 768px) {
   .menuRow {
-    gap: 24px;
+    gap: 1.5rem; /* 24px / 16 = 1.5rem */
   }
 }
 
 @media (min-width: 1024px) {
   .menuRow {
-    gap: 32px;
+    gap: 2rem; /* 32px / 16 = 2rem */
   }
 }
 
 .dropdownContainer {
   position: relative;
   flex: 1;
-  max-width: 240px;
+  max-width: 15rem; /* 240px / 16 = 15rem - scales with Osmo */
 }
 
 .dropdownImage {
@@ -137,8 +137,8 @@
 
 .dropdownText {
   position: absolute;
-  color: white;
-  font-size: var(--font-sm);
+  color: var(--color-white);
+  font-size: 0.875rem; /* 14px / 16 = 0.875rem - scales with Osmo */
   left: 10%;
   top: 50%;
   transform: translateY(-50%);
@@ -150,8 +150,8 @@
 .arrowButton {
   position: relative;
   transition: transform 0.2s;
-  width: 48px;
-  height: 48px;
+  width: 3rem; /* 48px / 16 = 3rem - scales with Osmo */
+  height: 3rem;
   flex-shrink: 0;
   background: none;
   border: none;
@@ -169,15 +169,15 @@
 
 @media (min-width: 768px) {
   .arrowButton {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem; /* 56px / 16 = 3.5rem */
+    height: 3.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .arrowButton {
-    width: 64px;
-    height: 64px;
+    width: 4rem; /* 64px / 16 = 4rem */
+    height: 4rem;
   }
 }
 
@@ -195,22 +195,22 @@
 }
 
 .subtitleText {
-  color: #8f8f8f;
-  font-size: var(--font-xs);
+  color: var(--color-dark-gray);
+  font-size: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
   letter-spacing: -0.025em;
   line-height: 1.625;
-  font-weight: 400;
+  font-weight: var(--font-weight-grifter-body);
   font-family: var(--font-grifter);
 }
 
 @media (min-width: 768px) {
   .subtitleText {
-    color: #e7e6e2;
+    color: var(--color-cream);
   }
 }
 
 @media (min-width: 1024px) {
   .subtitleText {
-    font-size: var(--font-base);
+    font-size: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
   }
 }
