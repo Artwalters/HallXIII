@@ -65,6 +65,9 @@ const partnersItem = {
 export default function CoachingSection() {
   return (
     <section className={styles.section}>
+      {/* Gradient Transition */}
+      <div className={styles.gradientTop} />
+
       {/* Top Marquee */}
       <MarqueeScroll
         title="COACHING TRAJECTEN"
@@ -142,44 +145,47 @@ export default function CoachingSection() {
         ))}
       </div>
 
-      <div className={styles.divider} />
+      {/* Partners Section with Cream Background */}
+      <div className={styles.partnersSection}>
+        <div className={styles.divider} />
 
-      {/* Bottom Marquee */}
-      <MarqueeScroll
-        title="ONZE PARTNERS"
-        subtitle={<>expertise<br />in de sport</>}
-        direction={1}
-        rotate={0.5}
-      />
+        {/* Bottom Marquee */}
+        <MarqueeScroll
+          title="ONZE PARTNERS"
+          subtitle={<>expertise<br />in de sport</>}
+          direction={1}
+          rotate={0.5}
+        />
 
-      {/* Partners Section */}
-      <div className={styles.container}>
-        <div className={styles.coachingItem}>
-          <div className={styles.imageWrapper}>
-            <Image
-              src={partnersItem.image}
-              alt={partnersItem.imageAlt}
-              fill
-              sizes="(max-width: 768px) 100vw, 518px"
-              className={styles.image}
-            />
-          </div>
-          <div className={styles.textContent}>
-            <div className={styles.header}>
-              <p className={styles.category}>{partnersItem.number} {partnersItem.category}</p>
-              <h2 className={styles.title}>{partnersItem.title}</h2>
-            </div>
-            <p className={styles.description}>{partnersItem.description}</p>
-            <a href="#" className={styles.link}>
-              <span className={styles.linkText}>meer info</span>
+        {/* Partners Content */}
+        <div className={styles.container}>
+          <div className={styles.coachingItem}>
+            <div className={styles.imageWrapper}>
               <Image
-                src="/assets/underline-1.svg"
-                alt=""
-                width={94}
-                height={2}
-                className={styles.underline}
+                src={partnersItem.image}
+                alt={partnersItem.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 518px"
+                className={styles.image}
               />
-            </a>
+            </div>
+            <div className={styles.textContent}>
+              <div className={styles.header}>
+                <p className={styles.category}>{partnersItem.number} {partnersItem.category}</p>
+                <h2 className={styles.title}>{partnersItem.title}</h2>
+              </div>
+              <p className={styles.description}>{partnersItem.description}</p>
+              <a href="#" className={styles.link}>
+                <span className={styles.linkText}>meer info</span>
+                <Image
+                  src="/assets/underline-1.svg"
+                  alt=""
+                  width={94}
+                  height={2}
+                  className={styles.underline}
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>

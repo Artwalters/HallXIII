@@ -2,7 +2,7 @@
 .marqueeContainer {
   position: relative;
   overflow: hidden;
-  padding: 3rem 0;
+  padding: 1em 0;
   width: 100%;
 }
 
@@ -47,22 +47,8 @@
 .marqueeItem {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  padding-right: 5rem;
-}
-
-@media (min-width: 768px) {
-  .marqueeItem {
-    gap: 4rem;
-    padding-right: 6rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .marqueeItem {
-    gap: 5rem;
-    padding-right: 8rem;
-  }
+  gap: 5em;
+  padding-right: 8em;
 }
 
 /* Title (SCHABO) */
@@ -76,12 +62,13 @@
   margin: 0;
   white-space: nowrap;
   user-select: none;
+  transform: translateY(0.1em);
 }
 
 /* Subtitle (Relost Brush) */
 .subtitle {
   font-family: var(--font-relost);
-  font-size: 2rem;
+  font-size: 3em;
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1.1;
@@ -89,34 +76,15 @@
   user-select: none;
 }
 
-@media (min-width: 768px) {
-  .subtitle {
-    font-size: 2.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .subtitle {
-    font-size: 3rem;
-  }
-}
-
 /* Icon Wrapper */
 .iconWrapper {
   position: relative;
-  width: 120px;
-  height: 123px;
+  width: 7.5em;
+  height: 7.688em;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@media (max-width: 767px) {
-  .iconWrapper {
-    width: 80px;
-    height: 82px;
-  }
 }
 
 /* Icon Circle (background) */
@@ -127,25 +95,11 @@
   object-fit: contain;
 }
 
-@media (max-width: 767px) {
-  .iconCircle {
-    width: 80px;
-    height: auto;
-  }
-}
-
 /* Icon Arrow (foreground) */
 .iconArrow {
   position: relative;
-  width: 57px;
+  width: 3.563em;
   height: auto;
   object-fit: contain;
   z-index: 1;
-}
-
-@media (max-width: 767px) {
-  .iconArrow {
-    width: 38px;
-    height: auto;
-  }
 }
