@@ -1,0 +1,411 @@
+/* Section */
+.section {
+  background-color: var(--color-cream);
+  padding: 5rem 0 8rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 7.5rem 0 10rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 10rem 0 12.5rem;
+  }
+}
+
+/* Container */
+.container {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    gap: 0;
+  }
+}
+
+/* Title Wrapper */
+.titleWrapper {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .titleWrapper {
+    margin-bottom: 0;
+    position: sticky;
+    top: 8rem;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-relost);
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0 0 3rem;
+  font-size: 2.125rem;
+  line-height: 1;
+  transform: rotate(-2.128deg);
+}
+
+.title {
+  font-family: var(--font-schabo);
+  font-size: 9.375rem;
+  color: var(--color-black);
+  text-transform: uppercase;
+  line-height: 0.71;
+  margin: 0;
+  font-weight: 100;
+}
+
+@media (max-width: 767px) {
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 5rem;
+  }
+}
+
+/* Coaches List */
+.coachesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .coachesList {
+    max-width: 55rem;
+    margin-top: 8rem;
+  }
+}
+
+/* Coach Item */
+.coachItem {
+  position: relative;
+  overflow: hidden;
+}
+
+.coachButtonBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  z-index: 0;
+  background-color: #181818;
+  clip-path: polygon(
+    calc(100% - 14.81px) calc(100% - 3.839px),
+    calc(100% - 14.81px) calc(100% - 3.839px),
+    calc(100% - 51.7409468px) calc(100% - 2.752694px),
+    calc(100% - 110.6578064px) calc(100% - 1.968632px),
+    calc(100% - 186.0616076px) calc(100% - 1.462298px),
+    calc(100% - 272.4533792px) calc(100% - 1.209176px),
+    calc(100% - 364.33415px) calc(100% - 1.18475px),
+    calc(100% - 456.2049488px) calc(100% - 1.364504px),
+    calc(100% - 542.5668044px) calc(100% - 1.723922px),
+    calc(100% - 617.9207456px) calc(100% - 2.238488px),
+    calc(100% - 676.7678012px) calc(100% - 2.883686px),
+    calc(100% - 713.609px) calc(100% - 3.635px),
+    14.391px calc(100% - 3.635px),
+    12.9223272px calc(100% - 3.878069px),
+    11.4714324px calc(100% - 4.228112px),
+    10.051191px calc(100% - 4.690583px),
+    8.6744784px calc(100% - 5.270936px),
+    7.35417px calc(100% - 5.974625px),
+    6.1031412px calc(100% - 6.807104px),
+    4.9342674px calc(100% - 7.773827px),
+    3.860424px calc(100% - 8.880248px),
+    2.8944864px calc(100% - 10.131821px),
+    2.04933px calc(100% - 11.534px),
+    2.04933px calc(100% - 11.534px),
+    1.255072823px calc(100% - 13.1747203px),
+    0.697647424px calc(100% - 15.0512544px),
+    0.342938001px calc(100% - 17.1263021px),
+    0.156828752px calc(100% - 19.3625632px),
+    0.105203875px calc(100% - 21.7227375px),
+    0.153947568px calc(100% - 24.1695248px),
+    0.268944029px calc(100% - 26.6656249px),
+    0.416077456px calc(100% - 29.1737376px),
+    0.561232047px calc(100% - 31.6565627px),
+    0.670292px calc(100% - 34.0768px),
+    0.670292px calc(50% - -19.9232px),
+    0.779714728px calc(50% - -17.7515049px),
+    0.898376784px calc(50% - -15.5648272px),
+    1.021548176px calc(50% - -13.3685783px),
+    1.144498912px calc(50% - -11.1681696px),
+    1.262499px calc(50% - -8.9690125px),
+    1.370818448px calc(50% - -6.7765184px),
+    1.464727264px calc(50% - -4.5960987px),
+    1.539495456px calc(50% - -2.4331648px),
+    1.590393032px calc(50% - -0.2931281px),
+    1.61269px calc(50% - 1.8186px),
+    1.61269px calc(50% - 1.8186px),
+    1.5142995554px calc(50% - 5.1050595px),
+    1.3741336032px calc(50% - 8.426772px),
+    1.2028592158px calc(50% - 11.7758085px),
+    1.0111434656px calc(50% - 15.14424px),
+    0.809653425px calc(50% - 18.5241375px),
+    0.6090561664px calc(50% - 21.907572px),
+    0.4200187622px calc(50% - 25.2866145px),
+    0.2532082848px calc(50% - 28.653336px),
+    0.1192918066px calc(50% - 31.9998075px),
+    0.0289364px calc(50% - 35.3181px),
+    0.0289364px 18.6819px,
+    0.1280540346px 15.797310091px,
+    0.5639879488px 13.099927928px,
+    1.3184635982px 10.611481857px,
+    2.3732064384px 8.353700224px,
+    3.709941925px 6.348311375px,
+    5.3103955136px 4.617043656px,
+    7.1562926598px 3.181625413px,
+    9.2293588192px 2.063784992px,
+    11.5113194474px 1.285250739px,
+    13.9839px 0.867751px,
+    13.9839px 0.867751px,
+    50.1896151px 1.1809451895px,
+    108.7235328px 1.314164456px,
+    184.0048017px 1.3080349465px,
+    270.4525704px 1.203182808px,
+    362.4859875px 1.0402341875px,
+    454.5242016px 0.859815232px,
+    540.9863613px 0.7025520885px,
+    616.2916152px 0.609070904px,
+    674.8591119px 0.6199978255px,
+    711.108px 0.775959px,
+    calc(100% - 16.892px) 0.775959px,
+    calc(100% - 15.917616px) 0.889150981px,
+    calc(100% - 14.946328px) 1.043263568px,
+    calc(100% - 13.982732px) 1.243458627px,
+    calc(100% - 13.031424px) 1.494898024px,
+    calc(100% - 12.097px) 1.802743625px,
+    calc(100% - 11.184056px) 2.172157296px,
+    calc(100% - 10.297188px) 2.608300903px,
+    calc(100% - 9.4409919999999px) 3.116336312px,
+    calc(100% - 8.620064px) 3.701425389px,
+    calc(100% - 7.8390000000002px) 4.36873px,
+    calc(100% - 7.8390000000001px) 4.36873px,
+    calc(100% - 6.381723px) 5.88884633px,
+    calc(100% - 5.203704px) 7.58714784px,
+    calc(100% - 4.272561px) 9.43727431px,
+    calc(100% - 3.5559119999999px) 11.41286552px,
+    calc(100% - 3.021375px) 13.48756125px,
+    calc(100% - 2.6365679999999px) 15.63500128px,
+    calc(100% - 2.3691090000001px) 17.82882539px,
+    calc(100% - 2.186616px) 20.04267336px,
+    calc(100% - 2.056707px) 22.25018497px,
+    calc(100% - 1.9470000000001px) 24.425px,
+    calc(100% - 1.947px) calc(50% - 29.575px),
+    calc(100% - 1.8252329999999px) calc(50% - 27.058028px),
+    calc(100% - 1.6887839999998px) calc(50% - 24.531804px),
+    calc(100% - 1.5434310000001px) calc(50% - 21.999106px),
+    calc(100% - 1.394952px) calc(50% - 19.462712px),
+    calc(100% - 1.2491249999999px) calc(50% - 16.9254px),
+    calc(100% - 1.1117280000001px) calc(50% - 14.389948px),
+    calc(100% - 0.98853899999995px) calc(50% - 11.859134px),
+    calc(100% - 0.88533600000005px) calc(50% - 9.335736px),
+    calc(100% - 0.80789700000003px) calc(50% - 6.822532px),
+    calc(100% - 0.76200000000006px) calc(50% - 4.3223px),
+    calc(100% - 0.76199999999994px) calc(50% - 4.3223px),
+    calc(100% - 0.82297099999982px) calc(50% - 1.4330068px),
+    calc(100% - 0.9059679999998px) calc(50% - -1.5058776px),
+    calc(100% - 1.0069169999999px) calc(50% - -4.4836204px),
+    calc(100% - 1.1217439999999px) calc(50% - -7.4894888px),
+    calc(100% - 1.2463749999999px) calc(50% - -10.51275px),
+    calc(100% - 1.3767359999999px) calc(50% - -13.5426712px),
+    calc(100% - 1.5087530000001px) calc(50% - -16.5685196px),
+    calc(100% - 1.6383520000002px) calc(50% - -19.5795624px),
+    calc(100% - 1.7614590000001px) calc(50% - -22.5650668px),
+    calc(100% - 1.8740000000001px) calc(50% - -25.5143px),
+    calc(100% - 1.874px) calc(50% - -25.5143px),
+    calc(100% - 1.9651639999998px) calc(50% - -27.3707366px),
+    calc(100% - 2.0423119999998px) calc(50% - -29.2143848px),
+    calc(100% - 2.1223279999999px) calc(50% - -31.0333322px),
+    calc(100% - 2.222096px) calc(50% - -32.8156664px),
+    calc(100% - 2.3585px) calc(50% - -34.549475px),
+    calc(100% - 2.548424px) calc(50% - -36.2228456px),
+    calc(100% - 2.808752px) calc(50% - -37.8238658px),
+    calc(100% - 3.1563680000002px) calc(50% - -39.3406232px),
+    calc(100% - 3.6081560000001px) calc(50% - -40.7612054px),
+    calc(100% - 4.1810000000002px) calc(50% - -42.0737px),
+    calc(100% - 4.181px) calc(100% - 11.9263px),
+    calc(100% - 4.8691139999999px) calc(100% - 10.6220917px),
+    calc(100% - 5.6668719999999px) calc(100% - 9.4268176px),
+    calc(100% - 6.5634980000001px) calc(100% - 8.3410339px),
+    calc(100% - 7.5482159999999px) calc(100% - 7.3652968px),
+    calc(100% - 8.61025px) calc(100% - 6.5001625px),
+    calc(100% - 9.738824px) calc(100% - 5.7461872px),
+    calc(100% - 10.923162px) calc(100% - 5.1039271px),
+    calc(100% - 12.152488px) calc(100% - 4.5739384px),
+    calc(100% - 13.416026px) calc(100% - 4.1567773px),
+    calc(100% - 14.703px) calc(100% - 3.853px),
+    calc(100% - 14.81px) calc(100% - 3.833px),
+    calc(100% - 14.81px) calc(100% - 3.839px)
+  );
+}
+
+.coachButton.expanded .coachButtonBg {
+  height: 100%;
+}
+
+.buttonBgImage {
+  display: none;
+}
+
+.coachButton {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.coachContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3.17rem;
+  padding-left: 1.36rem;
+  z-index: 1;
+  flex: 1;
+}
+
+.coachImageWrapper {
+  position: relative;
+  width: 7.5rem;
+  height: 5.7rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.coachImage {
+  object-fit: cover;
+}
+
+.coachName {
+  font-family: var(--font-relost);
+  font-size: 2.375rem;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.chevron {
+  position: absolute;
+  right: 2rem;
+  top: 3.4rem;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 3.2rem;
+  height: 2.125rem;
+}
+
+.chevron img {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Coach Description - Grid based accordion */
+.coachDescriptionWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.coachDescriptionInner {
+  display: flex;
+  flex-direction: column;
+  height: 100000%;
+  overflow: hidden;
+  position: relative;
+}
+
+.coachDescriptionContent {
+  padding: 0 2rem 2rem 2rem;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.descriptionText {
+  font-family: var(--font-grifter);
+  font-size: 1rem;
+  font-weight: var(--font-weight-grifter-body);
+  color: var(--color-white);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .descriptionText {
+    font-size: 1.125rem;
+  }
+}
+
+/* Watermark */
+.watermark {
+  position: absolute;
+  bottom: 3rem;
+  left: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .watermark {
+    left: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .watermark {
+    left: 4rem;
+    bottom: 4rem;
+  }
+}
+
+.watermarkText {
+  font-family: var(--font-schabo);
+  font-size: 2.66rem;
+  color: var(--color-dark-brown);
+  text-transform: uppercase;
+  opacity: 0.3;
+  font-weight: 100;
+}
+
+@media (min-width: 1024px) {
+  .watermarkText {
+    font-size: 3.5rem;
+  }
+}
