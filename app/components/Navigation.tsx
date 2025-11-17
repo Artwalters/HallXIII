@@ -44,6 +44,11 @@ export default function Navigation() {
         onClick={closeNav}
       />
 
+      {/* Menu Text Link - Outside hamburger */}
+      <a href="#menu" className={styles.menuTextLink}>
+        <span className={styles.menuTextOutside}>menu</span>
+      </a>
+
       {/* Hamburger Nav Container */}
       <div className={styles.hamburgerNav}>
         {/* Background Shape */}
