@@ -15,7 +15,11 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  z-index: 999;
+  z-index: 1001;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 @media (min-width: 640px) {
@@ -76,20 +80,20 @@
 .hamburgerNav {
   border-radius: 1.5em;
   position: absolute;
-  top: calc(2rem + calc(1.5rem * 1.3) + 0.5rem);
+  top: 2rem;
   left: 2rem;
 }
 
 @media (min-width: 640px) {
   .hamburgerNav {
-    top: calc(2.5rem + calc(1.75rem * 1.3) + 0.5rem);
+    top: 2.5rem;
     left: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .hamburgerNav {
-    top: calc(3rem + calc(2.5rem * 1.3) + 0.75rem);
+    top: 3rem;
     left: 4rem;
   }
 }
@@ -99,30 +103,17 @@
   transition: all 0.7s cubic-bezier(0.5, 0.5, 0, 1);
   background-color: var(--color-cream);
   border-radius: 1.75em;
-  width: calc(1.95rem * 2);
-  height: calc(1.95rem * 2);
+  width: 0;
+  height: 0;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-@media (min-width: 640px) {
-  .hamburgerBg {
-    width: calc(2.275rem * 2);
-    height: calc(2.275rem * 2);
-  }
-}
-
-@media (min-width: 1024px) {
-  .hamburgerBg {
-    width: calc(3.25rem * 2);
-    height: calc(3.25rem * 2);
-  }
+  transform-origin: 0% 0%;
 }
 
 .navigation.active .hamburgerBg {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Menu Group */
@@ -237,7 +228,7 @@
   align-items: center;
   width: calc(1.95rem * 2);
   height: calc(1.95rem * 2);
-  display: flex;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
