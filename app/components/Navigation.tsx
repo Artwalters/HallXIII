@@ -44,11 +44,6 @@ export default function Navigation() {
         onClick={closeNav}
       />
 
-      {/* Menu Text Link - Trigger for menu */}
-      <button onClick={toggleNav} className={styles.menuTextLink}>
-        <span className={styles.menuTextOutside}>menu</span>
-      </button>
-
       {/* Hamburger Nav Container */}
       <div className={styles.hamburgerNav}>
         {/* Background Shape */}
@@ -73,14 +68,13 @@ export default function Navigation() {
           </ul>
         </div>
 
-        {/* Toggle Button */}
+        {/* Toggle Button - Using "menu" text */}
         <button
           className={styles.toggleButton}
           onClick={toggleNav}
           aria-label="Toggle menu"
         >
-          <div className={styles.toggleBar} />
-          <div className={styles.toggleBar} />
+          <span className={styles.menuTextToggle}>menu</span>
         </button>
       </div>
 
