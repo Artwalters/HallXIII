@@ -1,85 +1,82 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navigation.module.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Navigation() {
-  const [isActive, setIsActive] = useState(false);
+  const menuTextRef = useRef<HTMLSpanElement>(null);
+  const whatsappRef = useRef<HTMLAnchorElement>(null);
+  const [isDark, setIsDark] = useState(false);
 
-  const toggleNav = () => {
-    setIsActive(!isActive);
-  };
-
-  const closeNav = () => {
-    setIsActive(false);
-  };
-
-  // Close on ESC key
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isActive) {
-        closeNav();
-      }
+    // Get all cream sections
+    const creamSections = document.querySelectorAll('[data-nav-dark]');
+
+    if (!creamSections.length || !menuTextRef.current || !whatsappRef.current) return;
+
+    const checkPosition = () => {
+      const menuTop = 100; // Position of menu from top
+      let isOverCream = false;
+
+      creamSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        // Check if menu is within this cream section
+        if (rect.top <= menuTop && rect.bottom >= menuTop) {
+          isOverCream = true;
+        }
+      });
+
+      setIsDark(isOverCream);
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isActive]);
+    // Check on scroll
+    const trigger = ScrollTrigger.create({
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: checkPosition,
+    });
 
-  const menuItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Over Ons', href: '#over-ons' },
-    { label: 'Coaches', href: '#coaches' },
-    { label: 'Tarieven', href: '#tarieven' },
-    { label: 'Community', href: '#community' },
-    { label: 'Contact', href: '#contact' },
-  ];
+    // Initial check
+    checkPosition();
+
+    return () => {
+      trigger.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!menuTextRef.current || !whatsappRef.current) return;
+
+    gsap.to(menuTextRef.current, {
+      color: isDark ? 'var(--color-black)' : 'var(--color-white)',
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+
+    gsap.to(whatsappRef.current.querySelector('path'), {
+      fill: isDark ? 'var(--color-black)' : 'white',
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+  }, [isDark]);
 
   return (
-    <nav className={`${styles.navigation} ${isActive ? styles.active : ''}`}>
-      {/* Dark Background Overlay */}
-      <div
-        className={styles.darkBg}
-        onClick={closeNav}
-      />
-
-      {/* Hamburger Nav Container */}
-      <div className={styles.hamburgerNav}>
-        {/* Background Shape */}
-        <div className={styles.hamburgerBg} />
-
-        {/* Menu Content */}
-        <div className={styles.menuGroup}>
-          <p className={styles.menuLabel}>Menu</p>
-          <ul className={styles.menuList}>
-            {menuItems.map((item, index) => (
-              <li key={index} className={styles.menuItem}>
-                <a
-                  href={item.href}
-                  className={styles.menuLink}
-                  onClick={closeNav}
-                >
-                  <p className={styles.menuText}>{item.label}</p>
-                  <div className={styles.menuDot} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Toggle Button - Using "menu" text */}
-        <button
-          className={styles.toggleButton}
-          onClick={toggleNav}
-          aria-label="Toggle menu"
-        >
-          <span className={styles.menuTextToggle}>menu</span>
-        </button>
+    <nav className={styles.navigation}>
+      {/* Menu Button Container */}
+      <div className={styles.menuButton}>
+        {/* Menu Text */}
+        <span ref={menuTextRef} className={styles.menuText}>menu</span>
       </div>
 
       {/* WhatsApp Icon */}
       <a
+        ref={whatsappRef}
         href="https://wa.me/"
         target="_blank"
         rel="noopener noreferrer"

@@ -273,7 +273,7 @@ export default function CTAFooterCombined() {
                   />
                   <button className={styles.newsletterButton}>
                     <Image
-                      src="/assets/arrow-button.svg"
+                      src="/assets/arrow.svg"
                       alt="Submit"
                       width={70}
                       height={72}

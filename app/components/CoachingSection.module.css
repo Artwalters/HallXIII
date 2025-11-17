@@ -1,44 +1,8 @@
 .section {
   background-color: var(--color-black);
   padding: 0;
+  padding-top: 6rem;
   overflow: hidden;
-}
-
-/* Marquee Styles */
-.marqueeContainer {
-  width: 100%;
-  overflow: hidden;
-  padding: 5rem 0; /* 80px / 16 = 5rem - scales with Osmo */
-  position: relative;
-}
-
-.marqueeScroll {
-  width: 100%;
-  display: flex;
-  position: relative;
-  will-change: transform;
-}
-
-.marqueeContent {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
-
-.marqueeText {
-  font-family: var(--font-schabo);
-  font-size: var(--font-h1); /* Osmo design system */
-  color: var(--color-white);
-  text-transform: uppercase;
-  white-space: nowrap;
-  letter-spacing: 0;
-  line-height: 1;
-  padding-right: 3rem; /* 48px / 16 = 3rem - scales with Osmo */
-  margin-top: 6.25rem; /* 100px / 16 = 6.25rem */
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }
 
 /* Divider */
@@ -210,10 +174,6 @@
     height: 30rem; /* 480px / 16 = 30rem */
     order: 2;
   }
-
-  .marqueeText {
-    font-size: 12vw; /* VW behouden - 2rem kleiner */
-  }
 }
 
 @media (max-width: 640px) {
@@ -228,14 +188,6 @@
 
   .header {
     gap: 0.625rem; /* 10px / 16 = 0.625rem */
-  }
-
-  .marqueeContainer {
-    padding: 3rem 0; /* 48px / 16 = 3rem */
-  }
-
-  .marqueeText {
-    font-size: 11vw; /* VW behouden - 2rem kleiner */
   }
 
   .imageWrapper {

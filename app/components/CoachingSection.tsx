@@ -1,12 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const coachingItems = [
   {
@@ -67,182 +63,15 @@ const partnersItem = {
 };
 
 export default function CoachingSection() {
-  const topMarqueeRef = useRef<HTMLDivElement>(null);
-  const bottomMarqueeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!topMarqueeRef.current || !bottomMarqueeRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Pro Marquee Implementation - Top (Left Direction)
-      const topMarqueeContent = topMarqueeRef.current?.querySelector(`.${styles.marqueeContent}`);
-      const topMarqueeScroll = topMarqueeRef.current?.querySelector(`.${styles.marqueeScroll}`) as HTMLElement;
-
-      if (topMarqueeContent && topMarqueeScroll) {
-        // Configuration
-        const speed = 15;
-        const direction = -1; // -1 for left, 1 for right
-        const scrollSpeed = 10;
-        const duplicate = 2;
-
-        // Duplicate marquee content for seamless loop
-        if (duplicate > 0) {
-          const fragment = document.createDocumentFragment();
-          for (let i = 0; i < duplicate; i++) {
-            fragment.appendChild(topMarqueeContent.cloneNode(true));
-          }
-          topMarqueeScroll.appendChild(fragment);
-        }
-
-        // Responsive speed multiplier
-        const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
-        const marqueeSpeed = speed * ((topMarqueeContent as HTMLElement).offsetWidth / window.innerWidth) * speedMultiplier;
-
-        // Setup scroll container for parallax effect
-        topMarqueeScroll.style.marginLeft = `${scrollSpeed * -1}%`;
-        topMarqueeScroll.style.width = `${(scrollSpeed * 2) + 100}%`;
-
-        // Get all marquee items (including duplicates)
-        const topMarqueeItems = topMarqueeRef.current?.querySelectorAll(`.${styles.marqueeContent}`);
-
-        // Basis marquee animation on all items
-        const topAnimation = gsap.to(topMarqueeItems, {
-          xPercent: -100,
-          repeat: -1,
-          duration: marqueeSpeed,
-          ease: 'linear'
-        }).totalProgress(0.5);
-
-        // Set initial direction
-        gsap.set(topMarqueeItems, { xPercent: direction === 1 ? 100 : -100 });
-        topAnimation.timeScale(direction);
-        topAnimation.play();
-
-        // ScrollTrigger for direction inversion
-        ScrollTrigger.create({
-          trigger: topMarqueeRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          onUpdate: (self) => {
-            const isInverted = self.direction === 1; // Scrolling down
-            const currentDirection = isInverted ? -direction : direction;
-            topAnimation.timeScale(currentDirection);
-          }
-        });
-
-        // Extra parallax scroll effect
-        const topScrollTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: topMarqueeRef.current,
-            start: '0% 100%',
-            end: '100% 0%',
-            scrub: 0
-          }
-        });
-
-        const scrollStart = direction === -1 ? scrollSpeed : -scrollSpeed;
-        const scrollEnd = -scrollStart;
-
-        topScrollTl.fromTo(topMarqueeScroll,
-          { x: `${scrollStart}vw` },
-          { x: `${scrollEnd}vw`, ease: 'none' }
-        );
-      }
-
-      // Pro Marquee Implementation - Bottom (Right Direction)
-      const bottomMarqueeContent = bottomMarqueeRef.current?.querySelector(`.${styles.marqueeContent}`);
-      const bottomMarqueeScroll = bottomMarqueeRef.current?.querySelector(`.${styles.marqueeScroll}`) as HTMLElement;
-
-      if (bottomMarqueeContent && bottomMarqueeScroll) {
-        // Configuration
-        const speed = 15;
-        const direction = 1; // -1 for left, 1 for right
-        const scrollSpeed = 10;
-        const duplicate = 2;
-
-        // Duplicate marquee content for seamless loop
-        if (duplicate > 0) {
-          const fragment = document.createDocumentFragment();
-          for (let i = 0; i < duplicate; i++) {
-            fragment.appendChild(bottomMarqueeContent.cloneNode(true));
-          }
-          bottomMarqueeScroll.appendChild(fragment);
-        }
-
-        // Responsive speed multiplier
-        const speedMultiplier = window.innerWidth < 479 ? 0.25 : window.innerWidth < 991 ? 0.5 : 1;
-        const marqueeSpeed = speed * ((bottomMarqueeContent as HTMLElement).offsetWidth / window.innerWidth) * speedMultiplier;
-
-        // Setup scroll container for parallax effect
-        bottomMarqueeScroll.style.marginLeft = `${scrollSpeed * -1}%`;
-        bottomMarqueeScroll.style.width = `${(scrollSpeed * 2) + 100}%`;
-
-        // Get all marquee items (including duplicates)
-        const bottomMarqueeItems = bottomMarqueeRef.current?.querySelectorAll(`.${styles.marqueeContent}`);
-
-        // Basis marquee animation on all items
-        const bottomAnimation = gsap.to(bottomMarqueeItems, {
-          xPercent: -100,
-          repeat: -1,
-          duration: marqueeSpeed,
-          ease: 'linear'
-        }).totalProgress(0.5);
-
-        // Set initial direction
-        gsap.set(bottomMarqueeItems, { xPercent: direction === 1 ? 100 : -100 });
-        bottomAnimation.timeScale(direction);
-        bottomAnimation.play();
-
-        // ScrollTrigger for direction inversion
-        ScrollTrigger.create({
-          trigger: bottomMarqueeRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          onUpdate: (self) => {
-            const isInverted = self.direction === 1; // Scrolling down
-            const currentDirection = isInverted ? -direction : direction;
-            bottomAnimation.timeScale(currentDirection);
-          }
-        });
-
-        // Extra parallax scroll effect
-        const bottomScrollTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: bottomMarqueeRef.current,
-            start: '0% 100%',
-            end: '100% 0%',
-            scrub: 0
-          }
-        });
-
-        const scrollStart = direction === -1 ? scrollSpeed : -scrollSpeed;
-        const scrollEnd = -scrollStart;
-
-        bottomScrollTl.fromTo(bottomMarqueeScroll,
-          { x: `${scrollStart}vw` },
-          { x: `${scrollEnd}vw`, ease: 'none' }
-        );
-      }
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section className={styles.section}>
       {/* Top Marquee */}
-      <div ref={topMarqueeRef} className={styles.marqueeContainer}>
-        <div className={styles.marqueeScroll}>
-          <div className={styles.marqueeContent}>
-            <span className={styles.marqueeText}>
-              Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
-            </span>
-            <span className={styles.marqueeText}>
-              Ontdek je volledige potentieel - onze coaching trajecten - Ontdek je volledige potentieel - onze coaching trajecten -
-            </span>
-          </div>
-        </div>
-      </div>
+      <MarqueeScroll
+        title="COACHING TRAJECTEN"
+        subtitle={<>Ontdek je<br />potentieel</>}
+        direction={-1}
+        rotate={-0.5}
+      />
 
       <div className={styles.divider} />
 
@@ -316,18 +145,12 @@ export default function CoachingSection() {
       <div className={styles.divider} />
 
       {/* Bottom Marquee */}
-      <div ref={bottomMarqueeRef} className={styles.marqueeContainer}>
-        <div className={styles.marqueeScroll}>
-          <div className={styles.marqueeContent}>
-            <span className={styles.marqueeText}>
-              - onze partners - expertise in de sport - onze partners - expertise in de sport -
-            </span>
-            <span className={styles.marqueeText}>
-              - onze partners - expertise in de sport - onze partners - expertise in de sport -
-            </span>
-          </div>
-        </div>
-      </div>
+      <MarqueeScroll
+        title="ONZE PARTNERS"
+        subtitle={<>expertise<br />in de sport</>}
+        direction={1}
+        rotate={0.5}
+      />
 
       {/* Partners Section */}
       <div className={styles.container}>

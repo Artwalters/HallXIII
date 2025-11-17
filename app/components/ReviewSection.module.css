@@ -33,7 +33,7 @@
 /* Subtitle */
 .subtitle {
   font-family: var(--font-relost);
-  font-size: var(--font-h4); /* Osmo design system */
+  font-size: var(--relost-caption-big); /* Global Relost caption size */
   font-weight: normal;
   color: var(--color-white);
   line-height: 1;

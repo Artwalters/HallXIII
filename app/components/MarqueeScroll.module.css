@@ -1,0 +1,151 @@
+/* Marquee Container */
+.marqueeContainer {
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+/* Texture Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url('/assets/overlays/overlay.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  mix-blend-mode: screen;
+}
+
+/* Marquee Scroll (parallax layer) */
+.marqueeScroll {
+  position: relative;
+  will-change: transform;
+  z-index: 10;
+}
+
+/* Marquee Inner */
+.marqueeInner {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Marquee Content */
+.marqueeContent {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Marquee Item */
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-right: 5rem;
+}
+
+@media (min-width: 768px) {
+  .marqueeItem {
+    gap: 4rem;
+    padding-right: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marqueeItem {
+    gap: 5rem;
+    padding-right: 8rem;
+  }
+}
+
+/* Title (SCHABO) */
+.title {
+  font-family: var(--font-schabo);
+  font-size: var(--font-h1);
+  font-weight: 100;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Subtitle (Relost Brush) */
+.subtitle {
+  font-family: var(--font-relost);
+  font-size: 2rem;
+  color: var(--color-white);
+  text-transform: lowercase;
+  line-height: 1.1;
+  margin: 0;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    font-size: 3rem;
+  }
+}
+
+/* Icon Wrapper */
+.iconWrapper {
+  position: relative;
+  width: 120px;
+  height: 123px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .iconWrapper {
+    width: 80px;
+    height: 82px;
+  }
+}
+
+/* Icon Circle (background) */
+.iconCircle {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .iconCircle {
+    width: 80px;
+    height: auto;
+  }
+}
+
+/* Icon Arrow (foreground) */
+.iconArrow {
+  position: relative;
+  width: 57px;
+  height: auto;
+  object-fit: contain;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .iconArrow {
+    width: 38px;
+    height: auto;
+  }
+}

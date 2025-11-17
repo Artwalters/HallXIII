@@ -268,12 +268,14 @@ export default function HeroExpertiseCombined() {
         <section
           className={styles.expertise}
           data-expertise-parallax-inner
+          data-nav-dark
         >
           <div className={styles.expertiseContainer}>
             {/* Title & Description */}
             <div className={styles.textContainer}>
               <h2 className={styles.title}>
-                een sportschool met diverse expertises
+                een sportschool <br />
+                met diverse expertises
               </h2>
               <p className={styles.description}>
                 Hal 13 is de sportschool waar je verschillende disciplines kunt ontdekken, van krachtsport en powerlifting tot atletische doelen. Onze coaches en externe experts staan klaar om je te helpen bij het optimaal ontwikkelen van jouw sportieve ambities.

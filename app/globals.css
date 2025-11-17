@@ -36,17 +36,22 @@
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
   /* Typography Scale - Osmo Design System */
-  --font-h1: 9rem;     /* 84px - Main page titles */
-  --font-h2: 7rem;      /* 72px - Section titles */
-  --font-h3: 6rem;        /* 48px - Subsection titles */
-  --font-h4: 2rem;        /* 32px - Small titles */
-  --font-body: 1rem;      /* 16px - Body text */
-  --font-body-large: 1.125rem; /* 18px - Large body text */
-  --font-body-small: 0.875rem; /* 14px - Small body text */
-  --relost-button-size: 1.75rem; /* 28px - Relost buttons/links */
+  --font-h1: 9em;     /* 84px - Main page titles */
+  --font-h2: 7em;      /* 72px - Section titles */
+  --font-h3: 6em;        /* 48px - Subsection titles */
+  --font-h4: 2em;        /* 32px - Small titles */
+  --font-body: 1em;      /* 16px - Body text */
+  --font-body-large: 1.125em; /* 18px - Large body text */
+  --font-body-small: 0.875em; /* 14px - Small body text */
+  --relost-button-size: 1.75em; /* 28px - Relost buttons/links */
+  --relost-caption-big: 2.125em; /* 34px - Relost captions/taglines */
 
   /* Font Weights - Osmo Design System */
   --font-weight-grifter-body: 700; /* Bold weight for Grifter body text */
+
+  /* Container System */
+  --container-max-width: 85vw;
+  --container-padding: 4rem;
 
   /* Standard Breakpoints */
   --breakpoint-mobile: 480px;
@@ -58,57 +63,68 @@
 /* Tablet (768px - 991px) */
 @media screen and (max-width: 991px) {
   :root {
-    --size-container-ideal: 834; /* screen-size in design - no px */
+    --size-container-ideal: 950; /* Tablet frame size - adjusted for smoother transition */
     --size-container-min: 768px;
     --size-container-max: 991px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
-    /* Adjust typography for tablet */
-    --font-h1: 5rem;    /* 72px */
-    --font-h2: 3.75rem;   /* 60px */
-    --font-h3: 2.5rem;    /* 40px */
-    --font-h4: 1.75rem;   /* 28px */
-    --font-body: 1rem;    /* 16px - Same as desktop */
-    --font-body-large: 1.125rem; /* 18px - Same as desktop */
-    --font-body-small: 0.875rem; /* 14px - Same as desktop */
-    --relost-button-size: 1.5rem; /* 24px - Relost buttons/links */
+    /* Container System - Tablet */
+    --container-max-width: 90vw;
+    --container-padding: 3rem;
   }
 }
 
-/* Mobile Landscape (480px - 767px) */
+/* Tablet Portrait (640px - 767px) */
 @media screen and (max-width: 767px) {
   :root {
-    --size-container-ideal: 550; /* screen-size in design - no px */
-    --size-container-min: 480px;
+    --size-container-ideal: 700; /* Tablet portrait - smooth transition */
+    --size-container-min: 640px;
     --size-container-max: 767px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
-    /* Adjust typography for mobile */
-    --font-h1: 3.75rem;   /* 60px */
-    --font-h2: 3rem;      /* 48px */
-    --font-h3: 2rem;      /* 32px */
-    --font-h4: 1.5rem;    /* 24px */
-    --font-body: 0.875rem; /* 14px */
-    --font-body-large: 1rem; /* 16px */
-    --font-body-small: 0.75rem; /* 12px */
-    --relost-button-size: 1.375rem; /* 22px - Relost buttons/links */
+    /* Container System - Tablet Portrait */
+    --container-max-width: 91vw;
+    --container-padding: 2.5rem;
+  }
+}
+
+/* Mobile Typography Scale (640px and below) */
+@media screen and (max-width: 639px) {
+  :root {
+    /* Smaller typography for mobile screens */
+    --font-h2: 4em; /* Reduced from 7em for mobile */
+  }
+}
+
+/* Mobile Landscape (480px - 639px) */
+@media screen and (max-width: 639px) {
+  :root {
+    --size-container-ideal: 560; /* Mobile landscape - smooth transition */
+    --size-container-min: 480px;
+    --size-container-max: 639px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+    /* Container System - Mobile Landscape */
+    --container-max-width: 92vw;
+    --container-padding: 2rem;
   }
 }
 
 /* Mobile Portrait (320px - 479px) */
 @media screen and (max-width: 479px) {
   :root {
-    --size-container-ideal: 390; /* screen-size in design - no px */
+    --size-container-ideal: 562; /* Mobile portrait - adjusted for smaller h2 */
     --size-container-min: 320px;
     --size-container-max: 479px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
-    /* Typography same as Mobile Landscape */
-    --font-h1: 3.75rem;   /* 60px */
-    --font-h2: 3rem;      /* 48px */
-    --font-h3: 2rem;      /* 32px */
-    --font-h4: 1.5rem;    /* 24px */
-    --font-body: 0.875rem; /* 14px */
-    --font-body-large: 1rem; /* 16px */
-    --font-body-small: 0.75rem; /* 12px */
-    --relost-button-size: 1.375rem; /* 22px - Relost buttons/links */
+    /* Container System - Mobile Portrait */
+    --container-max-width: 95vw;
+    --container-padding: 1.5rem;
   }
 }
 

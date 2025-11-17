@@ -1,5 +1,4 @@
 import HeroExpertiseCombined from './components/HeroExpertiseCombined';
-import GymSection from './components/GymSection';
 import CoachingSection from './components/CoachingSection';
 import CoachesSection from './components/CoachesSection';
 import CommunitySection from './components/CommunitySection';
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <main style={{ width: '100%', minHeight: '100vh' }}>
       <HeroExpertiseCombined />
-      <GymSection />
       <CoachingSection />
       <CoachesSection />
 
