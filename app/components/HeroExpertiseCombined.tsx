@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import OnboardingForm from './OnboardingForm';
+import Navigation from './Navigation';
 import styles from './HeroExpertiseCombined.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -183,9 +184,13 @@ export default function HeroExpertiseCombined() {
   }, []);
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
-      {/* HERO SECTION */}
-      <section className={styles.heroSection} ref={heroSectionRef}>
+    <>
+      {/* Navigation Component */}
+      <Navigation />
+
+      <div className={styles.wrapper} ref={wrapperRef}>
+        {/* HERO SECTION */}
+        <section className={styles.heroSection} ref={heroSectionRef}>
         <div className={styles.clippedContent}>
           {/* Texture Overlay */}
           <div className={styles.overlay}>
@@ -198,13 +203,6 @@ export default function HeroExpertiseCombined() {
           </div>
 
           <div className={styles.heroContainer}>
-            {/* Navigation Menu */}
-            <nav className={styles.nav}>
-              {/* Menu Button */}
-              <button className={styles.menuButton}>
-                <span className={styles.menuText}>menu</span>
-              </button>
-            </nav>
 
             {/* Main Content */}
             <div className={styles.mainContent}>
@@ -367,6 +365,6 @@ export default function HeroExpertiseCombined() {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 }

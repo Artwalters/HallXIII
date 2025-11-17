@@ -98,31 +98,6 @@
   }
 }
 
-/* Navigation */
-.nav {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 20;
-}
-
-@media (min-width: 640px) {
-  .nav {
-    top: 2.5rem;
-    right: 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .nav {
-    top: 3rem;
-    right: 4rem;
-  }
-}
-
 /* Logo */
 .logo {
   position: relative;
@@ -191,55 +166,6 @@
   .desktopNav {
     display: flex;
   }
-}
-
-.navLink {
-  font-family: var(--font-relost);
-  font-size: var(--relost-button-size);
-  color: var(--color-white);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  text-transform: lowercase;
-}
-
-.navLink:hover {
-  color: var(--color-primary);
-}
-
-/* Menu Button */
-.menuButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  transform: rotate(-1.113deg);
-  transition: color 0.3s ease;
-}
-
-.menuText {
-  font-family: var(--font-relost);
-  font-size: var(--relost-button-size);
-  color: var(--color-white);
-  text-transform: lowercase;
-  line-height: 1;
-}
-
-@media (min-width: 1024px) {
-  .menuText {
-    font-size: 2rem;
-  }
-}
-
-.menuUnderline {
-  margin-top: -0.25rem;
-  height: auto;
-}
-
-.menuButton:hover .menuText {
-  color: var(--color-primary);
 }
 
 /* Main Content */
