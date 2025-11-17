@@ -365,6 +365,7 @@ export default function HeroExpertiseCombined() {
           </div>
         </section>
       </div>
+      </div>
     </>
   );
 }
