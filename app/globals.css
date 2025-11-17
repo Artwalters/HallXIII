@@ -135,25 +135,6 @@
   --color-beige: #BCAB8E;             /* rgba(188, 171, 142, 1) - Warm Beige */
   --color-cream: #F0EBE6;             /* rgba(240, 235, 230, 1) - Light Cream */
   --color-white: #FFFFFF;             /* rgba(255, 255, 255, 1) - Pure White */
-
-  /* Accent */
-  --color-accent-yellow: #ffe224;     /* Button highlights */
-
-  /* ========== LEGACY COMPATIBILITY ========== */
-  /* Old variable names mapped to new design system */
-  --background: var(--color-cream);
-  --foreground: #171717;
-  --accent-cyan: var(--color-primary);
-  --dark-bg: var(--color-dark-primary);
-  --light-text: var(--color-cream);
-  --section-bg: var(--color-cream);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 * {
@@ -169,8 +150,8 @@ body {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-cream);
+  color: var(--color-dark-primary);
   font-family: var(--font-grifter);
   font-size: var(--size-font); /* Osmo scaling system - scales proportionally */
 }

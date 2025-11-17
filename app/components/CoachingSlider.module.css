@@ -203,7 +203,7 @@
 }
 
 .btnStopMotionIcon {
-  color: var(--color-accent-yellow);
+  color: var(--color-primary);
   flex-shrink: 0;
   width: 1.5rem; /* 24px / 16 = 1.5rem */
   margin-left: -0.25rem; /* -4px / 16 = -0.25rem */

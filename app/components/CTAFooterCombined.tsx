@@ -95,6 +95,9 @@ export default function CTAFooterCombined() {
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
+      {/* Black top overlay */}
+      <div className={styles.blackTopOverlay} />
+
       {/* CTA SECTION */}
       <section className={styles.ctaSection} ref={ctaSectionRef}>
         <div className={styles.clippedContent}>

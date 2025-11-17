@@ -1,5 +1,5 @@
 .section {
-  background: var(--section-bg);
+  background: var(--color-cream);
   position: relative;
   padding: 7.5rem 0; /* 120px / 16 = 7.5rem - scales with Osmo */
   overflow: hidden;
