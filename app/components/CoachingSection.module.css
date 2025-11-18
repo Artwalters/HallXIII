@@ -1,65 +1,21 @@
 .section {
-  position: relative;
   background-color: var(--color-black);
-  padding: 0;
-  padding-top: 6rem;
-  overflow: hidden;
-}
-
-/* Gradient Top - smooth transition from cream */
-.gradientTop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10rem;
-  background-color: var(--color-cream);
-  z-index: 0;
-}
-
-/* Partners Section - Cream Background */
-.partnersSection {
-  background-color: var(--color-cream);
+  padding: 1.5rem 0 3rem;
   position: relative;
+  overflow: hidden;
 }
 
 /* Divider */
 .divider {
-  height: 1px;
+  height: 2px;
   background-color: rgba(255, 255, 255, 0.1);
   width: 100%;
-  margin: 0;
-}
-
-/* Marquee inside partners section */
-.partnersSection > div:nth-child(2) {
-  margin-top: -2em;
-}
-
-/* Partners text styling - black text on cream background */
-.partnersSection .category {
-  color: var(--color-dark-gray);
-}
-
-.partnersSection .title {
-  color: var(--color-black);
-}
-
-.partnersSection .description {
-  color: var(--color-black);
-}
-
-.partnersSection .linkText {
-  color: var(--color-black);
-}
-
-.partnersSection .underline {
-  filter: none;
+  margin: 1.5rem 0;
 }
 
 /* Container */
 .container {
-  max-width: 100rem;
+  max-width: var(--container-max-width-narrow);
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
@@ -75,8 +31,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6em 0;
+  padding: 4em 0;
   gap: 4rem;
+}
+
+/* Partners Item - extra spacing */
+.partnersItem {
+  padding: 10em 0;
 }
 
 /* Text Content */
@@ -156,8 +117,8 @@
 /* Image Wrapper */
 .imageWrapper {
   position: relative;
-  flex: 1;
-  max-width: 40.625rem;
+  flex: 0.8;
+  max-width: 32rem;
   aspect-ratio: 4 / 5;
   border-radius: 0.9375rem;
   overflow: hidden;

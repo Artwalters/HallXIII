@@ -23,31 +23,32 @@ export default function CommunitySection() {
         </defs>
       </svg>
 
-      <section className={styles.section}>
-      {/* Texture Overlay */}
-      <div className={styles.overlay}>
-        <Image
-          src="/assets/overlays/overlay.jpg"
-          alt=""
-          fill
-          className={styles.overlayImage}
-        />
-      </div>
-
-      <div className={styles.container}>
-        {/* Top Right Text */}
+      <div style={{ position: 'relative' }}>
+        {/* Top Right Text - buiten clip-path */}
         <div className={styles.topText}>
           <p className={styles.topLine}>een sportschool</p>
           <p className={styles.topLine}>gedreven door</p>
         </div>
 
-        {/* Main Community Text */}
-        <div className={styles.communityWrapper}>
-          <h2 className={styles.communityText}>COMMUNITY</h2>
-        </div>
+        <section className={styles.section}>
+          {/* Texture Overlay */}
+          <div className={styles.overlay}>
+            <Image
+              src="/assets/overlays/overlay.jpg"
+              alt=""
+              fill
+              className={styles.overlayImage}
+            />
+          </div>
 
-        {/* Social Media Section */}
-        <div className={styles.socialSection}>
+          <div className={styles.container}>
+            {/* Main Community Text */}
+            <div className={styles.communityWrapper}>
+              <h2 className={styles.communityText}>COMMUNITY</h2>
+            </div>
+
+            {/* Social Media Section */}
+            <div className={styles.socialSection}>
           <p className={styles.socialText}>volg ons</p>
           <div className={styles.socialIcons}>
             <a href="#" className={styles.socialIcon} aria-label="Instagram">
@@ -81,6 +82,7 @@ export default function CommunitySection() {
         </div>
       </div>
     </section>
+      </div>
     </>
   );
 }

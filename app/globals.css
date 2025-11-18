@@ -36,22 +36,22 @@
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
   /* Typography Scale - Osmo Design System */
-  --font-h1: 9em;     /* 84px - Main page titles */
-  --font-h2: 7em;      /* 72px - Section titles */
-  --font-h3: 5em;        /* 48px - Subsection titles */
+  --font-h1: 8em;     /* 84px - Main page titles */
+  --font-h2: 6em;      /* 72px - Section titles */
+  --font-h3: 4em;        /* 48px - Subsection titles */
   --font-h4: 2em;        /* 32px - Small titles */
   --font-body: 1em;      /* 16px - Body text */
   --font-body-large: 1.125em; /* 18px - Large body text */
   --font-body-small: 0.875em; /* 14px - Small body text */
   --relost-button-size: 1.75em; /* 28px - Relost buttons/links */
-  --relost-caption-big: 2.125em; /* 34px - Relost captions/taglines */
+  --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
 
   /* Font Weights - Osmo Design System */
-  --font-weight-grifter-body: 700; /* Bold weight for Grifter body text */
+  --font-weight-grifter-body: 400; /* Regular weight for Grifter body text */
 
   /* Container System */
-  --container-max-width: 85vw;
-  --container-max-width-hero: 85vw;
+  --container-max-width: 75vw;
+  --container-max-width-narrow: 60vw;
   --container-padding: 4rem;
 
   /* Standard Breakpoints */

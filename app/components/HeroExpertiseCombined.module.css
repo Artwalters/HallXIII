@@ -5,6 +5,29 @@
   min-height: 180vh;
 }
 
+/* Outer Content Container - buiten clip-path maar met zelfde max-width als hero */
+.outerContentContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105vh;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.outerContentContainer > * {
+  pointer-events: auto;
+}
+
 /* ===== HERO SECTION ===== */
 
 .heroSection {
@@ -13,7 +36,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 105vh;
+  height: 110vh;
   min-height: 37.5rem;
   z-index: 10;
   clip-path: polygon(
@@ -81,7 +104,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: 10;
-  max-width: var(--container-max-width-hero);
+  max-width: var(--container-max-width);
   margin-left: auto;
   margin-right: auto;
 }
@@ -138,12 +161,14 @@
   align-items: left;
   gap: 1.5rem;
   padding: 0;
+  margin-top: 0;
 }
 
 /* Meet Hall13 Button */
 .meetHall13Container {
   transform: rotate(-2.756deg);
-  margin-bottom: 1rem;
+  align-self: flex-start;
+  margin-top: 10vh;
 }
 
 .meetHall13Button {
@@ -219,6 +244,16 @@
   gap: 2rem;
 }
 
+/* Bottom Row - OnboardingForm (left) + Tagline (right) */
+.bottomRow {
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 10vh;
+  display: flex;
+}
+
 /* Onboarding Form Wrapper */
 .onboardingWrapper {
   flex-shrink: 0;
@@ -227,6 +262,8 @@
 /* Tagline */
 .taglineWrapper {
   flex-shrink: 0;
+  align-self: flex-start;
+  margin-bottom: 8vh;
 }
 
 .tagline {
@@ -247,7 +284,7 @@
 .expertiseWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 105vh;
+  padding-top: 110vh;
 }
 
 /* Expertise */
@@ -256,13 +293,13 @@
   width: 100%;
   min-height: 80vh;
   background-color: var(--color-cream);
-  padding: 7.5rem 0;
+  padding: 15rem 0;
 }
 
 /* Container */
 .expertiseContainer {
   position: relative;
-  max-width: var(--container-max-width);
+  max-width: var(--container-max-width-narrow);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   z-index: 2;
@@ -275,7 +312,7 @@
   gap: 1.5rem;
   align-items: center;
   text-align: center;
-  margin: 0 auto 3rem;
+  margin: 0 auto 9rem;
 }
 
 .title {

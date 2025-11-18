@@ -3,7 +3,7 @@
   position: relative;
   overflow: visible;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   min-height: 37.5rem; /* 600px / 16 = 37.5rem */
   display: flex;
   align-items: center;
@@ -91,13 +91,13 @@
   container-type: inline-size;
 }
 
-/* Top Text */
+/* Top Text - buiten clip-path */
 .topText {
   position: absolute;
   top: 8rem;
   left: var(--container-padding);
   text-align: left;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .topLine {
@@ -111,17 +111,18 @@
 
 /* Community Wrapper */
 .communityWrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 101;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Main Community Text */
 .communityText {
   font-family: var(--font-schabo);
-  font-size: 35cqw; /* Terug naar vw voor volledige viewport breedte */
+  font-size: 30cqw;
   font-weight: normal;
   color: var(--color-dark-brown);
   text-transform: uppercase;
@@ -131,6 +132,11 @@
   user-select: none;
   text-align: center;
   white-space: nowrap;
+  /* Embossed effect */
+  filter:
+    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
+    brightness(0.96);
 }
 
 /* Social Section */

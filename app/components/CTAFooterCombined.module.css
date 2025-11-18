@@ -25,7 +25,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   min-height: 37.5rem;
   z-index: 10;
   clip-path: polygon(
@@ -85,14 +85,14 @@
   height: 100%;
 }
 
-/* Texture Overlay */
+/* Texture Overlay - alleen over achtergrond */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 1;
   pointer-events: none;
   opacity: 0.08;
 }
@@ -105,37 +105,34 @@
 .ctaContainer {
   width: 100%;
   height: 100%;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 5rem;
+  padding: 0 var(--container-padding);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 100;
+  container-type: inline-size;
 }
 
 /* Content Wrapper */
 .contentWrapper {
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   gap: 0;
   position: relative;
   transform: translateY(-8vh);
 }
 
-/* 013 Number */
-.numberWrapper {
-  flex-shrink: 0;
-}
-
-.bigNumber {
-  font-family: var(--font-schabo);
-  font-size: 36vw;
-  font-weight: normal;
-  color: var(--color-dark-primary);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0;
+/* 013 Number - Based on loading example */
+.numberContainer {
+  flex-flow: row;
+  align-items: flex-start;
+  font-size: 40cqw;
+  display: flex;
+  position: relative;
   /* Embossed effect - same technique as hero logo */
   filter:
     drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
@@ -143,54 +140,42 @@
     brightness(0.98);
 }
 
-/* Slot machine counter */
-.counterContainer {
-  display: inline-flex;
-  gap: 0;
-  justify-content: center;
-  align-items: center;
-}
-
-.digitWrapper {
-  overflow: hidden;
+.numberGroup {
+  flex-flow: column;
   height: 0.85em;
-  line-height: 0.85;
-  display: inline-block;
-  position: relative;
-  top: 0.12em;
-  margin-left: -0.05em;
-}
-
-.digitWrapper:first-child {
-  margin-left: 0;
-}
-
-.digitColumn {
   display: flex;
-  flex-direction: column;
-  will-change: transform;
-  transform: translateY(1%);
+  position: relative;
+  overflow: hidden;
 }
 
-.digitColumn span {
-  display: block;
-  height: 0.85em;
-  line-height: 0.85;
-  text-align: center;
+.numberWrap {
+  will-change: transform;
+  flex-flow: column;
+  display: flex;
+  position: relative;
+}
+
+.number {
+  text-transform: uppercase;
+  font-family: var(--font-schabo);
+  font-weight: normal;
+  color: var(--color-dark-primary);
+  line-height: 1;
+  position: relative;
 }
 
 /* Main Text */
 .mainTextWrapper {
   flex-shrink: 0;
-  margin-bottom: 1.875rem;
+  margin-bottom: 0;
 }
 
 .mainText {
   font-family: var(--font-schabo);
-  font-size: 11vw;
+  font-size: 12.24cqw;
   font-weight: normal;
   color: var(--color-dark-primary);
-  line-height: 0.90;
+  line-height: 0.9;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0;
@@ -202,79 +187,6 @@
 }
 
 /* CTA Wrapper */
-.ctaWrapper {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 7.5rem;
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-@media (min-width: 1024px) {
-  .ctaWrapper {
-    gap: 11.25rem;
-  }
-}
-
-/* Button Wrapper */
-.buttonWrapper {
-  display: flex;
-  align-items: center;
-  gap: 1.375rem;
-}
-
-/* CTA Button */
-.ctaButton {
-  background-color: var(--color-dark-primary);
-  color: var(--color-white);
-  font-family: var(--font-relost);
-  font-size: var(--relost-button-size);
-  font-weight: normal;
-  padding: 1.3125rem 1.5625rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  text-transform: lowercase;
-  line-height: 1.6;
-}
-
-.ctaButton:hover {
-  background-color: var(--color-primary);
-  transform: translateY(-0.125rem);
-  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
-}
-
-/* Arrow Circle */
-.arrowCircle {
-  width: 3.625rem;
-  height: 3.625rem;
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.arrowCircle:hover {
-  transform: scale(1.1);
-}
-
-/* LID WORDEN Text */
-.lidText {
-  flex-shrink: 0;
-}
-
-.lidWordenText {
-  font-family: var(--font-relost);
-  font-size: var(--relost-button-size);
-  color: var(--color-dark-primary);
-  margin: 0;
-  transform: rotate(-8.4deg);
-  line-height: 0.95;
-  text-transform: lowercase;
-}
 
 /* ===== FOOTER SECTION ===== */
 
@@ -282,7 +194,7 @@
 .footerWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 100vh;
+  padding-top: 120vh;
 }
 
 /* Footer */
@@ -308,22 +220,14 @@
 /* Container */
 .footerContainer {
   position: relative;
-  max-width: 100rem;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 6rem 7.5rem;
+  padding: 6rem var(--container-padding);
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   z-index: 2;
-}
-
-/* Onboarding Form Wrapper */
-.onboardingFormWrapper {
-  position: absolute;
-  top: 6rem;
-  left: 7.5rem;
-  z-index: 10;
 }
 
 /* Top Section */
@@ -563,12 +467,6 @@
     padding: 7.5rem 0;
   }
 
-  .contentWrapper {
-    transform: translateY(-6vh);
-    flex-direction: column;
-    align-items: center;
-  }
-
   .mainTextWrapper {
     text-align: left;
   }
@@ -577,9 +475,9 @@
     text-align: left;
   }
 
-  .ctaWrapper {
-    bottom: 8.75rem;
-    gap: 3.75rem;
+  /* Verberg eerste cijfer (linker 0) op kleine desktop */
+  .digit1 {
+    display: none;
   }
 }
 
@@ -592,40 +490,12 @@
     padding: 0 2rem;
   }
 
-  .contentWrapper {
-    transform: translateY(-4vh);
-    flex-direction: column;
-    align-items: center;
-    gap: -1.25rem;
-  }
-
   .mainTextWrapper {
-    text-align: left;
-    margin-top: -1.25rem;
+    margin-bottom: 10px;
   }
 
   .mainText {
-    font-size: 18vw;
     text-align: left;
-  }
-
-  .bigNumber {
-    font-size: 70vw;
-  }
-
-  .ctaWrapper {
-    bottom: 1.25rem;
-    gap: 2.5rem;
-    flex-direction: column;
-  }
-
-  .ctaButton {
-    padding: 1.125rem 1.25rem;
-  }
-
-  .arrowCircle {
-    width: 3rem;
-    height: 3rem;
   }
 }
 
@@ -643,11 +513,6 @@
 @media (max-width: 968px) {
   .footerContainer {
     padding: 4rem 3rem;
-  }
-
-  .onboardingFormWrapper {
-    top: 4rem;
-    left: 3rem;
   }
 
   .topSection {
@@ -680,11 +545,6 @@
 @media (max-width: 640px) {
   .footerContainer {
     padding: 3rem 1.5rem;
-  }
-
-  .onboardingFormWrapper {
-    top: 3rem;
-    left: 1.5rem;
   }
 
   .navLink {

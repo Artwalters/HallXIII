@@ -65,15 +65,12 @@ const partnersItem = {
 export default function CoachingSection() {
   return (
     <section className={styles.section}>
-      {/* Gradient Transition */}
-      <div className={styles.gradientTop} />
-
       {/* Top Marquee */}
       <MarqueeScroll
         title="COACHING TRAJECTEN"
         subtitle={<>Ontdek je<br />potentieel</>}
         direction={-1}
-        rotate={-0.5}
+        rotate={0}
       />
 
       <div className={styles.divider} />
@@ -90,16 +87,6 @@ export default function CoachingSection() {
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
-                  <a href="#" className={styles.link}>
-                    <span className={styles.linkText}>meer info</span>
-                    <Image
-                      src="/assets/underline-1.svg"
-                      alt=""
-                      width={94}
-                      height={2}
-                      className={styles.underline}
-                    />
-                  </a>
                 </div>
                 <div className={styles.imageWrapper}>
                   <Image
@@ -128,16 +115,6 @@ export default function CoachingSection() {
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
-                  <a href="#" className={styles.link}>
-                    <span className={styles.linkText}>meer info</span>
-                    <Image
-                      src="/assets/underline-1.svg"
-                      alt=""
-                      width={94}
-                      height={2}
-                      className={styles.underline}
-                    />
-                  </a>
                 </div>
               </>
             )}
@@ -145,47 +122,34 @@ export default function CoachingSection() {
         ))}
       </div>
 
-      {/* Partners Section with Cream Background */}
-      <div className={styles.partnersSection} data-nav-dark>
-        <div className={styles.divider} />
+      <div className={styles.divider} />
 
-        {/* Bottom Marquee */}
-        <MarqueeScroll
-          title="ONZE PARTNERS"
-          subtitle={<>expertise<br />in de sport</>}
-          direction={1}
-          rotate={0.5}
-        />
+      {/* Bottom Marquee */}
+      <MarqueeScroll
+        title="ONZE PARTNERS"
+        subtitle={<>expertise<br />in de sport</>}
+        direction={1}
+        rotate={0}
+      />
 
-        {/* Partners Content */}
-        <div className={styles.container}>
-          <div className={styles.coachingItem}>
-            <div className={styles.imageWrapper}>
-              <Image
-                src={partnersItem.image}
-                alt={partnersItem.imageAlt}
-                fill
-                sizes="(max-width: 768px) 100vw, 518px"
-                className={styles.image}
-              />
+      {/* Partners Content */}
+      <div className={styles.container}>
+        <div className={`${styles.coachingItem} ${styles.partnersItem}`}>
+          <div className={styles.imageWrapper}>
+            <Image
+              src={partnersItem.image}
+              alt={partnersItem.imageAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, 518px"
+              className={styles.image}
+            />
+          </div>
+          <div className={styles.textContent}>
+            <div className={styles.header}>
+              <p className={styles.category}>{partnersItem.number} {partnersItem.category}</p>
+              <h2 className={styles.title}>{partnersItem.title}</h2>
             </div>
-            <div className={styles.textContent}>
-              <div className={styles.header}>
-                <p className={styles.category}>{partnersItem.number} {partnersItem.category}</p>
-                <h2 className={styles.title}>{partnersItem.title}</h2>
-              </div>
-              <p className={styles.description}>{partnersItem.description}</p>
-              <a href="#" className={styles.link}>
-                <span className={styles.linkText}>meer info</span>
-                <Image
-                  src="/assets/underline-1.svg"
-                  alt=""
-                  width={94}
-                  height={2}
-                  className={styles.underline}
-                />
-              </a>
-            </div>
+            <p className={styles.description}>{partnersItem.description}</p>
           </div>
         </div>
       </div>

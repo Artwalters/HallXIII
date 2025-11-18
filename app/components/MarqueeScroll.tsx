@@ -27,7 +27,7 @@ export default function MarqueeScroll({
   direction = -1,
   speed = 25,
   scrollSpeed = 10,
-  backgroundColor = '#4687b0',
+  backgroundColor = 'transparent',
   showIcon = true,
   rotate = 0,
   paddingTop,
@@ -36,7 +36,6 @@ export default function MarqueeScroll({
   const marqueeRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!marqueeRef.current || !scrollRef.current || !contentRef.current) return;
@@ -81,22 +80,6 @@ export default function MarqueeScroll({
         },
       }).totalProgress(0.5);
 
-      // Add texture animation - use backgroundPosition instead of transform
-      let textureAnimation;
-      if (overlayRef.current) {
-        // Use a very large distance to prevent visible resets
-        const pixelsToMove = contentWidth * 10;
-
-        textureAnimation = gsap.to(overlayRef.current, {
-          backgroundPositionX: `-=${pixelsToMove}px`,
-          repeat: -1,
-          duration: calculatedSpeed * 10,
-          ease: 'linear',
-        }).totalProgress(0.5);
-        textureAnimation.timeScale(direction);
-        textureAnimation.play();
-      }
-
       animation.timeScale(direction);
       animation.play();
 
@@ -109,9 +92,6 @@ export default function MarqueeScroll({
           const isInverted = self.direction === 1;
           const currentDirection = isInverted ? -direction : direction;
           animation.timeScale(currentDirection);
-          if (textureAnimation) {
-            textureAnimation.timeScale(currentDirection);
-          }
         },
       });
 
@@ -148,32 +128,11 @@ export default function MarqueeScroll({
       }}
     >
       <div ref={scrollRef} className={styles.marqueeScroll}>
-        {/* Texture Overlay - moves with marqueeScroll */}
-        <div ref={overlayRef} className={styles.overlay} />
-
         <div className={styles.marqueeInner}>
           <div ref={contentRef} data-marquee-content className={styles.marqueeContent}>
             <div className={styles.marqueeItem}>
               <h2 className={styles.title}>{title}</h2>
               <p className={styles.subtitle}>{subtitle}</p>
-              {showIcon && (
-                <div className={styles.iconWrapper}>
-                  <Image
-                    src="/assets/marquee-circle.svg"
-                    alt=""
-                    width={120}
-                    height={123}
-                    className={styles.iconCircle}
-                  />
-                  <Image
-                    src="/assets/arrow.svg"
-                    alt=""
-                    width={57}
-                    height={48}
-                    className={styles.iconArrow}
-                  />
-                </div>
-              )}
             </div>
           </div>
         </div>

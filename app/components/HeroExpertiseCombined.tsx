@@ -19,34 +19,7 @@ export default function HeroExpertiseCombined() {
   const middleColumnRef = useRef<HTMLDivElement>(null);
   const rightColumnRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Parallax Animation for Expertise Section Reveal
-    if (!expertiseWrapRef.current) return;
-
-    const el = expertiseWrapRef.current;
-    const inner = el.querySelector('[data-expertise-parallax-inner]') as HTMLElement;
-
-    if (!inner) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: inner,
-        start: 'top bottom',
-        end: 'top top',
-        scrub: true
-      }
-    });
-
-    // Expertise section moves UP from -35% to 0%
-    tl.from(inner, {
-      yPercent: -35,
-      ease: 'linear'
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
+  // Parallax effect removed
 
   useEffect(() => {
     // Image columns animation (from ExpertiseSection)
@@ -206,6 +179,45 @@ export default function HeroExpertiseCombined() {
       <Navigation />
 
       <div className={styles.wrapper} ref={wrapperRef}>
+        {/* Outer Content Container - buiten clip-path */}
+        <div className={styles.outerContentContainer}>
+          {/* Meet Hall13 Button - left */}
+          <div className={styles.meetHall13Container}>
+            <div className={styles.meetHall13Button}>
+              <Image
+                src="/assets/meet-button-bg.svg"
+                alt=""
+                fill
+                className={styles.meetButtonBg}
+              />
+              <div className={styles.meetButtonImage}>
+                <Image
+                  src="/assets/meet-preview.jpg"
+                  alt=""
+                  fill
+                  className={styles.meetPreviewImage}
+                />
+              </div>
+              <span className={styles.meetHall13Text}>meet hall13</span>
+            </div>
+          </div>
+
+          {/* Bottom row - OnboardingForm (left) + Tagline (right) */}
+          <div className={styles.bottomRow}>
+            {/* OnboardingForm - left */}
+            <div className={styles.onboardingWrapper}>
+              <OnboardingForm />
+            </div>
+
+            {/* Tagline - right */}
+            <div className={styles.taglineWrapper}>
+              <p className={styles.tagline}>
+                De hal waar sport en expertise samen komen
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* HERO SECTION */}
         <section className={styles.heroSection} ref={heroSectionRef}>
         <div className={styles.clippedContent}>
@@ -223,27 +235,6 @@ export default function HeroExpertiseCombined() {
 
             {/* Main Content */}
             <div className={styles.mainContent}>
-              {/* Meet Hall13 Button */}
-              <div className={styles.meetHall13Container}>
-                <div className={styles.meetHall13Button}>
-                  <Image
-                    src="/assets/meet-button-bg.svg"
-                    alt=""
-                    fill
-                    className={styles.meetButtonBg}
-                  />
-                  <div className={styles.meetButtonImage}>
-                    <Image
-                      src="/assets/meet-preview.jpg"
-                      alt=""
-                      fill
-                      className={styles.meetPreviewImage}
-                    />
-                  </div>
-                  <span className={styles.meetHall13Text}>meet hall13</span>
-                </div>
-              </div>
-
               {/* Left Side: Large HALL XIII Logo */}
               <div className={styles.hallLogoContainer}>
                 <h1 className={styles.hallLogo}>
@@ -260,21 +251,6 @@ export default function HeroExpertiseCombined() {
                     <path d="M112.692 148.204V190.559H54.9236V285.136C51.8492 285.164 48.9327 285.179 46.0163 285.193C43.1573 285.193 40.2984 285.193 37.4394 285.193H0V58.4238H54.7799V148.204H112.692Z" fill="currentColor"/>
                   </svg>
                 </h1>
-              </div>
-
-              {/* Bottom Section: OnboardingForm + Tagline */}
-              <div className={styles.bottomContent}>
-                {/* OnboardingForm */}
-                <div className={styles.onboardingWrapper}>
-                  <OnboardingForm />
-                </div>
-
-                {/* Tagline */}
-                <div className={styles.taglineWrapper}>
-                  <p className={styles.tagline}>
-                    De hal waar sport en expertise samen komen
-                  </p>
-                </div>
               </div>
             </div>
           </div>

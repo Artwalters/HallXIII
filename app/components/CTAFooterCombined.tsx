@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import OnboardingForm from './OnboardingForm';
 import styles from './CTAFooterCombined.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,24 +29,25 @@ export default function CTAFooterCombined() {
           }
         });
 
+        // Set initial positions
+        tl.set(digit1Ref.current, { yPercent: 0 });
+        tl.set(digit2Ref.current, { yPercent: -10 });
+        tl.set(digit3Ref.current, { yPercent: -30 });
+
         // Cijfer 1: blijft op 0 (geen animatie nodig)
         tl.to(digit1Ref.current, {
-          y: '1%',
+          yPercent: 0,
           duration: 1,
         }, 0)
         // Cijfer 2: van 1 naar 0 (terugtellen)
-        .fromTo(digit2Ref.current, {
-          y: '-9%',
-        }, {
-          y: '1%',
+        .to(digit2Ref.current, {
+          yPercent: 0,
           duration: 1,
           ease: 'none',
         }, 0)
         // Cijfer 3: van 3 naar 0 (terugtellen)
-        .fromTo(digit3Ref.current, {
-          y: '-29%',
-        }, {
-          y: '1%',
+        .to(digit3Ref.current, {
+          yPercent: 0,
           duration: 1,
           ease: 'none',
         }, 0);
@@ -118,68 +118,55 @@ export default function CTAFooterCombined() {
 
       {/* CTA SECTION */}
       <section className={styles.ctaSection} ref={ctaSectionRef}>
-        <div className={styles.clippedContent}>
-          {/* Texture Overlay */}
-          <div className={styles.overlay}>
-            <Image
-              src="/assets/overlays/overlay.jpg"
-              alt=""
-              fill
-              className={styles.overlayImage}
-            />
-          </div>
+        {/* Texture Overlay - achter alles */}
+        <div className={styles.overlay}>
+          <Image
+            src="/assets/overlays/overlay.jpg"
+            alt=""
+            fill
+            className={styles.overlayImage}
+          />
+        </div>
 
+        <div className={styles.clippedContent}>
           <div className={styles.ctaContainer}>
             {/* Content Wrapper - centered */}
             <div className={styles.contentWrapper}>
               {/* 013 Number with Counter Animation */}
-              <div className={styles.numberWrapper}>
-                <h2 className={styles.bigNumber}>
-                  <div className={styles.counterContainer}>
-                    <div className={styles.digitWrapper}>
-                      <div className={styles.digitColumn} ref={digit1Ref}>
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                      </div>
-                    </div>
-                    <div className={styles.digitWrapper}>
-                      <div className={styles.digitColumn} ref={digit2Ref}>
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                      </div>
-                    </div>
-                    <div className={styles.digitWrapper}>
-                      <div className={styles.digitColumn} ref={digit3Ref}>
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                      </div>
-                    </div>
+              <div className={styles.numberContainer}>
+                <div className={`${styles.numberGroup} ${styles.digit1}`}>
+                  <div className={styles.numberWrap} ref={digit1Ref}>
+                    <span className={styles.number}>0</span>
                   </div>
-                </h2>
+                </div>
+                <div className={`${styles.numberGroup} ${styles.digit2}`}>
+                  <div className={styles.numberWrap} ref={digit2Ref}>
+                    <span className={styles.number}>0</span>
+                    <span className={styles.number}>1</span>
+                    <span className={styles.number}>2</span>
+                    <span className={styles.number}>3</span>
+                    <span className={styles.number}>4</span>
+                    <span className={styles.number}>5</span>
+                    <span className={styles.number}>6</span>
+                    <span className={styles.number}>7</span>
+                    <span className={styles.number}>8</span>
+                    <span className={styles.number}>9</span>
+                  </div>
+                </div>
+                <div className={`${styles.numberGroup} ${styles.digit3}`}>
+                  <div className={styles.numberWrap} ref={digit3Ref}>
+                    <span className={styles.number}>0</span>
+                    <span className={styles.number}>1</span>
+                    <span className={styles.number}>2</span>
+                    <span className={styles.number}>3</span>
+                    <span className={styles.number}>4</span>
+                    <span className={styles.number}>5</span>
+                    <span className={styles.number}>6</span>
+                    <span className={styles.number}>7</span>
+                    <span className={styles.number}>8</span>
+                    <span className={styles.number}>9</span>
+                  </div>
+                </div>
               </div>
 
               {/* Main Text */}
@@ -190,25 +177,6 @@ export default function CTAFooterCombined() {
               </div>
             </div>
 
-            {/* CTA Section */}
-            <div className={styles.ctaWrapper}>
-              <div className={styles.buttonWrapper}>
-                <button className={styles.ctaButton}>
-                  <span>beginnen met coaching</span>
-                </button>
-                <div className={styles.arrowCircle}>
-                  <svg width="100%" height="100%" viewBox="0 0 57 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="28.5" cy="29" r="28.5" fill="#285A66"/>
-                    <path d="M20 29H37M37 29L30 22M37 29L30 36" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-
-              {/* LID WORDEN Text */}
-              <div className={styles.lidText}>
-                <p className={styles.lidWordenText}>lid worden?</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -224,11 +192,6 @@ export default function CTAFooterCombined() {
           data-footer-parallax-inner
         >
           <div className={styles.footerContainer}>
-            {/* Onboarding Form - linksboven */}
-            <div className={styles.onboardingFormWrapper}>
-              <OnboardingForm />
-            </div>
-
             {/* Top Section */}
             <div className={styles.topSection}>
               {/* Main Nav and Legal Links */}
