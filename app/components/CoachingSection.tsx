@@ -146,7 +146,7 @@ export default function CoachingSection() {
       </div>
 
       {/* Partners Section with Cream Background */}
-      <div className={styles.partnersSection}>
+      <div className={styles.partnersSection} data-nav-dark>
         <div className={styles.divider} />
 
         {/* Bottom Marquee */}

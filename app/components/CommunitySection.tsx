@@ -5,7 +5,25 @@ import styles from './CommunitySection.module.css';
 
 export default function CommunitySection() {
   return (
-    <section className={styles.section}>
+    <>
+      {/* SVG Filter Definition for Emboss Effect */}
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="communityEmbossFilter" x="-50%" y="-50%" width="200%" height="200%">
+            {/* Create bevel effect using specular lighting */}
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+            <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.5"
+                                specularExponent="20" lightingColor="white" result="specOut">
+              <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
+            <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic"
+                         k1="0" k2="1" k3="0.3" k4="0"/>
+          </filter>
+        </defs>
+      </svg>
+
+      <section className={styles.section}>
       {/* Texture Overlay */}
       <div className={styles.overlay}>
         <Image
@@ -63,5 +81,6 @@ export default function CommunitySection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

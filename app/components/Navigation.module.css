@@ -14,25 +14,13 @@
   pointer-events: auto;
 }
 
-@media (min-width: 640px) {
-  .menuButton {
-    top: 2.5rem;
-    left: 3rem;
-  }
-}
 
-@media (min-width: 1024px) {
-  .menuButton {
-    top: 3rem;
-    left: 4rem;
-  }
-}
 
 /* Menu Text */
 .menuText {
   position: relative;
   font-family: var(--font-relost);
-  font-size: 1.59375rem;
+  font-size: 2em;
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1;
@@ -45,11 +33,7 @@
   padding-left: 1.25rem;
 }
 
-@media (min-width: 1024px) {
-  .menuText {
-    font-size: 2.625rem;
-  }
-}
+
 
 /* WhatsApp Link */
 .whatsappLink {
@@ -64,39 +48,7 @@
   pointer-events: auto;
 }
 
-@media (min-width: 640px) {
-  .whatsappLink {
-    top: 2.5rem;
-    right: 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .whatsappLink {
-    top: 3rem;
-    right: 4rem;
-  }
-}
-
 .whatsappLink svg {
-  width: calc(32px * 1.3);
-  height: calc(32px * 1.3);
-}
-
-@media (min-width: 640px) {
-  .whatsappLink svg {
-    width: calc(36px * 1.3);
-    height: calc(36px * 1.3);
-  }
-}
-
-@media (min-width: 1024px) {
-  .whatsappLink svg {
-    width: calc(44px * 1.3);
-    height: calc(44px * 1.3);
-  }
-}
-
-.whatsappLink:hover {
-  opacity: 0.7;
+  width: 3em;
+  height: 3em;
 }

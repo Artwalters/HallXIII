@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navigation() {
   const menuTextRef = useRef<HTMLSpanElement>(null);
   const whatsappRef = useRef<HTMLAnchorElement>(null);
+  const menuButtonRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -51,6 +52,56 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
+    if (!menuButtonRef.current || !whatsappRef.current) return;
+
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      // Shrink to 1.5rem during scroll
+      gsap.to(menuButtonRef.current, {
+        top: '1.5rem',
+        left: '1.5rem',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+
+      gsap.to(whatsappRef.current, {
+        top: '1.5rem',
+        right: '1.5rem',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+
+      // Clear existing timeout
+      clearTimeout(scrollTimeout);
+
+      // Return to 2rem after scrolling stops
+      scrollTimeout = setTimeout(() => {
+        gsap.to(menuButtonRef.current, {
+          top: '2rem',
+          left: '2rem',
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+
+        gsap.to(whatsappRef.current, {
+          top: '2rem',
+          right: '2rem',
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      }, 150); // Wait 150ms after scroll stops
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!menuTextRef.current || !whatsappRef.current) return;
 
     gsap.to(menuTextRef.current, {
@@ -69,7 +120,7 @@ export default function Navigation() {
   return (
     <nav className={styles.navigation}>
       {/* Menu Button Container */}
-      <div className={styles.menuButton}>
+      <div ref={menuButtonRef} className={styles.menuButton}>
         {/* Menu Text */}
         <span ref={menuTextRef} className={styles.menuText}>menu</span>
       </div>

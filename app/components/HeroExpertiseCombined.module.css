@@ -8,7 +8,7 @@
 /* ===== HERO SECTION ===== */
 
 .heroSection {
-  background-color: #4687b0; /* Teal/blue from Figma */
+  background-color: var(--color-primary);
   position: absolute;
   top: 0;
   left: 0;
@@ -199,9 +199,14 @@
   position: relative;
 }
 
-.hallLogo img {
+.hallLogo svg {
   width: 100%;
   height: auto;
+  color: var(--color-dark-primary);
+  filter:
+    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
+    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
+    brightness(0.98);
 }
 
 /* Bottom Content */
@@ -232,7 +237,7 @@
   transform: rotate(-1.659deg);
   line-height: 1.15;
   text-transform: lowercase;
-  max-width: 26.579rem;
+  max-width: 12.5em;
   text-align: right;
 }
 

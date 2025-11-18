@@ -36,6 +36,7 @@ export default function MarqueeScroll({
   const marqueeRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!marqueeRef.current || !scrollRef.current || !contentRef.current) return;
@@ -80,6 +81,22 @@ export default function MarqueeScroll({
         },
       }).totalProgress(0.5);
 
+      // Add texture animation - use backgroundPosition instead of transform
+      let textureAnimation;
+      if (overlayRef.current) {
+        // Use a very large distance to prevent visible resets
+        const pixelsToMove = contentWidth * 10;
+
+        textureAnimation = gsap.to(overlayRef.current, {
+          backgroundPositionX: `-=${pixelsToMove}px`,
+          repeat: -1,
+          duration: calculatedSpeed * 10,
+          ease: 'linear',
+        }).totalProgress(0.5);
+        textureAnimation.timeScale(direction);
+        textureAnimation.play();
+      }
+
       animation.timeScale(direction);
       animation.play();
 
@@ -92,6 +109,9 @@ export default function MarqueeScroll({
           const isInverted = self.direction === 1;
           const currentDirection = isInverted ? -direction : direction;
           animation.timeScale(currentDirection);
+          if (textureAnimation) {
+            textureAnimation.timeScale(currentDirection);
+          }
         },
       });
 
@@ -110,6 +130,7 @@ export default function MarqueeScroll({
         { x: `${scrollStart}vw` },
         { x: `${-scrollStart}vw`, ease: 'none' }
       );
+
     });
 
     return () => ctx.revert();
@@ -126,10 +147,10 @@ export default function MarqueeScroll({
         paddingBottom: paddingBottom
       }}
     >
-      {/* Texture Overlay */}
-      <div className={styles.overlay} />
-
       <div ref={scrollRef} className={styles.marqueeScroll}>
+        {/* Texture Overlay - moves with marqueeScroll */}
+        <div ref={overlayRef} className={styles.overlay} />
+
         <div className={styles.marqueeInner}>
           <div ref={contentRef} data-marquee-content className={styles.marqueeContent}>
             <div className={styles.marqueeItem}>
