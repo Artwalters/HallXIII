@@ -80,18 +80,22 @@
   position: relative;
   width: 100%;
   height: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 10;
+  container-type: inline-size;
 }
 
 /* Top Text */
 .topText {
   position: absolute;
-  top: 12rem; /* 192px / 16 = 12rem */
-  left: 15rem; /* 240px / 16 = 15rem */
+  top: 8rem;
+  left: var(--container-padding);
   text-align: left;
   z-index: 10;
 }
@@ -107,34 +111,26 @@
 
 /* Community Wrapper */
 .communityWrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 101;
 }
 
 /* Main Community Text */
 .communityText {
   font-family: var(--font-schabo);
-  font-size: 27vw; /* VW behouden voor dramatisch effect - schaalt perfect met viewport */
+  font-size: 35cqw; /* Terug naar vw voor volledige viewport breedte */
   font-weight: normal;
   color: var(--color-dark-brown);
   text-transform: uppercase;
   line-height: 1;
   margin: 0;
-  margin-top: 20vh; /* Positioneer text lager in de viewport */
   letter-spacing: normal;
   user-select: none;
   text-align: center;
   white-space: nowrap;
-  /* Embossed effect - same technique as hero logo */
-  filter:
-    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.4))
-    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.3))
-    brightness(0.95);
 }
 
 /* Social Section */
@@ -143,7 +139,10 @@
   flex-direction: column;
   align-items: center;
   gap: 1.25rem; /* 20px / 16 = 1.25rem */
-  position: relative;
+  position: absolute;
+  bottom: 10vh; /* Afstand van onderkant - pas dit aan naar wens */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 }
 
@@ -183,27 +182,3 @@
   object-fit: contain;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .topText {
-    top: 1.25rem; /* 20px / 16 = 1.25rem */
-    left: 1.5rem; /* 24px / 16 = 1.5rem */
-  }
-
-  .communityText {
-    font-size: 20vw; /* Smaller op mobiel */
-  }
-
-  .socialSection {
-    gap: 1.5rem; /* 24px / 16 = 1.5rem */
-  }
-
-  .socialText {
-    font-size: 2rem; /* 32px / 16 = 2rem */
-  }
-
-  .socialIcon {
-    width: 3rem; /* 48px / 16 = 3rem */
-    height: 3rem;
-  }
-}
