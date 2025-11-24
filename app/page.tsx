@@ -1,6 +1,7 @@
 import HeroExpertiseCombined from './components/HeroExpertiseCombined';
 import CoachingSection from './components/CoachingSection';
 import CoachesSection from './components/CoachesSection';
+import GymSection from './components/GymSection';
 import CommunitySection from './components/CommunitySection';
 import ReviewSection from './components/ReviewSection';
 import CTAFooterCombined from './components/CTAFooterCombined';
@@ -9,12 +10,13 @@ export default function Home() {
   return (
     <main style={{ width: '100%', minHeight: '100vh' }}>
       <HeroExpertiseCombined />
+      <GymSection />
       <CoachingSection />
       <CoachesSection />
 
       {/* Wrapper met gradient achtergrond voor Community section */}
       <div style={{
-        background: 'linear-gradient(to bottom, var(--color-cream) 0%, var(--color-black) 100%)',
+        background: 'linear-gradient(to bottom, var(--color-black) 0%, var(--color-black) 100%)',
         position: 'relative'
       }}>
         <CommunitySection />

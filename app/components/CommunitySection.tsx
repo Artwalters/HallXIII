@@ -30,7 +30,7 @@ export default function CommunitySection() {
           <p className={styles.topLine}>gedreven door</p>
         </div>
 
-        <section className={styles.section}>
+        <section className={styles.section} data-nav-dark>
           {/* Texture Overlay */}
           <div className={styles.overlay}>
             <Image

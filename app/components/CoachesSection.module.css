@@ -1,19 +1,19 @@
 /* Section */
 .section {
   background-color: var(--color-cream);
-  padding: 5rem 0 8rem;
+  padding: 5rem 0 5rem;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 7.5rem 0 10rem;
+    padding: 7.5rem 0 7.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section {
-    padding: 10rem 0 12.5rem;
+    padding: 10rem 0 10rem;
   }
 }
 
@@ -23,17 +23,20 @@
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
+  padding-bottom: 8rem;
 }
 
 @media (min-width: 768px) {
   .container {
     padding: 0 3rem;
+    padding-bottom: 10rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
     padding: 0 4rem;
+    padding-bottom: 12.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem;
@@ -72,7 +75,7 @@
 
 .title {
   font-family: var(--font-schabo);
-  font-size: 9.375rem;
+  font-size: var(--font-h1);
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.71;
@@ -90,34 +93,35 @@
   }
 }
 
-/* Coaches List */
-.coachesList {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+/* Accordion CSS */
+.accordionCss {
+  position: relative;
 }
 
 @media (min-width: 1024px) {
-  .coachesList {
+  .accordionCss {
     max-width: 55rem;
-    margin-top: 8rem;
+    margin-top: 2.5rem;
   }
 }
 
-/* Coach Item */
-.coachItem {
-  position: relative;
-  overflow: hidden;
+.accordionList {
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  flex-flow: column;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: flex;
+  position: static;
 }
 
-.coachButtonBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10rem;
-  z-index: 0;
+.accordionItem {
   background-color: #181818;
+  border-radius: 0;
+  list-style: none;
+  position: relative;
+  overflow: hidden;
   clip-path: polygon(
     calc(100% - 14.81px) calc(100% - 3.839px),
     calc(100% - 14.81px) calc(100% - 3.839px),
@@ -268,33 +272,50 @@
   );
 }
 
-.coachButton.expanded .coachButtonBg {
-  height: 100%;
-}
-
-.buttonBgImage {
-  display: none;
-}
-
-.coachButton {
-  position: relative;
-  width: 100%;
-  height: 10rem;
-  background: none;
-  border: none;
+.accordionItemTop {
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
   cursor: pointer;
-  padding: 0;
-  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 1em 2rem 1em 1.36rem;
+  display: flex;
+  position: relative;
   z-index: 1;
 }
 
+.accordionItemBottom {
+  transition: grid-template-rows 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  grid-template-rows: 0fr;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-accordion-status="active"] .accordionItemBottom {
+  grid-template-rows: 1fr;
+}
+
+.accordionItemBottomWrap {
+  flex-flow: column;
+  height: 100000%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.accordionItemBottomContent {
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Coach Content */
 .coachContent {
   position: relative;
   display: flex;
   align-items: center;
   gap: 3.17rem;
-  padding-left: 1.36rem;
   z-index: 1;
   flex: 1;
 }
@@ -318,48 +339,35 @@
   color: var(--color-white);
   text-transform: uppercase;
   line-height: 1;
+  margin: 0;
+  font-weight: normal;
 }
 
-.chevron {
-  position: absolute;
-  right: 2rem;
-  top: 3.4rem;
-  z-index: 1;
+/* Accordion Icon */
+.accordionIcon {
+  transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  background-color: transparent;
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
   width: 3.2rem;
-  height: 2.125rem;
-}
-
-.chevron img {
-  width: 100%;
-  height: 100%;
-}
-
-
-/* Coach Description - Grid based accordion */
-.coachDescriptionWrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-.coachDescriptionInner {
+  height: 3.2rem;
   display: flex;
-  flex-direction: column;
-  height: 100000%;
-  overflow: hidden;
-  position: relative;
+  transform: rotate(180deg);
 }
 
-.coachDescriptionContent {
-  padding: 0 2rem 2rem 2rem;
-  opacity: 0;
-  position: relative;
-  z-index: 1;
+[data-accordion-status="active"] .accordionIcon {
+  transform: rotate(0.001deg);
 }
 
+.accordionIconSvg {
+  width: 1.5rem;
+  color: var(--color-white);
+}
+
+/* Description Text */
 .descriptionText {
   font-family: var(--font-grifter);
   font-size: 1rem;
@@ -375,37 +383,46 @@
   }
 }
 
-/* Watermark */
-.watermark {
+/* Coach Photos Container */
+.coachPhotosContainer {
   position: absolute;
-  bottom: 3rem;
-  left: 1.5rem;
+  bottom: 12rem;
+  left: 1rem;
+  width: 36rem;
+  height: 45rem;
+  overflow: hidden;
+  display: none;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
-  .watermark {
-    left: 3rem;
+  .coachPhotosContainer {
+    left: 2.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .watermark {
-    left: 4rem;
-    bottom: 4rem;
+  .coachPhotosContainer {
+    display: block;
+    left: 3.5rem;
+    border-bottom: 2px solid var(--color-black);
+    padding-bottom: 2rem;
+    width: 40rem;
   }
 }
 
-.watermarkText {
-  font-family: var(--font-schabo);
-  font-size: 2.66rem;
-  color: var(--color-dark-brown);
-  text-transform: uppercase;
-  opacity: 0.3;
-  font-weight: 100;
+.coachPhoto {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28rem;
+  height: 35rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  will-change: transform;
 }
 
-@media (min-width: 1024px) {
-  .watermarkText {
-    font-size: 3.5rem;
-  }
+.coachPhotoImage {
+  object-fit: cover;
 }

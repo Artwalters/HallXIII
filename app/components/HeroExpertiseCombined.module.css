@@ -33,42 +33,15 @@
 .heroSection {
   background-color: var(--color-primary);
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 110vh;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  width: calc(100% - 1.5rem);
+  height: calc(100vh - 1.5rem);
   min-height: 37.5rem;
   z-index: 10;
-  clip-path: polygon(
-    /* Top edge - straight */
-    0% 0%,
-    100% 0%,
-    /* Right edge */
-    100% 100%,
-    /* Bottom ripped edge */
-    95% 98.7%,
-    90% 98.5%,
-    85% 98.9%,
-    80% 98.3%,
-    75% 98.7%,
-    70% 98%,
-    65% 98.6%,
-    60% 98.2%,
-    55% 98.8%,
-    50% 98.4%,
-    45% 98.7%,
-    40% 98.1%,
-    35% 98.9%,
-    30% 98.3%,
-    25% 98.6%,
-    20% 98%,
-    15% 98.8%,
-    10% 98.2%,
-    5% 99%,
-    0% 98.5%,
-    /* Left edge */
-    0% 0%
-  );
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 .clippedContent {
@@ -86,12 +59,32 @@
   height: 100%;
   z-index: 1000;
   pointer-events: none;
-  opacity: 0.08;
+  opacity: 1;
+  mix-blend-mode: screen;
 }
 
 .overlayImage {
   object-fit: cover;
   mix-blend-mode: screen;
+}
+
+/* Shadow Overlay */
+.shadowOverlay {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  z-index: 1001;
+  pointer-events: none;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.shadowOverlayImage {
+  object-fit: cover;
+  
 }
 
 .heroContainer {
@@ -227,7 +220,7 @@
 .hallLogo svg {
   width: 100%;
   height: auto;
-  color: var(--color-dark-primary);
+  color: var(--color-white);
   filter:
     drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
     drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))

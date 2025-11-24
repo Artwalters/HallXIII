@@ -18,6 +18,7 @@ export default function HeroExpertiseCombined() {
   const leftColumnRef = useRef<HTMLDivElement>(null);
   const middleColumnRef = useRef<HTMLDivElement>(null);
   const rightColumnRef = useRef<HTMLDivElement>(null);
+  const shadowOverlayRef = useRef<HTMLDivElement>(null);
 
   // Parallax effect removed
 
@@ -156,6 +157,50 @@ export default function HeroExpertiseCombined() {
     return () => ctx.revert();
   }, []);
 
+  // Shadow overlay mouse parallax effect
+  useEffect(() => {
+    if (!heroSectionRef.current || !shadowOverlayRef.current) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroSectionRef.current || !shadowOverlayRef.current) return;
+
+      const rect = heroSectionRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
+
+      // Invert movement for realistic light effect - shadow moves opposite to mouse
+      // Smooth movement for shadow overlay (max 40px in each direction)
+      gsap.to(shadowOverlayRef.current, {
+        x: -x * 40,
+        y: -y * 40,
+        duration: 1.5,
+        ease: 'power0.out',
+        overwrite: 'auto'
+      });
+    };
+
+    const handleMouseLeave = () => {
+      if (!shadowOverlayRef.current) return;
+
+      // Reset to center when mouse leaves
+      gsap.to(shadowOverlayRef.current, {
+        x: 0,
+        y: 0,
+        duration: 1.5,
+        ease: 'power0.out'
+      });
+    };
+
+    const heroSection = heroSectionRef.current;
+    heroSection.addEventListener('mousemove', handleMouseMove);
+    heroSection.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      heroSection.removeEventListener('mousemove', handleMouseMove);
+      heroSection.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
     <>
       {/* SVG Filter Definition for Emboss Effect */}
@@ -221,13 +266,22 @@ export default function HeroExpertiseCombined() {
         {/* HERO SECTION */}
         <section className={styles.heroSection} ref={heroSectionRef}>
         <div className={styles.clippedContent}>
-          {/* Texture Overlay */}
-          <div className={styles.overlay}>
+          {/* Texture Overlay - Noise */}
+          <div
+            className={styles.overlay}
+            style={{
+              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundRepeat: 'repeat'
+            }}
+          ></div>
+
+          {/* Shadow Overlay */}
+          <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
             <Image
-              src="/assets/overlays/overlay.jpg"
+              src="/assets/overlays/shadow_overlay.png"
               alt=""
               fill
-              className={styles.overlayImage}
+              className={styles.shadowOverlayImage}
             />
           </div>
 

@@ -91,11 +91,15 @@
   container-type: inline-size;
 }
 
-/* Top Text - buiten clip-path */
+/* Top Text - binnen max-width container */
 .topText {
   position: absolute;
-  top: 8rem;
-  left: var(--container-padding);
+  top: 12rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--container-max-width);
+  padding-left: var(--container-padding);
   text-align: left;
   z-index: 1000;
 }
