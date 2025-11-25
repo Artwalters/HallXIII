@@ -194,6 +194,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide scrollbar */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 body {
   background: var(--color-cream);
   color: var(--color-dark-primary);

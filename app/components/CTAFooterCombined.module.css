@@ -244,7 +244,7 @@
   position: relative;
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 5rem var(--container-padding) 4rem;
+  padding: 2.5rem var(--container-padding) 1.5rem;
   z-index: 2;
 }
 
@@ -254,7 +254,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .footerColumn {
@@ -398,7 +398,7 @@
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-cream);
+  color: var(--color-white);
 }
 
 .newsletterInputWrapper:hover .newsletterInputBorderSvg,
@@ -480,7 +480,8 @@
   z-index: 0;
 }
 
-.newsletterButton:hover .newsletterButtonBorder {
+.newsletterButton:hover .newsletterButtonBorder,
+.newsletterButton:focus .newsletterButtonBorder {
   opacity: 1;
 }
 
@@ -490,10 +491,11 @@
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-cream);
+  color: var(--color-white);
 }
 
-.newsletterButton:hover .newsletterButtonBorderSvg {
+.newsletterButton:hover .newsletterButtonBorderSvg,
+.newsletterButton:focus .newsletterButtonBorderSvg {
   animation: spriteBackground 0.5s steps(1, end) infinite;
 }
 
@@ -516,8 +518,13 @@
   color: var(--color-black);
 }
 
-.newsletterButton:hover .newsletterButtonBackSvg {
+.newsletterButton:hover .newsletterButtonBackSvg,
+.newsletterButton:focus .newsletterButtonBackSvg {
   animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+.newsletterButton:focus {
+  outline: none;
 }
 
 .newsletterArrow {
@@ -528,13 +535,22 @@
   z-index: 2;
 }
 
+.newsletterCaption {
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: var(--font-body);
+  color: var(--color-black);
+  text-transform: lowercase;
+  margin-top: 0.75rem;
+}
+
 /* Footer Logo */
 .footerLogo {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10rem 0 2rem;
+  margin: 3rem 0 0;
 }
 
 .footerLogoImage {
@@ -549,7 +565,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 0;
+  margin-top: -4.5rem;
 }
 
 .footerCredit {

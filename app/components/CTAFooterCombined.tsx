@@ -295,6 +295,7 @@ export default function CTAFooterCombined() {
                     </svg>
                   </button>
                 </div>
+                <span className={styles.newsletterCaption}>sign me up for the newsletter</span>
               </div>
             </div>
 
