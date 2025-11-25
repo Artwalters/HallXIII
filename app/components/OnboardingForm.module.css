@@ -1,11 +1,10 @@
 .container {
-  background: var(--color-dark-primary);
-  border: 1px solid var(--color-dark-gray);
+  background: var(--color-black);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
-  padding: 1rem 1.25rem; /* 16px, 20px / 16 = 1rem, 1.25rem */
-  border-radius: 0.5rem; /* 8px / 16 = 0.5rem */
+  gap: 0.8em;
+  padding: 1.1em 1.35em;
+  border-radius: 0.55em;
   width: 100%;
   flex-shrink: 0;
 }
@@ -13,28 +12,28 @@
 @media (min-width: 768px) {
   .container {
     border: 0;
-    gap: 1rem; /* 16px / 16 = 1rem */
-    padding: 1.25rem 1.5rem; /* 20px, 24px / 16 = 1.25rem, 1.5rem */
-    border-radius: 0.75rem; /* 12px / 16 = 0.75rem */
+    gap: 1.1em;
+    padding: 1.35em 1.6em;
+    border-radius: 0.8em;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 1.25rem 1.75rem; /* 20px, 28px / 16 = 1.25rem, 1.75rem */
-    max-width: 25.8125rem; /* 413px / 16 = 25.8125rem */
+    padding: 1.35em 1.9em;
+    max-width: 28em;
   }
 }
 
 .stepRow {
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
+  gap: 0.7em;
 }
 
 @media (min-width: 768px) {
   .stepRow {
-    gap: 1rem; /* 16px / 16 = 1rem */
+    gap: 0.95em;
   }
 }
 
@@ -47,7 +46,7 @@
 
 .stepText {
   color: var(--color-primary);
-  font-size: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
+  font-size: 0.7em;
   letter-spacing: -0.025em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -57,7 +56,7 @@
 
 .progressBar {
   background: rgba(231, 230, 226, 0.2);
-  height: 0.5rem; /* 8px / 16 = 0.5rem - scales with Osmo */
+  height: 0.5em;
   flex: 1;
   border-radius: 9999px;
   overflow: hidden;
@@ -78,48 +77,214 @@
 
 .titleText {
   color: var(--color-cream);
-  font-size: 0.875rem; /* 14px / 16 = 0.875rem - scales with Osmo */
+  font-size: 0.95em;
   letter-spacing: 0.025em;
-  text-transform: capitalize;
   line-height: 1.25;
   font-family: var(--font-grifter);
   font-weight: var(--font-weight-grifter-body);
 }
 
-@media (min-width: 768px) {
-  .titleText {
-    text-transform: uppercase;
-  }
-}
-
 @media (min-width: 1024px) {
   .titleText {
-    font-size: 1.125rem; /* 18px / 16 = 1.125rem - scales with Osmo */
+    font-size: 1.2em;
   }
 }
 
 .menuRow {
   display: flex;
-  gap: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
+  gap: 0.95em;
   align-items: center;
 }
 
 @media (min-width: 768px) {
   .menuRow {
-    gap: 1.5rem; /* 24px / 16 = 1.5rem */
+    gap: 1.4em;
   }
 }
 
 @media (min-width: 1024px) {
   .menuRow {
-    gap: 2rem; /* 32px / 16 = 2rem */
+    gap: 1.9em;
+  }
+}
+
+/* Dropdown Button - Stop Motion */
+.dropdownButton {
+  position: relative;
+  flex: 1;
+  height: 4.2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .dropdownButton {
+    height: 4.5em;
+    padding: 0 1.75em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dropdownButton {
+    height: 4.8em;
+    max-width: 24em;
+  }
+}
+
+/* Dropdown Border - white, behind dark */
+.dropdownButtonBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.dropdownButton:hover .dropdownButtonBorder {
+  opacity: 1;
+}
+
+.dropdownButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.dropdownButton:hover .dropdownButtonBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Dropdown Background - dark gray */
+.dropdownButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdownButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-dark-gray);
+}
+
+.dropdownButton:hover .dropdownButtonBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Dropdown Text */
+.dropdownButtonText {
+  position: relative;
+  color: var(--color-white);
+  font-size: 1.4em;
+  font-family: var(--font-relost);
+  font-weight: 400;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .dropdownButtonText {
+    font-size: 1.6em;
+  }
+}
+
+/* Dropdown Chevron */
+.dropdownChevron {
+  position: relative;
+  width: 1.7em;
+  height: 1.7em;
+  color: var(--color-white);
+  z-index: 2;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dropdownChevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Wrapper */
+.dropdownWrapper {
+  position: relative;
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .dropdownWrapper {
+    max-width: 18.5em;
+  }
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+  position: absolute;
+  bottom: calc(100% + 0.5em);
+  left: 0;
+  right: 0;
+  background: var(--color-dark-gray);
+  border-radius: 0.5em;
+  overflow: hidden;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownOption {
+  width: 100%;
+  padding: 0.8em 1.15em;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--color-white);
+  font-size: 0.95em;
+  font-family: var(--font-relost);
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.dropdownOption:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdownOptionSelected {
+  background: var(--color-primary);
+}
+
+.dropdownOptionSelected:hover {
+  background: var(--color-primary);
+}
+
+@media (min-width: 1024px) {
+  .dropdownOption {
+    font-size: 1.05em;
+    padding: 0.95em 1.4em;
   }
 }
 
 .dropdownContainer {
   position: relative;
   flex: 1;
-  max-width: 15rem; /* 240px / 16 = 15rem - scales with Osmo */
+  max-width: 14em;
 }
 
 .dropdownImage {
@@ -138,7 +303,7 @@
 .dropdownText {
   position: absolute;
   color: var(--color-white);
-  font-size: 0.875rem; /* 14px / 16 = 0.875rem - scales with Osmo */
+  font-size: 0.8em;
   left: 10%;
   top: 50%;
   transform: translateY(-50%);
@@ -147,45 +312,115 @@
   font-weight: 400;
 }
 
+/* Keyframes for sprite animation */
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
 .arrowButton {
   position: relative;
-  transition: transform 0.2s;
-  width: 3rem; /* 48px / 16 = 3rem - scales with Osmo */
-  height: 3rem;
+  width: 4.2em;
+  height: 4.2em;
   flex-shrink: 0;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-}
-
-.arrowButton:hover {
-  transform: scale(1.1);
-}
-
-.arrowButton:active {
-  transform: scale(0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
   .arrowButton {
-    width: 3.5rem; /* 56px / 16 = 3.5rem */
-    height: 3.5rem;
+    width: 4.5em;
+    height: 4.5em;
   }
 }
 
 @media (min-width: 1024px) {
   .arrowButton {
-    width: 4rem; /* 64px / 16 = 4rem */
-    height: 4rem;
+    width: 4.8em;
+    height: 4.8em;
   }
 }
 
-.arrowButton img {
-  display: block;
+/* Border - white, behind blue */
+.arrowButtonBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.arrowButton:hover .arrowButtonBorder {
+  opacity: 1;
+}
+
+.arrowButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.arrowButton:hover .arrowButtonBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Background - blue */
+.arrowButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.arrowButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-primary);
+}
+
+.arrowButton:hover .arrowButtonBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Arrow icon */
+.arrowIcon {
+  position: relative;
+  width: 1.8em;
+  height: 1.8em;
+  color: var(--color-white);
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .arrowIcon {
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .subtitleRow {
@@ -195,22 +430,18 @@
 }
 
 .subtitleText {
-  color: var(--color-dark-gray);
-  font-size: 0.75rem; /* 12px / 16 = 0.75rem - scales with Osmo */
+  color: var(--color-cream);
+  font-size: 0.7em;
   letter-spacing: -0.025em;
   line-height: 1.625;
-  font-weight: var(--font-weight-grifter-body);
+  font-weight: 300;
   font-family: var(--font-grifter);
-}
-
-@media (min-width: 768px) {
-  .subtitleText {
-    color: var(--color-cream);
-  }
+  font-style: italic;
+  opacity: 0.6;
 }
 
 @media (min-width: 1024px) {
   .subtitleText {
-    font-size: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
+    font-size: 0.8em;
   }
 }

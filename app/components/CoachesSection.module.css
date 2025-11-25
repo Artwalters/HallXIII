@@ -118,6 +118,7 @@
 .accordionItemWrapper {
   list-style: none;
   position: relative;
+  cursor: url("https://cdn.prod.website-files.com/684fd3662bf373c304f927ef/684fd3fa2e5a792140becaff_2b1e000c885a11daa778a26530dd8999_cursor-pointer.svg") 12 0, pointer;
 }
 
 /* Border element - zichtbaar achter accordion item bij active */
@@ -191,6 +192,7 @@
   position: relative;
   overflow: hidden;
   z-index: 2;
+  cursor: url("https://cdn.prod.website-files.com/684fd3662bf373c304f927ef/684fd3fa2e5a792140becaff_2b1e000c885a11daa778a26530dd8999_cursor-pointer.svg") 12 0, pointer;
   clip-path: polygon(
     calc(100% - 14px) calc(100% - 2.2px),
     calc(100% - 90px) calc(100% - 1.8px),
@@ -236,6 +238,11 @@
     calc(100% - 10px) calc(100% - 3.5px),
     calc(100% - 14px) calc(100% - 2.2px)
   );
+}
+
+.accordionItem *,
+.accordionItemWrapper * {
+  cursor: url("https://cdn.prod.website-files.com/684fd3662bf373c304f927ef/684fd3fa2e5a792140becaff_2b1e000c885a11daa778a26530dd8999_cursor-pointer.svg") 12 0, pointer !important;
 }
 
 /* Stop Motion Animation Keyframes - subtiel maar zichtbaar */
@@ -878,7 +885,7 @@
 .accordionItemTop {
   grid-column-gap: 1em;
   grid-row-gap: 1em;
-  cursor: pointer;
+  cursor: url("https://cdn.prod.website-files.com/684fd3662bf373c304f927ef/684fd3fa2e5a792140becaff_2b1e000c885a11daa778a26530dd8999_cursor-pointer.svg") 12 0, pointer;
   justify-content: space-between;
   align-items: center;
   padding: 1em 2rem 1em 1.36rem;

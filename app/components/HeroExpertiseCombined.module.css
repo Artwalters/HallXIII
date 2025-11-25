@@ -159,9 +159,8 @@
 
 /* Meet Hall13 Button */
 .meetHall13Container {
-  transform: rotate(-2.756deg);
   align-self: flex-start;
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 
 .meetHall13Button {
@@ -385,4 +384,147 @@
 
 .imageWrapper img {
   object-fit: cover;
+}
+
+/* ===== STOP MOTION BUTTON ===== */
+
+/* Keyframes for sprite animation (3 frames for background) */
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Keyframes for image stop-motion clip-path - subtiel */
+@keyframes imageStopMotion {
+  0%, 33.32% {
+    clip-path: polygon(1% 2%, 98% 1%, 99% 97%, 2% 98%);
+  }
+  33.33%, 66.65% {
+    clip-path: polygon(2% 1%, 99% 2%, 98% 98%, 1% 97%);
+  }
+  66.66%, 100% {
+    clip-path: polygon(1% 1%, 98% 2%, 99% 98%, 2% 97%);
+  }
+}
+
+/* Keyframes for wiggle animation - subtiel */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-0.5deg);
+  }
+  50% {
+    transform: rotate(0.5deg);
+  }
+}
+
+/* Stop Motion Button */
+.btnStopMotion {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transform: rotate(-2.756deg);
+}
+
+.btnStopMotionInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 1.25em;
+  min-width: 16em;
+  height: 3.3em;
+}
+
+/* Border SVG - white, slightly larger, behind black */
+.btnStopMotionBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.btnStopMotion:hover .btnStopMotionBorder {
+  opacity: 1;
+}
+
+.btnStopMotionBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.btnStopMotion:hover .btnStopMotionBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Background SVG */
+.btnStopMotionBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btnStopMotionBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-black);
+}
+
+.btnStopMotion:hover .btnStopMotionBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Image preview */
+.btnStopMotionImage {
+  position: relative;
+  width: 2.2em;
+  height: 2.2em;
+  flex-shrink: 0;
+  z-index: 2;
+  clip-path: polygon(1% 2%, 98% 1%, 99% 97%, 2% 98%);
+  margin-right: 0.25em;
+}
+
+.btnStopMotion:hover .btnStopMotionImage {
+  animation: imageStopMotion 0.5s steps(1, end) infinite;
+}
+
+/* Text */
+.btnStopMotionText {
+  position: relative;
+  font-family: var(--font-relost);
+  font-size: 1.59375em;
+  color: var(--color-white);
+  text-transform: lowercase;
+  line-height: 1;
+  z-index: 2;
+  margin: 0;
+}
+
+.btnStopMotion:hover .btnStopMotionText {
+  animation: wiggle 0.6s steps(2, end) infinite;
 }
