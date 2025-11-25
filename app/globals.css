@@ -23,6 +23,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/fonts/HelveticaNowDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ------------------------- Osmo Scaling System -------------------------  */
 /* Professional rem-based scaling system for consistent typography and spacing */
 
@@ -138,7 +162,7 @@
   /* Font Families */
   --font-schabo: 'SCHABO Condensed', sans-serif;
   --font-relost: 'Relost Brush', cursive;
-  --font-grifter: 'Grifter', sans-serif;
+  --font-grifter: 'Helvetica Now Display', sans-serif;
 
   /* ========== DESIGN SYSTEM COLORS ========== */
   /* Based on Figma Design Guide */
