@@ -99,8 +99,7 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: var(--container-max-width);
-  padding-left: var(--container-padding);
-  text-align: left;
+  text-align: center;
   z-index: 1000;
 }
 
@@ -113,34 +112,70 @@
   margin: 0;
 }
 
-/* Community Wrapper */
-.communityWrapper {
+/* Looping Words */
+.loopingWords {
+  height: 2.7em;
+  font-family: var(--font-schabo);
+  font-size: 30cqw;
+  font-weight: normal;
+  line-height: 1;
   position: relative;
   z-index: 101;
   width: 100%;
+}
+
+.loopingWordsList {
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  position: relative;
+}
+
+.loopingWordsItem {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Main Community Text */
-.communityText {
-  font-family: var(--font-schabo);
-  font-size: 30cqw;
-  font-weight: normal;
-  color: var(--color-dark-brown);
-  text-transform: uppercase;
-  line-height: 1;
+.loopingWordsText {
   margin: 0;
-  letter-spacing: normal;
-  user-select: none;
-  text-align: center;
-  white-space: nowrap;
+  color: var(--color-dark-brown);
   /* Embossed effect */
   filter:
     drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
     drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
     brightness(0.96);
+}
+
+.loopingWordsFade {
+  pointer-events: none;
+  background-image: linear-gradient(
+    var(--color-beige) 0%,
+    var(--color-beige) 32%,
+    rgba(232, 225, 211, 0) 38%,
+    rgba(232, 225, 211, 0) 68%,
+    var(--color-beige) 74%,
+    var(--color-beige) 100%
+  );
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.loopingWordsContainers {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Social Section */
@@ -153,7 +188,7 @@
   bottom: 10vh; /* Afstand van onderkant - pas dit aan naar wens */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 101;
 }
 
 .socialText {

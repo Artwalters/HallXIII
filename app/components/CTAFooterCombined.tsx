@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import OnboardingForm from './OnboardingForm';
 import styles from './CTAFooterCombined.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,9 +24,9 @@ export default function CTAFooterCombined() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ctaSectionRef.current,
-            start: 'top 10%',
+            start: 'top 50%',
             end: 'center center',
-            scrub: 1.5,
+            scrub: 3,
           }
         });
 
@@ -43,13 +44,13 @@ export default function CTAFooterCombined() {
         .to(digit2Ref.current, {
           yPercent: 0,
           duration: 1,
-          ease: 'none',
+          ease: 'power2.out',
         }, 0)
         // Cijfer 3: van 3 naar 0 (terugtellen)
         .to(digit3Ref.current, {
           yPercent: 0,
           duration: 1,
-          ease: 'none',
+          ease: 'power2.out',
         }, 0);
       });
 
@@ -63,9 +64,8 @@ export default function CTAFooterCombined() {
 
     const el = footerWrapRef.current;
     const inner = el.querySelector('[data-footer-parallax-inner]') as HTMLElement;
-    const dark = el.querySelector('[data-footer-parallax-dark]') as HTMLElement;
 
-    if (!inner || !dark) return;
+    if (!inner) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -81,12 +81,6 @@ export default function CTAFooterCombined() {
       yPercent: -25,
       ease: 'linear'
     });
-
-    // Dark overlay fades IN from 0.5 to 1
-    tl.from(dark, {
-      opacity: 0.5,
-      ease: 'linear'
-    }, '<');
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -116,19 +110,41 @@ export default function CTAFooterCombined() {
       {/* Black top overlay */}
       <div className={styles.blackTopOverlay} />
 
+      {/* Outer Content Container - buiten clip-path */}
+      <div className={styles.outerContentContainer}>
+        {/* Bottom Section - Onboarding Form + Title */}
+        <div className={styles.ctaBottomRow}>
+          <div className={styles.ctaFormWrapper}>
+            <OnboardingForm />
+          </div>
+          <div className={styles.ctaTitleWrapper}>
+            <h2 className={styles.ctaFormTitle}>WORD LID<br />VAN HALL 13!</h2>
+          </div>
+        </div>
+      </div>
+
       {/* CTA SECTION */}
       <section className={styles.ctaSection} ref={ctaSectionRef}>
-        {/* Texture Overlay - achter alles */}
-        <div className={styles.overlay}>
-          <Image
-            src="/assets/overlays/overlay.jpg"
-            alt=""
-            fill
-            className={styles.overlayImage}
-          />
-        </div>
-
         <div className={styles.clippedContent}>
+          {/* Texture Overlay */}
+          <div
+            className={styles.overlay}
+            style={{
+              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundRepeat: 'repeat',
+              backgroundSize: 'auto'
+            }}
+          />
+
+          {/* Shadow/Light Overlay */}
+          <div className={styles.shadowOverlay}>
+            <Image
+              src="/assets/overlays/shadow_overlay.png"
+              alt=""
+              fill
+              className={styles.shadowOverlayImage}
+            />
+          </div>
           <div className={styles.ctaContainer}>
             {/* Content Wrapper - centered */}
             <div className={styles.contentWrapper}>
@@ -176,7 +192,6 @@ export default function CTAFooterCombined() {
                 <p className={styles.mainText}>voor actie</p>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -194,6 +209,17 @@ export default function CTAFooterCombined() {
           <div className={styles.footerContainer}>
             {/* Top Section */}
             <div className={styles.topSection}>
+              {/* Logo */}
+              <div className={styles.footerLogo}>
+                <Image
+                  src="/assets/XIII_LOGO.svg"
+                  alt="Hall 13"
+                  width={120}
+                  height={60}
+                  className={styles.footerLogoImage}
+                />
+              </div>
+
               {/* Main Nav and Legal Links */}
               <div className={styles.topLinks}>
                 {/* Main Navigation */}
@@ -276,10 +302,6 @@ export default function CTAFooterCombined() {
             </div>
           </div>
         </footer>
-        <div
-          className={styles.dark}
-          data-footer-parallax-dark
-        />
       </div>
     </div>
     </>

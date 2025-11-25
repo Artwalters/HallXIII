@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import styles from './CoachesSection.module.css';
 
@@ -11,59 +11,83 @@ interface Coach {
   description: string;
   largeImage: string;
   rotation: number;
+  quote: string;
+  frameIndex: number;
+  flipFrame: boolean;
 }
+
+const frames = [
+  '/assets/frames poloroid/frame 1.png',
+  '/assets/frames poloroid/frame2.png',
+  '/assets/frames poloroid/frame 3.png',
+  '/assets/frames poloroid/frame4.png',
+];
+
+const handwritingFonts = [
+  '"Handlee", cursive',
+  '"Gochi Hand", cursive',
+  '"Shadows Into Light", cursive',
+];
 
 const coaches: Coach[] = [
   {
     name: 'RIM',
-    image: '/assets/coach-rim.jpg',
+    image: '/assets/expertise-1.jpg',
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
     largeImage: '/assets/expertise-1.jpg',
-    rotation: -3
+    rotation: -3,
+    quote: 'Train hard, stay humble',
+    frameIndex: 0,
+    flipFrame: false
   },
   {
     name: 'DYLAN',
-    image: '/assets/coach-dylan.jpg',
+    image: '/assets/expertise-2.jpg',
     description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
     largeImage: '/assets/expertise-2.jpg',
-    rotation: 4
+    rotation: 4,
+    quote: 'Mindset is everything',
+    frameIndex: 1,
+    flipFrame: true
   },
   {
     name: 'NOAH',
-    image: '/assets/coach-noah.jpg',
+    image: '/assets/expertise-3.jpg',
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
     largeImage: '/assets/expertise-3.jpg',
-    rotation: -5
+    rotation: -5,
+    quote: 'Stronger every day',
+    frameIndex: 2,
+    flipFrame: false
   },
   {
     name: 'MAARTEN',
-    image: '/assets/coach-maarten.jpg',
+    image: '/assets/expertise-4.jpg',
     description: 'Maarten combineert jarenlange ervaring in powerlifting met moderne trainingsmethoden.',
     largeImage: '/assets/expertise-4.jpg',
-    rotation: 3
+    rotation: 3,
+    quote: 'Consistency beats talent',
+    frameIndex: 3,
+    flipFrame: true
   },
   {
     name: 'MEREL',
-    image: '/assets/coach-merel.jpg',
+    image: '/assets/expertise-5.jpg',
     description: 'Merel is gespecialiseerd in begeleiding en coaching voor zowel beginners als gevorderden.',
     largeImage: '/assets/expertise-5.jpg',
-    rotation: -4
+    rotation: -4,
+    quote: 'Believe in yourself',
+    frameIndex: 0,
+    flipFrame: true
   },
 ];
 
 export default function CoachesSection() {
   const photoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const currentVisiblePhoto = useRef<string | null>(null);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
   const activeAccordion = useRef<string | null>(null);
 
   useEffect(() => {
-    // Initialize photo positions
-    Object.values(photoRefs.current).forEach((photo) => {
-      if (photo) {
-        gsap.set(photo, { y: '100%', rotation: 0 });
-      }
-    });
-
     function initAccordionCSS() {
       document.querySelectorAll('[data-accordion-css-init]').forEach((accordion) => {
         const closeSiblings = accordion.getAttribute('data-accordion-close-siblings') === 'true';
@@ -78,41 +102,22 @@ export default function CoachesSection() {
           const coachName = singleAccordion.getAttribute('data-coach-name');
           const wasActive = singleAccordion.getAttribute('data-accordion-status') === 'active';
 
-          // Update status first
           singleAccordion.setAttribute('data-accordion-status', wasActive ? 'not-active' : 'active');
 
           if (wasActive) {
-            // Closing accordion
             activeAccordion.current = null;
-            if (coachName && photoRefs.current[coachName]) {
-              gsap.killTweensOf(photoRefs.current[coachName]);
-              gsap.to(photoRefs.current[coachName], {
-                y: '100%',
-                duration: 0.6,
-                ease: 'power3.inOut',
-                onComplete: () => {
-                  if (currentVisiblePhoto.current === coachName) {
-                    currentVisiblePhoto.current = null;
-                  }
-                }
-              });
-            }
+            setActiveCard(null);
           } else {
-            // Opening accordion
             activeAccordion.current = coachName;
-            if (coachName && photoRefs.current[coachName]) {
-              showPhoto(coachName);
+            if (coachName) {
+              bringToFront(coachName);
             }
           }
 
           if (closeSiblings && !wasActive) {
             accordion.querySelectorAll('[data-accordion-status="active"]').forEach((sibling) => {
               if (sibling !== singleAccordion) {
-                const siblingName = sibling.getAttribute('data-coach-name');
                 sibling.setAttribute('data-accordion-status', 'not-active');
-                if (siblingName === activeAccordion.current) {
-                  activeAccordion.current = null;
-                }
               }
             });
           }
@@ -123,81 +128,51 @@ export default function CoachesSection() {
     initAccordionCSS();
   }, []);
 
-  const showPhoto = (coachName: string) => {
+  const bringToFront = (coachName: string) => {
     const targetPhoto = photoRefs.current[coachName];
     if (!targetPhoto) return;
 
-    // Kill any existing animations on target
-    gsap.killTweensOf(targetPhoto);
-
-    // If there's a different visible photo, animate both simultaneously
-    if (currentVisiblePhoto.current && currentVisiblePhoto.current !== coachName) {
-      const currentPhoto = photoRefs.current[currentVisiblePhoto.current];
-      if (currentPhoto) {
-        gsap.killTweensOf(currentPhoto);
-        // Animate out current photo (rotate back to 0 and down)
-        gsap.to(currentPhoto, {
-          y: '100%',
-          rotation: 0,
-          duration: 0.4,
-          ease: 'power2.in'
+    // Reset all cards z-index
+    Object.entries(photoRefs.current).forEach(([name, photo]) => {
+      if (photo && name !== coachName) {
+        gsap.to(photo, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out'
         });
+        photo.style.zIndex = '1';
       }
-    }
+    });
 
-    // Get rotation for this coach from data
-    const coach = coaches.find(c => c.name === coachName);
-    const rotation = coach?.rotation || 0;
-
-    // Animate in new photo with rotation
-    currentVisiblePhoto.current = coachName;
+    // Bring target to front with slight scale
+    targetPhoto.style.zIndex = '10';
     gsap.to(targetPhoto, {
-      y: 0,
-      rotation: rotation,
-      duration: 0.5,
+      scale: 1.02,
+      duration: 0.3,
       ease: 'power2.out'
     });
-  };
 
-  const hidePhoto = (coachName: string) => {
-    const targetPhoto = photoRefs.current[coachName];
-    if (!targetPhoto) return;
-
-    gsap.killTweensOf(targetPhoto);
-    gsap.to(targetPhoto, {
-      y: '100%',
-      rotation: 0,
-      duration: 0.4,
-      ease: 'power2.in',
-      onComplete: () => {
-        if (currentVisiblePhoto.current === coachName) {
-          currentVisiblePhoto.current = null;
-        }
-      }
-    });
+    setActiveCard(coachName);
   };
 
   const handleMouseEnter = (coachName: string) => {
-    // Only allow hover animations if no accordion is open
-    if (activeAccordion.current !== null) {
-      return;
-    }
-
-    showPhoto(coachName);
+    if (activeAccordion.current !== null) return;
+    bringToFront(coachName);
   };
 
   const handleMouseLeave = (coachName: string) => {
-    // Don't hide if this accordion is active
-    if (activeAccordion.current === coachName) {
-      return;
-    }
+    if (activeAccordion.current === coachName) return;
+    if (activeAccordion.current !== null) return;
 
-    // Only hide if no accordion is open
-    if (activeAccordion.current !== null) {
-      return;
+    const targetPhoto = photoRefs.current[coachName];
+    if (targetPhoto) {
+      gsap.to(targetPhoto, {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
     }
-
-    hidePhoto(coachName);
+    setActiveCard(null);
   };
 
   return (
@@ -217,32 +192,37 @@ export default function CoachesSection() {
                 key={coach.name}
                 data-accordion-status="not-active"
                 data-coach-name={coach.name}
-                className={styles.accordionItem}
+                className={styles.accordionItemWrapper}
                 onMouseEnter={() => handleMouseEnter(coach.name)}
                 onMouseLeave={() => handleMouseLeave(coach.name)}
               >
-                <div data-accordion-toggle="" className={styles.accordionItemTop}>
-                  <div className={styles.coachContent}>
-                    <div className={styles.coachImageWrapper}>
-                      <Image
-                        src={coach.image}
-                        alt={coach.name}
-                        fill
-                        className={styles.coachImage}
-                      />
+                {/* Border element - sibling, niet geclipt */}
+                <div className={styles.accordionBorder} />
+                {/* Accordion item met clip-path */}
+                <div className={styles.accordionItem}>
+                  <div data-accordion-toggle="" className={styles.accordionItemTop}>
+                    <div className={styles.coachContent}>
+                      <div className={styles.coachImageWrapper}>
+                        <Image
+                          src={coach.image}
+                          alt={coach.name}
+                          fill
+                          className={styles.coachImage}
+                        />
+                      </div>
+                      <h3 className={styles.coachName}>{coach.name}</h3>
                     </div>
-                    <h3 className={styles.coachName}>{coach.name}</h3>
+                    <div className={styles.accordionIcon}>
+                      <svg className={styles.accordionIconSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 36 36" fill="none">
+                        <path d="M28.5 22.5L18 12L7.5 22.5" stroke="currentColor" strokeWidth="3" strokeMiterlimit="10"></path>
+                      </svg>
+                    </div>
                   </div>
-                  <div className={styles.accordionIcon}>
-                    <svg className={styles.accordionIconSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 36 36" fill="none">
-                      <path d="M28.5 22.5L18 12L7.5 22.5" stroke="currentColor" strokeWidth="3" strokeMiterlimit="10"></path>
-                    </svg>
-                  </div>
-                </div>
-                <div className={styles.accordionItemBottom}>
-                  <div className={styles.accordionItemBottomWrap}>
-                    <div className={styles.accordionItemBottomContent}>
-                      <p className={styles.descriptionText}>{coach.description}</p>
+                  <div className={styles.accordionItemBottom}>
+                    <div className={styles.accordionItemBottomWrap}>
+                      <div className={styles.accordionItemBottomContent}>
+                        <p className={styles.descriptionText}>{coach.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -251,21 +231,49 @@ export default function CoachesSection() {
           </ul>
         </div>
 
-        {/* Coach Photos Container */}
+        {/* Stacked Coach Photos */}
         <div className={styles.coachPhotosContainer}>
-          {coaches.map((coach) => (
+          {coaches.map((coach, index) => (
             <div
               key={`photo-${coach.name}`}
               ref={(el) => { photoRefs.current[coach.name] = el; }}
               data-coach={coach.name}
+              data-frame-index={coach.frameIndex}
               className={styles.coachPhoto}
+              style={{
+                transform: `rotate(${coach.rotation}deg)`,
+                zIndex: coaches.length - index
+              }}
+              onMouseEnter={() => handleMouseEnter(coach.name)}
+              onMouseLeave={() => handleMouseLeave(coach.name)}
             >
-              <Image
-                src={coach.largeImage}
-                alt={coach.name}
-                fill
-                className={styles.coachPhotoImage}
-              />
+              <div className={styles.polaroidWrapper}>
+                <Image
+                  src={coach.largeImage}
+                  alt={coach.name}
+                  fill
+                  className={styles.coachPhotoImage}
+                />
+                {/* Polaroid Frame Overlay */}
+                <div className={styles.frameOverlay}>
+                  <Image
+                    src={frames[coach.frameIndex]}
+                    alt=""
+                    fill
+                    className={styles.frameImage}
+                    style={{ transform: coach.flipFrame ? 'scaleX(-1)' : 'none' }}
+                  />
+                </div>
+                {/* Quote */}
+                <div className={styles.quoteCaption}>
+                  <p
+                    className={styles.quoteText}
+                    style={{ fontFamily: handwritingFonts[index % handwritingFonts.length] }}
+                  >
+                    {coach.quote}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

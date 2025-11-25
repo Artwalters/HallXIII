@@ -29,9 +29,9 @@ export default function HeroExpertiseCombined() {
     const ctx = gsap.context(() => {
       // Configuration
       const speed = 200; // base animation speed in seconds
-      const leftDirection = -1; // -1 for down, 1 for up
-      const middleDirection = 1; // opposite of left
-      const rightDirection = -1; // same as left
+      const leftDirection: 1 | -1 = -1; // -1 for down, 1 for up
+      const middleDirection: 1 | -1 = 1; // opposite of left
+      const rightDirection: 1 | -1 = -1; // same as left
       const scrollSpeed = 10; // parallax strength
       const duplicate = 2;
 
@@ -83,9 +83,9 @@ export default function HeroExpertiseCombined() {
       }).totalProgress(0.5);
 
       // Set initial direction
-      gsap.set(leftCollections, { yPercent: leftDirection === 1 ? 100 : -100 });
-      gsap.set(middleCollections, { yPercent: middleDirection === 1 ? 100 : -100 });
-      gsap.set(rightCollections, { yPercent: rightDirection === 1 ? 100 : -100 });
+      gsap.set(leftCollections, { yPercent: (leftDirection as number) === 1 ? 100 : -100 });
+      gsap.set(middleCollections, { yPercent: (middleDirection as number) === 1 ? 100 : -100 });
+      gsap.set(rightCollections, { yPercent: (rightDirection as number) === 1 ? 100 : -100 });
 
       leftAnimation.timeScale(leftDirection);
       middleAnimation.timeScale(middleDirection);
@@ -113,9 +113,9 @@ export default function HeroExpertiseCombined() {
       });
 
       // Extra parallax scroll effect on columns
-      const leftScrollStart = leftDirection === -1 ? scrollSpeed : -scrollSpeed;
-      const middleScrollStart = middleDirection === -1 ? scrollSpeed : -scrollSpeed;
-      const rightScrollStart = rightDirection === -1 ? scrollSpeed : -scrollSpeed;
+      const leftScrollStart = (leftDirection as number) === -1 ? scrollSpeed : -scrollSpeed;
+      const middleScrollStart = (middleDirection as number) === -1 ? scrollSpeed : -scrollSpeed;
+      const rightScrollStart = (rightDirection as number) === -1 ? scrollSpeed : -scrollSpeed;
 
       gsap.timeline({
         scrollTrigger: {

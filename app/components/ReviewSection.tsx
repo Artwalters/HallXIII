@@ -265,8 +265,7 @@ export default function ReviewSection() {
         inertia: {
           rotation: {
             velocity: rotationVelocity,
-            end: 0,
-            ease: 'sine.out'
+            end: 0
           },
           resistance: inertiaResistance
         },

@@ -1,28 +1,54 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
 import styles from './CommunitySection.module.css';
 
+const LOOPING_WORDS = ['COMMUNITY', 'EVENTS', 'TEAMWERK', 'PASSIE', 'AMBITIE'];
+
 export default function CommunitySection() {
+  const wordListRef = useRef<HTMLUListElement>(null);
+  const wordsRef = useRef<HTMLLIElement[]>([]);
+
+  useEffect(() => {
+    const wordList = wordListRef.current;
+    if (!wordList) return;
+
+    const words = Array.from(wordList.children) as HTMLLIElement[];
+    const totalWords = words.length;
+    const wordHeight = 100 / totalWords;
+    let currentIndex = 0;
+
+    function moveWords() {
+      currentIndex++;
+
+      gsap.to(wordList, {
+        yPercent: -wordHeight * currentIndex,
+        duration: 1.2,
+        ease: 'elastic.out(1, 0.85)',
+        onComplete: function() {
+          if (currentIndex >= totalWords - 3) {
+            wordList.appendChild(wordList.children[0]);
+            currentIndex--;
+            gsap.set(wordList, { yPercent: -wordHeight * currentIndex });
+            words.push(words.shift()!);
+          }
+        }
+      });
+    }
+
+    const tl = gsap.timeline({ repeat: -1, delay: 1 });
+    tl.call(moveWords);
+    tl.to({}, { duration: 2 });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
   return (
     <>
-      {/* SVG Filter Definition for Emboss Effect */}
-      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-        <defs>
-          <filter id="communityEmbossFilter" x="-50%" y="-50%" width="200%" height="200%">
-            {/* Create bevel effect using specular lighting */}
-            <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
-            <feSpecularLighting in="blur" surfaceScale="3" specularConstant="0.5"
-                                specularExponent="20" lightingColor="white" result="specOut">
-              <fePointLight x="-5000" y="-10000" z="20000"/>
-            </feSpecularLighting>
-            <feComposite in="specOut" in2="SourceAlpha" operator="in" result="specOut"/>
-            <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic"
-                         k1="0" k2="1" k3="0.3" k4="0"/>
-          </filter>
-        </defs>
-      </svg>
-
       <div style={{ position: 'relative' }}>
         {/* Top Right Text - buiten clip-path */}
         <div className={styles.topText}>
@@ -42,13 +68,31 @@ export default function CommunitySection() {
           </div>
 
           <div className={styles.container}>
-            {/* Main Community Text */}
-            <div className={styles.communityWrapper}>
-              <h2 className={styles.communityText}>COMMUNITY</h2>
+            {/* Looping Words */}
+            <div className={styles.loopingWords}>
+              <div className={styles.loopingWordsContainers}>
+                <ul ref={wordListRef} className={styles.loopingWordsList}>
+                  {LOOPING_WORDS.map((word, index) => (
+                    <li
+                      key={index}
+                      className={styles.loopingWordsItem}
+                      ref={(el) => {
+                        if (el) wordsRef.current[index] = el;
+                      }}
+                    >
+                      <p className={styles.loopingWordsText}>{word}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.loopingWordsFade}></div>
             </div>
 
-            {/* Social Media Section */}
-            <div className={styles.socialSection}>
+          </div>
+        </section>
+
+        {/* Social Media Section - buiten clip-path */}
+        <div className={styles.socialSection}>
           <p className={styles.socialText}>volg ons</p>
           <div className={styles.socialIcons}>
             <a href="#" className={styles.socialIcon} aria-label="Instagram">
@@ -80,8 +124,6 @@ export default function CommunitySection() {
             </a>
           </div>
         </div>
-      </div>
-    </section>
       </div>
     </>
   );
