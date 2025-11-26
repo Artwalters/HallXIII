@@ -1,7 +1,7 @@
 /* Section */
 .section {
   background-color: var(--color-cream);
-  padding: 5rem 0 8rem;
+  padding: 5rem 0 12rem;
   position: relative;
 }
 
@@ -25,6 +25,28 @@
   position: relative;
 }
 
+/* Remove padding on mobile for full-width flick cards */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-relost);
+  font-size: var(--font-h4);
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-transform: lowercase;
+  position: relative;
+  z-index: 10;
+  transform: translateX(-4rem) rotate(-3deg);
+  display: inline-block;
+  width: 100%;
+}
+
 /* Title */
 .title {
   font-size: var(--font-h1);
@@ -34,7 +56,21 @@
   font-family: var(--font-schabo);
   font-weight: 100;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Add padding to subtitle and title on mobile since container has no padding */
+@media (max-width: 768px) {
+  .subtitle {
+    padding: 0 var(--container-padding);
+  }
+
+  .title {
+    padding: 0 var(--container-padding);
+    margin-bottom: 10rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -49,10 +85,17 @@
   }
 }
 
-/* Cards Grid */
+/* Desktop Cards Grid */
 .cardsGrid {
   display: flex;
   gap: 1rem;
+}
+
+/* Hide desktop grid on mobile */
+@media (max-width: 768px) {
+  .cardsGrid {
+    display: none;
+  }
 }
 
 /* Card */
@@ -71,4 +114,212 @@
 
 .cardImage {
   object-fit: cover;
+}
+
+/* Flick Group (Mobile Only) */
+.flickGroup {
+  position: relative;
+  display: none;
+  margin-top: 4rem;
+}
+
+/* Show flick cards only on mobile */
+@media (max-width: 768px) {
+  .flickGroup {
+    display: block;
+  }
+}
+
+.flickGroup[data-flick-drag-status="grab"] {
+  cursor: grab;
+}
+
+.flickGroup[data-flick-drag-status="grabbing"] {
+  cursor: grabbing;
+}
+
+.flickGroupRelativeObject {
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  max-width: 47em;
+  margin: 0 auto;
+  position: relative;
+}
+
+.flickGroupRelativeObjectBefore {
+  padding-top: 75%;
+}
+
+/* Mobile: more spacing to prevent overlap and accommodate larger cards */
+@media (max-width: 768px) {
+  .flickGroupRelativeObjectBefore {
+    padding-top: 120%;
+  }
+}
+
+.flickGroupCollection {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flickGroupList {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.flickGroupItem {
+  position: absolute;
+}
+
+/* Flick Card */
+.flickCard {
+  color: var(--color-white);
+  user-select: none;
+  background-color: var(--color-black);
+  border-radius: 1em;
+  justify-content: center;
+  align-items: center;
+  width: 23.5em;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile: wider cards */
+@media (max-width: 768px) {
+  .flickCard {
+    width: 32em;
+  }
+}
+
+.flickCardBefore {
+  padding-top: 150%;
+}
+
+/* Mobile: less tall cards */
+@media (max-width: 768px) {
+  .flickCardBefore {
+    padding-top: 130%;
+  }
+}
+
+.flickCardMedia {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.coverImage {
+  pointer-events: none;
+  object-fit: cover;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: auto;
+}
+
+/* Card Buttons Container */
+.flickCardButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 1.5em;
+  z-index: 2;
+}
+
+.flickCardBtn {
+  font-family: var(--font-relost);
+  background-color: var(--color-white);
+  border-radius: 2em;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  display: flex;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile: 3x larger button */
+@media (max-width: 768px) {
+  .flickCardBtn {
+    padding: 1.5em 4.5em;
+  }
+}
+
+.flickCardBtnSpan {
+  color: var(--color-black);
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: lowercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile: 3x larger text */
+@media (max-width: 768px) {
+  .flickCardBtnSpan {
+    font-size: 3em;
+  }
+}
+
+/* Dragger Overlay */
+.flickCardsDragger {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: pan-y;
+}
+
+/* Position Slides - Opacity Animation */
+[data-flick-cards-item-status] .flickCard {
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+[data-flick-cards-item-status="2-before"] .flickCard,
+[data-flick-cards-item-status="2-after"] .flickCard {
+  transition: opacity 0.2s ease;
+  opacity: 0.3;
+}
+
+[data-flick-cards-item-status="3-before"] .flickCard,
+[data-flick-cards-item-status="3-after"] .flickCard {
+  transition: opacity 0.2s ease;
+  opacity: 0.15;
+}
+
+[data-flick-cards-item-status="active"] .flickCard {
+  opacity: 1;
+}
+
+/* Animate Buttons */
+[data-flick-cards-item-status] .flickCardButtons {
+  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translate(0%, 50%) rotate(0.001deg);
+}
+
+[data-flick-cards-item-status="active"] .flickCardButtons {
+  opacity: 1;
+  transform: translate(0%, 0%) rotate(0.001deg);
 }

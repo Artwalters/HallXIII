@@ -9,8 +9,8 @@
 /* Menu Button Container */
 .menuButton {
   position: fixed;
-  top: 2rem;
-  left: 2rem;
+  top: 1.75rem;
+  left: 1.65rem;
   pointer-events: auto;
 }
 
@@ -26,11 +26,7 @@
   line-height: 1;
   z-index: 1;
   pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 3.075rem;
-  padding-left: 1.25rem;
+  display: inline-block;
 }
 
 
@@ -38,8 +34,8 @@
 /* WhatsApp Link */
 .whatsappLink {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: calc(1.75rem - 2px);
+  right: 1.65rem;
   z-index: 1001;
   display: flex;
   align-items: center;
@@ -49,6 +45,6 @@
 }
 
 .whatsappLink svg {
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
+  height: 2.5em;
 }

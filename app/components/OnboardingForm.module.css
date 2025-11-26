@@ -2,9 +2,9 @@
   background: var(--color-black);
   display: flex;
   flex-direction: column;
-  gap: 0.8em;
-  padding: 1.1em 1.35em;
-  border-radius: 0.55em;
+  gap: 1.2em;
+  padding: 1em 1.2em;
+  border-radius: 0.8em;
   width: 100%;
   flex-shrink: 0;
 }

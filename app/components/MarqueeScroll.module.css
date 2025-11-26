@@ -65,6 +65,13 @@
   transform: translateY(0.1em);
 }
 
+/* Mobile: adjust title position for better vertical centering */
+@media (max-width: 768px) {
+  .title {
+    transform: translateY(0.05em);
+  }
+}
+
 /* Subtitle (Relost Brush) */
 .subtitle {
   font-family: var(--font-relost);
@@ -74,6 +81,15 @@
   line-height: 1.1;
   margin: 0;
   user-select: none;
+  transform: translateY(0.15em);
+}
+
+/* Mobile: smaller subtitle for better centering */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 2.5em;
+    transform: translateY(0.2em);
+  }
 }
 
 /* Icon Wrapper */
@@ -102,4 +118,48 @@
   height: auto;
   object-fit: contain;
   z-index: 1;
+}
+
+/* Stop motion wiebel effect voor marquee text - subtiel */
+@keyframes textWobble {
+  0% {
+    transform: translateY(0.15em) rotate(-0.5deg) translate(0px, 0px);
+  }
+  33.33% {
+    transform: translateY(0.15em) rotate(0.3deg) translate(0.2px, -0.2px);
+  }
+  66.66% {
+    transform: translateY(0.15em) rotate(-0.2deg) translate(-0.2px, 0.2px);
+  }
+  100% {
+    transform: translateY(0.15em) rotate(-0.5deg) translate(0px, 0px);
+  }
+}
+
+/* Mobile variant with different translateY - subtiel */
+@keyframes textWobbleMobile {
+  0% {
+    transform: translateY(0.2em) rotate(-0.5deg) translate(0px, 0px);
+  }
+  33.33% {
+    transform: translateY(0.2em) rotate(0.3deg) translate(0.2px, -0.2px);
+  }
+  66.66% {
+    transform: translateY(0.2em) rotate(-0.2deg) translate(-0.2px, 0.2px);
+  }
+  100% {
+    transform: translateY(0.2em) rotate(-0.5deg) translate(0px, 0px);
+  }
+}
+
+/* Activeer wiebel effect op hover van marquee - alleen subtitle */
+.marqueeContainer:hover .subtitle {
+  animation: textWobble 0.4s steps(3, end) infinite;
+}
+
+/* Mobile: gebruik mobile variant */
+@media (max-width: 768px) {
+  .marqueeContainer:hover .subtitle {
+    animation: textWobbleMobile 0.4s steps(3, end) infinite;
+  }
 }

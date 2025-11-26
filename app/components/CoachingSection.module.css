@@ -26,6 +26,13 @@
   }
 }
 
+/* Mobile: smaller padding for more width */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 /* Coaching Item */
 .coachingItem {
   display: flex;
@@ -148,5 +155,6 @@
     width: 100%;
     max-width: 100%;
     order: 2;
+    aspect-ratio: 4 / 4.2;
   }
 }

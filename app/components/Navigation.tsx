@@ -57,17 +57,17 @@ export default function Navigation() {
     let scrollTimeout: NodeJS.Timeout;
 
     const handleScroll = () => {
-      // Shrink to 1.5rem during scroll
+      // Subtiel naar binnen tijdens scroll
       gsap.to(menuButtonRef.current, {
         top: '1.5rem',
-        left: '1.5rem',
+        left: '1.4rem',
         duration: 0.3,
         ease: 'power2.out'
       });
 
       gsap.to(whatsappRef.current, {
-        top: '1.5rem',
-        right: '1.5rem',
+        top: 'calc(1.5rem - 2px)',
+        right: '1.4rem',
         duration: 0.3,
         ease: 'power2.out'
       });
@@ -75,18 +75,18 @@ export default function Navigation() {
       // Clear existing timeout
       clearTimeout(scrollTimeout);
 
-      // Return to 2rem after scrolling stops
+      // Return to default position after scrolling stops
       scrollTimeout = setTimeout(() => {
         gsap.to(menuButtonRef.current, {
-          top: '2rem',
-          left: '2rem',
+          top: '1.75rem',
+          left: '1.65rem',
           duration: 0.5,
           ease: 'power2.out'
         });
 
         gsap.to(whatsappRef.current, {
-          top: '2rem',
-          right: '2rem',
+          top: 'calc(1.75rem - 2px)',
+          right: '1.65rem',
           duration: 0.5,
           ease: 'power2.out'
         });
