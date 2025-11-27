@@ -939,13 +939,89 @@
   flex: 1;
 }
 
-.coachImageWrapper {
+/* Coach Image Container - stop motion circle */
+.coachImageContainer {
   position: relative;
   width: 5.5rem;
   height: 5.5rem;
-  border-radius: 50%;
-  overflow: hidden;
   flex-shrink: 0;
+}
+
+/* Coach Image - met geanimeerde ellipse clip-path */
+.coachImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  clip-path: ellipse(46% 48% at 50% 50%);
+}
+
+/* Stop motion animatie op foto op hover/active */
+.accordionItemWrapper:hover .coachImageWrapper,
+[data-accordion-status="active"] .coachImageWrapper {
+  animation: coachPhotoStopMotion 0.5s steps(1, end) infinite;
+}
+
+/* Keyframes voor foto clip-path stop motion */
+@keyframes coachPhotoStopMotion {
+  0%, 33.32% {
+    clip-path: ellipse(46% 48% at 50% 50%);
+  }
+  33.33%, 66.65% {
+    clip-path: ellipse(48% 46% at 50% 50%);
+  }
+  66.66%, 99.99% {
+    clip-path: ellipse(46% 47% at 50% 50%);
+  }
+}
+
+/* Coach Image Ring - verschijnt op hover */
+.coachImageRing {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.accordionItemWrapper:hover .coachImageRing,
+[data-accordion-status="active"] .coachImageRing {
+  opacity: 1;
+}
+
+.coachImageRingSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.accordionItemWrapper:hover .coachImageRingSvg,
+[data-accordion-status="active"] .coachImageRingSvg {
+  animation: coachRingStopMotion 0.5s steps(1, end) infinite;
+}
+
+/* Keyframes voor ring stop motion */
+@keyframes coachRingStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
 }
 
 /* Stop motion wiebel effect voor coach foto */
@@ -991,14 +1067,9 @@
 /* Accordion Icon */
 .accordionIcon {
   transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
-  background-color: transparent;
-  border: 2px solid var(--color-white);
-  border-radius: 50%;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
-  width: 3.2rem;
-  height: 3.2rem;
   display: flex;
   transform: rotate(180deg);
 }
@@ -1010,6 +1081,52 @@
 .accordionIconSvg {
   width: 1.5rem;
   color: var(--color-white);
+}
+
+/* Stop Motion Icon */
+.accordionIconInner {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.accordionIconSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.accordionIconImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Keyframes voor icon sprite animatie */
+@keyframes accordionIconStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Animatie op hover */
+.accordionItemWrapper:hover .accordionIconSprite {
+  animation: accordionIconStopMotion 0.45s steps(1, end) infinite;
+}
+
+/* Animatie wanneer active */
+[data-accordion-status="active"] .accordionIconSprite {
+  animation: accordionIconStopMotion 0.45s steps(1, end) infinite;
 }
 
 /* Description Text */

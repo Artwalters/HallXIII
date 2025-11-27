@@ -193,7 +193,7 @@
 
 .socialText {
   font-family: var(--font-schabo);
-  font-size: var(--font-h3); /* Osmo design system */
+  font-size: var(--font-h3);
   color: var(--color-dark-brown);
   text-transform: uppercase;
   margin: 0;
@@ -208,22 +208,141 @@
 }
 
 .socialIcon {
-  width: 3.75rem; /* 60px / 16 = 3.75rem - scales with Osmo */
-  height: 3.75rem; /* 60px / 16 = 3.75rem */
+  position: relative;
+  width: 8.1rem;
+  height: 8.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.3s ease;
 }
 
-.socialIcon:hover {
-  transform: scale(1.1);
+/* Social Icon Border - white, behind dark */
+.socialIconBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
 }
 
-.socialIconImage {
+.socialIcon:hover .socialIconBorder {
+  opacity: 1;
+}
+
+.socialIconBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.socialIcon:hover .socialIconBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Social Icon Background */
+.socialIconBack {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.socialIconBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-dark-brown);
+}
+
+.socialIcon:hover .socialIconBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Social Icon Inner - icon container */
+.socialIconInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.socialIconSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.socialIconImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
   object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.socialIcon:hover .socialIconSprite {
+  animation: spriteIcon 0.45s steps(1, end) infinite;
+}
+
+/* Single sprite image approach */
+.socialIconSpriteImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  filter: brightness(0) invert(1);
+}
+
+.socialIcon:hover .socialIconSpriteImg {
+  animation: spriteIcon 0.45s steps(1, end) infinite;
+}
+
+/* Keyframes for icon sprite animation */
+@keyframes spriteIcon {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Keyframes for sprite animation */
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
 }
 

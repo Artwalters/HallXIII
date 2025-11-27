@@ -202,20 +202,33 @@ export default function CoachesSection() {
                 <div className={styles.accordionItem}>
                   <div data-accordion-toggle="" className={styles.accordionItemTop}>
                     <div className={styles.coachContent}>
-                      <div className={styles.coachImageWrapper}>
-                        <Image
-                          src={coach.image}
-                          alt={coach.name}
-                          fill
-                          className={styles.coachImage}
-                        />
+                      <div className={styles.coachImageContainer}>
+                        <div className={styles.coachImageWrapper}>
+                          <Image
+                            src={coach.image}
+                            alt={coach.name}
+                            fill
+                            className={styles.coachImage}
+                          />
+                        </div>
+                        <div className={styles.coachImageRing}>
+                          <svg className={styles.coachImageRingSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                            <ellipse cx="50" cy="50" rx="46" ry="48" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <ellipse cx="150" cy="50" rx="48" ry="46" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <ellipse cx="250" cy="50" rx="46" ry="47" stroke="currentColor" strokeWidth="4" fill="none" />
+                          </svg>
+                        </div>
                       </div>
                       <h3 className={styles.coachName}>{coach.name}</h3>
                     </div>
                     <div className={styles.accordionIcon}>
-                      <svg className={styles.accordionIconSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 36 36" fill="none">
-                        <path d="M28.5 22.5L18 12L7.5 22.5" stroke="currentColor" strokeWidth="3" strokeMiterlimit="10"></path>
-                      </svg>
+                      <div className={styles.accordionIconInner}>
+                        <div className={styles.accordionIconSprite}>
+                          <Image src="/assets/stopmotion_icons/down1.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                          <Image src="/assets/stopmotion_icons/down2.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                          <Image src="/assets/stopmotion_icons/down3.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className={styles.accordionItemBottom}>

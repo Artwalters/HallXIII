@@ -96,31 +96,73 @@ export default function CommunitySection() {
           <p className={styles.socialText}>volg ons</p>
           <div className={styles.socialIcons}>
             <a href="#" className={styles.socialIcon} aria-label="Instagram">
-              <Image
-                src="/assets/social-icon-1.svg"
-                alt=""
-                width={70}
-                height={70}
-                className={styles.socialIconImage}
-              />
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/insta1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/insta2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/insta3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
+            </a>
+            <a href="#" className={styles.socialIcon} aria-label="TikTok">
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/tiktok1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/tiktok2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/tiktok3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
             </a>
             <a href="#" className={styles.socialIcon} aria-label="Facebook">
-              <Image
-                src="/assets/social-icon-2.svg"
-                alt=""
-                width={70}
-                height={70}
-                className={styles.socialIconImage}
-              />
-            </a>
-            <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-              <Image
-                src="/assets/social-icon-3.svg"
-                alt=""
-                width={70}
-                height={70}
-                className={styles.socialIconImage}
-              />
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/facebook1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/facebook2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/facebook3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
             </a>
           </div>
         </div>
