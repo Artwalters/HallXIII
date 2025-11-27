@@ -83,6 +83,7 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  padding-bottom: 12rem; /* Push looping words up for social section space */
   display: flex;
   flex-direction: column;
   align-items: center;
