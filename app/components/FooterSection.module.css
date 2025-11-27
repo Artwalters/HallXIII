@@ -1,0 +1,168 @@
+.section {
+  background-color: var(--color-primary);
+  position: relative;
+  width: calc(100% - 1.5rem);
+  height: 110vh;
+  min-height: 37.5rem;
+  margin: 0 0.75rem;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+/* Texture Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+/* Shadow/Light Overlay */
+.shadowOverlay {
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  z-index: 1001;
+  pointer-events: none;
+  opacity: 1;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.shadowOverlayImage {
+  object-fit: cover;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  container-type: inline-size;
+}
+
+/* Content Wrapper */
+.contentWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  transform: translateY(-8vh);
+}
+
+/* 013 Number - Based on loading example */
+.numberContainer {
+  flex-flow: row;
+  align-items: flex-start;
+  font-size: 44cqw;
+  display: flex;
+  position: relative;
+  /* Embossed effect - same technique as hero logo */
+  filter:
+    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
+    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
+    brightness(0.98);
+}
+
+.numberGroup {
+  flex-flow: column;
+  flex-shrink: 0;
+  width: 0.36em;
+  height: 0.85em;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.numberWrap {
+  will-change: transform;
+  flex-flow: column;
+  display: flex;
+  position: relative;
+}
+
+.number {
+  text-transform: uppercase;
+  font-family: var(--font-schabo);
+  font-weight: normal;
+  color: var(--color-white);
+  line-height: 1;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+/* Main Text */
+.mainTextWrapper {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.mainText {
+  font-family: var(--font-schabo);
+  font-size: 13.5cqw;
+  font-weight: normal;
+  color: var(--color-white);
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  /* Embossed effect - same technique as hero logo */
+  filter:
+    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
+    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
+    brightness(0.98);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+  .section {
+    min-height: 43.75rem;
+  }
+
+  .mainTextWrapper {
+    text-align: left;
+  }
+
+  .mainText {
+    text-align: left;
+  }
+
+  /* Verberg eerste cijfer (linker 0) op kleine desktop */
+  .digit1 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    min-height: 37.5rem;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .mainTextWrapper {
+    margin-bottom: 10px;
+  }
+
+  .mainText {
+    text-align: left;
+  }
+}

@@ -4,7 +4,7 @@ import CoachesSection from './components/CoachesSection';
 import GymSection from './components/GymSection';
 import CommunitySection from './components/CommunitySection';
 import ReviewSection from './components/ReviewSection';
-import CTAFooterCombined from './components/CTAFooterCombined';
+import FooterSection from './components/FooterSection';
 
 export default function Home() {
   return (
@@ -27,8 +27,8 @@ export default function Home() {
         <ReviewSection />
       </div>
 
-      {/* CTA en Footer gecombineerd */}
-      <CTAFooterCombined />
+      {/* Footer Section */}
+      <FooterSection />
     </main>
   );
 }
