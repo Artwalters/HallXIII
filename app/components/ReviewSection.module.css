@@ -120,18 +120,18 @@
   z-index: 2;
 }
 
-/* Mobile: meer ruimte en speelser */
+/* Mobile: meer ruimte en speelser - om en om */
 @media (max-width: 767px) {
   .gridContainer {
-    column-gap: 2em;
-    row-gap: 6em;
+    column-gap: 1em;
+    row-gap: 4em;
   }
 
-  /* Speelse offsets op mobile */
-  .reviewItem:nth-child(1) { transform: translate(-1em, -1.5em) rotate(-3deg); }
-  .reviewItem:nth-child(2) { transform: translate(1.5em, 2em) rotate(4deg); }
-  .reviewItem:nth-child(3) { transform: translate(-0.5em, -1em) rotate(2deg); }
-  .reviewItem:nth-child(4) { transform: translate(1em, 1.5em) rotate(-2deg); }
+  /* Om en om layout - links hoog, rechts laag */
+  .reviewItem:nth-child(1) { transform: translate(-0.5em, 0) rotate(-3deg); }
+  .reviewItem:nth-child(2) { transform: translate(0.5em, 8em) rotate(4deg); }
+  .reviewItem:nth-child(3) { transform: translate(-0.5em, 0) rotate(2deg); }
+  .reviewItem:nth-child(4) { transform: translate(0.5em, 8em) rotate(-2deg); }
 }
 
 @media (min-width: 768px) {
