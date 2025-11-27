@@ -62,7 +62,7 @@ export default function FooterSection() {
       <div
         className={styles.overlay}
         style={{
-          backgroundImage: 'url(/HallXIII/assets/overlays/noise_repeat_texture.webp)',
+          backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
           backgroundRepeat: 'repeat',
           backgroundSize: 'auto'
         }}
@@ -71,7 +71,7 @@ export default function FooterSection() {
       {/* Shadow/Light Overlay */}
       <div className={styles.shadowOverlay}>
         <Image
-          src="/HallXIII/assets/overlays/shadow_overlay.png"
+          src="/assets/overlays/shadow_overlay.png"
           alt=""
           fill
           className={styles.shadowOverlayImage}

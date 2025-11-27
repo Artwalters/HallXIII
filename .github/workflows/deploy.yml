@@ -35,6 +35,20 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /HallXIII
+
+      - name: Fix asset paths for GitHub Pages
+        run: |
+          # Replace asset paths in CSS files
+          find ./out -name "*.css" -exec sed -i 's|url(/fonts/|url(/HallXIII/fonts/|g' {} \;
+          find ./out -name "*.css" -exec sed -i 's|url(/assets/|url(/HallXIII/assets/|g' {} \;
+          # Replace asset paths in HTML files
+          find ./out -name "*.html" -exec sed -i 's|"/assets/|"/HallXIII/assets/|g' {} \;
+          find ./out -name "*.html" -exec sed -i "s|'/assets/|'/HallXIII/assets/|g" {} \;
+          # Replace asset paths in JS files
+          find ./out -name "*.js" -exec sed -i 's|"/assets/|"/HallXIII/assets/|g' {} \;
+          find ./out -name "*.js" -exec sed -i "s|'/assets/|'/HallXIII/assets/|g" {} \;
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

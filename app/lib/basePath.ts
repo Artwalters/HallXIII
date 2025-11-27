@@ -1,5 +1,5 @@
 // Helper for GitHub Pages basePath
-const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export function getAssetPath(path: string): string {
   // Ensure path starts with /

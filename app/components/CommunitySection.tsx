@@ -99,9 +99,9 @@ export default function CommunitySection() {
             </div>
             <div className={styles.socialIconInner}>
               <div className={styles.socialIconSprite}>
-                <Image src="/HallXIII/assets/stopmotion_icons/insta1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/insta2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/insta3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/insta1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/insta2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/insta3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
               </div>
             </div>
           </a>
@@ -122,9 +122,9 @@ export default function CommunitySection() {
             </div>
             <div className={styles.socialIconInner}>
               <div className={styles.socialIconSprite}>
-                <Image src="/HallXIII/assets/stopmotion_icons/tiktok1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/tiktok2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/tiktok3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/tiktok1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/tiktok2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/tiktok3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
               </div>
             </div>
           </a>
@@ -145,9 +145,9 @@ export default function CommunitySection() {
             </div>
             <div className={styles.socialIconInner}>
               <div className={styles.socialIconSprite}>
-                <Image src="/HallXIII/assets/stopmotion_icons/facebook1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/facebook2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
-                <Image src="/HallXIII/assets/stopmotion_icons/facebook3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/facebook1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/facebook2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                <Image src="/assets/stopmotion_icons/facebook3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
               </div>
             </div>
           </a>
@@ -157,7 +157,7 @@ export default function CommunitySection() {
       {/* Texture Overlay - bovenop alles */}
       <div className={styles.overlay}>
         <Image
-          src="/HallXIII/assets/overlays/overlay.jpg"
+          src="/assets/overlays/overlay.jpg"
           alt=""
           fill
           className={styles.overlayImage}
