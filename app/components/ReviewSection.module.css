@@ -125,22 +125,11 @@
   .gridContainer {
     grid-template-columns: 1fr;
     row-gap: 5em;
+    justify-items: center;
   }
 
   .reviewItem {
-    max-width: 80%;
-    margin: 0 auto;
-  }
-
-  /* Afwisselend links/rechts */
-  .reviewItem:nth-child(odd) {
-    margin-left: 0;
-    margin-right: auto;
-  }
-
-  .reviewItem:nth-child(even) {
-    margin-left: auto;
-    margin-right: 0;
+    width: 80%;
   }
 }
 
@@ -304,11 +293,6 @@
 
   .titleWrapper {
     margin-bottom: 3em;
-  }
-
-  .gridContainer {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3em;
   }
 
   /* Minimale offsets op mobiel */
