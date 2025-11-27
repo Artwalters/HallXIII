@@ -21,13 +21,31 @@
   align-items: center;
 }
 
+/* Category Tag with Circle */
+.categoryTag {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin-bottom: 1em;
+}
+
+.categoryText {
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: var(--font-body-small);
+  font-weight: 900;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
 /* Title Circle - Stop Motion Animation */
 .titleCircle {
   position: relative;
-  width: 1em;
-  height: 1em;
+  width: 0.75em;
+  height: 0.75em;
   overflow: hidden;
-  margin-bottom: 0.5em;
+  flex-shrink: 0;
 }
 
 .titleCircleSprite {
@@ -41,8 +59,8 @@
 }
 
 .titleCircleSvg {
-  width: 1em;
-  height: 1em;
+  width: 0.75em;
+  height: 0.75em;
   flex-shrink: 0;
   color: var(--color-accent);
 }
