@@ -298,7 +298,6 @@ export default function ReviewSection() {
         {/* Title */}
         <div className={styles.titleWrapper}>
           <h2 className={styles.sectionTitle}>Hall of Fame</h2>
-          <p className={styles.subtitle}>prestaties waar wij trots op zijn</p>
         </div>
 
         {/* Klanten Reviews Grid */}
