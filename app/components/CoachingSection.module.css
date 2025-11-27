@@ -211,6 +211,37 @@
   animation: wiggle 0.6s steps(2, end) infinite;
 }
 
+/* Info Button Icon - Stop Motion Arrow Circle */
+.infoButtonIcon {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 2;
+  margin-right: 0.5em;
+}
+
+.infoButtonIconSprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  display: flex;
+}
+
+.infoButtonIconSvg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  color: var(--color-white);
+}
+
+.infoButton:hover .infoButtonIconSprite {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
 /* Image Wrapper */
 .imageWrapper {
   position: relative;
