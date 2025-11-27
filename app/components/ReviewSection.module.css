@@ -12,6 +12,12 @@
   position: relative;
 }
 
+@media (max-width: 991px) {
+  .container {
+    max-width: var(--container-max-width);
+  }
+}
+
 /* Title Wrapper */
 .titleWrapper {
   text-align: center;
