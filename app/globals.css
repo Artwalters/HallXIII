@@ -64,14 +64,12 @@
   --font-h2: 6em;      /* 72px - Section titles */
   --font-h3: 4em;        /* 48px - Subsection titles */
   --font-h4: 2em;        /* 32px - Small titles */
-  --font-body: 1.2em;      /* 16px - Body text */
+  --font-body: 1em;      /* 16px - Body text */
   --font-body-large: 1.125em; /* 18px - Large body text */
   --font-body-small: 0.875em; /* 14px - Small body text */
   --relost-button-size: 1.75em; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
 
-  /* Font Weights - Osmo Design System */
-  --font-weight-grifter-body: 400; /* Regular weight for Grifter body text */
 
   /* Container System */
   --container-max-width: 75vw;
@@ -141,8 +139,7 @@
   }
 }
 
-/* Mobile Portrait (320px - 479px) */
-@media screen and (max-width: 479px) {
+/* Mobile Portrait (320px - 479px) */@media screen and (max-width: 479px) {
   :root {
     --size-container-ideal: 562; /* Mobile portrait - adjusted for smaller h2 */
     --size-container-min: 320px;
@@ -153,7 +150,7 @@
     /* Container System - Mobile Portrait */
     --container-max-width: 95vw;
     --container-max-width-hero: 95vw;
-    --container-padding: 1.5rem;
+    --container-padding: 1rem;
   }
 }
 
