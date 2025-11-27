@@ -127,11 +127,11 @@
     row-gap: 4em;
   }
 
-  /* Om en om layout - links hoog, rechts laag */
-  .reviewItem:nth-child(1) { transform: translate(-0.5em, 0) rotate(-3deg); }
-  .reviewItem:nth-child(2) { transform: translate(0.5em, 8em) rotate(4deg); }
-  .reviewItem:nth-child(3) { transform: translate(-0.5em, 0) rotate(2deg); }
-  .reviewItem:nth-child(4) { transform: translate(0.5em, 8em) rotate(-2deg); }
+  /* Om en om layout - rechts lager met margin-top */
+  .reviewItem:nth-child(1) { margin-top: 0; }
+  .reviewItem:nth-child(2) { margin-top: 8em; }
+  .reviewItem:nth-child(3) { margin-top: 0; }
+  .reviewItem:nth-child(4) { margin-top: 8em; }
 }
 
 @media (min-width: 768px) {
