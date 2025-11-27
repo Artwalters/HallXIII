@@ -145,11 +145,11 @@
   clip-path: polygon(
     /* Start linksboven, ga met de klok mee */
     14px 2px,
-    90px 2.5px,
-    200px 1.8px,
-    330px 2.6px,
-    460px 2px,
-    590px 2.4px,
+    15% 2.5px,
+    30% 1.8px,
+    50% 2.6px,
+    70% 2px,
+    85% 2.4px,
     calc(100% - 14px) 2px,
     /* Rechtsboven hoek */
     calc(100% - 10px) 4px,
@@ -165,11 +165,11 @@
     calc(100% - 10px) calc(100% - 4px),
     /* Rechtsonder hoek */
     calc(100% - 14px) calc(100% - 2px),
-    590px calc(100% - 2.4px),
-    460px calc(100% - 2px),
-    330px calc(100% - 2.6px),
-    200px calc(100% - 1.8px),
-    90px calc(100% - 2.5px),
+    85% calc(100% - 2.4px),
+    70% calc(100% - 2px),
+    50% calc(100% - 2.6px),
+    30% calc(100% - 1.8px),
+    15% calc(100% - 2.5px),
     14px calc(100% - 2px),
     /* Linksonder hoek */
     10px calc(100% - 4px),
@@ -203,11 +203,11 @@
   clip-path: polygon(
     /* Start linksboven, ga met de klok mee */
     14px 2px,
-    90px 2.5px,
-    200px 1.8px,
-    330px 2.6px,
-    460px 2px,
-    590px 2.4px,
+    15% 2.5px,
+    30% 1.8px,
+    50% 2.6px,
+    70% 2px,
+    85% 2.4px,
     calc(100% - 14px) 2px,
     /* Rechtsboven hoek */
     calc(100% - 10px) 4px,
@@ -223,11 +223,11 @@
     calc(100% - 10px) calc(100% - 4px),
     /* Rechtsonder hoek */
     calc(100% - 14px) calc(100% - 2px),
-    590px calc(100% - 2.4px),
-    460px calc(100% - 2px),
-    330px calc(100% - 2.6px),
-    200px calc(100% - 1.8px),
-    90px calc(100% - 2.5px),
+    85% calc(100% - 2.4px),
+    70% calc(100% - 2px),
+    50% calc(100% - 2.6px),
+    30% calc(100% - 1.8px),
+    15% calc(100% - 2.5px),
     14px calc(100% - 2px),
     /* Linksonder hoek */
     10px calc(100% - 4px),
@@ -255,40 +255,40 @@
 @keyframes accordionStopMotion {
   0% {
     clip-path: polygon(
-      14px 1px, 90px 3px, 200px 1.5px, 330px 3.5px, 460px 1px, 590px 3px, calc(100% - 14px) 1.5px,
+      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 590px calc(100% - 3px), 460px calc(100% - 1px), 330px calc(100% - 3.5px), 200px calc(100% - 1.5px), 90px calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
       0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
     );
   }
   33.33% {
     clip-path: polygon(
-      14px 3px, 90px 1.5px, 200px 3.5px, 330px 1px, 460px 3px, 590px 1.5px, calc(100% - 14px) 3.5px,
+      14px 3px, 15% 1.5px, 30% 3.5px, 50% 1px, 70% 3px, 85% 1.5px, calc(100% - 14px) 3.5px,
       calc(100% - 10px) 5px, calc(100% - 6px) 8px, calc(100% - 3px) 12px, calc(100% - 1px) 17px, 100% 23px,
       100% calc(100% - 23px), calc(100% - 1px) calc(100% - 17px), calc(100% - 3px) calc(100% - 12px), calc(100% - 6px) calc(100% - 8px), calc(100% - 10px) calc(100% - 5px),
-      calc(100% - 14px) calc(100% - 3.5px), 590px calc(100% - 1.5px), 460px calc(100% - 3px), 330px calc(100% - 1px), 200px calc(100% - 3.5px), 90px calc(100% - 1.5px), 14px calc(100% - 3px),
+      calc(100% - 14px) calc(100% - 3.5px), 85% calc(100% - 1.5px), 70% calc(100% - 3px), 50% calc(100% - 1px), 30% calc(100% - 3.5px), 15% calc(100% - 1.5px), 14px calc(100% - 3px),
       10px calc(100% - 5px), 6px calc(100% - 8px), 3px calc(100% - 12px), 1px calc(100% - 17px), 0px calc(100% - 23px),
       0px 23px, 1px 17px, 3px 12px, 6px 8px, 10px 5px, 14px 3px
     );
   }
   66.66% {
     clip-path: polygon(
-      14px 2px, 90px 3.5px, 200px 1px, 330px 3px, 460px 2px, 590px 3.5px, calc(100% - 14px) 1px,
+      14px 2px, 15% 3.5px, 30% 1px, 50% 3px, 70% 2px, 85% 3.5px, calc(100% - 14px) 1px,
       calc(100% - 10px) 3.5px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 15.5px, 100% 21px,
       100% calc(100% - 21px), calc(100% - 1px) calc(100% - 15.5px), calc(100% - 3px) calc(100% - 10.5px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 10px) calc(100% - 3.5px),
-      calc(100% - 14px) calc(100% - 1px), 590px calc(100% - 3.5px), 460px calc(100% - 2px), 330px calc(100% - 3px), 200px calc(100% - 1px), 90px calc(100% - 3.5px), 14px calc(100% - 2px),
+      calc(100% - 14px) calc(100% - 1px), 85% calc(100% - 3.5px), 70% calc(100% - 2px), 50% calc(100% - 3px), 30% calc(100% - 1px), 15% calc(100% - 3.5px), 14px calc(100% - 2px),
       10px calc(100% - 3.5px), 6px calc(100% - 6.5px), 3px calc(100% - 10.5px), 1px calc(100% - 15.5px), 0px calc(100% - 21px),
       0px 21px, 1px 15.5px, 3px 10.5px, 6px 6.5px, 10px 3.5px, 14px 2px
     );
   }
   100% {
     clip-path: polygon(
-      14px 1px, 90px 3px, 200px 1.5px, 330px 3.5px, 460px 1px, 590px 3px, calc(100% - 14px) 1.5px,
+      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 590px calc(100% - 3px), 460px calc(100% - 1px), 330px calc(100% - 3.5px), 200px calc(100% - 1.5px), 90px calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
       0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
     );
@@ -299,40 +299,40 @@
 @keyframes accordionBorderStopMotion {
   0% {
     clip-path: polygon(
-      14px 1px, 90px 3px, 200px 1.5px, 330px 3.5px, 460px 1px, 590px 3px, calc(100% - 14px) 1.5px,
+      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 590px calc(100% - 3px), 460px calc(100% - 1px), 330px calc(100% - 3.5px), 200px calc(100% - 1.5px), 90px calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
       0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
     );
   }
   33.33% {
     clip-path: polygon(
-      14px 3px, 90px 1.5px, 200px 3.5px, 330px 1px, 460px 3px, 590px 1.5px, calc(100% - 14px) 3.5px,
+      14px 3px, 15% 1.5px, 30% 3.5px, 50% 1px, 70% 3px, 85% 1.5px, calc(100% - 14px) 3.5px,
       calc(100% - 10px) 5px, calc(100% - 6px) 8px, calc(100% - 3px) 12px, calc(100% - 1px) 17px, 100% 23px,
       100% calc(100% - 23px), calc(100% - 1px) calc(100% - 17px), calc(100% - 3px) calc(100% - 12px), calc(100% - 6px) calc(100% - 8px), calc(100% - 10px) calc(100% - 5px),
-      calc(100% - 14px) calc(100% - 3.5px), 590px calc(100% - 1.5px), 460px calc(100% - 3px), 330px calc(100% - 1px), 200px calc(100% - 3.5px), 90px calc(100% - 1.5px), 14px calc(100% - 3px),
+      calc(100% - 14px) calc(100% - 3.5px), 85% calc(100% - 1.5px), 70% calc(100% - 3px), 50% calc(100% - 1px), 30% calc(100% - 3.5px), 15% calc(100% - 1.5px), 14px calc(100% - 3px),
       10px calc(100% - 5px), 6px calc(100% - 8px), 3px calc(100% - 12px), 1px calc(100% - 17px), 0px calc(100% - 23px),
       0px 23px, 1px 17px, 3px 12px, 6px 8px, 10px 5px, 14px 3px
     );
   }
   66.66% {
     clip-path: polygon(
-      14px 2px, 90px 3.5px, 200px 1px, 330px 3px, 460px 2px, 590px 3.5px, calc(100% - 14px) 1px,
+      14px 2px, 15% 3.5px, 30% 1px, 50% 3px, 70% 2px, 85% 3.5px, calc(100% - 14px) 1px,
       calc(100% - 10px) 3.5px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 15.5px, 100% 21px,
       100% calc(100% - 21px), calc(100% - 1px) calc(100% - 15.5px), calc(100% - 3px) calc(100% - 10.5px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 10px) calc(100% - 3.5px),
-      calc(100% - 14px) calc(100% - 1px), 590px calc(100% - 3.5px), 460px calc(100% - 2px), 330px calc(100% - 3px), 200px calc(100% - 1px), 90px calc(100% - 3.5px), 14px calc(100% - 2px),
+      calc(100% - 14px) calc(100% - 1px), 85% calc(100% - 3.5px), 70% calc(100% - 2px), 50% calc(100% - 3px), 30% calc(100% - 1px), 15% calc(100% - 3.5px), 14px calc(100% - 2px),
       10px calc(100% - 3.5px), 6px calc(100% - 6.5px), 3px calc(100% - 10.5px), 1px calc(100% - 15.5px), 0px calc(100% - 21px),
       0px 21px, 1px 15.5px, 3px 10.5px, 6px 6.5px, 10px 3.5px, 14px 2px
     );
   }
   100% {
     clip-path: polygon(
-      14px 1px, 90px 3px, 200px 1.5px, 330px 3.5px, 460px 1px, 590px 3px, calc(100% - 14px) 1.5px,
+      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 590px calc(100% - 3px), 460px calc(100% - 1px), 330px calc(100% - 3.5px), 200px calc(100% - 1.5px), 90px calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
       0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
     );
@@ -360,10 +360,10 @@
 /* Variant 1 - zachte golven */
 .accordionItemWrapper:nth-child(5n+1) .accordionItem {
   clip-path: polygon(
-    14px 1.5px, 90px 2.2px, 200px 1.6px, 330px 2.4px, 460px 1.8px, 590px 2.3px, calc(100% - 14px) 1.7px,
+    14px 1.5px, 15% 2.2px, 30% 1.6px, 50% 2.4px, 70% 1.8px, 85% 2.3px, calc(100% - 14px) 1.7px,
     calc(100% - 10px) 3px, calc(100% - 6px) 5.5px, calc(100% - 3px) 9px, calc(100% - 1px) 14px, 100% 21px,
     100% calc(100% - 21px), calc(100% - 1px) calc(100% - 15px), calc(100% - 3px) calc(100% - 10px), calc(100% - 6px) calc(100% - 6px), calc(100% - 10px) calc(100% - 3.5px),
-    calc(100% - 14px) calc(100% - 2.5px), 590px calc(100% - 2.4px), 460px calc(100% - 2.5px), 330px calc(100% - 1.8px), 200px calc(100% - 2.6px), 90px calc(100% - 2px), 14px calc(100% - 2.8px),
+    calc(100% - 14px) calc(100% - 2.5px), 85% calc(100% - 2.4px), 70% calc(100% - 2.5px), 50% calc(100% - 1.8px), 30% calc(100% - 2.6px), 15% calc(100% - 2px), 14px calc(100% - 2.8px),
     10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 23px),
     0px 20px, 1px 13px, 3px 8px, 6px 5px, 10px 2.8px, 14px 1.5px
   );
@@ -372,10 +372,10 @@
 /* Variant 2 - lichte zaagtand */
 .accordionItemWrapper:nth-child(5n+2) .accordionItem {
   clip-path: polygon(
-    13px 1.8px, 75px 2.5px, 170px 1.5px, 280px 2.6px, 400px 1.6px, 520px 2.4px, calc(100% - 13px) 2.3px,
+    13px 1.8px, 12% 2.5px, 28% 1.5px, 45% 2.6px, 62% 1.6px, 80% 2.4px, calc(100% - 13px) 2.3px,
     calc(100% - 9px) 4px, calc(100% - 5px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 17px, 100% 22px,
     100% calc(100% - 22px), calc(100% - 1px) calc(100% - 18px), calc(100% - 3px) calc(100% - 12px), calc(100% - 5px) calc(100% - 7.5px), calc(100% - 9px) calc(100% - 4px),
-    calc(100% - 13px) calc(100% - 2.2px), 520px calc(100% - 2.4px), 400px calc(100% - 1.8px), 280px calc(100% - 2.6px), 170px calc(100% - 1.4px), 75px calc(100% - 2.8px), 13px calc(100% - 1.6px),
+    calc(100% - 13px) calc(100% - 2.2px), 80% calc(100% - 2.4px), 62% calc(100% - 1.8px), 45% calc(100% - 2.6px), 28% calc(100% - 1.4px), 12% calc(100% - 2.8px), 13px calc(100% - 1.6px),
     9px calc(100% - 4.5px), 5px calc(100% - 8px), 3px calc(100% - 13px), 1px calc(100% - 19px), 0px calc(100% - 24px),
     0px 17px, 1px 11px, 3px 6.5px, 5px 4px, 9px 3.5px, 13px 1.8px
   );
@@ -384,10 +384,10 @@
 /* Variant 3 - brede golven */
 .accordionItemWrapper:nth-child(5n+3) .accordionItem {
   clip-path: polygon(
-    16px 1.6px, 130px 2.4px, 290px 1.5px, 460px 2.5px, 620px 1.7px, calc(100% - 16px) 2.2px,
+    16px 1.6px, 20% 2.4px, 40% 1.5px, 60% 2.5px, 82% 1.7px, calc(100% - 16px) 2.2px,
     calc(100% - 11px) 3.8px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 16px, 100% 23px,
     100% calc(100% - 24px), calc(100% - 1px) calc(100% - 17px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 11px) calc(100% - 3.5px),
-    calc(100% - 15px) calc(100% - 2.2px), 620px calc(100% - 2.6px), 460px calc(100% - 1.6px), 290px calc(100% - 2.5px), 130px calc(100% - 1.8px), 16px calc(100% - 2.4px),
+    calc(100% - 15px) calc(100% - 2.2px), 82% calc(100% - 2.6px), 60% calc(100% - 1.6px), 40% calc(100% - 2.5px), 20% calc(100% - 1.8px), 16px calc(100% - 2.4px),
     11px calc(100% - 4.5px), 6px calc(100% - 8px), 3px calc(100% - 12.5px), 1px calc(100% - 18px), 0px calc(100% - 25px),
     0px 21px, 1px 14px, 3px 9px, 6px 5.5px, 11px 3px, 16px 1.6px
   );
@@ -396,10 +396,10 @@
 /* Variant 4 - subtiele pieken */
 .accordionItemWrapper:nth-child(5n+4) .accordionItem {
   clip-path: polygon(
-    14px 1.4px, 80px 2.4px, 180px 1.5px, 300px 2.6px, 430px 1.6px, 560px 2.5px, calc(100% - 14px) 2.2px,
+    14px 1.4px, 13% 2.4px, 30% 1.5px, 48% 2.6px, 68% 1.6px, 84% 2.5px, calc(100% - 14px) 2.2px,
     calc(100% - 10px) 3.5px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 16px, 100% 22px,
     100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16.5px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 10px) calc(100% - 3.5px),
-    calc(100% - 12px) calc(100% - 2px), 560px calc(100% - 1.7px), 430px calc(100% - 2.5px), 300px calc(100% - 1.6px), 180px calc(100% - 2.8px), 80px calc(100% - 1.5px), 14px calc(100% - 2.6px),
+    calc(100% - 12px) calc(100% - 2px), 84% calc(100% - 1.7px), 68% calc(100% - 2.5px), 48% calc(100% - 1.6px), 30% calc(100% - 2.8px), 13% calc(100% - 1.5px), 14px calc(100% - 2.6px),
     10px calc(100% - 4px), 6px calc(100% - 7.5px), 3px calc(100% - 12px), 1px calc(100% - 17.5px), 0px calc(100% - 23px),
     0px 15px, 1px 10px, 3px 6px, 6px 4px, 10px 3px, 14px 1.4px
   );
@@ -408,10 +408,10 @@
 /* Variant 5 - asymmetrisch subtiel */
 .accordionItemWrapper:nth-child(5n+5) .accordionItem {
   clip-path: polygon(
-    12px 1.6px, 85px 2.3px, 190px 1.6px, 310px 2.5px, 440px 1.8px, 570px 2.4px, calc(100% - 12px) 2.2px,
+    12px 1.6px, 14% 2.3px, 32% 1.6px, 52% 2.5px, 72% 1.8px, 88% 2.4px, calc(100% - 12px) 2.2px,
     calc(100% - 8px) 3.6px, calc(100% - 5px) 6.2px, calc(100% - 2px) 10px, calc(100% - 1px) 15.5px, 100% 21px,
     100% calc(100% - 21px), calc(100% - 1px) calc(100% - 16px), calc(100% - 2px) calc(100% - 10.5px), calc(100% - 5px) calc(100% - 6.2px), calc(100% - 8px) calc(100% - 3.5px),
-    calc(100% - 16px) calc(100% - 2.3px), 570px calc(100% - 1.5px), 440px calc(100% - 2.7px), 310px calc(100% - 2px), 190px calc(100% - 2.6px), 85px calc(100% - 1.7px), 12px calc(100% - 2.5px),
+    calc(100% - 16px) calc(100% - 2.3px), 88% calc(100% - 1.5px), 72% calc(100% - 2.7px), 52% calc(100% - 2px), 32% calc(100% - 2.6px), 14% calc(100% - 1.7px), 12px calc(100% - 2.5px),
     8px calc(100% - 3.8px), 5px calc(100% - 7px), 2px calc(100% - 11.5px), 1px calc(100% - 17px), 0px calc(100% - 22px),
     0px 14.5px, 1px 9.5px, 2px 5.8px, 5px 4px, 8px 3.2px, 12px 1.6px
   );
