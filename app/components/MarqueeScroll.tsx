@@ -131,7 +131,7 @@ export default function MarqueeScroll({
       <div
         className={styles.overlay}
         style={{
-          backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+          backgroundImage: 'url(/HallXIII/assets/overlays/noise_repeat_texture.webp)',
           backgroundRepeat: 'repeat'
         }}
       ></div>

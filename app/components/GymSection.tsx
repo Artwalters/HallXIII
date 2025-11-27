@@ -11,13 +11,13 @@ gsap.registerPlugin(ScrollTrigger, Draggable);
 
 // 7 cards - ordered to avoid same card on wraparound
 const gymCards = [
-  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
-  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
-  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
-  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  { image: '/HallXIII/assets/expertise-3.jpg', title: 'COACHING?' },
+  { image: '/HallXIII/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  { image: '/HallXIII/assets/expertise-2.jpg', title: 'LID WORDEN?' },
+  { image: '/HallXIII/assets/expertise-3.jpg', title: 'COACHING?' },
+  { image: '/HallXIII/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  { image: '/HallXIII/assets/expertise-2.jpg', title: 'LID WORDEN?' },
+  { image: '/HallXIII/assets/expertise-1.jpg', title: 'TRAINEN?' },
 ];
 
 export default function GymSection() {

@@ -17,10 +17,10 @@ interface Coach {
 }
 
 const frames = [
-  '/assets/frames poloroid/frame 1.png',
-  '/assets/frames poloroid/frame2.png',
-  '/assets/frames poloroid/frame 3.png',
-  '/assets/frames poloroid/frame4.png',
+  '/HallXIII/assets/frames poloroid/frame 1.png',
+  '/HallXIII/assets/frames poloroid/frame2.png',
+  '/HallXIII/assets/frames poloroid/frame 3.png',
+  '/HallXIII/assets/frames poloroid/frame4.png',
 ];
 
 const handwritingFonts = [
@@ -32,9 +32,9 @@ const handwritingFonts = [
 const coaches: Coach[] = [
   {
     name: 'RIM',
-    image: '/assets/expertise-1.jpg',
+    image: '/HallXIII/assets/expertise-1.jpg',
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
-    largeImage: '/assets/expertise-1.jpg',
+    largeImage: '/HallXIII/assets/expertise-1.jpg',
     rotation: -3,
     quote: 'Train hard, stay humble',
     frameIndex: 0,
@@ -42,9 +42,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'DYLAN',
-    image: '/assets/expertise-2.jpg',
+    image: '/HallXIII/assets/expertise-2.jpg',
     description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
-    largeImage: '/assets/expertise-2.jpg',
+    largeImage: '/HallXIII/assets/expertise-2.jpg',
     rotation: 4,
     quote: 'Mindset is everything',
     frameIndex: 1,
@@ -52,9 +52,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'NOAH',
-    image: '/assets/expertise-3.jpg',
+    image: '/HallXIII/assets/expertise-3.jpg',
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
-    largeImage: '/assets/expertise-3.jpg',
+    largeImage: '/HallXIII/assets/expertise-3.jpg',
     rotation: -5,
     quote: 'Stronger every day',
     frameIndex: 2,
@@ -62,9 +62,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'MAARTEN',
-    image: '/assets/expertise-4.jpg',
+    image: '/HallXIII/assets/expertise-4.jpg',
     description: 'Maarten combineert jarenlange ervaring in powerlifting met moderne trainingsmethoden.',
-    largeImage: '/assets/expertise-4.jpg',
+    largeImage: '/HallXIII/assets/expertise-4.jpg',
     rotation: 3,
     quote: 'Consistency beats talent',
     frameIndex: 3,
@@ -72,9 +72,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'MEREL',
-    image: '/assets/expertise-5.jpg',
+    image: '/HallXIII/assets/expertise-5.jpg',
     description: 'Merel is gespecialiseerd in begeleiding en coaching voor zowel beginners als gevorderden.',
-    largeImage: '/assets/expertise-5.jpg',
+    largeImage: '/HallXIII/assets/expertise-5.jpg',
     rotation: -4,
     quote: 'Believe in yourself',
     frameIndex: 0,
@@ -224,9 +224,9 @@ export default function CoachesSection() {
                     <div className={styles.accordionIcon}>
                       <div className={styles.accordionIconInner}>
                         <div className={styles.accordionIconSprite}>
-                          <Image src="/assets/stopmotion_icons/down1.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
-                          <Image src="/assets/stopmotion_icons/down2.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
-                          <Image src="/assets/stopmotion_icons/down3.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                          <Image src="/HallXIII/assets/stopmotion_icons/down1.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                          <Image src="/HallXIII/assets/stopmotion_icons/down2.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
+                          <Image src="/HallXIII/assets/stopmotion_icons/down3.svg" alt="" width={20} height={20} className={styles.accordionIconImg} />
                         </div>
                       </div>
                     </div>

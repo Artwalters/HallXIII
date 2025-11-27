@@ -1,7 +1,7 @@
 /* Custom Fonts */
 @font-face {
   font-family: 'Relost Brush';
-  src: url('/fonts/RelostBrush.otf') format('opentype');
+  src: url('/HallXIII/fonts/RelostBrush.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'SCHABO Condensed';
-  src: url('/fonts/SCHABO-Condensed.otf') format('opentype');
+  src: url('/HallXIII/fonts/SCHABO-Condensed.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'Grifter';
-  src: url('/fonts/GRIFTER-Variable.ttf') format('truetype');
+  src: url('/HallXIII/fonts/GRIFTER-Variable.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+  src: url('/HallXIII/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
+  src: url('/HallXIII/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -41,7 +41,7 @@
 
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-Black.ttf') format('truetype');
+  src: url('/HallXIII/fonts/HelveticaNowDisplay-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;

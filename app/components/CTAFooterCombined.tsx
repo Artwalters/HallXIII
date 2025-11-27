@@ -133,7 +133,7 @@ export default function CTAFooterCombined() {
           <div
             className={styles.overlay}
             style={{
-              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundImage: 'url(/HallXIII/assets/overlays/noise_repeat_texture.webp)',
               backgroundRepeat: 'repeat',
               backgroundSize: 'auto'
             }}
@@ -142,7 +142,7 @@ export default function CTAFooterCombined() {
           {/* Shadow/Light Overlay */}
           <div className={styles.shadowOverlay}>
             <Image
-              src="/assets/overlays/shadow_overlay.png"
+              src="/HallXIII/assets/overlays/shadow_overlay.png"
               alt=""
               fill
               className={styles.shadowOverlayImage}
@@ -332,7 +332,7 @@ export default function CTAFooterCombined() {
             {/* Large Logo - temporarily hidden
             <div className={styles.footerLogo}>
               <Image
-                src="/assets/Hal13_logo.svg"
+                src="/HallXIII/assets/Hal13_logo.svg"
                 alt="Hall XIII"
                 width={800}
                 height={200}

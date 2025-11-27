@@ -246,7 +246,7 @@ export default function HeroExpertiseCombined() {
                 </div>
                 <div className={styles.btnStopMotionImage}>
                   <Image
-                    src="/assets/meet-preview.jpg"
+                    src="/HallXIII/assets/meet-preview.jpg"
                     alt=""
                     fill
                     className={styles.meetPreviewImage}
@@ -280,7 +280,7 @@ export default function HeroExpertiseCombined() {
           <div
             className={styles.overlay}
             style={{
-              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundImage: 'url(/HallXIII/assets/overlays/noise_repeat_texture.webp)',
               backgroundRepeat: 'repeat'
             }}
           ></div>
@@ -289,7 +289,7 @@ export default function HeroExpertiseCombined() {
           <div className={styles.shadowOverlayWrapper}>
             <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
               <Image
-                src="/assets/overlays/shadow_overlay.png"
+                src="/HallXIII/assets/overlays/shadow_overlay.png"
                 alt=""
                 fill
                 className={styles.shadowOverlayImage}
@@ -369,22 +369,22 @@ export default function HeroExpertiseCombined() {
                 <div ref={leftColumnRef} className={styles.column}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                   </div>
                 </div>
@@ -393,22 +393,22 @@ export default function HeroExpertiseCombined() {
                 <div ref={middleColumnRef} className={styles.column}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                   </div>
                 </div>
@@ -417,22 +417,22 @@ export default function HeroExpertiseCombined() {
                 <div ref={rightColumnRef} className={`${styles.column} ${styles.rightColumn}`}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                      <Image src="/HallXIII/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" />
                     </div>
                   </div>
                 </div>
