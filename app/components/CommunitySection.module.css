@@ -91,7 +91,7 @@
   container-type: inline-size;
 }
 
-/* Top Text - binnen max-width container */
+/* Top Text - achter texture */
 .topText {
   position: absolute;
   top: 12rem;
@@ -100,7 +100,7 @@
   width: 100%;
   max-width: var(--container-max-width);
   text-align: center;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .topLine {
@@ -110,6 +110,11 @@
   text-transform: uppercase;
   line-height: 1.1;
   margin: 0;
+  /* Embossed effect */
+  filter:
+    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
+    brightness(0.96);
 }
 
 /* Looping Words */
@@ -178,7 +183,7 @@
   overflow: hidden;
 }
 
-/* Social Section */
+/* Social Section - achter texture */
 .socialSection {
   display: flex;
   flex-direction: column;
@@ -188,7 +193,7 @@
   bottom: 10vh; /* Afstand van onderkant - pas dit aan naar wens */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 101;
+  z-index: 1;
 }
 
 .socialText {
@@ -198,6 +203,11 @@
   text-transform: uppercase;
   margin: 0;
   line-height: 1;
+  /* Embossed effect */
+  filter:
+    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
+    brightness(0.96);
 }
 
 .socialIcons {
@@ -215,6 +225,11 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  /* Embossed effect */
+  filter:
+    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
+    brightness(0.96);
 }
 
 /* Social Icon Border - white, behind dark */
