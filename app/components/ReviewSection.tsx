@@ -318,7 +318,7 @@ export default function ReviewSection() {
 
         {/* Klanten Reviews Grid */}
         <div className={styles.gridContainer}>
-          {(isMobile ? reviewItems.slice(0, 6) : reviewItems.slice(0, 9)).map((item, index) => (
+          {(isMobile ? reviewItems.slice(0, 4) : reviewItems.slice(0, 9)).map((item, index) => (
             <div
               key={item.id}
               className={styles.reviewItem}
