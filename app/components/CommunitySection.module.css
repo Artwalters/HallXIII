@@ -195,9 +195,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem; /* 20px / 16 = 1.25rem */
+  gap: 1.25em;
   position: absolute;
-  bottom: 10vh; /* Afstand van onderkant - pas dit aan naar wens */
+  bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
@@ -220,14 +220,14 @@
 .socialIcons {
   display: flex;
   flex-direction: row;
-  gap: 1rem; /* 16px / 16 = 1rem - scales with Osmo */
+  gap: 1em;
   align-items: center;
 }
 
 .socialIcon {
   position: relative;
-  width: 8.1rem;
-  height: 8.1rem;
+  width: 8.1em;
+  height: 8.1em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,10 +242,10 @@
 /* Social Icon Border - white, behind dark */
 .socialIconBorder {
   position: absolute;
-  top: -3px;
-  left: -3px;
-  width: calc(100% + 6px);
-  height: calc(100% + 6px);
+  top: -0.1875em;
+  left: -0.1875em;
+  width: calc(100% + 0.375em);
+  height: calc(100% + 0.375em);
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.2s ease;
