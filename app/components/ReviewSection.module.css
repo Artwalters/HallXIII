@@ -123,20 +123,21 @@
 /* Mobile: meer ruimte en speelser - om en om */
 @media (max-width: 767px) {
   .gridContainer {
-    column-gap: 1em;
-    row-gap: 4em;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    row-gap: 2em;
   }
 
   /* Grotere cards op mobile */
-  .polaroid {
-    transform: scale(1.15);
+  .reviewItem {
+    min-width: 55vw;
   }
 
   /* Om en om layout - rechts lager met margin-top */
-  .reviewItem:nth-child(1) { margin-top: 0; }
-  .reviewItem:nth-child(2) { margin-top: 8em; }
-  .reviewItem:nth-child(3) { margin-top: 0; }
-  .reviewItem:nth-child(4) { margin-top: 8em; }
+  .reviewItem:nth-child(1) { margin-top: 0; margin-left: -2em; }
+  .reviewItem:nth-child(2) { margin-top: 8em; margin-left: 2em; }
+  .reviewItem:nth-child(3) { margin-top: 0; margin-left: -2em; }
+  .reviewItem:nth-child(4) { margin-top: 8em; margin-left: 2em; }
 }
 
 @media (min-width: 768px) {
