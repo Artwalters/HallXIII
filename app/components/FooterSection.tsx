@@ -56,6 +56,7 @@ export default function FooterSection() {
   }, []);
 
   return (
+    <div className={styles.wrapper}>
     <section className={styles.section} ref={sectionRef}>
       {/* Texture Overlay */}
       <div
@@ -126,5 +127,6 @@ export default function FooterSection() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
