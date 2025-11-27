@@ -86,7 +86,7 @@
 
 /* Section Title */
 .sectionTitle {
-  font-family: var(--font-relost);
+  font-family: var(--font-schabo);
   font-size: var(--font-h2); /* Osmo design system */
   font-weight: normal;
   color: var(--color-white);
@@ -120,11 +120,11 @@
   z-index: 2;
 }
 
-/* Mobile: 1 kolom, 3 rijen */
+/* Mobile: 1 kolom, 4 rijen */
 @media (max-width: 767px) {
   .gridContainer {
     grid-template-columns: 1fr;
-    row-gap: 5em;
+    row-gap: 7em;
     justify-items: center;
   }
 

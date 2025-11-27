@@ -194,7 +194,7 @@ export default function ReviewSection() {
     const checkScreenSize = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setReviewCount(3); // Mobile: 1 kolom x 3 rijen
+        setReviewCount(4); // Mobile: 1 kolom x 4 rijen
       } else if (width < 1024) {
         setReviewCount(6); // Tablet: 2 kolommen x 3 rijen
       } else {
