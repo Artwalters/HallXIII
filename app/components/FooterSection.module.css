@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
   position: relative;
   width: calc(100% - 1.5rem);
   height: 110vh;
