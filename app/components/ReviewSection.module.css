@@ -125,7 +125,7 @@
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0;
-    row-gap: 12em;
+    row-gap: 18em;
   }
 
   /* Grotere cards op mobile */
