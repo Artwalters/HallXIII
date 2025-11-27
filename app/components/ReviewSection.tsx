@@ -188,17 +188,24 @@ const reviewItems = [
 
 export default function ReviewSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [reviewCount, setReviewCount] = useState(9);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setReviewCount(3); // Mobile: 1 kolom x 3 rijen
+      } else if (width < 1024) {
+        setReviewCount(6); // Tablet: 2 kolommen x 3 rijen
+      } else {
+        setReviewCount(9); // Desktop: 3 kolommen x 3 rijen
+      }
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   useEffect(() => {
@@ -290,7 +297,7 @@ export default function ReviewSection() {
       });
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [isMobile]);
+  }, []);
 
   return (
     <section ref={sectionRef} className={styles.section} data-momentum-hover-init="">
@@ -318,7 +325,7 @@ export default function ReviewSection() {
 
         {/* Klanten Reviews Grid */}
         <div className={styles.gridContainer}>
-          {(isMobile ? reviewItems.slice(0, 4) : reviewItems.slice(0, 9)).map((item, index) => (
+          {reviewItems.slice(0, reviewCount).map((item, index) => (
             <div
               key={item.id}
               className={styles.reviewItem}
