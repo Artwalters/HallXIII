@@ -198,7 +198,7 @@
 .infoButtonText {
   position: relative;
   color: var(--color-white);
-  font-size: 1.59375em;
+  font-size: 3.2em;
   font-family: var(--font-relost);
   font-weight: 400;
   z-index: 2;
@@ -214,8 +214,8 @@
 /* Info Button Icon - Stop Motion Arrow Circle */
 .infoButtonIcon {
   position: relative;
-  width: 2.4em;
-  height: 2.4em;
+  width: 4.8em;
+  height: 4.8em;
   overflow: hidden;
   flex-shrink: 0;
   z-index: 2;
@@ -232,8 +232,8 @@
 }
 
 .infoButtonIconSvg {
-  width: 2.4em;
-  height: 2.4em;
+  width: 4.8em;
+  height: 4.8em;
   flex-shrink: 0;
   color: var(--color-white);
 }
