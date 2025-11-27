@@ -125,19 +125,19 @@
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0;
-    row-gap: 6em;
+    row-gap: 12em;
   }
 
   /* Grotere cards op mobile */
   .reviewItem {
     min-width: 55vw;
+    margin-left: -2em;
   }
 
-  /* Om en om layout - rechts lager met margin-top */
-  .reviewItem:nth-child(1) { margin-top: 0; margin-left: -2em; }
-  .reviewItem:nth-child(2) { margin-top: 10em; margin-left: -2em; }
-  .reviewItem:nth-child(3) { margin-top: 0; margin-left: -2em; }
-  .reviewItem:nth-child(4) { margin-top: 10em; margin-left: -2em; }
+  /* Om en om layout - even cards lager */
+  .reviewItem:nth-child(2n) {
+    transform: translateY(11.5em);
+  }
 }
 
 @media (min-width: 768px) {
