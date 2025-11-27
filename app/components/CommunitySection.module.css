@@ -368,3 +368,19 @@
   }
 }
 
+/* Mobile: social icons 75% size */
+@media (max-width: 768px) {
+  .socialIcon {
+    width: 6.075em;
+    height: 6.075em;
+  }
+
+  .socialIcons {
+    gap: 0.75em;
+  }
+
+  .socialSection {
+    gap: 0.9375em;
+  }
+}
+
