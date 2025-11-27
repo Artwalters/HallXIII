@@ -127,6 +127,15 @@ export default function MarqueeScroll({
         paddingBottom: paddingBottom
       }}
     >
+      {/* Texture Overlay */}
+      <div
+        className={styles.overlay}
+        style={{
+          backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+          backgroundRepeat: 'repeat'
+        }}
+      ></div>
+
       <div ref={scrollRef} className={styles.marqueeScroll}>
         <div className={styles.marqueeInner}>
           <div ref={contentRef} data-marquee-content className={styles.marqueeContent}>

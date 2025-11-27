@@ -154,6 +154,29 @@
   }
 }
 
+@media (max-width: 980px) {
+  .contentWrapper {
+    transform: translateY(-10vh);
+  }
+
+  /* Hide the text, only show numbers */
+  .mainTextWrapper {
+    display: none;
+  }
+
+  /* Center the numbers and make them full width like hero logo */
+  .numberContainer {
+    font-size: 90cqw;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  /* Show all 3 digits on mobile */
+  .digit1 {
+    display: flex;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     min-height: 37.5rem;
@@ -161,13 +184,5 @@
 
   .container {
     padding: 0 2rem;
-  }
-
-  .mainTextWrapper {
-    margin-bottom: 10px;
-  }
-
-  .mainText {
-    text-align: left;
   }
 }

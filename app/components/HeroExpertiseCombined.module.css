@@ -413,7 +413,7 @@
   width: 100%;
   min-height: 80vh;
   background-color: var(--color-cream);
-  padding: 15rem 0;
+  padding: 8rem 0;
 }
 
 /* Mobile: smaller padding */
@@ -464,7 +464,7 @@
 }
 
 .title {
-  font-size: var(--font-h2);
+  font-size: var(--font-h3);
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.94;

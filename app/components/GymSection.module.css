@@ -1,7 +1,7 @@
 /* Section */
 .section {
   background-color: var(--color-cream);
-  padding: 5rem 0 12rem;
+  padding: 5rem 0 15rem;
   position: relative;
 }
 
@@ -13,7 +13,7 @@
 
 @media (min-width: 1024px) {
   .section {
-    padding: 10rem 0 12.5rem;
+    padding: 10rem 0 15rem;
   }
 }
 
@@ -38,7 +38,7 @@
   font-size: var(--font-h4);
   color: var(--color-black);
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   text-transform: lowercase;
   position: relative;
   z-index: 10;
@@ -69,7 +69,7 @@
 
   .title {
     padding: 0 var(--container-padding);
-    margin-bottom: 10rem;
+    margin-bottom: 4rem;
   }
 }
 
@@ -196,7 +196,7 @@
 /* Mobile: wider cards */
 @media (max-width: 768px) {
   .flickCard {
-    width: 32em;
+    width: 28.8em;
   }
 }
 
@@ -322,4 +322,36 @@
 [data-flick-cards-item-status="active"] .flickCardButtons {
   opacity: 1;
   transform: translate(0%, 0%) rotate(0.001deg);
+}
+
+/* Title Slider */
+.titleSlider {
+  display: none;
+  position: absolute;
+  bottom: -8em;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .titleSlider {
+    display: flex;
+  }
+}
+
+.titleSliderItem {
+  position: absolute;
+  font-family: var(--font-schabo);
+  font-size: 4em;
+  font-weight: normal;
+  color: var(--color-black);
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1;
+  opacity: 0;
 }

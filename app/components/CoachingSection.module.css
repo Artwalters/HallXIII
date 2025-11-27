@@ -1,22 +1,14 @@
 .section {
   background-color: var(--color-black);
-  padding: 1.5rem 0 3rem;
   position: relative;
   overflow: hidden;
-}
-
-/* Divider */
-.divider {
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.1);
-  width: 100%;
-  margin: 1.5rem 0;
 }
 
 /* Container */
 .container {
   max-width: var(--container-max-width-narrow);
   margin: 0 auto;
+  margin-top: 3rem;
   padding: 0 var(--container-padding);
 }
 
@@ -214,8 +206,8 @@
 /* Info Button Icon - Stop Motion Arrow Circle */
 .infoButtonIcon {
   position: relative;
-  width: 4.08em;
-  height: 4.08em;
+  width: 3.672em;
+  height: 3.672em;
   overflow: hidden;
   flex-shrink: 0;
   z-index: 2;
@@ -232,14 +224,27 @@
 }
 
 .infoButtonIconSvg {
-  width: 4.08em;
-  height: 4.08em;
+  width: 3.672em;
+  height: 3.672em;
   flex-shrink: 0;
   color: var(--color-white);
 }
 
 .infoButton:hover .infoButtonIconSprite {
   animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Mobile: smaller info button */
+@media (max-width: 768px) {
+  .infoButtonIcon {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .infoButtonIconSvg {
+    width: 2.5em;
+    height: 2.5em;
+  }
 }
 
 /* Image Wrapper */
@@ -315,4 +320,9 @@
   66.66%, 99.99% {
     transform: translateX(-66.66%);
   }
+}
+
+/* Bottom Marquee Wrapper - spacing between sections */
+.bottomMarqueeWrapper {
+  margin-top: 3rem;
 }

@@ -11,18 +11,19 @@ gsap.registerPlugin(ScrollTrigger, Draggable);
 
 // 7 cards - ordered to avoid same card on wraparound
 const gymCards = [
-  { image: '/assets/expertise-3.jpg', title: 'Coaching', button: 'coaching' },
-  { image: '/assets/expertise-1.jpg', title: 'Dagpas', button: 'dagpas' },
-  { image: '/assets/expertise-2.jpg', title: 'Lidworden', button: 'lidworden' },
-  { image: '/assets/expertise-3.jpg', title: 'Coaching', button: 'coaching' },
-  { image: '/assets/expertise-1.jpg', title: 'Dagpas', button: 'dagpas' },
-  { image: '/assets/expertise-2.jpg', title: 'Lidworden', button: 'lidworden' },
-  { image: '/assets/expertise-1.jpg', title: 'Dagpas', button: 'dagpas' },
+  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
+  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
+  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
+  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
+  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
 ];
 
 export default function GymSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
+  const titlesRef = useRef<HTMLDivElement>(null);
 
   // Desktop: Wave animation on scroll
   useEffect(() => {
@@ -60,13 +61,14 @@ export default function GymSection() {
   useEffect(() => {
     // Only initialize on mobile devices (max-width: 768px)
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile || !sliderRef.current) return;
+    if (!isMobile || !sliderRef.current || !titlesRef.current) return;
 
     const slider = sliderRef.current;
     const list = slider.querySelector('[data-flick-cards-list]');
     if (!list) return;
 
     const cards = Array.from(list.querySelectorAll('[data-flick-cards-item]')) as HTMLElement[];
+    const titles = Array.from(titlesRef.current.querySelectorAll('[data-title-item]')) as HTMLElement[];
     const total = cards.length;
     let activeIndex = 0;
 
@@ -103,6 +105,21 @@ export default function GymSection() {
       }
     }
 
+    function getTitleConfig(i: number, currentIndex: number) {
+      let diff = i - currentIndex;
+      if (diff > total / 2) diff -= total;
+      else if (diff < -total / 2) diff += total;
+
+      switch (diff) {
+        case  0: return { x: 0,   y: 0,  rot: 0,   s: 1,   o: 1, z: 5 };
+        case  1: return { x: 120, y: 30, rot: 25,  s: 0.7, o: 0, z: 4 };
+        case -1: return { x: -120, y: 30, rot: -25, s: 0.7, o: 0, z: 4 };
+        default:
+          const dir = diff > 0 ? 1 : -1;
+          return { x: 150 * dir, y: 50, rot: 35 * dir, s: 0.5, o: 0, z: 2 };
+      }
+    }
+
     function renderCards(currentIndex: number) {
       cards.forEach((card, i) => {
         const cfg = getConfig(i, currentIndex);
@@ -125,6 +142,28 @@ export default function GymSection() {
           yPercent: cfg.y,
           rotation: cfg.rot,
           scale: cfg.s,
+          opacity: cfg.o
+        });
+      });
+
+      // Animate titles
+      titles.forEach((title, i) => {
+        const cfg = getTitleConfig(i, currentIndex);
+        title.style.zIndex = String(cfg.z);
+
+        gsap.to(title, {
+          duration: 0.6,
+          ease: 'elastic.out(1.2, 1)',
+          xPercent: cfg.x,
+          yPercent: cfg.y,
+          rotation: cfg.rot,
+          scale: cfg.s
+        });
+
+        // Opacity animates separately - only visible when active
+        gsap.to(title, {
+          duration: 0.15,
+          ease: 'power2.out',
           opacity: cfg.o
         });
       });
@@ -166,6 +205,7 @@ export default function GymSection() {
             opacity: mix('o')
           });
         });
+
       },
 
       onRelease() {
@@ -274,16 +314,24 @@ export default function GymSection() {
                         fill
                         className={styles.coverImage}
                       />
-                      <div className={styles.flickCardButtons}>
-                        <button className={styles.flickCardBtn}>
-                          <span className={styles.flickCardBtnSpan}>{card.button}</span>
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Title Slider */}
+          <div ref={titlesRef} className={styles.titleSlider}>
+            {gymCards.map((card, index) => (
+              <h3
+                key={index}
+                className={styles.titleSliderItem}
+                data-title-item
+              >
+                {card.title}
+              </h3>
+            ))}
           </div>
         </div>
       </div>

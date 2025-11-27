@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .marqueeContainer {
+    padding: 0.75em 0;
+  }
+}
+
 /* Marquee Scroll (parallax layer) */
 .marqueeScroll {
   position: relative;
@@ -13,7 +19,7 @@
   z-index: 10;
 }
 
-/* Texture Overlay - Inside marqueeScroll */
+/* Texture Overlay */
 .overlay {
   position: absolute;
   top: 0;
@@ -22,10 +28,7 @@
   height: 100%;
   z-index: 1000;
   pointer-events: none;
-  opacity: 0.08;
-  background-image: url('/assets/overlays/overlay.jpg');
-  background-repeat: repeat;
-  background-size: cover;
+  opacity: 1;
   mix-blend-mode: screen;
 }
 
@@ -68,7 +71,7 @@
 /* Mobile: adjust title position for better vertical centering */
 @media (max-width: 768px) {
   .title {
-    transform: translateY(0.05em);
+    transform: translateY(0em);
   }
 }
 

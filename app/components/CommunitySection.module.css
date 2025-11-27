@@ -204,10 +204,10 @@
 }
 
 .socialText {
-  font-family: var(--font-schabo);
-  font-size: var(--font-h3);
+  font-family: var(--font-relost);
+  font-size: var(--font-h4);
   color: var(--color-dark-brown);
-  text-transform: uppercase;
+  text-transform: lowercase;
   margin: 0;
   line-height: 1;
   /* Embossed effect */
@@ -226,8 +226,8 @@
 
 .socialIcon {
   position: relative;
-  width: 8.1em;
-  height: 8.1em;
+  width: 6.48em;
+  height: 6.48em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,8 +368,13 @@
   }
 }
 
-/* Mobile: social icons 75% size */
+/* Mobile adjustments */
 @media (max-width: 768px) {
+  .container {
+    padding-bottom: 0;
+    max-width: none;
+  }
+
   .socialIcon {
     width: 6.075em;
     height: 6.075em;
@@ -380,7 +385,7 @@
   }
 
   .socialSection {
-    gap: 0.9375em;
+    gap: 1.5em;
   }
 }
 

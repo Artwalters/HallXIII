@@ -71,9 +71,8 @@ export default function CoachingSection() {
         subtitle={<>Ontdek je<br />potentieel</>}
         direction={-1}
         rotate={0}
+        backgroundColor="var(--color-primary)"
       />
-
-      <div className={styles.divider} />
 
       {/* Coaching Items */}
       <div className={styles.container}>
@@ -224,15 +223,16 @@ export default function CoachingSection() {
         ))}
       </div>
 
-      <div className={styles.divider} />
-
       {/* Bottom Marquee */}
-      <MarqueeScroll
-        title="ONZE PARTNERS"
-        subtitle={<>expertise<br />in de sport</>}
-        direction={1}
-        rotate={0}
-      />
+      <div className={styles.bottomMarqueeWrapper}>
+        <MarqueeScroll
+          title="ONZE PARTNERS"
+          subtitle={<>expertise<br />in de sport</>}
+          direction={1}
+          rotate={0}
+          backgroundColor="var(--color-primary)"
+        />
+      </div>
 
       {/* Partners Content */}
       <div className={styles.container}>

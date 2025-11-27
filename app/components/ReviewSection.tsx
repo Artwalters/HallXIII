@@ -320,7 +320,7 @@ export default function ReviewSection() {
             </div>
             <span className={styles.categoryText}>reviews</span>
           </div>
-          <h2 className={styles.sectionTitle}>Hall of Fame</h2>
+          <h2 className={styles.sectionTitle}>Hal of Fame</h2>
         </div>
 
         {/* Klanten Reviews Grid */}
