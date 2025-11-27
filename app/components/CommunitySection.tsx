@@ -48,7 +48,8 @@ export default function CommunitySection() {
   }, []);
 
   return (
-    <section className={styles.section} data-nav-dark>
+    <div className={styles.sectionWrapper}>
+      <section className={styles.section} data-nav-dark>
       {/* Top Text - achter texture */}
       <div className={styles.topText}>
         <p className={styles.topLine}>een sportschool</p>
@@ -163,5 +164,6 @@ export default function CommunitySection() {
         />
       </div>
     </section>
+    </div>
   );
 }
