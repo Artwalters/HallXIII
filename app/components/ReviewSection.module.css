@@ -81,7 +81,7 @@
 /* Section Title */
 .sectionTitle {
   font-family: var(--font-relost);
-  font-size: var(--font-h1); /* Osmo design system */
+  font-size: var(--font-h2); /* Osmo design system */
   font-weight: normal;
   color: var(--color-white);
   text-transform: uppercase;
