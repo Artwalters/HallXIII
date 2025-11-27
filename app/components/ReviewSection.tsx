@@ -297,6 +297,19 @@ export default function ReviewSection() {
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
+          <div className={styles.titleCircle}>
+            <div className={styles.titleCircleSprite}>
+              <svg viewBox="0 0 12 12" className={styles.titleCircleSvg}>
+                <circle cx="6" cy="6" r="5" fill="currentColor" />
+              </svg>
+              <svg viewBox="0 0 12 12" className={styles.titleCircleSvg}>
+                <ellipse cx="6" cy="6" rx="5.3" ry="4.7" fill="currentColor" />
+              </svg>
+              <svg viewBox="0 0 12 12" className={styles.titleCircleSvg}>
+                <ellipse cx="6" cy="6" rx="4.7" ry="5.3" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
           <h2 className={styles.sectionTitle}>Hall of Fame</h2>
         </div>
 
