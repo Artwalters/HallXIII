@@ -91,7 +91,7 @@
   container-type: inline-size;
 }
 
-/* Top Text - boven texture met embossed effect */
+/* Top Text - achter texture met embossed effect */
 .topText {
   position: absolute;
   top: 12rem;
@@ -100,7 +100,7 @@
   width: 100%;
   max-width: var(--container-max-width);
   text-align: center;
-  z-index: 101;
+  z-index: 50;
 }
 
 .topLine {
@@ -183,7 +183,7 @@
   overflow: hidden;
 }
 
-/* Social Section - boven texture met embossed effect */
+/* Social Section - achter texture met embossed effect */
 .socialSection {
   display: flex;
   flex-direction: column;
@@ -193,7 +193,7 @@
   bottom: 10vh; /* Afstand van onderkant - pas dit aan naar wens */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 101;
+  z-index: 50;
 }
 
 .socialText {
