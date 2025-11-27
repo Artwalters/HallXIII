@@ -127,6 +127,11 @@
     row-gap: 4em;
   }
 
+  /* Grotere cards op mobile */
+  .polaroid {
+    transform: scale(1.15);
+  }
+
   /* Om en om layout - rechts lager met margin-top */
   .reviewItem:nth-child(1) { margin-top: 0; }
   .reviewItem:nth-child(2) { margin-top: 8em; }
