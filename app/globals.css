@@ -177,6 +177,9 @@
   --color-beige: #BCAB8E;             /* rgba(188, 171, 142, 1) - Warm Beige */
   --color-cream: #F0EBE6;             /* rgba(240, 235, 230, 1) - Light Cream */
   --color-white: #FFFFFF;             /* rgba(255, 255, 255, 1) - Pure White */
+
+  /* Accent Colors */
+  --color-accent: #E63946;            /* rgba(230, 57, 70, 1) - Red Accent */
 }
 
 * {

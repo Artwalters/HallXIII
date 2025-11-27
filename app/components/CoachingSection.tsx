@@ -83,7 +83,22 @@ export default function CoachingSection() {
               <>
                 <div className={styles.textContent}>
                   <div className={styles.header}>
-                    <p className={styles.category}>{item.number} {item.category}</p>
+                    <div className={styles.categoryTag}>
+                      <div className={styles.categoryCircle}>
+                        <div className={styles.categoryCircleSprite}>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <circle cx="6" cy="6" r="5" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="5.3" ry="4.7" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="4.7" ry="5.3" fill="currentColor" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className={styles.categoryText}>{item.category}</span>
+                    </div>
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
@@ -128,7 +143,22 @@ export default function CoachingSection() {
                 </div>
                 <div className={styles.textContent}>
                   <div className={styles.header}>
-                    <p className={styles.category}>{item.number} {item.category}</p>
+                    <div className={styles.categoryTag}>
+                      <div className={styles.categoryCircle}>
+                        <div className={styles.categoryCircleSprite}>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <circle cx="6" cy="6" r="5" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="5.3" ry="4.7" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="4.7" ry="5.3" fill="currentColor" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className={styles.categoryText}>{item.category}</span>
+                    </div>
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
@@ -180,7 +210,22 @@ export default function CoachingSection() {
           </div>
           <div className={styles.textContent}>
             <div className={styles.header}>
-              <p className={styles.category}>{partnersItem.number} {partnersItem.category}</p>
+              <div className={styles.categoryTag}>
+                      <div className={styles.categoryCircle}>
+                        <div className={styles.categoryCircleSprite}>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <circle cx="6" cy="6" r="5" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="5.3" ry="4.7" fill="currentColor" />
+                          </svg>
+                          <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                            <ellipse cx="6" cy="6" rx="4.7" ry="5.3" fill="currentColor" />
+                          </svg>
+                        </div>
+                      </div>
+                      <span className={styles.categoryText}>{partnersItem.category}</span>
+                    </div>
               <h2 className={styles.title}>{partnersItem.title}</h2>
             </div>
             <p className={styles.description}>{partnersItem.description}</p>
