@@ -7,6 +7,8 @@ import BackNavigation from '../components/BackNavigation';
 import OnboardingFlow from '../components/OnboardingFlow';
 import styles from './page.module.css';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
+
 export default function OnboardingPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
@@ -109,7 +111,7 @@ export default function OnboardingPage() {
           <div
             className={styles.overlay}
             style={{
-              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
               backgroundRepeat: 'repeat'
             }}
           ></div>
@@ -118,7 +120,7 @@ export default function OnboardingPage() {
           <div className={styles.shadowOverlayWrapper}>
             <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
               <Image
-                src="/assets/overlays/shadow_overlay.png"
+                src={`${basePath}/assets/overlays/shadow_overlay.png`}
                 alt=""
                 fill
                 className={styles.shadowOverlayImage}
