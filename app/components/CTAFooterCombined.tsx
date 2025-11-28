@@ -9,6 +9,8 @@ import styles from './CTAFooterCombined.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
+
 export default function CTAFooterCombined() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const ctaSectionRef = useRef<HTMLElement>(null);
@@ -116,7 +118,7 @@ export default function CTAFooterCombined() {
           <div
             className={styles.overlay}
             style={{
-              backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+              backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
               backgroundRepeat: 'repeat',
               backgroundSize: 'auto'
             }}
@@ -125,7 +127,7 @@ export default function CTAFooterCombined() {
           {/* Shadow/Light Overlay */}
           <div className={styles.shadowOverlay}>
             <Image
-              src="/assets/overlays/shadow_overlay.png"
+              src={`${basePath}/assets/overlays/shadow_overlay.png`}
               alt=""
               fill
               className={styles.shadowOverlayImage}

@@ -8,6 +8,8 @@ import styles from './FooterSection.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
+
 export default function FooterSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const digit1Ref = useRef<HTMLDivElement>(null);
@@ -62,7 +64,7 @@ export default function FooterSection() {
       <div
         className={styles.overlay}
         style={{
-          backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+          backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
           backgroundRepeat: 'repeat',
           backgroundSize: 'auto'
         }}
@@ -71,7 +73,7 @@ export default function FooterSection() {
       {/* Shadow/Light Overlay */}
       <div className={styles.shadowOverlay}>
         <Image
-          src="/assets/overlays/shadow_overlay.png"
+          src={`${basePath}/assets/overlays/shadow_overlay.png`}
           alt=""
           fill
           className={styles.shadowOverlayImage}

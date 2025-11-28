@@ -8,6 +8,8 @@ import styles from './MarqueeScroll.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
+
 interface MarqueeScrollProps {
   title: string;
   subtitle: string | ReactNode;
@@ -131,7 +133,7 @@ export default function MarqueeScroll({
       <div
         className={styles.overlay}
         style={{
-          backgroundImage: 'url(/assets/overlays/noise_repeat_texture.webp)',
+          backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
           backgroundRepeat: 'repeat'
         }}
       ></div>
