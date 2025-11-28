@@ -677,15 +677,35 @@
   }
 
   .ctaContainer {
-    padding: 0 2rem;
+    padding: 0;
   }
 
+  /* Stack content vertically and center */
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-22vh);
+  }
+
+  /* Make numbers full width and centered */
+  .numberContainer {
+    font-size: 85vw;
+    justify-content: center;
+  }
+
+  .numberGroup {
+    height: 0.95em;
+  }
+
+  /* Show all 3 digits on mobile */
+  .digit1 {
+    display: flex;
+  }
+
+  /* Hide the text on mobile */
   .mainTextWrapper {
-    margin-bottom: 10px;
-  }
-
-  .mainText {
-    text-align: left;
+    display: none;
   }
 
   /* Make bottom row stack vertically on mobile with text above form */

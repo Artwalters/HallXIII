@@ -20,6 +20,11 @@ export default function CTAFooterCombined() {
   useEffect(() => {
     // CTA Counter Animation
     if (ctaSectionRef.current && digit1Ref.current && digit2Ref.current && digit3Ref.current) {
+      // Set initial positions immediately
+      gsap.set(digit1Ref.current, { yPercent: 0 });
+      gsap.set(digit2Ref.current, { yPercent: -10 });
+      gsap.set(digit3Ref.current, { yPercent: -30 });
+
       const ctx = gsap.context(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -27,13 +32,9 @@ export default function CTAFooterCombined() {
             start: 'top 50%',
             end: 'center center',
             scrub: 3,
+            invalidateOnRefresh: true,
           }
         });
-
-        // Set initial positions
-        tl.set(digit1Ref.current, { yPercent: 0 });
-        tl.set(digit2Ref.current, { yPercent: -10 });
-        tl.set(digit3Ref.current, { yPercent: -30 });
 
         // Cijfer 1: blijft op 0 (geen animatie nodig)
         tl.to(digit1Ref.current, {
@@ -53,6 +54,9 @@ export default function CTAFooterCombined() {
           ease: 'power2.out',
         }, 0);
       });
+
+      // Refresh ScrollTrigger after layout settles
+      setTimeout(() => ScrollTrigger.refresh(), 100);
 
       return () => ctx.revert();
     }
