@@ -86,49 +86,23 @@
 
 .menuRow {
   display: flex;
-  gap: 0.95em;
+  gap: 0.75em;
   align-items: center;
-}
-
-@media (min-width: 768px) {
-  .menuRow {
-    gap: 1.4em;
-  }
-}
-
-@media (min-width: 1024px) {
-  .menuRow {
-    gap: 1.9em;
-  }
 }
 
 /* Dropdown Button - Stop Motion */
 .dropdownButton {
   position: relative;
-  flex: 1;
-  height: 4.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75em;
+  padding: 0.5em 1.25em;
+  min-width: 14em;
+  height: 4em;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0 1.5em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1em;
-}
-
-@media (min-width: 768px) {
-  .dropdownButton {
-    height: 4.5em;
-    padding: 0 1.75em;
-  }
-}
-
-@media (min-width: 1024px) {
-  .dropdownButton {
-    height: 4.8em;
-    max-width: 24em;
-  }
 }
 
 /* Dropdown Border - white, behind dark */
@@ -189,21 +163,21 @@
 .dropdownButtonText {
   position: relative;
   color: var(--color-white);
-  font-size: 1.4em;
+  font-size: var(--font-h4);
   font-family: var(--font-relost);
   font-weight: 400;
   z-index: 2;
   white-space: nowrap;
 }
 
-/* Dropdown Chevron */
+/* Dropdown Chevron - Stop Motion */
 .dropdownChevron {
   position: relative;
-  width: 1.7em;
-  height: 1.7em;
-  color: var(--color-white);
+  width: 1.87em;
+  height: 1.87em;
   z-index: 2;
   flex-shrink: 0;
+  overflow: hidden;
   transition: transform 0.2s ease;
 }
 
@@ -211,10 +185,48 @@
   transform: rotate(180deg);
 }
 
+.dropdownChevronSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.dropdownChevronImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Keyframes voor dropdown chevron stop motion */
+@keyframes dropdownChevronStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Animatie op hover van dropdown button */
+.dropdownButton:hover .dropdownChevronSprite {
+  animation: dropdownChevronStopMotion 0.45s steps(1, end) infinite;
+}
+
+/* Animatie wanneer dropdown open is */
+.dropdownButtonOpen .dropdownChevronSprite {
+  animation: dropdownChevronStopMotion 0.45s steps(1, end) infinite;
+}
+
 /* Dropdown Wrapper */
 .dropdownWrapper {
   position: relative;
-  flex: 1;
+  display: inline-block;
 }
 
 /* Dropdown Menu */
@@ -303,30 +315,16 @@
 
 .arrowButton {
   position: relative;
-  width: 4.2em;
-  height: 4.2em;
+  width: 4em;
+  height: 4em;
   flex-shrink: 0;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .arrowButton {
-    width: 4.5em;
-    height: 4.5em;
-  }
-}
-
-@media (min-width: 1024px) {
-  .arrowButton {
-    width: 4.8em;
-    height: 4.8em;
-  }
 }
 
 /* Border - white, behind blue */
@@ -383,20 +381,53 @@
   animation: spriteBackground 0.5s steps(1, end) infinite;
 }
 
-/* Arrow icon */
+/* Arrow icon - Stop Motion */
 .arrowIcon {
   position: relative;
-  width: 1.8em;
-  height: 1.8em;
-  color: var(--color-white);
+  width: 2.16em;
+  height: 2.16em;
   z-index: 2;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .arrowIcon {
-    width: 2em;
-    height: 2em;
+    width: 2.4em;
+    height: 2.4em;
   }
+}
+
+.arrowIconSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.arrowIconImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Keyframes voor arrow icon stop motion */
+@keyframes arrowIconStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Animatie op hover van arrow button */
+.arrowButton:hover .arrowIconSprite {
+  animation: arrowIconStopMotion 0.45s steps(1, end) infinite;
 }
 
 .subtitleRow {

@@ -2,19 +2,14 @@
 .wrapper {
   background: var(--color-cream);
   position: relative;
-  min-height: 150vh;
+  min-height: 150svh;
 }
 
-/* Black Top Overlay */
-.blackTopOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  background: var(--color-black);
-  z-index: 1;
-  pointer-events: none;
+/* Fallback for browsers that don't support svh */
+@supports not (height: 100svh) {
+  .wrapper {
+    min-height: 150vh;
+  }
 }
 
 /* Outer Content Container - buiten clip-path */
@@ -23,7 +18,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 110vh;
+  height: 110svh;
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
@@ -34,6 +29,13 @@
   pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* Fallback for browsers that don't support svh */
+@supports not (height: 100svh) {
+  .outerContentContainer {
+    height: 110vh;
+  }
 }
 
 .outerContentContainer > * {
@@ -49,17 +51,28 @@
   left: 0.75rem;
   right: 0.75rem;
   width: calc(100% - 1.5rem);
-  height: calc(110vh - 1.5rem);
+  height: calc(110svh - 1.5rem);
+  max-height: calc(110svh - 1.5rem);
   min-height: 37.5rem;
   z-index: 10;
   border-radius: 2rem;
   overflow: hidden;
 }
 
+/* Fallback for browsers that don't support svh */
+@supports not (height: 100svh) {
+  .ctaSection {
+    height: calc(110vh - 1.5rem);
+    max-height: calc(110vh - 1.5rem);
+  }
+}
+
 .clippedContent {
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 /* Texture Overlay */
@@ -86,8 +99,8 @@
   pointer-events: none;
   opacity: 1;
   mix-blend-mode: multiply;
-  will-change: transform;
 }
+
 
 .shadowOverlayImage {
   object-fit: cover;
@@ -199,35 +212,28 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .ctaOptionText {
   font-family: var(--font-relost);
   font-weight: normal;
-  font-size: 2.125rem;
+  font-size: 1.75rem;
   color: var(--color-white);
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.ctaOptionWrapper:nth-child(2) .ctaOptionText {
-  transform: rotate(-3deg);
-}
-
-.ctaOptionWrapper:nth-child(3) .ctaOptionText {
-  transform: rotate(2deg);
+  text-transform: lowercase;
+  line-height: 1.2;
 }
 
 @media (min-width: 768px) {
   .ctaOptionText {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .ctaOptionText {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -237,7 +243,14 @@
 .footerWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 120vh;
+  padding-top: 125svh;
+}
+
+/* Fallback for browsers that don't support svh */
+@supports not (height: 100svh) {
+  .footerWrap {
+    padding-top: 125vh;
+  }
 }
 
 /* Footer */
@@ -272,66 +285,60 @@
   gap: 1.25rem;
 }
 
-/* Footer Label - Blob with text */
+/* Footer Label - Category Tag Style with Red Dot */
 .footerLabel {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 2.75rem;
-  width: fit-content;
+  gap: 0.75em;
   margin-bottom: 0.75rem;
 }
 
-.footerLabelBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: var(--color-black);
-}
-
-/* Footer Label with SVG Background */
-.footerLabelWrapper {
+.footerLabelCircle {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 0.75rem;
-  height: 2.5rem;
-  width: fit-content;
-}
-
-.footerLabelBack {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 0.75em;
+  height: 0.75em;
   overflow: hidden;
-  z-index: 0;
+  flex-shrink: 0;
 }
 
-.footerLabelBackSvg {
+.footerLabelCircleSprite {
   position: absolute;
   top: 0;
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-black);
-  animation: spriteBackground 0.5s steps(1, end) infinite;
+  display: flex;
+  animation: circleStopMotion 0.5s steps(1, end) infinite;
+}
+
+.footerLabelCircleSvg {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+  color: var(--color-accent);
 }
 
 .footerLabelText {
-  font-family: var(--font-relost);
-  font-weight: normal;
-  font-size: 1rem;
-  color: var(--color-cream);
+  font-family: 'Helvetica Now Display', sans-serif;
+  font-size: var(--font-body-small);
+  font-weight: 900;
+  color: var(--color-black);
   text-transform: uppercase;
-  padding: 0.5rem 1.25rem;
-  position: relative;
-  z-index: 1;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+/* Circle Stop Motion Animation */
+@keyframes circleStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
 }
 
 /* Footer Links */
@@ -464,7 +471,7 @@
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-black);
+  color: var(--color-dark-gray);
 }
 
 .newsletterInputWrapper:hover .newsletterInputBackSvg,
@@ -480,7 +487,7 @@
   font-family: var(--font-relost);
   font-weight: normal;
   font-size: 1.5em;
-  color: var(--color-cream);
+  color: var(--color-white);
   width: 100%;
   height: 100%;
   z-index: 2;
@@ -488,7 +495,7 @@
 }
 
 .newsletterInput::placeholder {
-  color: rgba(240, 235, 230, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .newsletterInput:focus {
@@ -557,7 +564,7 @@
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 .newsletterButton:hover .newsletterButtonBackSvg,
@@ -584,58 +591,6 @@
   color: var(--color-black);
   text-transform: lowercase;
   margin-top: 0.75rem;
-}
-
-/* Footer Logo */
-.footerLogo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5rem 0 0;
-}
-
-.footerLogoImage {
-  width: 100%;
-  height: auto;
-  opacity: 1;
-  filter: brightness(0);
-}
-
-/* Footer Bottom */
-.footerBottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0;
-  margin-top: -4.5rem;
-}
-
-.footerCredit {
-  font-family: var(--font-grifter);
-  font-weight: 900;
-  font-size: var(--font-body);
-  color: var(--color-black);
-  text-transform: lowercase;
-  margin: 0;
-}
-
-.footerStudio {
-  text-decoration: underline;
-}
-
-.footerCopyright {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-grifter);
-  font-weight: 900;
-  font-size: var(--font-body);
-  color: var(--color-black);
-}
-
-.footerYear {
-  opacity: 0.6;
 }
 
 /* Keyframes for sprite animation */
@@ -675,12 +630,6 @@
     grid-column: span 1;
   }
 
-  .footerBottom {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
   .newsletterInputWrapper {
     min-width: 14em;
     height: 3.5em;
@@ -706,7 +655,6 @@
 @media (max-width: 1024px) {
   .ctaSection {
     min-height: 43.75rem;
-    padding: 7.5rem 0;
   }
 
   .mainTextWrapper {
@@ -738,6 +686,29 @@
 
   .mainText {
     text-align: left;
+  }
+
+  /* Make bottom row stack vertically on mobile with text above form */
+  .ctaBottomRow {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-bottom: 6vh;
+  }
+
+  .ctaFormWrapper {
+    width: 100%;
+  }
+
+  .ctaOptionWrapper {
+    align-self: stretch;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 1vh;
+  }
+
+  .ctaOptionText {
+    font-size: 1.25rem;
   }
 }
 

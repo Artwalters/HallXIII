@@ -4,7 +4,7 @@ import CoachesSection from './components/CoachesSection';
 import GymSection from './components/GymSection';
 import CommunitySection from './components/CommunitySection';
 import ReviewSection from './components/ReviewSection';
-import FooterSection from './components/FooterSection';
+import FooterSection from './components/CTAFooterCombined';
 
 export default function Home() {
   return (

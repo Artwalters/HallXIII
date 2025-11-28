@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import OnboardingForm from './OnboardingForm';
 import Navigation from './Navigation';
+import OnboardingForm from './OnboardingForm';
 import styles from './HeroExpertiseCombined.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,8 +19,6 @@ export default function HeroExpertiseCombined() {
   const middleColumnRef = useRef<HTMLDivElement>(null);
   const rightColumnRef = useRef<HTMLDivElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
-
-  // Parallax effect removed
 
   useEffect(() => {
     // Image columns animation (from ExpertiseSection)

@@ -1,5 +1,5 @@
 .section {
-  background-color: var(--color-black);
+  background-color: var(--color-cream);
   padding: 10em 0 25em 0; /* More spacing at bottom */
   position: relative;
   overflow: hidden;
@@ -39,7 +39,7 @@
   font-family: 'Helvetica Now Display', sans-serif;
   font-size: var(--font-body-small);
   font-weight: 900;
-  color: var(--color-white);
+  color: var(--color-black);
   text-transform: uppercase;
   line-height: 1.2;
   letter-spacing: 0.05em;
@@ -89,7 +89,7 @@
   font-family: var(--font-schabo);
   font-size: var(--font-h1); /* Osmo design system */
   font-weight: normal;
-  color: var(--color-white);
+  color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.95;
   margin: 0;
@@ -101,7 +101,7 @@
   font-family: var(--font-relost);
   font-size: var(--relost-caption-big); /* Global Relost caption size */
   font-weight: normal;
-  color: var(--color-white);
+  color: var(--color-black);
   line-height: 1;
   margin: 1.5em 0 0 0;
   transform: rotate(-1deg);
@@ -124,7 +124,7 @@
 @media (max-width: 767px) {
   .gridContainer {
     grid-template-columns: 1fr;
-    row-gap: 7em;
+    row-gap: 12em;
     justify-items: center;
   }
 
@@ -153,13 +153,13 @@
 .reviewItem {
   position: relative;
   cursor: pointer;
-  filter: drop-shadow(0 0.625em 1.875em rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0.25em 0.75em rgba(0, 0, 0, 0.08));
   transition: filter 0.3s ease, z-index 0s;
 }
 
 .reviewItem:hover {
   z-index: 10;
-  filter: drop-shadow(0 1.25em 3.125em rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0.5em 1.25em rgba(0, 0, 0, 0.12));
 }
 
 /* Subtiele random vertical offsets voor organisch effect */
@@ -268,7 +268,7 @@
   }
 
   .gridContainer {
-    gap: 4em;
+    gap: 10em;
   }
 
   .reviewItem {
