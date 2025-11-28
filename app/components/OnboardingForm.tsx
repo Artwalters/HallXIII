@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import styles from './OnboardingForm.module.css';
 
@@ -119,7 +120,7 @@ export default function OnboardingForm() {
         </div>
 
         {/* Arrow Button - Stop Motion (Rounded) */}
-        <button className={styles.arrowButton}>
+        <Link href="/onboarding" className={styles.arrowButton}>
           <div className={styles.arrowButtonBorder}>
             <svg className={styles.arrowButtonBorderSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 240 80" fill="none" preserveAspectRatio="none">
               {/* Frame 1 */}
@@ -147,7 +148,7 @@ export default function OnboardingForm() {
               <Image src="/assets/stopmotion_icons/right3.svg" alt="" width={24} height={24} className={styles.arrowIconImg} />
             </div>
           </div>
-        </button>
+        </Link>
       </div>
 
       {/* Subtitle */}

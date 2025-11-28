@@ -315,8 +315,8 @@
 
 .arrowButton {
   position: relative;
-  width: 4em;
-  height: 4em;
+  width: 3.5em;
+  height: 3.5em;
   flex-shrink: 0;
   background: none;
   border: none;

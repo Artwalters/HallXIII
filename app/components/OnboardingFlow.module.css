@@ -1,0 +1,613 @@
+.container {
+  width: 100%;
+  max-width: 28em;
+  background: var(--color-black);
+  border: 0.125em solid var(--color-dark-gray);
+  border-radius: 1em;
+  padding: 2em 1.75em;
+  min-height: 20em;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Progress */
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 2.5em;
+}
+
+.stepLabel {
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: 0.7em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.progressBar {
+  flex: 1;
+  height: 0.375em;
+  background: var(--color-dark-gray);
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+/* Step Content */
+.stepContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.title {
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: 1.2em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-grifter);
+  font-weight: 400;
+  font-size: 0.8em;
+  color: var(--color-white);
+  text-transform: lowercase;
+  margin: -0.5em 0 0 0;
+}
+
+.helper {
+  font-family: var(--font-grifter);
+  font-weight: 400;
+  font-size: 0.7em;
+  color: var(--color-beige);
+  text-transform: lowercase;
+  margin: 0;
+}
+
+/* Input Fields - Stop Motion Style */
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  height: 3em;
+  display: flex;
+  align-items: center;
+}
+
+.inputBorder {
+  position: absolute;
+  top: -0.125em;
+  left: -0.125em;
+  width: calc(100% + 0.25em);
+  height: calc(100% + 0.25em);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.inputWrapper:hover .inputBorder,
+.inputWrapper:focus-within .inputBorder {
+  opacity: 1;
+}
+
+.inputBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.inputWrapper:hover .inputBorderSvg,
+.inputWrapper:focus-within .inputBorderSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.inputBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.inputBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-dark-gray);
+}
+
+.inputWrapper:hover .inputBackSvg,
+.inputWrapper:focus-within .inputBackSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: 0.9em 1.2em;
+  font-family: var(--font-relost);
+  font-weight: normal;
+  font-size: 1.2em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus {
+  outline: none;
+}
+
+@keyframes inputSpriteAnimation {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Dropdown - Stop Motion Style */
+.dropdownWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 3.5em;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownBorder {
+  position: absolute;
+  top: -0.125em;
+  left: -0.125em;
+  width: calc(100% + 0.25em);
+  height: calc(100% + 0.25em);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.dropdownWrapper:hover .dropdownBorder,
+.dropdownWrapper:focus-within .dropdownBorder {
+  opacity: 1;
+}
+
+.dropdownBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.dropdownWrapper:hover .dropdownBorderSvg,
+.dropdownWrapper:focus-within .dropdownBorderSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.dropdownBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdownBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-dark-gray);
+}
+
+.dropdownWrapper:hover .dropdownBackSvg,
+.dropdownWrapper:focus-within .dropdownBackSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.1em 2.5em 1.1em 1.2em;
+  font-family: var(--font-relost);
+  font-weight: normal;
+  font-size: 1.2em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  appearance: none;
+  cursor: pointer;
+  z-index: 2;
+  line-height: 1.2;
+}
+
+.dropdown:focus {
+  outline: none;
+}
+
+.dropdown option {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.dropdownChevron {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.9em;
+  height: 0.9em;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dropdownChevronSprite {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: dropdownChevronAnimation 0.5s steps(1, end) infinite;
+}
+
+.dropdownChevronImg {
+  width: 0.9em;
+  height: 0.9em;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes dropdownChevronAnimation {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Options Grid (Step 2) */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.optionButtonWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.optionButtonBorder {
+  position: absolute;
+  top: -0.125em;
+  left: -0.125em;
+  width: calc(100% + 0.25em);
+  height: calc(100% + 0.25em);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.optionButtonWrapper:hover .optionButtonBorder,
+.optionButtonWrapperSelected .optionButtonBorder {
+  opacity: 1;
+}
+
+.optionButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.optionButtonWrapperSelected .optionButtonBorderSvg {
+  color: var(--color-accent);
+}
+
+.optionButtonWrapper:hover .optionButtonBorderSvg,
+.optionButtonWrapperSelected .optionButtonBorderSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.optionButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.optionButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-dark-gray);
+}
+
+.optionButtonWrapper:hover .optionButtonBackSvg,
+.optionButtonWrapperSelected .optionButtonBackSvg {
+  animation: inputSpriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.optionButton {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.2em 1em;
+  font-family: var(--font-relost);
+  font-weight: normal;
+  font-size: 1.2em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  z-index: 2;
+  line-height: 1.3;
+  min-height: 3.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.optionButtonSelected {
+  color: var(--color-accent);
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* Submit Button */
+.submitButton {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+.submitButtonBorder {
+  position: absolute;
+  top: -0.125em;
+  left: -0.125em;
+  width: calc(100% + 0.25em);
+  height: calc(100% + 0.25em);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.submitButton:hover .submitButtonBorder {
+  opacity: 1;
+}
+
+.submitButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-white);
+}
+
+.submitButton:hover .submitButtonBorderSvg {
+  animation: spriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.submitButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.submitButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  color: var(--color-cream);
+}
+
+.submitButton:hover .submitButtonBackSvg {
+  animation: spriteAnimation 0.5s steps(1, end) infinite;
+}
+
+.submitButtonText {
+  position: relative;
+  display: block;
+  padding: 0.7em 1.5em;
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: 0.8em;
+  color: var(--color-black);
+  text-transform: lowercase;
+  z-index: 2;
+}
+
+@keyframes spriteAnimation {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+.disclaimer {
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: 0.7em;
+  color: var(--color-white);
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0.5em 0 1em;
+}
+
+/* Social Proof */
+.social {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-top: 1em;
+  border-top: 0.0625em solid var(--color-dark-gray);
+}
+
+.socialAvatars {
+  display: flex;
+  gap: 0;
+}
+
+.avatar {
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 50%;
+  border: 0.125em solid var(--color-black);
+  margin-left: -0.35em;
+  background: linear-gradient(135deg, var(--color-dark-gray) 0%, var(--color-dark-brown) 100%);
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar:nth-child(2) {
+  background: linear-gradient(135deg, var(--color-beige) 0%, var(--color-dark-brown) 100%);
+}
+
+.avatar:nth-child(3) {
+  background: linear-gradient(135deg, var(--color-dark-brown) 0%, var(--color-dark-primary) 100%);
+}
+
+.avatar:nth-child(4) {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark-primary) 100%);
+}
+
+.socialText {
+  font-family: var(--font-grifter);
+  font-weight: 400;
+  font-size: 0.7em;
+  color: var(--color-white);
+  text-transform: lowercase;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.socialText strong {
+  font-weight: 900;
+}
+
+/* Navigation */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+  padding-top: 1.5em;
+  border-top: 0.0625em solid var(--color-dark-gray);
+}
+
+.backButton,
+.nextButton {
+  background: transparent;
+  border: none;
+  font-family: var(--font-grifter);
+  font-weight: 900;
+  font-size: 0.8em;
+  color: var(--color-white);
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 0.5em 0;
+}
+
+.nextButton {
+  margin-left: auto;
+}
+
+.backButton:hover,
+.nextButton:hover {
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .container {
+    padding: 2em 1.5em;
+    min-height: 24em;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .socialAvatars {
+    flex-wrap: wrap;
+  }
+}
