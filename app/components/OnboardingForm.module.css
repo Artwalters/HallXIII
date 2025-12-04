@@ -50,7 +50,7 @@
   letter-spacing: -0.025em;
   text-transform: uppercase;
   white-space: nowrap;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: 400;
 }
 
@@ -80,8 +80,8 @@
   font-size: var(--font-body-large);
   letter-spacing: 0.025em;
   line-height: 1.25;
-  font-family: var(--font-grifter);
-  font-weight: var(--font-weight-grifter-body);
+  font-family: var(--font-par);
+  font-weight: var(--weight-par);
 }
 
 .menuRow {
@@ -164,7 +164,7 @@
   position: relative;
   color: var(--color-white);
   font-size: var(--font-h4);
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: 400;
   z-index: 2;
   white-space: nowrap;
@@ -251,7 +251,7 @@
   text-align: left;
   color: var(--color-white);
   font-size: 0.95em;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: 400;
   cursor: pointer;
   transition: background 0.15s ease;
@@ -296,7 +296,7 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: 400;
 }
 
@@ -442,7 +442,7 @@
   letter-spacing: -0.025em;
   line-height: 1.625;
   font-weight: 300;
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-style: italic;
   opacity: 0.6;
 }

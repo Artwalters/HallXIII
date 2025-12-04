@@ -19,7 +19,7 @@
 /* Menu Text */
 .menuText {
   position: relative;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: 2em;
   color: var(--color-white);
   text-transform: lowercase;

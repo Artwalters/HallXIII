@@ -251,7 +251,7 @@
 
 .meetHall13Text {
   position: relative;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: 1.59375em;
   color: var(--color-white);
   text-transform: lowercase;
@@ -380,7 +380,7 @@
 }
 
 .tagline {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: var(--relost-button-size); /* Kleiner: 1.75em ipv 2em */
   color: var(--color-white);
   margin: 0;
@@ -468,7 +468,7 @@
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.94;
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-weight: 100;
 }
 
@@ -476,8 +476,8 @@
   font-size: var(--font-body);
   color: var(--color-black);
   line-height: 1.9;
-  font-family: var(--font-grifter);
-  font-weight: var(--font-weight-grifter-body);
+  font-family: var(--font-par);
+  font-weight: var(--weight-par);
   max-width: 53.75rem;
 }
 
@@ -701,7 +701,7 @@
 /* Text */
 .btnStopMotionText {
   position: relative;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: 1.59375em;
   color: var(--color-white);
   text-transform: lowercase;

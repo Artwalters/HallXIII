@@ -34,7 +34,7 @@
 
 /* Subtitle */
 .subtitle {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: var(--font-h4);
   color: var(--color-black);
   text-align: center;
@@ -53,7 +53,7 @@
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.94;
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-weight: 100;
   text-align: center;
   margin-bottom: 3rem;
@@ -245,7 +245,7 @@
 }
 
 .flickCardBtn {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   background-color: var(--color-white);
   border-radius: 2em;
   justify-content: center;
@@ -344,7 +344,7 @@
 
 .titleSliderItem {
   position: absolute;
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-size: 4em;
   font-weight: normal;
   color: var(--color-black);

@@ -305,10 +305,20 @@
 
 /* CSS Variables */
 :root {
-  /* Font Families */
-  --font-schabo: 'SCHABO Condensed', sans-serif;
-  --font-relost: 'Relost Brush', cursive;
-  --font-grifter: 'Helvetica Now Display', sans-serif;
+  /* Font Families - Semantic naming */
+  --font-heading: 'SCHABO Condensed', sans-serif;      /* Main headings */
+  --font-accent: 'Relost Brush', cursive;              /* Accent text, captions */
+  --font-par: 'Helvetica Now Display', sans-serif;     /* Body text, paragraphs */
+
+  /* Font Weights - Default weights per font family */
+  --weight-heading: normal;   /* SCHABO default weight */
+  --weight-accent: normal;    /* Relost default weight */
+  --weight-par: 700;          /* Helvetica Now Display default weight (Bold) */
+
+  /* Legacy support - deprecated, use semantic names above */
+  --font-schabo: var(--font-heading);
+  --font-relost: var(--font-accent);
+  --font-grifter: var(--font-par);
 
   /* ========== DESIGN SYSTEM COLORS ========== */
   /* Based on Figma Design Guide */
@@ -356,18 +366,15 @@ html::-webkit-scrollbar {
 body {
   background: var(--color-cream);
   color: var(--color-dark-primary);
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-size: var(--size-font); /* Osmo scaling system - scales proportionally */
+  font-weight: var(--weight-par); /* Apply default weight for body font */
 }
 
-/* Default Helvetica Now Display to Bold (700) unless otherwise specified */
-* {
-  font-family: inherit;
-}
-
-[class*="Helvetica"],
-[style*="Helvetica Now Display"] {
-  font-weight: 700 !important;
+/* Best Practice: Font weight inheritance system */
+/* All elements using --font-par inherit the default weight unless explicitly overridden */
+body * {
+  font-weight: inherit;
 }
 
 /* ========== CUSTOM CURSORS ========== */

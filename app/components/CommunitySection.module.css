@@ -111,7 +111,7 @@
 }
 
 .topLine {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: var(--relost-caption-big); /* Global Relost caption size */
   color: var(--color-dark-brown);
   text-transform: uppercase;
@@ -127,7 +127,7 @@
 /* Looping Words */
 .loopingWords {
   height: 2.7em;
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-size: 30cqw;
   font-weight: normal;
   line-height: 1;
@@ -204,7 +204,7 @@
 }
 
 .socialText {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-size: var(--font-h4);
   color: var(--color-dark-brown);
   text-transform: lowercase;

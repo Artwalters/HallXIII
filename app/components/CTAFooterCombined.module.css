@@ -163,7 +163,7 @@
 
 .number {
   text-transform: uppercase;
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-weight: normal;
   color: var(--color-white);
   line-height: 1;
@@ -179,7 +179,7 @@
 }
 
 .mainText {
-  font-family: var(--font-schabo);
+  font-family: var(--font-heading);
   font-size: 13.5cqw;
   font-weight: normal;
   color: var(--color-white);
@@ -217,7 +217,7 @@
 }
 
 .ctaOptionText {
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: normal;
   font-size: 1.75rem;
   color: var(--color-white);
@@ -349,7 +349,7 @@
 }
 
 .footerLink {
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-weight: 900;
   font-size: var(--font-h4);
   color: var(--color-black);
@@ -363,7 +363,7 @@
 }
 
 .footerText {
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-weight: 900;
   font-size: var(--font-h4);
   color: var(--color-black);
@@ -371,7 +371,7 @@
 }
 
 .footerSmallLink {
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-weight: 900;
   font-size: var(--font-body);
   color: var(--color-black);
@@ -484,7 +484,7 @@
   background: transparent;
   border: none;
   padding: 1.25em 1.75em;
-  font-family: var(--font-relost);
+  font-family: var(--font-accent);
   font-weight: normal;
   font-size: 1.5em;
   color: var(--color-white);
@@ -585,7 +585,7 @@
 }
 
 .newsletterCaption {
-  font-family: var(--font-grifter);
+  font-family: var(--font-par);
   font-weight: 900;
   font-size: var(--font-body);
   color: var(--color-black);
