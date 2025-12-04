@@ -156,11 +156,15 @@ export default function CoachesSection() {
   };
 
   const handleMouseEnter = (coachName: string) => {
+    // Disable hover effects on touch devices
+    if ('ontouchstart' in window) return;
     if (activeAccordion.current !== null) return;
     bringToFront(coachName);
   };
 
   const handleMouseLeave = (coachName: string) => {
+    // Disable hover effects on touch devices
+    if ('ontouchstart' in window) return;
     if (activeAccordion.current === coachName) return;
     if (activeAccordion.current !== null) return;
 
@@ -257,8 +261,6 @@ export default function CoachesSection() {
                 transform: `rotate(${coach.rotation}deg)`,
                 zIndex: coaches.length - index
               }}
-              onMouseEnter={() => handleMouseEnter(coach.name)}
-              onMouseLeave={() => handleMouseLeave(coach.name)}
             >
               <div className={styles.polaroidWrapper}>
                 <Image

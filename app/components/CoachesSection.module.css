@@ -251,101 +251,103 @@
   cursor: url("https://cdn.prod.website-files.com/684fd3662bf373c304f927ef/684fd3fa2e5a792140becaff_2b1e000c885a11daa778a26530dd8999_cursor-pointer.svg") 12 0, pointer !important;
 }
 
-/* Stop Motion Animation Keyframes - met zichtbare variatie */
+/* Stop Motion Animation Keyframes - gematigde variatie */
 @keyframes accordionStopMotion {
   0% {
     clip-path: polygon(
-      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
+      14px 1.5px, 15% 2.5px, 30% 1.7px, 50% 2.8px, 70% 1.5px, 85% 2.6px, calc(100% - 14px) 1.7px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.7px), 85% calc(100% - 2.6px), 70% calc(100% - 1.5px), 50% calc(100% - 2.8px), 30% calc(100% - 1.7px), 15% calc(100% - 2.5px), 14px calc(100% - 1.5px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
-      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
+      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1.5px
     );
   }
   33.33% {
     clip-path: polygon(
-      14px 3px, 15% 1.5px, 30% 3.5px, 50% 1px, 70% 3px, 85% 1.5px, calc(100% - 14px) 3.5px,
-      calc(100% - 10px) 5px, calc(100% - 6px) 8px, calc(100% - 3px) 12px, calc(100% - 1px) 17px, 100% 23px,
-      100% calc(100% - 23px), calc(100% - 1px) calc(100% - 17px), calc(100% - 3px) calc(100% - 12px), calc(100% - 6px) calc(100% - 8px), calc(100% - 10px) calc(100% - 5px),
-      calc(100% - 14px) calc(100% - 3.5px), 85% calc(100% - 1.5px), 70% calc(100% - 3px), 50% calc(100% - 1px), 30% calc(100% - 3.5px), 15% calc(100% - 1.5px), 14px calc(100% - 3px),
-      10px calc(100% - 5px), 6px calc(100% - 8px), 3px calc(100% - 12px), 1px calc(100% - 17px), 0px calc(100% - 23px),
-      0px 23px, 1px 17px, 3px 12px, 6px 8px, 10px 5px, 14px 3px
+      14px 2.5px, 15% 1.7px, 30% 2.8px, 50% 1.5px, 70% 2.6px, 85% 1.7px, calc(100% - 14px) 2.8px,
+      calc(100% - 10px) 4.5px, calc(100% - 6px) 7.5px, calc(100% - 3px) 11.5px, calc(100% - 1px) 16.5px, 100% 22.5px,
+      100% calc(100% - 22.5px), calc(100% - 1px) calc(100% - 16.5px), calc(100% - 3px) calc(100% - 11.5px), calc(100% - 6px) calc(100% - 7.5px), calc(100% - 10px) calc(100% - 4.5px),
+      calc(100% - 14px) calc(100% - 2.8px), 85% calc(100% - 1.7px), 70% calc(100% - 2.6px), 50% calc(100% - 1.5px), 30% calc(100% - 2.8px), 15% calc(100% - 1.7px), 14px calc(100% - 2.5px),
+      10px calc(100% - 4.5px), 6px calc(100% - 7.5px), 3px calc(100% - 11.5px), 1px calc(100% - 16.5px), 0px calc(100% - 22.5px),
+      0px 22.5px, 1px 16.5px, 3px 11.5px, 6px 7.5px, 10px 4.5px, 14px 2.5px
     );
   }
   66.66% {
     clip-path: polygon(
-      14px 2px, 15% 3.5px, 30% 1px, 50% 3px, 70% 2px, 85% 3.5px, calc(100% - 14px) 1px,
-      calc(100% - 10px) 3.5px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 15.5px, 100% 21px,
-      100% calc(100% - 21px), calc(100% - 1px) calc(100% - 15.5px), calc(100% - 3px) calc(100% - 10.5px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 10px) calc(100% - 3.5px),
-      calc(100% - 14px) calc(100% - 1px), 85% calc(100% - 3.5px), 70% calc(100% - 2px), 50% calc(100% - 3px), 30% calc(100% - 1px), 15% calc(100% - 3.5px), 14px calc(100% - 2px),
-      10px calc(100% - 3.5px), 6px calc(100% - 6.5px), 3px calc(100% - 10.5px), 1px calc(100% - 15.5px), 0px calc(100% - 21px),
-      0px 21px, 1px 15.5px, 3px 10.5px, 6px 6.5px, 10px 3.5px, 14px 2px
+      14px 2px, 15% 2.8px, 30% 1.6px, 50% 2.5px, 70% 2px, 85% 2.7px, calc(100% - 14px) 1.6px,
+      calc(100% - 10px) 3.7px, calc(100% - 6px) 6.7px, calc(100% - 3px) 10.7px, calc(100% - 1px) 15.7px, 100% 21.7px,
+      100% calc(100% - 21.7px), calc(100% - 1px) calc(100% - 15.7px), calc(100% - 3px) calc(100% - 10.7px), calc(100% - 6px) calc(100% - 6.7px), calc(100% - 10px) calc(100% - 3.7px),
+      calc(100% - 14px) calc(100% - 1.6px), 85% calc(100% - 2.7px), 70% calc(100% - 2px), 50% calc(100% - 2.5px), 30% calc(100% - 1.6px), 15% calc(100% - 2.8px), 14px calc(100% - 2px),
+      10px calc(100% - 3.7px), 6px calc(100% - 6.7px), 3px calc(100% - 10.7px), 1px calc(100% - 15.7px), 0px calc(100% - 21.7px),
+      0px 21.7px, 1px 15.7px, 3px 10.7px, 6px 6.7px, 10px 3.7px, 14px 2px
     );
   }
   100% {
     clip-path: polygon(
-      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
+      14px 1.5px, 15% 2.5px, 30% 1.7px, 50% 2.8px, 70% 1.5px, 85% 2.6px, calc(100% - 14px) 1.7px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.7px), 85% calc(100% - 2.6px), 70% calc(100% - 1.5px), 50% calc(100% - 2.8px), 30% calc(100% - 1.7px), 15% calc(100% - 2.5px), 14px calc(100% - 1.5px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
-      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
+      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1.5px
     );
   }
 }
 
-/* Border Stop Motion Animation Keyframes - met zichtbare variatie */
+/* Border Stop Motion Animation Keyframes - gematigde variatie */
 @keyframes accordionBorderStopMotion {
   0% {
     clip-path: polygon(
-      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
+      14px 1.5px, 15% 2.5px, 30% 1.7px, 50% 2.8px, 70% 1.5px, 85% 2.6px, calc(100% - 14px) 1.7px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.7px), 85% calc(100% - 2.6px), 70% calc(100% - 1.5px), 50% calc(100% - 2.8px), 30% calc(100% - 1.7px), 15% calc(100% - 2.5px), 14px calc(100% - 1.5px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
-      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
+      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1.5px
     );
   }
   33.33% {
     clip-path: polygon(
-      14px 3px, 15% 1.5px, 30% 3.5px, 50% 1px, 70% 3px, 85% 1.5px, calc(100% - 14px) 3.5px,
-      calc(100% - 10px) 5px, calc(100% - 6px) 8px, calc(100% - 3px) 12px, calc(100% - 1px) 17px, 100% 23px,
-      100% calc(100% - 23px), calc(100% - 1px) calc(100% - 17px), calc(100% - 3px) calc(100% - 12px), calc(100% - 6px) calc(100% - 8px), calc(100% - 10px) calc(100% - 5px),
-      calc(100% - 14px) calc(100% - 3.5px), 85% calc(100% - 1.5px), 70% calc(100% - 3px), 50% calc(100% - 1px), 30% calc(100% - 3.5px), 15% calc(100% - 1.5px), 14px calc(100% - 3px),
-      10px calc(100% - 5px), 6px calc(100% - 8px), 3px calc(100% - 12px), 1px calc(100% - 17px), 0px calc(100% - 23px),
-      0px 23px, 1px 17px, 3px 12px, 6px 8px, 10px 5px, 14px 3px
+      14px 2.5px, 15% 1.7px, 30% 2.8px, 50% 1.5px, 70% 2.6px, 85% 1.7px, calc(100% - 14px) 2.8px,
+      calc(100% - 10px) 4.5px, calc(100% - 6px) 7.5px, calc(100% - 3px) 11.5px, calc(100% - 1px) 16.5px, 100% 22.5px,
+      100% calc(100% - 22.5px), calc(100% - 1px) calc(100% - 16.5px), calc(100% - 3px) calc(100% - 11.5px), calc(100% - 6px) calc(100% - 7.5px), calc(100% - 10px) calc(100% - 4.5px),
+      calc(100% - 14px) calc(100% - 2.8px), 85% calc(100% - 1.7px), 70% calc(100% - 2.6px), 50% calc(100% - 1.5px), 30% calc(100% - 2.8px), 15% calc(100% - 1.7px), 14px calc(100% - 2.5px),
+      10px calc(100% - 4.5px), 6px calc(100% - 7.5px), 3px calc(100% - 11.5px), 1px calc(100% - 16.5px), 0px calc(100% - 22.5px),
+      0px 22.5px, 1px 16.5px, 3px 11.5px, 6px 7.5px, 10px 4.5px, 14px 2.5px
     );
   }
   66.66% {
     clip-path: polygon(
-      14px 2px, 15% 3.5px, 30% 1px, 50% 3px, 70% 2px, 85% 3.5px, calc(100% - 14px) 1px,
-      calc(100% - 10px) 3.5px, calc(100% - 6px) 6.5px, calc(100% - 3px) 10.5px, calc(100% - 1px) 15.5px, 100% 21px,
-      100% calc(100% - 21px), calc(100% - 1px) calc(100% - 15.5px), calc(100% - 3px) calc(100% - 10.5px), calc(100% - 6px) calc(100% - 6.5px), calc(100% - 10px) calc(100% - 3.5px),
-      calc(100% - 14px) calc(100% - 1px), 85% calc(100% - 3.5px), 70% calc(100% - 2px), 50% calc(100% - 3px), 30% calc(100% - 1px), 15% calc(100% - 3.5px), 14px calc(100% - 2px),
-      10px calc(100% - 3.5px), 6px calc(100% - 6.5px), 3px calc(100% - 10.5px), 1px calc(100% - 15.5px), 0px calc(100% - 21px),
-      0px 21px, 1px 15.5px, 3px 10.5px, 6px 6.5px, 10px 3.5px, 14px 2px
+      14px 2px, 15% 2.8px, 30% 1.6px, 50% 2.5px, 70% 2px, 85% 2.7px, calc(100% - 14px) 1.6px,
+      calc(100% - 10px) 3.7px, calc(100% - 6px) 6.7px, calc(100% - 3px) 10.7px, calc(100% - 1px) 15.7px, 100% 21.7px,
+      100% calc(100% - 21.7px), calc(100% - 1px) calc(100% - 15.7px), calc(100% - 3px) calc(100% - 10.7px), calc(100% - 6px) calc(100% - 6.7px), calc(100% - 10px) calc(100% - 3.7px),
+      calc(100% - 14px) calc(100% - 1.6px), 85% calc(100% - 2.7px), 70% calc(100% - 2px), 50% calc(100% - 2.5px), 30% calc(100% - 1.6px), 15% calc(100% - 2.8px), 14px calc(100% - 2px),
+      10px calc(100% - 3.7px), 6px calc(100% - 6.7px), 3px calc(100% - 10.7px), 1px calc(100% - 15.7px), 0px calc(100% - 21.7px),
+      0px 21.7px, 1px 15.7px, 3px 10.7px, 6px 6.7px, 10px 3.7px, 14px 2px
     );
   }
   100% {
     clip-path: polygon(
-      14px 1px, 15% 3px, 30% 1.5px, 50% 3.5px, 70% 1px, 85% 3px, calc(100% - 14px) 1.5px,
+      14px 1.5px, 15% 2.5px, 30% 1.7px, 50% 2.8px, 70% 1.5px, 85% 2.6px, calc(100% - 14px) 1.7px,
       calc(100% - 10px) 4px, calc(100% - 6px) 7px, calc(100% - 3px) 11px, calc(100% - 1px) 16px, 100% 22px,
       100% calc(100% - 22px), calc(100% - 1px) calc(100% - 16px), calc(100% - 3px) calc(100% - 11px), calc(100% - 6px) calc(100% - 7px), calc(100% - 10px) calc(100% - 4px),
-      calc(100% - 14px) calc(100% - 1.5px), 85% calc(100% - 3px), 70% calc(100% - 1px), 50% calc(100% - 3.5px), 30% calc(100% - 1.5px), 15% calc(100% - 3px), 14px calc(100% - 1px),
+      calc(100% - 14px) calc(100% - 1.7px), 85% calc(100% - 2.6px), 70% calc(100% - 1.5px), 50% calc(100% - 2.8px), 30% calc(100% - 1.7px), 15% calc(100% - 2.5px), 14px calc(100% - 1.5px),
       10px calc(100% - 4px), 6px calc(100% - 7px), 3px calc(100% - 11px), 1px calc(100% - 16px), 0px calc(100% - 22px),
-      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1px
+      0px 22px, 1px 16px, 3px 11px, 6px 7px, 10px 4px, 14px 1.5px
     );
   }
 }
 
-/* Stop motion effect on hover */
-.accordionItemWrapper:hover .accordionItem {
-  animation: accordionStopMotion 0.4s steps(3, end) infinite;
-}
+/* Stop motion effect on hover - alleen op non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .accordionItemWrapper:hover .accordionItem {
+    animation: accordionStopMotion 0.4s steps(3, end) infinite;
+  }
 
-.accordionItemWrapper:hover .accordionBorder {
-  animation: accordionBorderStopMotion 0.4s steps(3, end) infinite;
+  .accordionItemWrapper:hover .accordionBorder {
+    animation: accordionBorderStopMotion 0.4s steps(3, end) infinite;
+  }
 }
 
 /* Stop motion effect when active */
@@ -487,7 +489,12 @@
 }
 
 /* Stop motion animatie op foto op hover/active */
-.accordionItemWrapper:hover .coachImageWrapper,
+@media (hover: hover) and (pointer: fine) {
+  .accordionItemWrapper:hover .coachImageWrapper {
+    animation: coachPhotoStopMotion 0.5s steps(1, end) infinite;
+  }
+}
+
 [data-accordion-status="active"] .coachImageWrapper {
   animation: coachPhotoStopMotion 0.5s steps(1, end) infinite;
 }
@@ -518,7 +525,12 @@
   z-index: 2;
 }
 
-.accordionItemWrapper:hover .coachImageRing,
+@media (hover: hover) and (pointer: fine) {
+  .accordionItemWrapper:hover .coachImageRing {
+    opacity: 1;
+  }
+}
+
 [data-accordion-status="active"] .coachImageRing {
   opacity: 1;
 }
@@ -533,7 +545,12 @@
   color: var(--color-white);
 }
 
-.accordionItemWrapper:hover .coachImageRingSvg,
+@media (hover: hover) and (pointer: fine) {
+  .accordionItemWrapper:hover .coachImageRingSvg {
+    animation: coachRingStopMotion 0.5s steps(1, end) infinite;
+  }
+}
+
 [data-accordion-status="active"] .coachImageRingSvg {
   animation: coachRingStopMotion 0.5s steps(1, end) infinite;
 }
@@ -567,9 +584,11 @@
   }
 }
 
-/* Activeer animatie op hover van accordion item */
-.accordionItem:hover .coachName {
-  animation: photoStopMotion 0.4s steps(3, end) infinite;
+/* Activeer animatie op hover van accordion item - alleen op non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .accordionItem:hover .coachName {
+    animation: photoStopMotion 0.4s steps(3, end) infinite;
+  }
 }
 
 /* Activeer animatie wanneer accordion actief is */
@@ -646,9 +665,11 @@
   }
 }
 
-/* Animatie op hover */
-.accordionItemWrapper:hover .accordionIconSprite {
-  animation: accordionIconStopMotion 0.45s steps(1, end) infinite;
+/* Animatie op hover - alleen op non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .accordionItemWrapper:hover .accordionIconSprite {
+    animation: accordionIconStopMotion 0.45s steps(1, end) infinite;
+  }
 }
 
 /* Animatie wanneer active */
