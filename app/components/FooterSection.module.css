@@ -62,11 +62,19 @@
 /* Content Wrapper */
 .contentWrapper {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 0;
   position: relative;
   transform: translateY(-8vh);
+}
+
+.contentWrapper > div:first-child {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
 }
 
 /* 013 Number - Based on loading example */
@@ -118,19 +126,156 @@
 }
 
 .mainText {
-  font-family: var(--font-heading);
+  font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 13.5cqw;
-  font-weight: normal;
   color: var(--color-white);
   line-height: 0.9;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0;
   /* Embossed effect - same technique as hero logo */
   filter:
     drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
     drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
     brightness(0.98);
+}
+
+/* Social Icons */
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.socialIcon {
+  position: relative;
+  width: 6.48em;
+  height: 6.48em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  /* Embossed effect */
+  filter:
+    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
+    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
+    brightness(0.96);
+}
+
+/* Social Icon Border - white, behind dark */
+.socialIconBorder {
+  position: absolute;
+  top: -0.1875em;
+  left: -0.1875em;
+  width: calc(100% + 0.375em);
+  height: calc(100% + 0.375em);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.socialIcon:hover .socialIconBorder {
+  opacity: 1;
+}
+
+.socialIconBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.socialIcon:hover .socialIconBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Social Icon Background */
+.socialIconBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.socialIconBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-dark-brown);
+}
+
+.socialIcon:hover .socialIconBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Social Icon Inner - icon container */
+.socialIconInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.socialIconSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.socialIconImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.socialIcon:hover .socialIconSprite {
+  animation: spriteIcon 0.45s steps(1, end) infinite;
+}
+
+/* Keyframes for icon sprite animation */
+@keyframes spriteIcon {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Keyframes for sprite animation */
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
 }
 
 /* ===== RESPONSIVE ===== */

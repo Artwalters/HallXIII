@@ -83,8 +83,9 @@ export default function FooterSection() {
       <div className={styles.container}>
         {/* Content Wrapper - centered */}
         <div className={styles.contentWrapper}>
-          {/* 013 Number with Counter Animation */}
-          <div className={styles.numberContainer}>
+          <div>
+            {/* 013 Number with Counter Animation */}
+            <div className={styles.numberContainer}>
             <div className={`${styles.numberGroup} ${styles.digit1}`}>
               <div className={styles.numberWrap} ref={digit1Ref}>
                 <span className={styles.number}>0</span>
@@ -120,11 +121,85 @@ export default function FooterSection() {
             </div>
           </div>
 
-          {/* Main Text */}
-          <div className={styles.mainTextWrapper}>
-            <p className={styles.mainText}>excuses meer</p>
-            <p className={styles.mainText}>het is tijd</p>
-            <p className={styles.mainText}>voor actie</p>
+            {/* Main Text */}
+            <div className={styles.mainTextWrapper}>
+              <p className={styles.mainText}>excuses meer</p>
+              <p className={styles.mainText}>het is tijd</p>
+              <p className={styles.mainText}>voor actie</p>
+            </div>
+          </div>
+
+          {/* Social Icons */}
+          <div className={styles.socialIcons}>
+            <a href="https://www.instagram.com/hal13gym/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/insta1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/insta2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/insta3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
+            </a>
+            <a href="https://www.tiktok.com/@hal13gym" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="TikTok">
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/tiktok1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/tiktok2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/tiktok3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
+            </a>
+            <a href="https://www.facebook.com/hal13gym" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Facebook">
+              <div className={styles.socialIconBorder}>
+                <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconBack}>
+                <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                  <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                  <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                  <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                </svg>
+              </div>
+              <div className={styles.socialIconInner}>
+                <div className={styles.socialIconSprite}>
+                  <Image src="/assets/stopmotion_icons/facebook1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/facebook2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                  <Image src="/assets/stopmotion_icons/facebook3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
