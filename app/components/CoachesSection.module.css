@@ -71,6 +71,7 @@
 
 .subtitle {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   color: var(--color-black);
   text-transform: uppercase;
   margin: 0 0 3rem;
@@ -602,6 +603,7 @@
 
 .coachName {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--font-h4);
   color: var(--color-white);
   text-transform: uppercase;

@@ -35,6 +35,7 @@
 /* Subtitle */
 .subtitle {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--font-h4);
   color: var(--color-black);
   text-align: center;
@@ -246,6 +247,7 @@
 
 .flickCardBtn {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   background-color: var(--color-white);
   border-radius: 2em;
   justify-content: center;

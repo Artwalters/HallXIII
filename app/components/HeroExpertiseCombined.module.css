@@ -252,6 +252,7 @@
 .meetHall13Text {
   position: relative;
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.59375em;
   color: var(--color-white);
   text-transform: lowercase;
@@ -381,6 +382,7 @@
 
 .tagline {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--relost-button-size); /* Kleiner: 1.75em ipv 2em */
   color: var(--color-white);
   margin: 0;
@@ -702,6 +704,7 @@
 .btnStopMotionText {
   position: relative;
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.59375em;
   color: var(--color-white);
   text-transform: lowercase;

@@ -99,8 +99,8 @@
 /* Subtitle */
 .subtitle {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--relost-caption-big); /* Global Relost caption size */
-  font-weight: normal;
   color: var(--color-black);
   line-height: 1;
   margin: 1.5em 0 0 0;

@@ -78,6 +78,7 @@
 /* Subtitle (Relost Brush) */
 .subtitle {
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 3em;
   color: var(--color-white);
   text-transform: lowercase;

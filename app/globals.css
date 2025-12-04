@@ -377,6 +377,13 @@ body * {
   font-weight: inherit;
 }
 
+/* Override: Reset font weight for accent fonts (Relost Brush, handwritten fonts) */
+/* These fonts should maintain their natural weight, not inherit bold from body */
+body *[style*="font-family: var(--font-accent)"],
+body *[style*="font-family:var(--font-accent)"] {
+  font-weight: var(--weight-accent) !important;
+}
+
 /* ========== CUSTOM CURSORS ========== */
 
 /* Cursor "default" */

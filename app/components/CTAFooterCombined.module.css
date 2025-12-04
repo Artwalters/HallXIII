@@ -218,7 +218,7 @@
 
 .ctaOptionText {
   font-family: var(--font-accent);
-  font-weight: normal;
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.75rem;
   color: var(--color-white);
   text-transform: lowercase;
@@ -485,7 +485,7 @@
   border: none;
   padding: 1.25em 1.75em;
   font-family: var(--font-accent);
-  font-weight: normal;
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.5em;
   color: var(--color-white);
   width: 100%;

@@ -149,7 +149,7 @@
   border: none;
   padding: 0.9em 1.2em;
   font-family: var(--font-accent);
-  font-weight: normal;
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.2em;
   color: var(--color-white);
   text-transform: uppercase;
@@ -248,7 +248,7 @@
   border: none;
   padding: 1.1em 2.5em 1.1em 1.2em;
   font-family: var(--font-accent);
-  font-weight: normal;
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.2em;
   color: var(--color-white);
   text-transform: uppercase;
@@ -384,7 +384,7 @@
   border: none;
   padding: 1.2em 1em;
   font-family: var(--font-accent);
-  font-weight: normal;
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 1.2em;
   color: var(--color-white);
   text-transform: uppercase;

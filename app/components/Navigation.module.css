@@ -20,6 +20,7 @@
 .menuText {
   position: relative;
   font-family: var(--font-accent);
+  font-weight: normal; /* Relost should maintain natural weight */
   font-size: 2em;
   color: var(--color-white);
   text-transform: lowercase;
