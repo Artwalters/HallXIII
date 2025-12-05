@@ -48,6 +48,19 @@
   width: 100%;
 }
 
+/* Desktop subtitle positioning */
+@media (min-width: 768px) {
+  .subtitle {
+    transform: translateX(-8rem) rotate(-3deg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .subtitle {
+    transform: translateX(-10rem) rotate(-3deg);
+  }
+}
+
 /* Title */
 .title {
   font-size: var(--font-h1);
@@ -77,21 +90,21 @@
 
 @media (min-width: 768px) {
   .subtitle {
-    margin-bottom: -1rem;
+    margin-bottom: -3.5rem;
   }
 
   .title {
-    margin-bottom: -0.5rem;
+    margin-bottom: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .subtitle {
-    margin-bottom: -1.5rem;
+    margin-bottom: -4rem;
   }
 
   .title {
-    margin-bottom: -1rem;
+    margin-bottom: 3rem;
   }
 }
 
