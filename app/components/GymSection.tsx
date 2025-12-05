@@ -65,7 +65,7 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -0.8,
-    magnetPosition: { top: '4%', left: '7%', rotation: -6 },
+    magnetPosition: { top: '-8%', right: '5%', rotation: 15 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -75,7 +75,7 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 1.2,
-    magnetPosition: { top: '3%', right: '4%', rotation: 9 },
+    magnetPosition: { top: '-6%', right: '3%', rotation: 18 },
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -85,7 +85,7 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.5,
-    magnetPosition: { top: '5%', left: '5%', rotation: -10 },
+    magnetPosition: { top: '-10%', right: '8%', rotation: 12 },
   },
   {
     image: '/assets/expertise-3.jpg',
@@ -95,7 +95,7 @@ const gymCards = [
     frameIndex: 3,
     flipFrame: true,
     textRotation: 1.8,
-    magnetPosition: { top: '2%', left: '8%', rotation: 8 },
+    magnetPosition: { top: '-5%', right: '6%', rotation: 22 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -105,7 +105,7 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -1.2,
-    magnetPosition: { top: '4%', right: '6%', rotation: -5 },
+    magnetPosition: { top: '-7%', right: '4%', rotation: 16 },
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -115,7 +115,7 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 0.9,
-    magnetPosition: { top: '3%', left: '6%', rotation: 11 },
+    magnetPosition: { top: '-9%', right: '7%', rotation: 20 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -125,7 +125,7 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.8,
-    magnetPosition: { top: '5%', left: '9%', rotation: -8 },
+    magnetPosition: { top: '-6%', right: '5%', rotation: 14 },
   },
 ];
 
@@ -419,6 +419,46 @@ export default function GymSection() {
 
     let nextIndex: number | null = null;
 
+    // Helper function to activate the draw effect
+    const activateDrawEffect = (box: Element) => {
+      if (nextIndex === null) {
+        nextIndex = Math.floor(Math.random() * svgVariants.length);
+      }
+
+      box.innerHTML = svgVariants[nextIndex];
+      const svg = box.querySelector('svg');
+      if (svg) {
+        decorateSVG(svg);
+        const path = svg.querySelector('path');
+        if (path) {
+          gsap.set(path, { drawSVG: '0%' });
+          gsap.to(path, {
+            duration: 0.5,
+            drawSVG: '100%',
+            ease: 'power2.inOut'
+          });
+        }
+      }
+
+      nextIndex = (nextIndex + 1) % svgVariants.length;
+    };
+
+    // Helper function to deactivate the draw effect
+    const deactivateDrawEffect = (box: Element) => {
+      const path = box.querySelector('path');
+      if (!path) return;
+
+      gsap.to(path, {
+        duration: 0.5,
+        drawSVG: '100% 100%',
+        ease: 'power2.inOut',
+        onComplete: () => {
+          box.innerHTML = '';
+        }
+      });
+    };
+
+    // Desktop hover handlers
     document.querySelectorAll('[data-draw-line-trigger]').forEach(trigger => {
       const drawLineElement = trigger.querySelector('[data-draw-line]');
       if (!drawLineElement) return;
@@ -426,60 +466,99 @@ export default function GymSection() {
       const box = drawLineElement.querySelector('[data-draw-line-box]');
       if (!box) return;
 
-      let enterTween: gsap.core.Tween | null = null;
-      let leaveTween: gsap.core.Tween | null = null;
+      // Check if this is a mobile flick card
+      const isMobileCard = trigger.hasAttribute('data-flick-cards-item');
 
-      trigger.addEventListener('mouseenter', () => {
-        if (enterTween && enterTween.isActive()) return;
-        if (leaveTween && leaveTween.isActive()) leaveTween.kill();
+      if (!isMobileCard) {
+        // Desktop: use mouseenter/mouseleave
+        let enterTween: gsap.core.Tween | null = null;
+        let leaveTween: gsap.core.Tween | null = null;
 
-        if (nextIndex === null) {
-          nextIndex = Math.floor(Math.random() * svgVariants.length);
-        }
+        trigger.addEventListener('mouseenter', () => {
+          if (enterTween && enterTween.isActive()) return;
+          if (leaveTween && leaveTween.isActive()) leaveTween.kill();
 
-        box.innerHTML = svgVariants[nextIndex];
-        const svg = box.querySelector('svg');
-        if (svg) {
-          decorateSVG(svg);
-          const path = svg.querySelector('path');
-          if (path) {
-            gsap.set(path, { drawSVG: '0%' });
-            enterTween = gsap.to(path, {
+          if (nextIndex === null) {
+            nextIndex = Math.floor(Math.random() * svgVariants.length);
+          }
+
+          box.innerHTML = svgVariants[nextIndex];
+          const svg = box.querySelector('svg');
+          if (svg) {
+            decorateSVG(svg);
+            const path = svg.querySelector('path');
+            if (path) {
+              gsap.set(path, { drawSVG: '0%' });
+              enterTween = gsap.to(path, {
+                duration: 0.5,
+                drawSVG: '100%',
+                ease: 'power2.inOut',
+                onComplete: () => { enterTween = null; }
+              });
+            }
+          }
+
+          nextIndex = (nextIndex + 1) % svgVariants.length;
+        });
+
+        trigger.addEventListener('mouseleave', () => {
+          const path = box.querySelector('path');
+          if (!path) return;
+
+          const playOut = () => {
+            if (leaveTween && leaveTween.isActive()) return;
+            leaveTween = gsap.to(path, {
               duration: 0.5,
-              drawSVG: '100%',
+              drawSVG: '100% 100%',
               ease: 'power2.inOut',
-              onComplete: () => { enterTween = null; }
+              onComplete: () => {
+                leaveTween = null;
+                box.innerHTML = '';
+              }
             });
+          };
+
+          if (enterTween && enterTween.isActive()) {
+            enterTween.eventCallback('onComplete', playOut);
+          } else {
+            playOut();
+          }
+        });
+      }
+    });
+
+    // Mobile: Activate effect for active card
+    const observer = new MutationObserver(() => {
+      const activeCard = document.querySelector('[data-flick-cards-item-status="active"]');
+
+      // Clear all non-active cards
+      document.querySelectorAll('[data-flick-cards-item]').forEach(item => {
+        if (item !== activeCard) {
+          const box = item.querySelector('[data-draw-line-box]');
+          if (box && box.innerHTML) {
+            deactivateDrawEffect(box);
           }
         }
-
-        nextIndex = (nextIndex + 1) % svgVariants.length;
       });
 
-      trigger.addEventListener('mouseleave', () => {
-        const path = box.querySelector('path');
-        if (!path) return;
-
-        const playOut = () => {
-          if (leaveTween && leaveTween.isActive()) return;
-          leaveTween = gsap.to(path, {
-            duration: 0.5,
-            drawSVG: '100% 100%',
-            ease: 'power2.inOut',
-            onComplete: () => {
-              leaveTween = null;
-              box.innerHTML = '';
-            }
-          });
-        };
-
-        if (enterTween && enterTween.isActive()) {
-          enterTween.eventCallback('onComplete', playOut);
-        } else {
-          playOut();
+      // Activate effect on active card
+      if (activeCard) {
+        const box = activeCard.querySelector('[data-draw-line-box]');
+        if (box && !box.innerHTML) {
+          activateDrawEffect(box);
         }
-      });
+      }
     });
+
+    // Observe changes to data-flick-cards-item-status attributes
+    const flickItems = document.querySelectorAll('[data-flick-cards-item]');
+    flickItems.forEach(item => {
+      observer.observe(item, { attributes: true, attributeFilter: ['data-flick-cards-item-status'] });
+    });
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -624,8 +703,8 @@ export default function GymSection() {
                         <Image
                           src="/assets/buttons/XIII_button.png"
                           alt=""
-                          width={90}
-                          height={90}
+                          width={140}
+                          height={140}
                           className={styles.flickMagnetImage}
                         />
                       </div>

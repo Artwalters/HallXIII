@@ -66,23 +66,32 @@
 @media (max-width: 768px) {
   .subtitle {
     padding: 0 var(--container-padding);
+    margin-bottom: 0.75rem;
   }
 
   .title {
     padding: 0 var(--container-padding);
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
   }
 }
 
 @media (min-width: 768px) {
+  .subtitle {
+    margin-bottom: -1rem;
+  }
+
   .title {
-    margin-bottom: 1.5rem;
+    margin-bottom: -0.5rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .subtitle {
+    margin-bottom: -1.5rem;
+  }
+
   .title {
-    margin-bottom: 2rem;
+    margin-bottom: -1rem;
   }
 }
 
@@ -202,7 +211,7 @@
 .flickGroup {
   position: relative;
   display: none;
-  margin-top: 4rem;
+  margin-top: -1rem;
 }
 
 /* Show flick cards only on mobile */
@@ -348,7 +357,7 @@
 
 .flickCaptionText {
   font-family: "Gochi Hand", cursive;
-  font-size: 1.8em;
+  font-size: 2.2em;
   font-weight: normal;
   color: var(--color-black);
   line-height: 1.3;
@@ -508,11 +517,20 @@
 .flickMagnetButton {
   position: absolute;
   z-index: 10;
+  opacity: 0;
+  transform: scale(0) translate(0%, 0%);
+  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Show magnet button on active card with bounce effect */
+[data-flick-cards-item-status="active"] .flickMagnetButton {
+  opacity: 1;
+  transform: scale(1) translate(0%, 0%);
 }
 
 .flickMagnetImage {
-  width: 90px;
-  height: 90px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   user-select: none;
   -webkit-user-select: none;
@@ -538,6 +556,13 @@
   line-height: 1.3;
   margin: 0;
   display: inline-block;
+}
+
+/* Larger text on mobile */
+@media (max-width: 768px) {
+  .textDrawSpan {
+    font-size: 2.2em;
+  }
 }
 
 .textDrawBox {
