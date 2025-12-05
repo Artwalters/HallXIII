@@ -30,6 +30,7 @@ const desktopCards = [
     frameIndex: 0,
     flipFrame: false,
     textRotation: textRotations[0],
+    magnetPosition: { top: '3%', left: '8%', rotation: -8 },
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -39,6 +40,7 @@ const desktopCards = [
     frameIndex: 2,
     flipFrame: true,
     textRotation: textRotations[1],
+    magnetPosition: { top: '5%', right: '5%', rotation: 12 },
   },
   {
     image: '/assets/expertise-3.jpg',
@@ -48,6 +50,7 @@ const desktopCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: textRotations[2],
+    magnetPosition: { top: '2%', left: '6%', rotation: -5 },
   },
 ];
 
@@ -61,6 +64,7 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -0.8,
+    magnetPosition: { top: '4%', left: '7%', rotation: -6 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -70,6 +74,7 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 1.2,
+    magnetPosition: { top: '3%', right: '4%', rotation: 9 },
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -79,6 +84,7 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.5,
+    magnetPosition: { top: '5%', left: '5%', rotation: -10 },
   },
   {
     image: '/assets/expertise-3.jpg',
@@ -88,6 +94,7 @@ const gymCards = [
     frameIndex: 3,
     flipFrame: true,
     textRotation: 1.8,
+    magnetPosition: { top: '2%', left: '8%', rotation: 8 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -97,6 +104,7 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -1.2,
+    magnetPosition: { top: '4%', right: '6%', rotation: -5 },
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -106,6 +114,7 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 0.9,
+    magnetPosition: { top: '3%', left: '6%', rotation: 11 },
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -115,6 +124,7 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.8,
+    magnetPosition: { top: '5%', left: '9%', rotation: -8 },
   },
 ];
 
@@ -138,9 +148,13 @@ export default function GymSection() {
     if (!root) return;
 
     // Configuration (tweak these for feel)
-    const xyMultiplier = 30;  // multiplies pointer velocity for x/y movement
-    const rotationMultiplier = 20;  // multiplies normalized torque for rotation speed
-    const inertiaResistance = 200; // higher = stops sooner
+    const xyMultiplier = 15;  // multiplies pointer velocity for x/y movement (was 30, now 50% less intense)
+    const rotationMultiplier = 10;  // multiplies normalized torque for rotation speed (was 20, now 50% less intense)
+    const inertiaResistance = 300; // higher = stops sooner (was 200, increased for less movement)
+
+    // Button-specific multipliers (50% of polaroid intensity)
+    const buttonXYMultiplier = 7.5;  // 50% of polaroid multiplier
+    const buttonRotationMultiplier = 5;  // 50% of polaroid multiplier
 
     // Pre-build clamp functions for performance
     const clampXY = gsap.utils.clamp(-1080, 1080);
@@ -174,6 +188,13 @@ export default function GymSection() {
         const target = element.querySelector('[data-momentum-hover-target]') as HTMLElement;
         if (!target) return;
 
+        // Check if this is a button element
+        const isButton = element.classList.contains(styles.magnetButton);
+
+        // Use button-specific multipliers if it's a button
+        const currentXYMultiplier = isButton ? buttonXYMultiplier : xyMultiplier;
+        const currentRotationMultiplier = isButton ? buttonRotationMultiplier : rotationMultiplier;
+
         // Compute offset from center to pointer
         const { left, top, width, height } = target.getBoundingClientRect();
         const centerX = left + width / 2;
@@ -189,9 +210,9 @@ export default function GymSection() {
         const angularForce = rawTorque / leverDist;
 
         // Calculate and clamp velocities
-        const velocityX = clampXY(velX * xyMultiplier);
-        const velocityY = clampXY(velY * xyMultiplier);
-        const rotationVelocity = clampRot(angularForce * rotationMultiplier);
+        const velocityX = clampXY(velX * currentXYMultiplier);
+        const velocityY = clampXY(velY * currentXYMultiplier);
+        const rotationVelocity = clampRot(angularForce * currentRotationMultiplier);
 
         // Apply GSAP inertia tween
         gsap.to(target, {
@@ -431,6 +452,29 @@ export default function GymSection() {
                       {card.caption}
                     </p>
                   </div>
+                  {/* Magnet Button */}
+                  <div
+                    className={styles.magnetButton}
+                    data-momentum-hover-element
+                    style={{
+                      top: card.magnetPosition.top,
+                      left: card.magnetPosition.left,
+                      right: card.magnetPosition.right,
+                    }}
+                  >
+                    <div
+                      data-momentum-hover-target
+                      style={{ transform: `rotate(${card.magnetPosition.rotation}deg)` }}
+                    >
+                      <Image
+                        src="/assets/buttons/XIII_button.png"
+                        alt=""
+                        width={120}
+                        height={120}
+                        className={styles.magnetImage}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -484,6 +528,24 @@ export default function GymSection() {
                         >
                           {card.caption}
                         </p>
+                      </div>
+                      {/* Magnet Button */}
+                      <div
+                        className={styles.flickMagnetButton}
+                        style={{
+                          top: card.magnetPosition.top,
+                          left: card.magnetPosition.left,
+                          right: card.magnetPosition.right,
+                          transform: `rotate(${card.magnetPosition.rotation}deg)`
+                        }}
+                      >
+                        <Image
+                          src="/assets/buttons/XIII_button.png"
+                          alt=""
+                          width={90}
+                          height={90}
+                          className={styles.flickMagnetImage}
+                        />
                       </div>
                     </div>
                   </div>
