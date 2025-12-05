@@ -490,6 +490,7 @@
   max-width: 112.5rem;
   margin: 0 auto;
   height: 24rem;
+  background-color: var(--color-black);
 }
 
 /* Desktop: original height */
@@ -501,13 +502,13 @@
 
 .columnsContainer {
   display: flex;
-  gap: 1rem;
+  gap: -4rem;
 }
 
 /* Mobile: smaller gap between images */
 @media (max-width: 768px) {
   .columnsContainer {
-    gap: 0.5rem;
+    gap: -2rem;
   }
 }
 
@@ -527,16 +528,16 @@
 .imageCollection {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
   will-change: transform;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 /* Mobile: smaller gap between images vertically */
 @media (max-width: 768px) {
   .imageCollection {
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    gap: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -565,12 +566,35 @@
 .imageWrapper {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: 0.625rem;
-  overflow: hidden;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .imageWrapper img {
   object-fit: cover;
+}
+
+.carouselImage {
+  border-radius: 0;
+  padding: 2%;
+}
+
+/* Kodak Frame Overlay */
+.kodakFrameOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  aspect-ratio: 4 / 5;
+}
+
+.kodakFrameImage {
+  object-fit: fill;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
 }
 
 /* ===== STOP MOTION BUTTON ===== */

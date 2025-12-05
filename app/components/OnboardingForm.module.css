@@ -98,9 +98,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75em;
-  padding: 0.5em 1.25em;
+  padding: 0.75em 1.5em;
   min-width: 14em;
-  height: 4em;
+  height: fit-content;
+  width: fit-content;
   background: none;
   border: none;
   cursor: pointer;
@@ -252,7 +253,7 @@
   border: none;
   text-align: left;
   color: var(--color-white);
-  font-size: 0.95em;
+  font-size: var(--font-body-normal);
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-weight: 400;
@@ -388,17 +389,10 @@
 /* Arrow icon - Stop Motion */
 .arrowIcon {
   position: relative;
-  width: 2.16em;
-  height: 2.16em;
+  width: 1.5em;
+  height: 1.5em;
   z-index: 2;
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .arrowIcon {
-    width: 2.4em;
-    height: 2.4em;
-  }
 }
 
 .arrowIconSprite {

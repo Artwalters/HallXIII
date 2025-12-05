@@ -144,8 +144,16 @@ export default function CoachingSection() {
                     alt={item.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 650px"
-                    className={styles.image}
+                    className={`${styles.image} ${styles.imageWithKodakFrame}`}
                   />
+                  <div className={styles.kodakFrameOverlay}>
+                    <Image
+                      src="/assets/frames_kodak/fame1.png"
+                      alt=""
+                      fill
+                      className={styles.kodakFrameImage}
+                    />
+                  </div>
                 </div>
               </>
             ) : (
@@ -156,8 +164,16 @@ export default function CoachingSection() {
                     alt={item.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 650px"
-                    className={styles.image}
+                    className={`${styles.image} ${styles.imageWithKodakFrame}`}
                   />
+                  <div className={styles.kodakFrameOverlay}>
+                    <Image
+                      src="/assets/frames_kodak/fame1.png"
+                      alt=""
+                      fill
+                      className={styles.kodakFrameImage}
+                    />
+                  </div>
                 </div>
                 <div className={styles.textContent}>
                   <div className={styles.header}>
@@ -243,8 +259,16 @@ export default function CoachingSection() {
               alt={partnersItem.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 518px"
-              className={styles.image}
+              className={`${styles.image} ${styles.imageWithKodakFrame}`}
             />
+            <div className={styles.kodakFrameOverlay}>
+              <Image
+                src="/assets/frames_kodak/fame1.png"
+                alt=""
+                fill
+                className={styles.kodakFrameImage}
+              />
+            </div>
           </div>
           <div className={styles.textContent}>
             <div className={styles.header}>

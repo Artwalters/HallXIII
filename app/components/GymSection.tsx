@@ -9,15 +9,113 @@ import styles from './GymSection.module.css';
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
-// 7 cards - ordered to avoid same card on wraparound
+// Polaroid frames
+const frames = [
+  '/assets/frames poloroid/frame 1.png',
+  '/assets/frames poloroid/frame2.png',
+  '/assets/frames poloroid/frame 3.png',
+  '/assets/frames poloroid/frame4.png',
+];
+
+// Text rotations for organic look
+const textRotations = [-1.5, 1.2, -0.8];
+
+// 3 cards for desktop momentum hover
+const desktopCards = [
+  {
+    image: '/assets/expertise-1.jpg',
+    title: 'TRAINEN?',
+    caption: 'Dagpas aanvragen',
+    rotation: 2,
+    frameIndex: 0,
+    flipFrame: false,
+    textRotation: textRotations[0],
+  },
+  {
+    image: '/assets/expertise-2.jpg',
+    title: 'LID WORDEN?',
+    caption: 'Lid worden',
+    rotation: -1,
+    frameIndex: 2,
+    flipFrame: true,
+    textRotation: textRotations[1],
+  },
+  {
+    image: '/assets/expertise-3.jpg',
+    title: 'COACHING?',
+    caption: 'Coaching traject starten',
+    rotation: 4,
+    frameIndex: 1,
+    flipFrame: false,
+    textRotation: textRotations[2],
+  },
+];
+
+// 7 cards for mobile flick - ordered to avoid same card on wraparound
 const gymCards = [
-  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
-  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
-  { image: '/assets/expertise-3.jpg', title: 'COACHING?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
-  { image: '/assets/expertise-2.jpg', title: 'LID WORDEN?' },
-  { image: '/assets/expertise-1.jpg', title: 'TRAINEN?' },
+  {
+    image: '/assets/expertise-3.jpg',
+    title: 'COACHING?',
+    caption: 'Coaching traject starten',
+    rotation: 3,
+    frameIndex: 1,
+    flipFrame: false,
+    textRotation: -0.8,
+  },
+  {
+    image: '/assets/expertise-1.jpg',
+    title: 'TRAINEN?',
+    caption: 'Dagpas aanvragen',
+    rotation: -2,
+    frameIndex: 0,
+    flipFrame: true,
+    textRotation: 1.2,
+  },
+  {
+    image: '/assets/expertise-2.jpg',
+    title: 'LID WORDEN?',
+    caption: 'Lid worden',
+    rotation: 4,
+    frameIndex: 2,
+    flipFrame: false,
+    textRotation: -1.5,
+  },
+  {
+    image: '/assets/expertise-3.jpg',
+    title: 'COACHING?',
+    caption: 'Coaching traject starten',
+    rotation: -3,
+    frameIndex: 3,
+    flipFrame: true,
+    textRotation: 1.8,
+  },
+  {
+    image: '/assets/expertise-1.jpg',
+    title: 'TRAINEN?',
+    caption: 'Dagpas aanvragen',
+    rotation: 2,
+    frameIndex: 1,
+    flipFrame: false,
+    textRotation: -1.2,
+  },
+  {
+    image: '/assets/expertise-2.jpg',
+    title: 'LID WORDEN?',
+    caption: 'Lid worden',
+    rotation: -4,
+    frameIndex: 0,
+    flipFrame: true,
+    textRotation: 0.9,
+  },
+  {
+    image: '/assets/expertise-1.jpg',
+    title: 'TRAINEN?',
+    caption: 'Dagpas aanvragen',
+    rotation: 5,
+    frameIndex: 2,
+    flipFrame: false,
+    textRotation: -1.8,
+  },
 ];
 
 export default function GymSection() {
@@ -25,50 +123,106 @@ export default function GymSection() {
   const cardsGridRef = useRef<HTMLDivElement>(null);
   const titlesRef = useRef<HTMLDivElement>(null);
 
-  // Desktop: Wave animation on scroll
+  // Desktop: Momentum-based hover animation with inertia (only on desktop)
   useEffect(() => {
-    if (!cardsGridRef.current) return;
+    // If this device can't hover with a fine pointer, stop here
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
 
-    const cards = cardsGridRef.current.querySelectorAll(`.${styles.card}`);
+    // Only initialize on desktop devices (min-width: 769px)
+    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+    if (!isDesktop) return;
 
-    const ctx = gsap.context(() => {
-      // Set initial position - cards always start below
-      gsap.set(cards, { y: 400 });
+    const root = cardsGridRef.current;
+    if (!root) return;
 
-      // Create timeline with stagger for wave effect
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: cardsGridRef.current,
-          start: 'top bottom',
-          end: 'top 20%',
-          scrub: 2,
-        }
+    // Configuration (tweak these for feel)
+    const xyMultiplier = 30;  // multiplies pointer velocity for x/y movement
+    const rotationMultiplier = 20;  // multiplies normalized torque for rotation speed
+    const inertiaResistance = 200; // higher = stops sooner
+
+    // Pre-build clamp functions for performance
+    const clampXY = gsap.utils.clamp(-1080, 1080);
+    const clampRot = gsap.utils.clamp(-60, 60);
+
+    let prevX = 0, prevY = 0;
+    let velX = 0, velY = 0;
+    let rafId: number | null = null;
+
+    // Track pointer velocity (throttled to RAF)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        velX = e.clientX - prevX;
+        velY = e.clientY - prevY;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        rafId = null;
       });
+    };
 
-      // Animate cards up with stagger (wave from left to right)
-      tl.to(cards, {
-        y: 0,
-        duration: 2,
-        ease: 'power1.out',
-        stagger: 0.3
-      });
+    root.addEventListener('mousemove', handleMouseMove);
+
+    // Attach hover inertia to each child element
+    const elements = root.querySelectorAll('[data-momentum-hover-element]');
+
+    elements.forEach(el => {
+      const element = el as HTMLElement;
+
+      const handleMouseEnter = (e: MouseEvent) => {
+        const target = element.querySelector('[data-momentum-hover-target]') as HTMLElement;
+        if (!target) return;
+
+        // Compute offset from center to pointer
+        const { left, top, width, height } = target.getBoundingClientRect();
+        const centerX = left + width / 2;
+        const centerY = top + height / 2;
+        const offsetX = e.clientX - centerX;
+        const offsetY = e.clientY - centerY;
+
+        // Compute raw torque (px²/frame)
+        const rawTorque = offsetX * velY - offsetY * velX;
+
+        // Normalize torque so rotation ∝ pointer speed (deg/sec)
+        const leverDist = Math.hypot(offsetX, offsetY) || 1;
+        const angularForce = rawTorque / leverDist;
+
+        // Calculate and clamp velocities
+        const velocityX = clampXY(velX * xyMultiplier);
+        const velocityY = clampXY(velY * xyMultiplier);
+        const rotationVelocity = clampRot(angularForce * rotationMultiplier);
+
+        // Apply GSAP inertia tween
+        gsap.to(target, {
+          inertia: {
+            x: { velocity: velocityX, end: 0 },
+            y: { velocity: velocityY, end: 0 },
+            rotation: { velocity: rotationVelocity, end: 0 },
+            resistance: inertiaResistance
+          }
+        });
+      };
+
+      element.addEventListener('mouseenter', handleMouseEnter);
     });
 
-    return () => ctx.revert();
+    return () => {
+      root.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   // Mobile: Flick cards slider
   useEffect(() => {
     // Only initialize on mobile devices (max-width: 768px)
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile || !sliderRef.current || !titlesRef.current) return;
+    if (!isMobile || !sliderRef.current) return;
 
     const slider = sliderRef.current;
     const list = slider.querySelector('[data-flick-cards-list]');
     if (!list) return;
 
     const cards = Array.from(list.querySelectorAll('[data-flick-cards-item]')) as HTMLElement[];
-    const titles = Array.from(titlesRef.current.querySelectorAll('[data-title-item]')) as HTMLElement[];
     const total = cards.length;
     let activeIndex = 0;
 
@@ -105,20 +259,6 @@ export default function GymSection() {
       }
     }
 
-    function getTitleConfig(i: number, currentIndex: number) {
-      let diff = i - currentIndex;
-      if (diff > total / 2) diff -= total;
-      else if (diff < -total / 2) diff += total;
-
-      switch (diff) {
-        case  0: return { x: 0,   y: 0,  rot: 0,   s: 1,   o: 1, z: 5 };
-        case  1: return { x: 120, y: 30, rot: 25,  s: 0.7, o: 0, z: 4 };
-        case -1: return { x: -120, y: 30, rot: -25, s: 0.7, o: 0, z: 4 };
-        default:
-          const dir = diff > 0 ? 1 : -1;
-          return { x: 150 * dir, y: 50, rot: 35 * dir, s: 0.5, o: 0, z: 2 };
-      }
-    }
 
     function renderCards(currentIndex: number) {
       cards.forEach((card, i) => {
@@ -141,30 +281,7 @@ export default function GymSection() {
           xPercent: cfg.x,
           yPercent: cfg.y,
           rotation: cfg.rot,
-          scale: cfg.s,
-          opacity: cfg.o
-        });
-      });
-
-      // Animate titles
-      titles.forEach((title, i) => {
-        const cfg = getTitleConfig(i, currentIndex);
-        title.style.zIndex = String(cfg.z);
-
-        gsap.to(title, {
-          duration: 0.6,
-          ease: 'elastic.out(1.2, 1)',
-          xPercent: cfg.x,
-          yPercent: cfg.y,
-          rotation: cfg.rot,
           scale: cfg.s
-        });
-
-        // Opacity animates separately - only visible when active
-        gsap.to(title, {
-          duration: 0.15,
-          ease: 'power2.out',
-          opacity: cfg.o
         });
       });
     }
@@ -201,8 +318,7 @@ export default function GymSection() {
             xPercent: mix('x'),
             yPercent: mix('y'),
             rotation: mix('rot'),
-            scale: mix('s'),
-            opacity: mix('o')
+            scale: mix('s')
           });
         });
 
@@ -270,17 +386,52 @@ export default function GymSection() {
         {/* Title */}
         <h2 className={styles.title}>hal13</h2>
 
-        {/* Desktop: Cards Grid (hidden on mobile) */}
-        <div ref={cardsGridRef} className={styles.cardsGrid}>
-          {gymCards.slice(0, 3).map((card, index) => (
-            <div key={index} className={styles.card}>
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className={styles.cardImage}
-                />
+        {/* Desktop: Cards Grid with Momentum Hover (hidden on mobile) */}
+        <div
+          ref={cardsGridRef}
+          className={styles.cardsGrid}
+          data-momentum-hover-init
+        >
+          {desktopCards.map((card, index) => (
+            <div
+              key={index}
+              className={styles.cardItem}
+              data-momentum-hover-element
+            >
+              <div
+                className={styles.card}
+                data-momentum-hover-target
+                style={{ transform: `rotate(${card.rotation}deg)` }}
+              >
+                <div className={styles.cardBefore}></div>
+                <div className={styles.imageWrapper}>
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    sizes="(max-width: 768px) 320px, 450px"
+                    className={styles.cardImage}
+                  />
+                  {/* Polaroid Frame Overlay */}
+                  <div className={styles.frameOverlay}>
+                    <Image
+                      src={frames[card.frameIndex]}
+                      alt=""
+                      fill
+                      className={styles.frameImage}
+                      style={{ transform: card.flipFrame ? 'scaleX(-1)' : 'none' }}
+                    />
+                  </div>
+                  {/* Caption positioned over frame bottom */}
+                  <div className={styles.caption}>
+                    <p
+                      className={styles.captionText}
+                      style={{ transform: `rotate(${card.textRotation}deg)` }}
+                    >
+                      {card.caption}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -312,8 +463,28 @@ export default function GymSection() {
                         src={card.image}
                         alt={card.title}
                         fill
+                        sizes="(max-width: 768px) 350px, 450px"
                         className={styles.coverImage}
                       />
+                      {/* Polaroid Frame Overlay */}
+                      <div className={styles.flickFrameOverlay}>
+                        <Image
+                          src={frames[card.frameIndex]}
+                          alt=""
+                          fill
+                          className={styles.flickFrameImage}
+                          style={{ transform: card.flipFrame ? 'scaleX(-1)' : 'none' }}
+                        />
+                      </div>
+                      {/* Caption positioned over frame bottom */}
+                      <div className={styles.flickCaption}>
+                        <p
+                          className={styles.flickCaptionText}
+                          style={{ transform: `rotate(${card.textRotation}deg)` }}
+                        >
+                          {card.caption}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -321,18 +492,6 @@ export default function GymSection() {
             </div>
           </div>
 
-          {/* Title Slider */}
-          <div ref={titlesRef} className={styles.titleSlider}>
-            {gymCards.map((card, index) => (
-              <h3
-                key={index}
-                className={styles.titleSliderItem}
-                data-title-item
-              >
-                {card.title}
-              </h3>
-            ))}
-          </div>
         </div>
       </div>
     </section>

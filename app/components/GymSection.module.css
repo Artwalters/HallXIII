@@ -57,7 +57,7 @@
   font-family: var(--font-heading);
   font-weight: 100;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 10;
 }
@@ -70,26 +70,30 @@
 
   .title {
     padding: 0 var(--container-padding);
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .title {
-    margin-bottom: 6rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .title {
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
   }
 }
 
 /* Desktop Cards Grid */
 .cardsGrid {
   display: flex;
-  gap: 1rem;
+  flex-wrap: nowrap;
+  gap: 2em;
+  justify-content: center;
+  max-width: 80em;
+  margin: 0 auto;
 }
 
 /* Hide desktop grid on mobile */
@@ -99,22 +103,97 @@
   }
 }
 
-/* Card */
-.card {
+/* Card Item Wrapper */
+.cardItem {
   flex: 1;
+  max-width: calc(33.33% - 1.33em);
+  position: relative;
+  filter: drop-shadow(0 0.25em 0.75em rgba(0, 0, 0, 0.08));
+  transition: filter 0.3s ease;
+}
+
+.cardItem:hover {
+  filter: drop-shadow(0 0.5em 1.25em rgba(0, 0, 0, 0.12));
+}
+
+/* Card - Polaroid styling */
+.card {
+  background-color: transparent;
+  width: 100%;
+  position: relative;
   will-change: transform;
+  transform-origin: center center;
+  padding: 0;
+}
+
+/* Card Before - aspect ratio spacer */
+.cardBefore {
+  display: none;
 }
 
 /* Image Wrapper */
 .imageWrapper {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 0.625rem;
-  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  overflow: visible;
 }
 
 .cardImage {
   object-fit: cover;
+  object-position: center 45%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  padding: 3%;
+  padding-left: 4.5%;
+  padding-right: 4.5%;
+  padding-bottom: 8%;
+  z-index: 1;
+  scale: 1.03;
+}
+
+/* Frame Overlay */
+.frameOverlay {
+  position: absolute;
+  top: -2%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.frameImage {
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Caption (CTA Text) */
+.caption {
+  position: absolute;
+  bottom: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  z-index: 3;
+  padding: -0.5em;
+}
+
+.captionText {
+  font-family: "Gochi Hand", cursive;
+  font-size: 1.8em;
+  font-weight: normal;
+  color: var(--color-black);
+  line-height: 1.3;
+  margin: 0;
 }
 
 /* Flick Group (Mobile Only) */
@@ -149,13 +228,13 @@
 }
 
 .flickGroupRelativeObjectBefore {
-  padding-top: 75%;
+  padding-top: 100%;
 }
 
-/* Mobile: more spacing to prevent overlap and accommodate larger cards */
+/* Mobile: more spacing to prevent overlap and accommodate polaroid frames */
 @media (max-width: 768px) {
   .flickGroupRelativeObjectBefore {
-    padding-top: 120%;
+    padding-top: 160%;
   }
 }
 
@@ -184,14 +263,14 @@
 .flickCard {
   color: var(--color-white);
   user-select: none;
-  background-color: var(--color-black);
-  border-radius: 1em;
+  background-color: transparent;
+  border-radius: 0;
   justify-content: center;
   align-items: center;
   width: 23.5em;
   display: flex;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* Mobile: wider cards */
@@ -202,36 +281,75 @@
 }
 
 .flickCardBefore {
-  padding-top: 150%;
-}
-
-/* Mobile: less tall cards */
-@media (max-width: 768px) {
-  .flickCardBefore {
-    padding-top: 130%;
-  }
+  display: none;
 }
 
 .flickCardMedia {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1.3;
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  overflow: visible;
 }
 
 .coverImage {
   pointer-events: none;
   object-fit: cover;
+  object-position: center 45%;
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   width: 100%;
   height: 100%;
+  padding: 3%;
+  padding-left: 4.5%;
+  padding-right: 4.5%;
+  padding-bottom: 8%;
+  z-index: 1;
+  scale: 1.03;
+}
+
+/* Flick Frame Overlay */
+.flickFrameOverlay {
   position: absolute;
-  top: 0;
-  left: auto;
+  top: -2%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.flickFrameImage {
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Flick Caption */
+.flickCaption {
+  position: absolute;
+  bottom: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  z-index: 3;
+}
+
+.flickCaptionText {
+  font-family: "Gochi Hand", cursive;
+  font-size: 1.8em;
+  font-weight: normal;
+  color: var(--color-black);
+  line-height: 1.3;
+  margin: 0;
 }
 
 /* Card Buttons Container */
@@ -292,26 +410,34 @@
   touch-action: pan-y;
 }
 
-/* Position Slides - Opacity Animation */
+/* Position Slides - Cream Overlay Animation */
 [data-flick-cards-item-status] .flickCard {
-  transition: opacity 0.2s ease;
-  opacity: 0;
-}
-
-[data-flick-cards-item-status="2-before"] .flickCard,
-[data-flick-cards-item-status="2-after"] .flickCard {
-  transition: opacity 0.2s ease;
-  opacity: 0.3;
-}
-
-[data-flick-cards-item-status="3-before"] .flickCard,
-[data-flick-cards-item-status="3-after"] .flickCard {
-  transition: opacity 0.2s ease;
-  opacity: 0.15;
-}
-
-[data-flick-cards-item-status="active"] .flickCard {
   opacity: 1;
+}
+
+[data-flick-cards-item-status] .flickCard::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background-color: var(--color-cream);
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+[data-flick-cards-item-status="2-before"] .flickCard::after,
+[data-flick-cards-item-status="2-after"] .flickCard::after {
+  opacity: 0.7;
+}
+
+[data-flick-cards-item-status="3-before"] .flickCard::after,
+[data-flick-cards-item-status="3-after"] .flickCard::after {
+  opacity: 0.85;
+}
+
+[data-flick-cards-item-status="active"] .flickCard::after {
+  opacity: 0;
 }
 
 /* Animate Buttons */
