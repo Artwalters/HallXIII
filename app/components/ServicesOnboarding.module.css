@@ -1,0 +1,462 @@
+/* Main Content */
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grid wrapper to constrain max-width */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 18.9375em 1fr;
+  gap: 1.25em;
+  max-width: 79.5em;
+  width: 100%;
+}
+
+/* Left: Services Menu */
+.menuContainer {
+  background: var(--color-black);
+  border-radius: 1.375em;
+  padding: 1.6875em;
+  height: 43.98em;
+  display: flex;
+  align-items: flex-start;
+}
+
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+/* Menu Item - Stop Motion Style */
+.menuItem {
+  position: relative;
+  width: 100%;
+  min-width: fit-content;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.75em 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu Item Border - white, behind dark */
+.menuItemBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.menuItem:hover .menuItemBorder,
+.menuItemActive .menuItemBorder {
+  opacity: 1;
+}
+
+.menuItemBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.menuItem:hover .menuItemBorderSvg,
+.menuItemActive .menuItemBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Menu Item Background - dark gray */
+.menuItemBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.menuItemBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-primary);
+}
+
+.menuItem:hover .menuItemBackSvg,
+.menuItemActive .menuItemBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Menu Item Text */
+.menuItemText {
+  position: relative;
+  font-family: var(--font-accent);
+  font-weight: normal;
+  font-size: var(--relost-button-size);
+  color: var(--color-white);
+  text-transform: lowercase;
+  text-align: center;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+.menuItem:hover .menuItemText {
+  animation: wiggle 0.6s steps(2, end) infinite;
+}
+
+/* Right Column */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.27em;
+}
+
+/* Info Card */
+.infoCard {
+  position: relative;
+  background: var(--color-black);
+  border-radius: 1.375em;
+  padding: 3em 6.75em 1.188em;
+  height: 38.18em;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  right: 2em;
+  bottom: 2em;
+  font-family: var(--font-par);
+  font-size: var(--font-body-small);
+  font-style: italic;
+  color: #888888;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.infoContent {
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 1em;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* Hide scrollbar but keep functionality */
+.infoContent::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.infoContent {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Category Tag */
+.categoryTag {
+  display: flex;
+  align-items: center;
+  gap: 0.581em;
+  margin-bottom: 0.847em;
+}
+
+.categoryDot {
+  width: 0.49em;
+  height: 0.441em;
+  background: var(--color-white);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.categoryText {
+  font-family: var(--font-par);
+  font-weight: 400;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  text-transform: capitalize;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-heading);
+  font-weight: normal;
+  font-size: var(--font-h4);
+  color: var(--color-white);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 0.5em 0;
+}
+
+/* Description */
+.description {
+  font-family: var(--font-par);
+  font-weight: 400;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  line-height: 1.929;
+  margin: 0 0 2.188em 0;
+}
+
+/* Benefits */
+.benefits {
+  margin-top: 2.188em;
+}
+
+.benefitsTitle {
+  font-family: var(--font-par);
+  font-weight: 400;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  margin: 0 0 0.5em 0;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefitItem {
+  font-family: var(--font-par);
+  font-weight: 400;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  line-height: 1.929;
+  margin-bottom: 0.5em;
+}
+
+/* Progress Container */
+.progressContainer {
+  background: var(--color-black);
+  border-radius: 1em;
+  padding: 0.938em 1.313em;
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+  height: 4.59em;
+}
+
+.progressBarWrapper {
+  flex: 1;
+}
+
+.progressBar {
+  width: 100%;
+  height: 0.492em;
+  background: rgba(217, 217, 217, 0.3);
+  border-radius: 0.75em;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 0.75em;
+  transition: width 0.1s ease;
+}
+
+/* Start Button - Stop Motion Style */
+.startButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: 2.673em;
+  min-width: 10.469em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Start Button Border - white */
+.startButtonBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.startButton:hover .startButtonBorder {
+  opacity: 1;
+}
+
+.startButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.startButton:hover .startButtonBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Start Button Background - primary blue */
+.startButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.startButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-primary);
+}
+
+.startButton:hover .startButtonBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Start Button Text */
+.startButtonText {
+  position: relative;
+  font-family: var(--font-accent);
+  font-weight: normal;
+  font-size: var(--relost-button-size);
+  color: var(--color-white);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Keyframes for sprite animation */
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Keyframes for text wiggle */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-0.5deg);
+  }
+  50% {
+    transform: rotate(0.5deg);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1.5em;
+    padding: 3em 2em;
+  }
+
+  /* Horizontal scrolling menu */
+  .menuContainer {
+    padding: 1em;
+    overflow: hidden;
+    height: auto;
+  }
+
+  .menuWrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    overflow-x: auto;
+    gap: 0.75em;
+    padding-bottom: 0.5em;
+  }
+
+  .menuWrapper::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .menuWrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .menuWrapper::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 2px;
+  }
+
+  .menuItem {
+    min-width: 200px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .infoCard {
+    padding: 2em;
+    height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contentGrid {
+    padding: 2em 1.5em;
+  }
+
+  .infoCard {
+    padding: 1.5em;
+    height: 400px;
+  }
+
+  .progressContainer {
+    padding: 0.75em 1em;
+    flex-wrap: wrap;
+  }
+
+  .progressBarWrapper {
+    width: 100%;
+    order: 1;
+  }
+
+  .startButton {
+    width: 100%;
+    order: 2;
+    margin-top: 0.75em;
+  }
+}
