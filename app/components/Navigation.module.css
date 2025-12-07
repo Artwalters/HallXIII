@@ -21,7 +21,7 @@
   position: relative;
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: 2em;
+  font-size: var(--relost-button-size);
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1;

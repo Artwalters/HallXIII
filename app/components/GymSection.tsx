@@ -695,7 +695,6 @@ export default function GymSection() {
                         className={styles.flickMagnetButton}
                         style={{
                           top: card.magnetPosition.top,
-                          left: card.magnetPosition.left,
                           right: card.magnetPosition.right,
                           transform: `rotate(${card.magnetPosition.rotation}deg)`
                         }}

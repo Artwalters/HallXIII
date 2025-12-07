@@ -209,11 +209,11 @@
   --font-h1: 10em;     /* 84px - Main page titles */
   --font-h2: 7em;      /* 72px - Section titles */
   --font-h3: 5em;        /* 48px - Subsection titles */
-  --font-h4: 1.8em;        /* 32px - Small titles */
+  --font-h4: 3em;        /* 32px - Small titles */
   --font-body: 1.2em;      /* 16px - Body text */
-  --font-body-large: 1.40em; /* 18px - Large body text */
+  --font-body-large: 1.5em; /* 18px - Large body text */
   --font-body-small: 1em; /* 14px - Small body text */
-  --relost-button-size: 1.75em; /* 28px - Relost buttons/links */
+  --relost-button-size: 2em; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
 
 
@@ -335,6 +335,7 @@
   /* Neutrals */
   --color-beige: #BCAB8E;             /* rgba(188, 171, 142, 1) - Warm Beige */
   --color-cream: #F0EBE6;             /* rgba(240, 235, 230, 1) - Light Cream */
+  --color-cream-dark: #E5DED6;        /* Darker Cream for subtle backgrounds */
   --color-white: #FFFFFF;             /* rgba(255, 255, 255, 1) - Pure White */
 
   /* Accent Colors */

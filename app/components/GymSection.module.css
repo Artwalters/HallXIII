@@ -36,7 +36,7 @@
 .subtitle {
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: var(--font-h4);
+  font-size: var(--relost-button-size);
   color: var(--color-black);
   text-align: center;
   margin-bottom: 0rem;

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
 
@@ -12,7 +13,8 @@ const coachingItems = [
     description: 'Bij Trainingsbegeleiding krijg je alles wat je nodig hebt om zelfstandig aan de slag te gaan, mét de steun van jouw persoonlijke coach. Je ontvangt een op maat gemaakt trainingsplan dat aansluit op jouw niveau, wensen, behoeften en doelen.',
     image: '/assets/expertise-1.jpg',
     imageAlt: 'Training begeleiding',
-    imagePosition: 'right' // Text left, Image right
+    imagePosition: 'right', // Text left, Image right
+    serviceId: 'training-begeleiding'
   },
   {
     number: '02',
@@ -21,7 +23,8 @@ const coachingItems = [
     description: 'Bij Performance Begeleiding staat alles in het teken van het verbeteren van jouw prestaties. Of dit nu sportspecifiek is, powerlifting, krachtsport of conditietraining: het maakt niet uit. Afhankelijk van jouw niveau, doelstellingen en wensen stellen we de programmering samen die het beste bij jou past. Denk bijvoorbeeld aan een schema op basis van RIR of RPE.',
     image: '/assets/expertise-2.jpg',
     imageAlt: 'Performance coaching',
-    imagePosition: 'left' // Image left, Text right
+    imagePosition: 'left', // Image left, Text right
+    serviceId: 'performance-coaching'
   },
   {
     number: '03',
@@ -30,7 +33,8 @@ const coachingItems = [
     description: 'Heb jij je training goed onder controle en wil je vooral ondersteuning op het gebied van voeding? Dan sluit dit pakket perfect bij jou aan. Na een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. Je ontvangt twee voedingsschema\'s waarmee je direct praktisch aan de slag kunt.',
     image: '/assets/expertise-3.jpg',
     imageAlt: 'Voeding begeleiding',
-    imagePosition: 'right' // Text left, Image right
+    imagePosition: 'right', // Text left, Image right
+    serviceId: 'voeding-begeleiding'
   },
   {
     number: '04',
@@ -39,7 +43,8 @@ const coachingItems = [
     description: 'Leefstijlcoaching gaat verder dan alleen trainen en voeding. Met dit abonnement werk je aan álle leefstijlfactoren die invloed hebben op jouw gezondheid en prestaties: stress, slaap, herstel, je privéleven én natuurlijk beweging en voeding. We kijken dus niet alleen naar je schema, maar naar jou als persoon.',
     image: '/assets/expertise-4.jpg',
     imageAlt: 'Leefstijl coaching',
-    imagePosition: 'left' // Image left, Text right
+    imagePosition: 'left', // Image left, Text right
+    serviceId: 'leefstijl-coaching'
   },
   {
     number: '05',
@@ -48,7 +53,8 @@ const coachingItems = [
     description: 'Bij Personal Training ligt de focus volledig op één-op-één trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd, geeft je een duwtje waar nodig of trapt juist even op de rem als dat beter is. Zo haal je elke sessie het maximale uit je training.',
     image: '/assets/expertise-5.jpg',
     imageAlt: 'Personal training',
-    imagePosition: 'right' // Text left, Image right
+    imagePosition: 'right', // Text left, Image right
+    serviceId: 'personal-training'
   }
 ];
 
@@ -59,10 +65,17 @@ const partnersItem = {
   description: 'Bij M.A.E. Fysiotherapie kijken we anders naar revalidatie. Waar veel zorgprofessionals vooral beperkingen opleggen, geloven wij in een doelgerichte, persoonlijke en stapsgewijze aanpak. Het doel: jou weer laten functioneren zonder belemmeringen.',
   image: '/assets/expertise-6.jpg',
   imageAlt: 'MAE Fysiotherapie',
-  imagePosition: 'left' // Image left, Text right
+  imagePosition: 'left', // Image left, Text right
+  serviceId: 'fysiotherapie'
 };
 
 export default function CoachingSection() {
+  const router = useRouter();
+
+  const handleServiceClick = (serviceId: string) => {
+    router.push(`/diensten?service=${serviceId}`);
+  };
+
   return (
     <section className={styles.section}>
       {/* Top Marquee */}
@@ -101,7 +114,7 @@ export default function CoachingSection() {
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
-                  <button className={styles.infoButton}>
+                  <button className={styles.infoButton} onClick={() => handleServiceClick(item.serviceId)}>
                     <div className={styles.infoButtonBorder}>
                       <svg className={styles.infoButtonBorderSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 678 82" fill="none" preserveAspectRatio="none">
                         <path d="M460.308 7.5301L460.216 7.59846L460.136 7.68002C457.225 10.6259 456.112 14.1147 455.704 17.5301C455.426 19.853 455.471 22.2897 455.511 24.487C455.528 25.4194 455.544 26.3088 455.534 27.128L455.534 27.1281C455.485 31.453 455.744 35.7647 456.055 40.0304C456.123 40.9669 456.194 41.9001 456.264 42.8308C456.515 46.1574 456.764 49.452 456.895 52.7505L456.895 52.7508C456.908 53.0821 456.921 53.4306 456.934 53.7944C457.069 57.4373 457.259 62.604 458.379 67.1206C459.587 71.9918 462.087 76.9016 467.56 77.582C473.567 78.3305 479.645 78.2561 485.652 77.9982C487.517 77.9182 489.368 77.821 491.208 77.7243C495.339 77.5074 499.416 77.2933 503.477 77.282C509.676 77.2646 515.244 77.2472 520.758 77.2299C527.284 77.2095 533.736 77.1893 541.07 77.1696H541.07C554.586 77.1316 568.103 77.3437 581.637 77.5561L581.644 77.5562C595.171 77.7685 608.714 77.981 622.259 77.9429L656.359 77.8495H656.359C661.063 77.8359 665.017 76.6431 667.846 73.7831C670.658 70.9404 672.118 66.6909 672.376 61.0789C672.376 61.0754 672.376 61.072 672.377 61.0685L674.492 25.4333L674.494 25.398L674.495 25.3626C674.533 22.1986 674.382 18.4111 673.479 14.9927C672.579 11.5846 670.865 8.30716 667.596 6.52469C664.981 5.09728 662.088 4.78229 659.564 4.54711C644.655 3.15323 629.771 3.58486 614.955 4.01454C607.786 4.22244 600.633 4.42988 593.5 4.42988H593.489L593.477 4.43005C574.96 4.7118 563.056 4.62436 546.859 4.50539C543.481 4.48058 539.916 4.4544 536.066 4.42991L536.056 4.42985L536.047 4.42991L481.337 4.78111L481.327 4.78117L481.317 4.78137C480.654 4.79452 479.792 4.79159 478.8 4.78821C476.592 4.7807 473.737 4.77099 470.984 4.93131C468.963 5.04904 466.912 5.26041 465.089 5.64402C463.297 6.02083 461.568 6.59424 460.308 7.5301Z" fill="currentColor" vectorEffect="non-scaling-stroke"></path>
@@ -196,7 +209,7 @@ export default function CoachingSection() {
                     <h2 className={styles.title}>{item.title}</h2>
                   </div>
                   <p className={styles.description}>{item.description}</p>
-                  <button className={styles.infoButton}>
+                  <button className={styles.infoButton} onClick={() => handleServiceClick(item.serviceId)}>
                     <div className={styles.infoButtonBorder}>
                       <svg className={styles.infoButtonBorderSvg} xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 678 82" fill="none" preserveAspectRatio="none">
                         <path d="M460.308 7.5301L460.216 7.59846L460.136 7.68002C457.225 10.6259 456.112 14.1147 455.704 17.5301C455.426 19.853 455.471 22.2897 455.511 24.487C455.528 25.4194 455.544 26.3088 455.534 27.128L455.534 27.1281C455.485 31.453 455.744 35.7647 456.055 40.0304C456.123 40.9669 456.194 41.9001 456.264 42.8308C456.515 46.1574 456.764 49.452 456.895 52.7505L456.895 52.7508C456.908 53.0821 456.921 53.4306 456.934 53.7944C457.069 57.4373 457.259 62.604 458.379 67.1206C459.587 71.9918 462.087 76.9016 467.56 77.582C473.567 78.3305 479.645 78.2561 485.652 77.9982C487.517 77.9182 489.368 77.821 491.208 77.7243C495.339 77.5074 499.416 77.2933 503.477 77.282C509.676 77.2646 515.244 77.2472 520.758 77.2299C527.284 77.2095 533.736 77.1893 541.07 77.1696H541.07C554.586 77.1316 568.103 77.3437 581.637 77.5561L581.644 77.5562C595.171 77.7685 608.714 77.981 622.259 77.9429L656.359 77.8495H656.359C661.063 77.8359 665.017 76.6431 667.846 73.7831C670.658 70.9404 672.118 66.6909 672.376 61.0789C672.376 61.0754 672.376 61.072 672.377 61.0685L674.492 25.4333L674.494 25.398L674.495 25.3626C674.533 22.1986 674.382 18.4111 673.479 14.9927C672.579 11.5846 670.865 8.30716 667.596 6.52469C664.981 5.09728 662.088 4.78229 659.564 4.54711C644.655 3.15323 629.771 3.58486 614.955 4.01454C607.786 4.22244 600.633 4.42988 593.5 4.42988H593.489L593.477 4.43005C574.96 4.7118 563.056 4.62436 546.859 4.50539C543.481 4.48058 539.916 4.4544 536.066 4.42991L536.056 4.42985L536.047 4.42991L481.337 4.78111L481.327 4.78117L481.317 4.78137C480.654 4.79452 479.792 4.79159 478.8 4.78821C476.592 4.7807 473.737 4.77099 470.984 4.93131C468.963 5.04904 466.912 5.26041 465.089 5.64402C463.297 6.02083 461.568 6.59424 460.308 7.5301Z" fill="currentColor" vectorEffect="non-scaling-stroke"></path>
