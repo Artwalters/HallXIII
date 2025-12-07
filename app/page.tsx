@@ -15,26 +15,33 @@ export default function Home() {
     if (typeof window === 'undefined') return;
 
     const navigatingBack = sessionStorage.getItem('navigatingBack');
-    const savedPosition = sessionStorage.getItem('homeScrollPosition');
+    const returnToSection = sessionStorage.getItem('returnToSection');
 
-    if (navigatingBack === 'true' && savedPosition) {
-      // Clear the flag
+    if (navigatingBack === 'true' && returnToSection) {
+      // Clear the flags
       sessionStorage.removeItem('navigatingBack');
+      sessionStorage.removeItem('returnToSection');
 
-      // Restore scroll position after a brief delay to ensure DOM is ready
-      const position = parseInt(savedPosition, 10);
+      // Map section identifiers to DOM IDs
+      const sectionMap: { [key: string]: string } = {
+        'diensten': 'diensten',
+        'coaching': 'coaching-trajecten'
+      };
 
-      // Use requestAnimationFrame to ensure the page has rendered
+      const targetId = sectionMap[returnToSection];
+
+      // Scroll to section after a brief delay to ensure DOM is ready
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          // Use Lenis scrollTo if available (for smooth scroll), otherwise use window.scrollTo
-          if (window.lenis) {
-            window.lenis.scrollTo(position, { immediate: true });
-          } else {
-            window.scrollTo({
-              top: position,
-              behavior: 'instant' as ScrollBehavior,
-            });
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            // Use Lenis scrollTo if available (for smooth scroll), otherwise use scrollIntoView
+            if (window.lenis) {
+              window.lenis.scrollTo(targetElement, { immediate: true, offset: 0 });
+            } else {
+              targetElement.scrollIntoView({ behavior: 'instant', block: 'start' });
+            }
           }
         });
       });

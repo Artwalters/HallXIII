@@ -611,9 +611,9 @@ export default function DienstenSection() {
   // Card click handler
   const handleCardClick = (card: any) => {
     if (card.serviceId) {
-      // Save current scroll position before navigating
+      // Save section identifier before navigating
       if (typeof window !== 'undefined') {
-        sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+        sessionStorage.setItem('returnToSection', 'diensten');
       }
       // Navigate to diensten page with service parameter
       router.push(`/diensten?service=${card.serviceId}`);
@@ -635,7 +635,7 @@ export default function DienstenSection() {
   };
 
   return (
-    <section className={styles.section}>
+    <section id="diensten" className={styles.section}>
       <div className={styles.container}>
         {/* Title */}
         <h2 className={styles.title}>diensten</h2>
