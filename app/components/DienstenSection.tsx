@@ -1,12 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
-import styles from './GymSection.module.css';
+import styles from './DienstenSection.module.css';
 
 gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
 
@@ -25,33 +27,37 @@ const textRotations = [-1.5, 1.2, -0.8];
 const desktopCards = [
   {
     image: '/assets/expertise-1.jpg',
-    title: 'TRAINEN?',
-    caption: 'Dagpas aanvragen',
+    title: 'dagpas (opengym)',
+    caption: 'dagpas (opengym)',
     rotation: 2,
     frameIndex: 0,
     flipFrame: false,
     textRotation: textRotations[0],
     magnetPosition: { top: '3%', left: '8%', rotation: -8 },
+    serviceId: 'dagpas-opengym',
   },
   {
     image: '/assets/expertise-2.jpg',
-    title: 'LID WORDEN?',
-    caption: 'Lid worden',
+    title: 'lid worden (opengym)',
+    caption: 'lid worden (opengym)',
     rotation: -1,
     frameIndex: 2,
     flipFrame: true,
     textRotation: textRotations[1],
     magnetPosition: { top: '5%', right: '5%', rotation: 12 },
+    serviceId: 'open-gym',
   },
   {
     image: '/assets/expertise-3.jpg',
-    title: 'COACHING?',
-    caption: 'Coaching traject starten',
+    title: 'coaching trajecten',
+    caption: 'coaching trajecten',
     rotation: 4,
     frameIndex: 1,
     flipFrame: false,
     textRotation: textRotations[2],
     magnetPosition: { top: '2%', left: '6%', rotation: -5 },
+    link: '#coaching-trajecten',
+    isExternal: false,
   },
 ];
 
@@ -59,77 +65,87 @@ const desktopCards = [
 const gymCards = [
   {
     image: '/assets/expertise-3.jpg',
-    title: 'COACHING?',
-    caption: 'Coaching traject starten',
+    title: 'coaching trajecten',
+    caption: 'coaching trajecten',
     rotation: 3,
     frameIndex: 1,
     flipFrame: false,
     textRotation: -0.8,
     magnetPosition: { top: '-8%', right: '5%', rotation: 15 },
+    link: '#coaching-trajecten',
+    isExternal: false,
   },
   {
     image: '/assets/expertise-1.jpg',
-    title: 'TRAINEN?',
-    caption: 'Dagpas aanvragen',
+    title: 'dagpas (opengym)',
+    caption: 'dagpas (opengym)',
     rotation: -2,
     frameIndex: 0,
     flipFrame: true,
     textRotation: 1.2,
     magnetPosition: { top: '-6%', right: '3%', rotation: 18 },
+    serviceId: 'dagpas-opengym',
   },
   {
     image: '/assets/expertise-2.jpg',
-    title: 'LID WORDEN?',
-    caption: 'Lid worden',
+    title: 'lid worden (opengym)',
+    caption: 'lid worden (opengym)',
     rotation: 4,
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.5,
     magnetPosition: { top: '-10%', right: '8%', rotation: 12 },
+    serviceId: 'open-gym',
   },
   {
     image: '/assets/expertise-3.jpg',
-    title: 'COACHING?',
-    caption: 'Coaching traject starten',
+    title: 'coaching trajecten',
+    caption: 'coaching trajecten',
     rotation: -3,
     frameIndex: 3,
     flipFrame: true,
     textRotation: 1.8,
     magnetPosition: { top: '-5%', right: '6%', rotation: 22 },
+    link: '#coaching-trajecten',
+    isExternal: false,
   },
   {
     image: '/assets/expertise-1.jpg',
-    title: 'TRAINEN?',
-    caption: 'Dagpas aanvragen',
+    title: 'dagpas (opengym)',
+    caption: 'dagpas (opengym)',
     rotation: 2,
     frameIndex: 1,
     flipFrame: false,
     textRotation: -1.2,
     magnetPosition: { top: '-7%', right: '4%', rotation: 16 },
+    serviceId: 'dagpas-opengym',
   },
   {
     image: '/assets/expertise-2.jpg',
-    title: 'LID WORDEN?',
-    caption: 'Lid worden',
+    title: 'lid worden (opengym)',
+    caption: 'lid worden (opengym)',
     rotation: -4,
     frameIndex: 0,
     flipFrame: true,
     textRotation: 0.9,
     magnetPosition: { top: '-9%', right: '7%', rotation: 20 },
+    serviceId: 'open-gym',
   },
   {
     image: '/assets/expertise-1.jpg',
-    title: 'TRAINEN?',
-    caption: 'Dagpas aanvragen',
+    title: 'dagpas (opengym)',
+    caption: 'dagpas (opengym)',
     rotation: 5,
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.8,
     magnetPosition: { top: '-6%', right: '5%', rotation: 14 },
+    serviceId: 'dagpas-opengym',
   },
 ];
 
-export default function GymSection() {
+export default function DienstenSection() {
+  const router = useRouter();
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
   const titlesRef = useRef<HTMLDivElement>(null);
@@ -141,8 +157,8 @@ export default function GymSection() {
       return;
     }
 
-    // Only initialize on desktop devices (min-width: 769px)
-    const isDesktop = window.matchMedia('(min-width: 769px)').matches;
+    // Only initialize on desktop devices (min-width: 1000px)
+    const isDesktop = window.matchMedia('(min-width: 1000px)').matches;
     if (!isDesktop) return;
 
     const root = cardsGridRef.current;
@@ -236,8 +252,8 @@ export default function GymSection() {
 
   // Mobile: Flick cards slider
   useEffect(() => {
-    // Only initialize on mobile devices (max-width: 768px)
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    // Only initialize on mobile devices (max-width: 999px)
+    const isMobile = window.matchMedia('(max-width: 999px)').matches;
     if (!isMobile || !sliderRef.current) return;
 
     const slider = sliderRef.current;
@@ -561,14 +577,68 @@ export default function GymSection() {
     };
   }, []);
 
+  // Lenis smooth scroll initialization
+  useEffect(() => {
+    // Dynamically load Lenis if not already loaded
+    if (typeof window !== 'undefined' && !(window as any).Lenis) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js';
+      script.async = true;
+      document.head.appendChild(script);
+
+      script.onload = () => {
+        const lenis = new (window as any).Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smooth: true,
+        });
+
+        function raf(time: number) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        (window as any).lenisInstance = lenis;
+      };
+
+      return () => {
+        document.head.removeChild(script);
+      };
+    }
+  }, []);
+
+  // Card click handler
+  const handleCardClick = (card: any) => {
+    if (card.serviceId) {
+      // Save current scroll position before navigating
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+      }
+      // Navigate to diensten page with service parameter
+      router.push(`/diensten?service=${card.serviceId}`);
+    } else if (card.link && card.isExternal) {
+      // Navigate to external page
+      window.location.href = card.link;
+    } else if (card.link) {
+      // Smooth scroll to anchor with Lenis
+      const targetId = card.link.replace('#', '');
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement && (window as any).lenisInstance) {
+        (window as any).lenisInstance.scrollTo(targetElement, {
+          offset: 0,
+          duration: 1.5,
+        });
+      }
+    }
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* Subtitle */}
-        <p className={styles.subtitle}>welkom bij</p>
-
         {/* Title */}
-        <h2 className={styles.title}>hal13</h2>
+        <h2 className={styles.title}>diensten</h2>
 
         {/* Desktop: Cards Grid with Momentum Hover (hidden on mobile) */}
         <div
@@ -582,6 +652,8 @@ export default function GymSection() {
               className={styles.cardItem}
               data-momentum-hover-element
               data-draw-line-trigger
+              onClick={() => handleCardClick(card)}
+              style={{ cursor: 'pointer' }}
             >
               <div
                 className={styles.card}
@@ -594,7 +666,7 @@ export default function GymSection() {
                     src={card.image}
                     alt={card.title}
                     fill
-                    sizes="(max-width: 768px) 320px, 450px"
+                    sizes="(max-width: 999px) 320px, 450px"
                     className={styles.cardImage}
                   />
                   {/* Polaroid Frame Overlay */}
@@ -662,6 +734,8 @@ export default function GymSection() {
                   data-flick-cards-item
                   data-flick-cards-item-status=""
                   data-draw-line-trigger
+                  onClick={() => handleCardClick(card)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <div className={styles.flickCard}>
                     <div className={styles.flickCardBefore}></div>
@@ -670,7 +744,7 @@ export default function GymSection() {
                         src={card.image}
                         alt={card.title}
                         fill
-                        sizes="(max-width: 768px) 350px, 450px"
+                        sizes="(max-width: 999px) 350px, 450px"
                         className={styles.coverImage}
                       />
                       {/* Polaroid Frame Overlay */}

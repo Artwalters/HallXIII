@@ -115,7 +115,19 @@ export default function ServicesOnboarding() {
             <div className={styles.infoContent} ref={infoContentRef} data-lenis-prevent>
               {/* Category tag */}
               <div className={styles.categoryTag}>
-                <div className={styles.categoryDot} />
+                <div className={styles.categoryCircle}>
+                  <div className={styles.categoryCircleSprite}>
+                    <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                      <circle cx="6" cy="6" r="5" fill="currentColor" />
+                    </svg>
+                    <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                      <ellipse cx="6" cy="6" rx="5.3" ry="4.7" fill="currentColor" />
+                    </svg>
+                    <svg viewBox="0 0 12 12" className={styles.categoryCircleSvg}>
+                      <ellipse cx="6" cy="6" rx="4.7" ry="5.3" fill="currentColor" />
+                    </svg>
+                  </div>
+                </div>
                 <span className={styles.categoryText}>{selectedService.category}</span>
               </div>
 

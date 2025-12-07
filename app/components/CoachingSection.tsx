@@ -77,7 +77,7 @@ export default function CoachingSection() {
   };
 
   return (
-    <section className={styles.section}>
+    <section id="coaching-trajecten" className={styles.section}>
       {/* Top Marquee */}
       <MarqueeScroll
         title="COACHING TRAJECTEN"

@@ -285,7 +285,7 @@
 }
 
 .reviewText {
-  font-family: "Gochi Hand", cursive;
+  font-family: var(--font-card);
   font-size: 0.9em;
   font-weight: normal; /* Reset inherited weight for handwritten font */
   color: var(--color-black);

@@ -213,8 +213,9 @@
   --font-body: 1.2em;      /* 16px - Body text */
   --font-body-large: 1.5em; /* 18px - Large body text */
   --font-body-small: 1em; /* 14px - Small body text */
-  --relost-button-size: 2em; /* 28px - Relost buttons/links */
+  --relost-button-size: 2rem; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
+  --relost-poloroid: 1.5em; /* 34px - Relost captions/taglines */
 
 
   /* Container System */
@@ -309,16 +310,14 @@
   --font-heading: 'SCHABO Condensed', sans-serif;      /* Main headings */
   --font-accent: 'Relost Brush', cursive;              /* Accent text, captions */
   --font-par: 'Helvetica Now Display', sans-serif;     /* Body text, paragraphs */
+  --font-card: 'Relost Brush', cursive;                /* Card text, handwritten style */
 
   /* Font Weights - Default weights per font family */
   --weight-heading: normal;   /* SCHABO default weight */
   --weight-accent: normal;    /* Relost default weight */
   --weight-par: 700;          /* Helvetica Now Display default weight (Bold) */
 
-  /* Legacy support - deprecated, use semantic names above */
-  --font-schabo: var(--font-heading);
-  --font-relost: var(--font-accent);
-  --font-grifter: var(--font-par);
+ 
 
   /* ========== DESIGN SYSTEM COLORS ========== */
   /* Based on Figma Design Guide */

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navigation.module.css';
@@ -9,6 +10,7 @@ import styles from './Navigation.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BackNavigation() {
+  const router = useRouter();
   const menuTextRef = useRef<HTMLSpanElement>(null);
   const whatsappRef = useRef<HTMLAnchorElement>(null);
   const menuButtonRef = useRef<HTMLAnchorElement>(null);
@@ -117,13 +119,22 @@ export default function BackNavigation() {
     });
   }, [isDark]);
 
+  const handleBackClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Save that we're navigating back
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('navigatingBack', 'true');
+    }
+    router.push('/');
+  };
+
   return (
     <nav className={styles.navigation}>
       {/* Back Link Container */}
-      <Link href="/" ref={menuButtonRef} className={styles.menuButton}>
+      <a href="/" ref={menuButtonRef} className={styles.menuButton} onClick={handleBackClick}>
         {/* Back Text */}
         <span ref={menuTextRef} className={styles.menuText}>terug</span>
-      </Link>
+      </a>
 
       {/* WhatsApp Icon */}
       <a

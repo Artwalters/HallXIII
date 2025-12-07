@@ -28,6 +28,24 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
+    id: 'dagpas-opengym',
+    category: 'Dagpas Open Gym',
+    title: 'Probeer een dag uit in onze gym',
+    description: 'Wil je eerst ervaren hoe het is om bij ons te trainen? Met een dagpas krijg je volledige toegang tot onze gym voor één dag. Perfect om kennis te maken met onze faciliteiten, de sfeer te proeven en te ontdekken of Hal13 bij jou past. Je hebt toegang tot alle apparatuur en faciliteiten, net zoals onze leden. Geen verplichtingen, geen abonnement, gewoon een dag trainen wanneer het jou uitkomt. Ideaal voor bezoekers, als je op vakantie bent in de buurt, of als je gewoon eens iets anders wilt proberen. Onze coaches zijn aanwezig om je wegwijs te maken en eventuele vragen te beantwoorden.',
+    benefits: [
+      'Volledige toegang voor één dag',
+      'Gebruik van alle apparatuur',
+      'Toegang tot kleedkamers en douches',
+      'Gratis wifi en parkeren',
+      'Kennismaking met onze coaches',
+      'Geen abonnement nodig',
+      'Flexibel inzetbaar',
+      'Ideaal om uit te proberen',
+      'Direct online te boeken',
+      'Begeleiding bij eerste bezoek'
+    ]
+  },
+  {
     id: 'open-gym',
     category: 'Open Gym',
     title: 'Train wanneer het jou uitkomt',

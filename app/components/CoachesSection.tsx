@@ -23,12 +23,6 @@ const frames = [
   '/assets/frames poloroid/frame4.png',
 ];
 
-const handwritingFonts = [
-  '"Handlee", cursive',
-  '"Gochi Hand", cursive',
-  '"Shadows Into Light", cursive',
-];
-
 const coaches: Coach[] = [
   {
     name: 'RIM',
@@ -281,10 +275,7 @@ export default function CoachesSection() {
                 </div>
                 {/* Quote */}
                 <div className={styles.quoteCaption}>
-                  <p
-                    className={styles.quoteText}
-                    style={{ fontFamily: handwritingFonts[index % handwritingFonts.length] }}
-                  >
+                  <p className={styles.quoteText}>
                     {coach.quote}
                   </p>
                 </div>
