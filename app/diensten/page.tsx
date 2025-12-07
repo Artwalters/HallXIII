@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import BackNavigation from '../components/BackNavigation';
@@ -67,7 +67,9 @@ export default function DienstenPage() {
       <section className={styles.heroSection} ref={heroSectionRef}>
         {/* Services Content - First in DOM, on top of everything */}
         <div className={styles.contentContainer}>
-          <ServicesOnboarding />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ServicesOnboarding />
+          </Suspense>
         </div>
 
         <div className={styles.clippedContent}>
