@@ -3,20 +3,19 @@
   position: relative;
   background: transparent;
   width: 100%;
-  max-width: 36em;
-  padding-top: 2em; /* Space for pin */
+  padding-top: 3em; /* Space for pin */
+  font-size: 16px; /* Fixed base size - prevents Osmo scaling from affecting form */
 }
 
 .container {
   display: flex;
   flex-direction: column;
   gap: 1.2em;
-  padding: 2.5em 1.75em;
+  padding: 2.5em 1.25em;
   width: 100%;
   flex-shrink: 0;
   position: relative;
   overflow: visible;
-  min-height: 20em;
 }
 
 /* Paper background with clip-path */
@@ -88,8 +87,8 @@
   top: -0.5em;
   left: 50%;
   transform: translateX(-50%);
-  width: 6em;
-  height: 6em;
+  width: 9em;
+  height: 9em;
   z-index: 500;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
@@ -184,6 +183,7 @@
   text-transform: lowercase;
   font-style: italic;
   margin: -0.5em 0 0 0;
+  opacity: 0.8;
 }
 
 .helper {
@@ -194,7 +194,7 @@
   text-transform: lowercase;
   font-style: italic;
   margin: 0;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 /* Input Fields - Stop Motion Style */
@@ -385,6 +385,10 @@
 .dropdown option {
   background: var(--color-dark-gray);
   color: var(--color-white);
+  font-family: var(--font-par);
+  font-size: var(--font-body-small);
+  font-weight: 400;
+  padding: 0.8em 1.15em;
 }
 
 .dropdownChevron {
@@ -774,13 +778,27 @@
 }
 
 /* Responsive */
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .container {
-    padding: 2em 1.5em;
-    min-height: 24em;
-    min-width: 31em;
+    border: 0;
+    gap: 1.1em;
+    padding: 2.5em 1.25em;
+    border-radius: 0.8em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    max-width: 36em;
+    margin: 0 auto;
   }
 
+  .container {
+    padding: 2.5em 1.25em;
+  }
+}
+
+@media (max-width: 640px) {
   .title {
     font-size: 1.5em;
   }
