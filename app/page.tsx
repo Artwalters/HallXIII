@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import HeroExpertiseCombined from './components/HeroExpertiseCombined';
 import CoachingSection from './components/CoachingSection';
 import CoachesSection from './components/CoachesSection';
@@ -10,14 +10,19 @@ import ReviewSection from './components/ReviewSection';
 import FooterSection from './components/CTAFooterCombined';
 
 export default function Home() {
+  const hasRestoredScroll = useRef(false);
+
   // Restore scroll position when navigating back
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (hasRestoredScroll.current) return; // Prevent double execution in StrictMode
 
     const navigatingBack = sessionStorage.getItem('navigatingBack');
     const returnToSection = sessionStorage.getItem('returnToSection');
 
     if (navigatingBack === 'true' && returnToSection) {
+      hasRestoredScroll.current = true;
+
       // Clear the flags
       sessionStorage.removeItem('navigatingBack');
       sessionStorage.removeItem('returnToSection');
