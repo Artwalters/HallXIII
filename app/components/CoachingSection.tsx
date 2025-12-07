@@ -49,8 +49,8 @@ const coachingItems = [
   {
     number: '05',
     category: 'Personal training',
-    title: 'één-op-één trainen onder begeleiding',
-    description: 'Bij Personal Training ligt de focus volledig op één-op-één trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd, geeft je een duwtje waar nodig of trapt juist even op de rem als dat beter is. Zo haal je elke sessie het maximale uit je training.',
+    title: 'een-op-een trainen onder begeleiding',
+    description: 'Bij Personal Training ligt de focus volledig op een-op-een trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd, geeft je een duwtje waar nodig of trapt juist even op de rem als dat beter is. Zo haal je elke sessie het maximale uit je training.',
     image: '/assets/expertise-5.jpg',
     imageAlt: 'Personal training',
     imagePosition: 'right', // Text left, Image right

@@ -68,8 +68,8 @@ export const servicesData: ServiceData[] = [
   {
     id: 'personal-training',
     category: 'Personal Training',
-    title: 'Één-op-één trainen onder begeleiding',
-    description: 'Bij Personal Training ligt de focus volledig op één-op-één trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd. Tijdens elke sessie staat jouw coach naast je om je door de training te begeleiden. Dit betekent dat elk aspect van je training wordt gemonitord en waar nodig bijgestuurd. Van de warming-up tot de cooling-down, van techniek tot intensiteit: alles wordt nauwkeurig in de gaten gehouden. Dit zorgt niet alleen voor veiligheid, maar ook voor maximale effectiviteit. Je trainingsplan wordt speciaal voor jou ontworpen en wordt voortdurend aangepast op basis van jouw voortgang en feedback. Geen generieke schema\'s, maar een volledig gepersonaliseerde aanpak die past bij jouw lichaam, jouw doelen en jouw leven.',
+    title: 'Een-op-een trainen onder begeleiding',
+    description: 'Bij Personal Training ligt de focus volledig op een-op-een trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd. Tijdens elke sessie staat jouw coach naast je om je door de training te begeleiden. Dit betekent dat elk aspect van je training wordt gemonitord en waar nodig bijgestuurd. Van de warming-up tot de cooling-down, van techniek tot intensiteit: alles wordt nauwkeurig in de gaten gehouden. Dit zorgt niet alleen voor veiligheid, maar ook voor maximale effectiviteit. Je trainingsplan wordt speciaal voor jou ontworpen en wordt voortdurend aangepast op basis van jouw voortgang en feedback. Geen generieke schema\'s, maar een volledig gepersonaliseerde aanpak die past bij jouw lichaam, jouw doelen en jouw leven.',
     benefits: [
       'Persoonlijke begeleiding tijdens elke sessie',
       'Trainingsplan volledig op maat',

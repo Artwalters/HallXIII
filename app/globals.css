@@ -213,7 +213,7 @@
   --font-body: 1.2em;      /* 16px - Body text */
   --font-body-large: 1.5em; /* 18px - Large body text */
   --font-body-small: 1em; /* 14px - Small body text */
-  --relost-button-size: 2rem; /* 28px - Relost buttons/links */
+  --relost-button-size: 2em; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
   --relost-poloroid: 1.5em; /* 34px - Relost captions/taglines */
 
@@ -328,7 +328,7 @@
   /* Darks */
   --color-dark-primary: #142D33;      /* rgba(20, 45, 51, 1) - Very Dark Blue */
   --color-dark-brown: #332E27;        /* rgba(51, 46, 39, 1) - Warm Dark */
-  --color-dark-gray: #323232;         /* rgba(50, 50, 50, 1) - Dark Gray */
+  --color-dark-gray: #181818;         /* rgba(50, 50, 50, 1) - Dark Gray */
   --color-black: #000000;             /* rgba(0, 0, 0, 1) - Pure Black */
 
   /* Neutrals */

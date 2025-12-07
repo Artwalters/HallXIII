@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  max-width: 28em;
+  max-width: 36em;
   background: var(--color-black);
   border: 0.125em solid var(--color-dark-gray);
   border-radius: 1em;
@@ -8,6 +8,7 @@
   min-height: 20em;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
 /* Progress */
@@ -21,7 +22,7 @@
 .stepLabel {
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: 0.7em;
+  font-size: var(--font-body-small);
   color: var(--color-primary);
   text-transform: uppercase;
   white-space: nowrap;
@@ -62,7 +63,7 @@
 .subtitle {
   font-family: var(--font-par);
   font-weight: 400;
-  font-size: 0.8em;
+  font-size: var(--font-body-small);
   color: var(--color-white);
   text-transform: lowercase;
   font-style: italic;
@@ -72,7 +73,7 @@
 .helper {
   font-family: var(--font-par);
   font-weight: 400;
-  font-size: 0.7em;
+  font-size: var(--font-body-small);
   color: #999999;
   text-transform: lowercase;
   font-style: italic;
@@ -83,7 +84,7 @@
 .inputWrapper {
   position: relative;
   width: 100%;
-  height: 3em;
+  height: 4.2rem;
   display: flex;
   align-items: center;
 }
@@ -149,10 +150,10 @@
   height: 100%;
   background: transparent;
   border: none;
-  padding: 0.9em 1.2em;
+  padding: 0.8em 1.2em;
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: 1.2em;
+  font-size: var(--relost-button-size);
   color: var(--color-white);
   text-transform: uppercase;
   z-index: 2;
@@ -182,7 +183,7 @@
 .dropdownWrapper {
   position: relative;
   width: 100%;
-  min-height: 3.5em;
+  min-height: 4.2rem;
   display: flex;
   align-items: center;
 }
@@ -248,10 +249,10 @@
   min-height: 100%;
   background: transparent;
   border: none;
-  padding: 1.1em 2.5em 1.1em 1.2em;
+  padding: 0.8em 2em 0.8em 1em;
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: 1.2em;
+  font-size: var(--relost-button-size);
   color: var(--color-white);
   text-transform: uppercase;
   appearance: none;
@@ -271,11 +272,11 @@
 
 .dropdownChevron {
   position: absolute;
-  right: 1em;
+  right: 0.7em;
   top: 50%;
   transform: translateY(-50%);
-  width: 0.9em;
-  height: 0.9em;
+  width: 0.7em;
+  height: 0.7em;
   pointer-events: none;
   overflow: hidden;
 }
@@ -288,8 +289,8 @@
 }
 
 .dropdownChevronImg {
-  width: 0.9em;
-  height: 0.9em;
+  width: 0.7em;
+  height: 0.7em;
   flex-shrink: 0;
   filter: brightness(0) invert(1);
 }
@@ -384,17 +385,17 @@
   width: 100%;
   background: transparent;
   border: none;
-  padding: 1.2em 1em;
+  padding: 0.8em 0.8em;
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: 1.2em;
+  font-size: var(--relost-button-size);
   color: var(--color-white);
   text-transform: uppercase;
   cursor: pointer;
   text-align: center;
   z-index: 2;
   line-height: 1.3;
-  min-height: 3.5em;
+  min-height: 2.5em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,34 +412,59 @@
   gap: 1em;
 }
 
-/* Submit Button */
-.submitButton {
-  position: relative;
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+/* Submit Row */
+.submitRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
   margin-top: 0.5em;
 }
 
-.submitButtonBorder {
+.submitText {
+  font-family: var(--font-par);
+  font-weight: 400;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  text-transform: lowercase;
+  font-style: italic;
+  margin: 0;
+  text-align: left;
+}
+
+/* Arrow Button - Stop Motion */
+.arrowButton {
+  position: relative;
+  width: 3.5em;
+  height: 3.5em;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Border - white, behind blue */
+.arrowButtonBorder {
   position: absolute;
-  top: -0.125em;
-  left: -0.125em;
-  width: calc(100% + 0.25em);
-  height: calc(100% + 0.25em);
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 0;
 }
 
-.submitButton:hover .submitButtonBorder {
+.arrowButton:hover .arrowButtonBorder {
   opacity: 1;
 }
 
-.submitButtonBorderSvg {
+.arrowButtonBorderSvg {
   position: absolute;
   top: 0;
   left: 0;
@@ -447,11 +473,12 @@
   color: var(--color-white);
 }
 
-.submitButton:hover .submitButtonBorderSvg {
-  animation: spriteAnimation 0.5s steps(1, end) infinite;
+.arrowButton:hover .arrowButtonBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
 }
 
-.submitButtonBack {
+/* Background - blue */
+.arrowButtonBack {
   position: absolute;
   top: 0;
   left: 0;
@@ -461,29 +488,59 @@
   z-index: 1;
 }
 
-.submitButtonBackSvg {
+.arrowButtonBackSvg {
   position: absolute;
   top: 0;
   left: 0;
   width: 300%;
   height: 100%;
-  color: var(--color-cream);
+  color: var(--color-primary);
 }
 
-.submitButton:hover .submitButtonBackSvg {
-  animation: spriteAnimation 0.5s steps(1, end) infinite;
+.arrowButton:hover .arrowButtonBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
 }
 
-.submitButtonText {
+/* Arrow icon - Stop Motion */
+.arrowIcon {
   position: relative;
-  display: block;
-  padding: 0.7em 1.5em;
-  font-family: var(--font-par);
-  font-weight: 900;
-  font-size: 0.8em;
-  color: var(--color-black);
-  text-transform: lowercase;
+  width: 1.5em;
+  height: 1.5em;
   z-index: 2;
+  overflow: hidden;
+}
+
+.arrowIconSprite {
+  display: flex;
+  flex-direction: row;
+  width: 300%;
+  height: 100%;
+}
+
+.arrowIconImg {
+  flex-shrink: 0;
+  width: 33.33%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Keyframes voor arrow icon stop motion */
+@keyframes arrowIconStopMotion {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
+}
+
+/* Animatie op hover van arrow button */
+.arrowButton:hover .arrowIconSprite {
+  animation: arrowIconStopMotion 0.45s steps(1, end) infinite;
 }
 
 @keyframes spriteAnimation {
@@ -498,16 +555,18 @@
   }
 }
 
-.disclaimer {
-  font-family: var(--font-par);
-  font-weight: 400;
-  font-size: 0.7em;
-  color: var(--color-white);
-  text-transform: lowercase;
-  font-style: italic;
-  text-align: center;
-  margin: 0.5em 0 1em;
+@keyframes spriteBackground {
+  0%, 33.32% {
+    transform: translateX(0%);
+  }
+  33.33%, 66.65% {
+    transform: translateX(-33.33%);
+  }
+  66.66%, 99.99% {
+    transform: translateX(-66.66%);
+  }
 }
+
 
 /* Social Proof */
 .social {
@@ -551,7 +610,7 @@
 .socialText {
   font-family: var(--font-par);
   font-weight: 400;
-  font-size: 0.7em;
+  font-size: var(--font-body-small);
   color: var(--color-white);
   text-transform: lowercase;
   font-style: italic;
@@ -579,7 +638,7 @@
   border: none;
   font-family: var(--font-par);
   font-weight: 900;
-  font-size: 0.8em;
+  font-size: var(--font-body-normal);
   color: var(--color-white);
   text-transform: lowercase;
   cursor: pointer;
@@ -601,6 +660,7 @@
   .container {
     padding: 2em 1.5em;
     min-height: 24em;
+    min-width: 31em;
   }
 
   .title {
