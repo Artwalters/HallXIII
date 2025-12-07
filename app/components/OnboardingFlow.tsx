@@ -70,7 +70,19 @@ export default function OnboardingFlow() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
+      {/* Pin/Thumbtack */}
+      <div className={styles.pin}>
+        <Image
+          src="/assets/buttons/XIII_button.png"
+          alt=""
+          width={80}
+          height={80}
+          className={styles.pinImage}
+        />
+      </div>
+
+      <div className={styles.container}>
       {/* Progress */}
       <div className={styles.progressRow}>
         <span className={styles.stepLabel}>STAP {currentStep}/{totalSteps}</span>
@@ -366,6 +378,17 @@ export default function OnboardingFlow() {
           </button>
         )}
       </div>
+
+      {/* Texture Overlay */}
+      <div className={styles.overlay}>
+        <Image
+          src="/assets/overlays/overlay.jpg"
+          alt=""
+          fill
+          className={styles.overlayImage}
+        />
+      </div>
     </div>
+  </div>
   );
 }
