@@ -13,11 +13,30 @@ export default function OnboardingPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
 
-  // Prevent pull-to-refresh and scrolling on mobile
+  // Prevent pull-to-refresh and scrolling on mobile (except in scrollable containers)
   useEffect(() => {
+    const isScrollable = (element: Element | null): boolean => {
+      if (!element) return false;
+      const style = window.getComputedStyle(element);
+      const overflowY = style.overflowY;
+      return overflowY === 'auto' || overflowY === 'scroll';
+    };
+
     const preventScroll = (e: TouchEvent) => {
-      // Only prevent default if it's a drag/scroll gesture, not a tap
-      if (e.touches.length > 1) return; // Allow multi-touch gestures
+      // Allow multi-touch gestures
+      if (e.touches.length > 1) return;
+
+      // Check if the touch is within a scrollable container
+      let element = e.target as Element | null;
+      while (element) {
+        if (isScrollable(element)) {
+          // Allow scrolling in scrollable containers
+          return;
+        }
+        element = element.parentElement;
+      }
+
+      // Prevent scrolling/dragging outside scrollable containers
       e.preventDefault();
     };
 
@@ -26,10 +45,9 @@ export default function OnboardingPage() {
     document.body.style.position = 'fixed';
     document.body.style.width = '100%';
     document.body.style.height = '100%';
-    document.body.style.touchAction = 'manipulation'; // Allow taps/clicks, prevent dragging
     document.body.style.overscrollBehavior = 'none';
 
-    // Prevent touch move (dragging/scrolling) only
+    // Prevent touch move (dragging/scrolling) except in scrollable containers
     document.addEventListener('touchmove', preventScroll, { passive: false });
 
     return () => {
@@ -38,7 +56,6 @@ export default function OnboardingPage() {
       document.body.style.position = '';
       document.body.style.width = '';
       document.body.style.height = '';
-      document.body.style.touchAction = '';
       document.body.style.overscrollBehavior = '';
       document.removeEventListener('touchmove', preventScroll);
     };
