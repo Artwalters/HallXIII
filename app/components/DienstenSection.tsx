@@ -660,7 +660,6 @@ export default function DienstenSection() {
                 data-momentum-hover-target
                 style={{ transform: `rotate(${card.rotation}deg)` }}
               >
-                <div className={styles.cardBefore}></div>
                 <div className={styles.imageWrapper}>
                   <Image
                     src={card.image}
@@ -738,7 +737,6 @@ export default function DienstenSection() {
                   style={{ cursor: 'pointer' }}
                 >
                   <div className={styles.flickCard}>
-                    <div className={styles.flickCardBefore}></div>
                     <div className={styles.flickCardMedia}>
                       <Image
                         src={card.image}

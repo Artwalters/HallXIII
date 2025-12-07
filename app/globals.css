@@ -230,12 +230,12 @@
   --breakpoint-wide: 1280px;
 }
 
-/* Small Desktop (992px - 1600px) */
+/* Small Desktop (992px - 1700px) */
 @media screen and (max-width: 1700px) {
   :root {
     /* Container System - Small Desktop */
     --container-max-width: 90vw;
-    --container-max-width-narrow: 80vw;
+    --container-max-width-narrow: 90vw;
     --container-padding: 4rem;
   }
 }

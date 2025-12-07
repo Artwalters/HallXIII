@@ -27,10 +27,15 @@ export default function Home() {
       // Use requestAnimationFrame to ensure the page has rendered
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          window.scrollTo({
-            top: position,
-            behavior: 'instant' as ScrollBehavior,
-          });
+          // Use Lenis scrollTo if available (for smooth scroll), otherwise use window.scrollTo
+          if (window.lenis) {
+            window.lenis.scrollTo(position, { immediate: true });
+          } else {
+            window.scrollTo({
+              top: position,
+              behavior: 'instant' as ScrollBehavior,
+            });
+          }
         });
       });
     }

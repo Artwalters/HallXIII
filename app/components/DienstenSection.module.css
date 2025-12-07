@@ -32,35 +32,6 @@
   }
 }
 
-/* Subtitle */
-.subtitle {
-  font-family: var(--font-accent);
-  font-weight: normal; /* Relost should maintain natural weight */
-  font-size: var(--relost-button-size);
-  color: var(--color-black);
-  text-align: center;
-  margin-bottom: 0rem;
-  text-transform: lowercase;
-  position: relative;
-  z-index: 10;
-  transform: translateX(-4rem) rotate(-3deg);
-  display: inline-block;
-  width: 100%;
-}
-
-/* Desktop subtitle positioning */
-@media (min-width: 1000px) {
-  .subtitle {
-    transform: translateX(-8rem) rotate(-3deg);
-  }
-}
-
-@media (min-width: 1024px) {
-  .subtitle {
-    transform: translateX(-10rem) rotate(-3deg);
-  }
-}
-
 /* Title */
 .title {
   font-size: var(--font-h1);
@@ -75,13 +46,8 @@
   z-index: 10;
 }
 
-/* Add padding to subtitle and title on mobile since container has no padding */
+/* Add padding to title on mobile since container has no padding */
 @media (max-width: 999px) {
-  .subtitle {
-    padding: 0 var(--container-padding);
-    margin-bottom: 0.75rem;
-  }
-
   .title {
     padding: 0 var(--container-padding);
     margin-bottom: 3rem;
@@ -89,20 +55,12 @@
 }
 
 @media (min-width: 1000px) {
-  .subtitle {
-    margin-bottom: -3.5rem;
-  }
-
   .title {
     margin-bottom: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .subtitle {
-    margin-bottom: -4rem;
-  }
-
   .title {
     margin-bottom: 3rem;
   }
@@ -148,11 +106,6 @@
   will-change: transform;
   transform-origin: center center;
   padding: 0;
-}
-
-/* Card Before - aspect ratio spacer */
-.cardBefore {
-  display: none;
 }
 
 /* Image Wrapper */
@@ -209,15 +162,6 @@
   text-align: center;
   z-index: 3;
   padding: -0.5em;
-}
-
-.captionText {
-  font-family: var(--font-card);
-  font-size: var(--relost-button-size);
-  font-weight: normal;
-  color: var(--color-black);
-  line-height: 1.3;
-  margin: 0;
 }
 
 /* Flick Group (Mobile Only) */
@@ -305,10 +249,6 @@
   }
 }
 
-.flickCardBefore {
-  display: none;
-}
-
 .flickCardMedia {
   justify-content: center;
   align-items: center;
@@ -368,64 +308,6 @@
   z-index: 3;
 }
 
-.flickCaptionText {
-  font-family: var(--font-card);
-  font-size: 2.2em;
-  font-weight: normal;
-  color: var(--color-black);
-  line-height: 1.3;
-  margin: 0;
-}
-
-/* Card Buttons Container */
-.flickCardButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  bottom: 1.5em;
-  z-index: 2;
-}
-
-.flickCardBtn {
-  font-family: var(--font-accent);
-  font-weight: normal; /* Relost should maintain natural weight */
-  background-color: var(--color-white);
-  border-radius: 2em;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5em 1.5em;
-  text-decoration: none;
-  display: flex;
-  border: none;
-  cursor: pointer;
-}
-
-/* Mobile: 3x larger button */
-@media (max-width: 999px) {
-  .flickCardBtn {
-    padding: 1.5em 4.5em;
-  }
-}
-
-.flickCardBtnSpan {
-  color: var(--color-black);
-  font-size: 1em;
-  font-weight: 500;
-  text-transform: lowercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Mobile: 3x larger text */
-@media (max-width: 999px) {
-  .flickCardBtnSpan {
-    font-size: 3em;
-  }
-}
-
 /* Dragger Overlay */
 .flickCardsDragger {
   position: absolute;
@@ -462,50 +344,6 @@
 }
 
 [data-flick-cards-item-status="active"] .flickCard::after {
-  opacity: 0;
-}
-
-/* Animate Buttons */
-[data-flick-cards-item-status] .flickCardButtons {
-  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0;
-  transform: translate(0%, 50%) rotate(0.001deg);
-}
-
-[data-flick-cards-item-status="active"] .flickCardButtons {
-  opacity: 1;
-  transform: translate(0%, 0%) rotate(0.001deg);
-}
-
-/* Title Slider */
-.titleSlider {
-  display: none;
-  position: absolute;
-  bottom: -8em;
-  left: 0;
-  width: 100%;
-  height: 4em;
-  justify-content: center;
-  align-items: center;
-}
-
-@media (max-width: 999px) {
-  .titleSlider {
-    display: flex;
-  }
-}
-
-.titleSliderItem {
-  position: absolute;
-  font-family: var(--font-heading);
-  font-size: 4em;
-  font-weight: normal;
-  color: var(--color-black);
-  text-transform: uppercase;
-  text-align: center;
-  white-space: nowrap;
-  margin: 0;
-  line-height: 1;
   opacity: 0;
 }
 

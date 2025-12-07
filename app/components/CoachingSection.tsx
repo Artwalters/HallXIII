@@ -73,6 +73,10 @@ export default function CoachingSection() {
   const router = useRouter();
 
   const handleServiceClick = (serviceId: string) => {
+    // Save current scroll position before navigating
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+    }
     router.push(`/diensten?service=${serviceId}`);
   };
 
