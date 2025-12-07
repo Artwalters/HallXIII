@@ -137,7 +137,7 @@ export default function OnboardingForm() {
   };
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef} data-momentum-hover-element>
+    <div className={styles.wrapper} ref={wrapperRef}>
       {/* Pin/Thumbtack */}
       <div className={styles.pin}>
         <Image
@@ -149,7 +149,8 @@ export default function OnboardingForm() {
         />
       </div>
 
-      <div className={styles.container} data-momentum-hover-target>
+      <div className={styles.container} data-momentum-hover-element>
+        <div data-momentum-hover-target style={{ display: 'contents' }}>
         {/* Onboarding Steps */}
         <div className={styles.stepRow}>
         <div className={styles.stepLabel}>
@@ -273,6 +274,7 @@ export default function OnboardingForm() {
           className={styles.overlayImage}
         />
       </div>
+        </div>
       </div>
     </div>
   );
