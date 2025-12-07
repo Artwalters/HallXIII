@@ -3,7 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import styles from './OnboardingForm.module.css';
+
+gsap.registerPlugin(InertiaPlugin);
 
 const fitnessGoals = [
   'Sterker worden',
@@ -20,6 +24,7 @@ export default function OnboardingForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -33,6 +38,95 @@ export default function OnboardingForm() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Desktop: Momentum-based hover animation with inertia (30% less intense than DienstenSection)
+  useEffect(() => {
+    // If this device can't hover with a fine pointer, stop here
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
+    // Only initialize on desktop devices (min-width: 1000px)
+    const isDesktop = window.matchMedia('(min-width: 1000px)').matches;
+    if (!isDesktop) return;
+
+    const root = wrapperRef.current;
+    if (!root) return;
+
+    // Configuration - 30% less intense than DienstenSection
+    const xyMultiplier = 10.5;  // DienstenSection: 15, now 70% = 10.5
+    const rotationMultiplier = 7;  // DienstenSection: 10, now 70% = 7
+    const inertiaResistance = 390; // DienstenSection: 300, increased by 30% for less movement
+
+    // Pre-build clamp functions for performance
+    const clampXY = gsap.utils.clamp(-1080, 1080);
+    const clampRot = gsap.utils.clamp(-60, 60);
+
+    let prevX = 0, prevY = 0;
+    let velX = 0, velY = 0;
+    let rafId: number | null = null;
+
+    // Track pointer velocity (throttled to RAF)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        velX = e.clientX - prevX;
+        velY = e.clientY - prevY;
+        prevX = e.clientX;
+        prevY = e.clientY;
+        rafId = null;
+      });
+    };
+
+    root.addEventListener('mousemove', handleMouseMove);
+
+    // Attach hover inertia to each child element
+    const elements = root.querySelectorAll('[data-momentum-hover-element]');
+
+    elements.forEach(el => {
+      const element = el as HTMLElement;
+
+      const handleMouseEnter = (e: MouseEvent) => {
+        const target = element.querySelector('[data-momentum-hover-target]') as HTMLElement;
+        if (!target) return;
+
+        // Compute offset from center to pointer
+        const { left, top, width, height } = target.getBoundingClientRect();
+        const centerX = left + width / 2;
+        const centerY = top + height / 2;
+        const offsetX = e.clientX - centerX;
+        const offsetY = e.clientY - centerY;
+
+        // Compute raw torque (px²/frame)
+        const rawTorque = offsetX * velY - offsetY * velX;
+
+        // Normalize torque so rotation ∝ pointer speed (deg/sec)
+        const leverDist = Math.hypot(offsetX, offsetY) || 1;
+        const angularForce = rawTorque / leverDist;
+
+        // Calculate and clamp velocities
+        const velocityX = clampXY(velX * xyMultiplier);
+        const velocityY = clampXY(velY * xyMultiplier);
+        const rotationVelocity = clampRot(angularForce * rotationMultiplier);
+
+        // Apply GSAP inertia tween
+        gsap.to(target, {
+          inertia: {
+            x: { velocity: velocityX, end: 0 },
+            y: { velocity: velocityY, end: 0 },
+            rotation: { velocity: rotationVelocity, end: 0 },
+            resistance: inertiaResistance
+          }
+        });
+      };
+
+      element.addEventListener('mouseenter', handleMouseEnter);
+    });
+
+    return () => {
+      root.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const handleSelect = (goal: string) => {
     setSelectedGoal(goal);
     setIsOpen(false);
@@ -43,7 +137,7 @@ export default function OnboardingForm() {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={wrapperRef} data-momentum-hover-element>
       {/* Pin/Thumbtack */}
       <div className={styles.pin}>
         <Image
@@ -55,7 +149,7 @@ export default function OnboardingForm() {
         />
       </div>
 
-      <div className={styles.container}>
+      <div className={styles.container} data-momentum-hover-target>
         {/* Onboarding Steps */}
         <div className={styles.stepRow}>
         <div className={styles.stepLabel}>
