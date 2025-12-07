@@ -12,6 +12,12 @@
   z-index: 10;
   border-radius: 1.5rem;
   overflow: hidden;
+  touch-action: manipulation; /* Only allow clicks, no dragging or scrolling */
+  overscroll-behavior: none; /* Prevent bounce/pull-to-refresh */
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* Fallback for browsers that don't support svh */
@@ -192,5 +198,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 31em;
 }
 

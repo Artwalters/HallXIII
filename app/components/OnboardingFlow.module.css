@@ -4,7 +4,7 @@
   background: transparent;
   width: 100%;
   padding-top: 3em; /* Space for pin */
-  font-size: 16px; /* Fixed base size - prevents Osmo scaling from affecting form */
+  font-size: 14px; /* Fixed base size - smaller to match button sizes on other pages */
 }
 
 .container {
@@ -16,6 +16,7 @@
   flex-shrink: 0;
   position: relative;
   overflow: visible;
+  max-height: 80vh;
 }
 
 /* Paper background with clip-path */
@@ -433,6 +434,29 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
+  max-height: 20em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.5em;
+}
+
+/* Custom scrollbar styling */
+.optionsGrid::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.optionsGrid::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+}
+
+.optionsGrid::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 9999px;
+}
+
+.optionsGrid::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .optionButtonWrapper {
@@ -798,9 +822,14 @@
   }
 }
 
-@media (max-width: 640px) {
-  .title {
-    font-size: 1.5em;
+@media (max-width: 768px) {
+  .wrapper {
+    padding-top: 2em;
+  }
+
+  .pin {
+    width: 6em;
+    height: 6em;
   }
 
   .optionsGrid {

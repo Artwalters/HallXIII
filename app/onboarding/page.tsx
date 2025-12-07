@@ -13,6 +13,37 @@ export default function OnboardingPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
 
+  // Prevent pull-to-refresh and scrolling on mobile
+  useEffect(() => {
+    const preventScroll = (e: TouchEvent) => {
+      // Only prevent default if it's a drag/scroll gesture, not a tap
+      if (e.touches.length > 1) return; // Allow multi-touch gestures
+      e.preventDefault();
+    };
+
+    // Apply to document body - prevent overflow but allow clicks
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+    document.body.style.touchAction = 'manipulation'; // Allow taps/clicks, prevent dragging
+    document.body.style.overscrollBehavior = 'none';
+
+    // Prevent touch move (dragging/scrolling) only
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+
+    return () => {
+      // Cleanup on unmount
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+      document.body.style.touchAction = '';
+      document.body.style.overscrollBehavior = '';
+      document.removeEventListener('touchmove', preventScroll);
+    };
+  }, []);
+
   // Shadow overlay mouse parallax effect
   useEffect(() => {
     if (!heroSectionRef.current || !shadowOverlayRef.current) return;
