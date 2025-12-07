@@ -370,11 +370,13 @@
 .taglineWrapper {
   flex-shrink: 0;
   align-self: flex-end;
+  display: none;
 }
 
-/* Desktop: align tagline to start (top) */
+/* Desktop: show and align tagline to start (top) */
 @media (min-width: 769px) {
   .taglineWrapper {
+    display: block;
     align-self: flex-start;
     margin-top: 0.5rem;
   }

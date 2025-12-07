@@ -43,9 +43,21 @@ export default function OnboardingForm() {
   };
 
   return (
-    <div className={styles.container}>
-      {/* Onboarding Steps */}
-      <div className={styles.stepRow}>
+    <div className={styles.wrapper}>
+      {/* Pin/Thumbtack */}
+      <div className={styles.pin}>
+        <Image
+          src="/assets/buttons/XIII_button.png"
+          alt=""
+          width={80}
+          height={80}
+          className={styles.pinImage}
+        />
+      </div>
+
+      <div className={styles.container}>
+        {/* Onboarding Steps */}
+        <div className={styles.stepRow}>
         <div className={styles.stepLabel}>
           <p className={styles.stepText}>
             Stap {step}/{totalSteps}
@@ -156,6 +168,17 @@ export default function OnboardingForm() {
         <p className={styles.subtitleText}>
           Check vrijblijvend of hall13 past bij jouw doelen
         </p>
+      </div>
+
+      {/* Texture Overlay */}
+      <div className={styles.overlay}>
+        <Image
+          src="/assets/overlays/overlay.jpg"
+          alt=""
+          fill
+          className={styles.overlayImage}
+        />
+      </div>
       </div>
     </div>
   );
