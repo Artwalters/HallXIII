@@ -6,7 +6,7 @@
 }
 
 .container {
-  max-width: var(--container-max-width-narrow);
+  max-width: var(--container-width-narrow);
   padding: 0 var(--container-padding);
   margin: 0 auto;
   position: relative;
@@ -14,7 +14,7 @@
 
 @media (max-width: 991px) {
   .container {
-    max-width: var(--container-max-width);
+    max-width: var(--container-width-full);
   }
 }
 
@@ -307,6 +307,15 @@
   display: inline-block;
 }
 
+/* Show desktop text, hide mobile text by default */
+.ctaTextDesktop {
+  display: inline-block;
+}
+
+.ctaTextMobile {
+  display: none;
+}
+
 /* Underline text with draw effect */
 .ctaUnderlineText {
   position: relative;
@@ -402,7 +411,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .section {
-    padding: 7.5em 0;
+    padding: 7.5em 0 30em 0;
   }
 
   .sectionTitle {
@@ -422,11 +431,20 @@
   }
 
   .ctaWrapper {
-    bottom: 7em;
+    bottom: 5em;
   }
 
   .ctaText {
-    font-size: 1.5em;
+    font-size: var(--relost-caption-big);
+  }
+
+  /* Hide desktop text, show mobile text */
+  .ctaTextDesktop {
+    display: none;
+  }
+
+  .ctaTextMobile {
+    display: inline-block;
   }
 
   .googleBadge {
@@ -466,7 +484,7 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 6em 0 15em 0;
+    padding: 6em 0 20em 0;
   }
 
   .titleWrapper {
@@ -474,11 +492,20 @@
   }
 
   .ctaWrapper {
-    bottom: 7em;
+    bottom: 5em;
   }
 
   .ctaText {
-    font-size: 1.3em;
+    font-size: var(--relost-caption-big);
+  }
+
+  /* Hide desktop text, show mobile text */
+  .ctaTextDesktop {
+    display: none;
+  }
+
+  .ctaTextMobile {
+    display: inline-block;
   }
 
   .googleBadge {
