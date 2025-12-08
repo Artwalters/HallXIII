@@ -11,11 +11,13 @@ gsap.registerPlugin(InertiaPlugin);
 
 const fitnessGoals = [
   'Sterker worden',
-  'Gewicht verliezen',
+  'Fitter worden',
+  'Afvallen',
   'Spiermassa opbouwen',
-  'Conditie verbeteren',
-  'Flexibiliteit verhogen',
-  'Stress verminderen',
+  'Meer energie krijgen',
+  'Beter in je vel zitten',
+  'Discipline opbouwen',
+  'Stressvrij leven',
 ];
 
 export default function OnboardingForm() {
@@ -171,7 +173,7 @@ export default function OnboardingForm() {
       {/* Title */}
       <div className={styles.titleRow}>
         <p className={styles.titleText}>
-          Welke doelen wil jij behalen?
+          Wat wil je bereiken?
         </p>
       </div>
 

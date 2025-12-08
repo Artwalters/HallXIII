@@ -112,7 +112,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 500;
   pointer-events: none;
 }
@@ -175,17 +175,31 @@
     brightness(0.98);
 }
 
-/* Desktop logo - hidden, we only show XIII */
+/* Desktop logo - visible on large screens */
 .desktopLogo {
-  display: none;
-}
-
-/* XIII logo - always visible and large */
-.mobileLogo {
   display: block;
   width: 100cqw;
   max-width: none;
   color: var(--color-white);
+}
+
+/* XIII logo - hidden on desktop, visible on mobile */
+.mobileLogo {
+  display: none;
+  width: 100cqw;
+  max-width: none;
+  color: var(--color-white);
+}
+
+/* Mobile breakpoint - switch to XIII logo */
+@media (max-width: 768px) {
+  .desktopLogo {
+    display: none;
+  }
+
+  .mobileLogo {
+    display: block;
+  }
 }
 
 /* Form Container - Positioned above all overlays, outside clippedContent */

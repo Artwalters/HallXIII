@@ -1,15 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './OnboardingFlow.module.css';
 
 // Step 2: Goals options
 const goals = [
-  'Fitter worden',
-  'Mentaal sterker worden',
-  'Meer rust ervaren',
-  'Leven veranderen',
+  'Geen motivatie',
+  'Geen tijd',
+  'Geen startpunt',
+  'Blijf inconsistent',
+  'Geen resultaten',
+  'Steeds blessures',
 ];
 
 // Step 3: Investment options
@@ -69,6 +71,23 @@ export default function OnboardingFlow() {
     console.log('Form submitted:', formData);
   };
 
+  // Handle Enter key press for "volgende" button
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Only trigger if Enter is pressed and we're not in an input/textarea
+      if (
+        e.key === 'Enter' &&
+        currentStep < totalSteps &&
+        !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)
+      ) {
+        handleNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentStep, totalSteps]);
+
   return (
     <div className={styles.wrapper}>
       {/* Pin/Thumbtack */}
@@ -127,7 +146,7 @@ export default function OnboardingFlow() {
       {/* Step 2: Goals */}
       {currentStep === 2 && (
         <div className={styles.stepContent}>
-          <h1 className={styles.title}>Wat wil je bereiken?</h1>
+          <h1 className={styles.title}>Waar heb je moeite mee?</h1>
           <div className={styles.optionsGrid}>
             {goals.map((goal) => (
               <div
@@ -162,7 +181,7 @@ export default function OnboardingFlow() {
               </div>
             ))}
           </div>
-          <p className={styles.helper}>Je mag meerdere doelen selecteren</p>
+          <p className={styles.helper}>Je mag meerdere opties selecteren</p>
         </div>
       )}
 
