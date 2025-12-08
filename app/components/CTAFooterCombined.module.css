@@ -194,6 +194,11 @@
     brightness(0.98);
 }
 
+/* Main Text Mobile - Hidden by default, shown on mobile */
+.mainTextWrapperMobile {
+  display: none;
+}
+
 /* CTA Bottom Row */
 .ctaBottomRow {
   justify-content: space-between;
@@ -821,9 +826,39 @@
     display: flex;
   }
 
-  /* Hide the text on mobile */
+  /* Hide desktop text on mobile */
   .mainTextWrapper {
     display: none;
+  }
+
+  /* Show mobile text on mobile with Relost font */
+  .mainTextWrapperMobile {
+    display: block;
+    text-align: left;
+    margin-top: 2rem;
+    max-width: 80%;
+  }
+
+  .mainTextMobile {
+    font-family: var(--font-accent);
+    font-size: var(--relost-caption-big);
+    font-weight: normal;
+    color: var(--color-white);
+    line-height: 1.2;
+    text-transform: lowercase;
+    text-align: left;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .arrowDownIcon {
+    width: 1.3em;
+    height: 1.3em;
+    color: var(--color-white);
+    flex-shrink: 0;
+    transform: translateY(0.45em);
   }
 
   /* Make bottom row stack vertically on mobile with text above form */
@@ -838,15 +873,9 @@
     width: 100%;
   }
 
+  /* Hide coaching pakketten text on mobile */
   .ctaOptionWrapper {
-    align-self: stretch;
-    justify-content: flex-start;
-    text-align: left;
-    margin-top: 1vh;
-  }
-
-  .ctaOptionText {
-    font-size: var(--relost-button-size);
+    display: none;
   }
 }
 

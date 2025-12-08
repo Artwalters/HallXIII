@@ -30,7 +30,7 @@ const coaches: Coach[] = [
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
     largeImage: '/assets/expertise-1.jpg',
     rotation: -3,
-    quote: 'Train hard, stay humble',
+    quote: 'Train hard, blijf nederig en blijf altijd je grenzen verleggen',
     frameIndex: 0,
     flipFrame: false
   },
@@ -40,7 +40,7 @@ const coaches: Coach[] = [
     description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
     largeImage: '/assets/expertise-2.jpg',
     rotation: 4,
-    quote: 'Mindset is everything',
+    quote: 'Je mindset bepaalt alles, je lichaam volgt waar je geest leidt',
     frameIndex: 1,
     flipFrame: true
   },
@@ -50,7 +50,7 @@ const coaches: Coach[] = [
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
     largeImage: '/assets/expertise-3.jpg',
     rotation: -5,
-    quote: 'Stronger every day',
+    quote: 'Elke dag een beetje sterker worden, één rep per keer',
     frameIndex: 2,
     flipFrame: false
   },
@@ -60,7 +60,7 @@ const coaches: Coach[] = [
     description: 'Maarten combineert jarenlange ervaring in powerlifting met moderne trainingsmethoden.',
     largeImage: '/assets/expertise-4.jpg',
     rotation: 3,
-    quote: 'Consistency beats talent',
+    quote: 'Consistentie wint altijd van talent dat niet komt opdagen',
     frameIndex: 3,
     flipFrame: true
   },
@@ -70,7 +70,7 @@ const coaches: Coach[] = [
     description: 'Merel is gespecialiseerd in begeleiding en coaching voor zowel beginners als gevorderden.',
     largeImage: '/assets/expertise-5.jpg',
     rotation: -4,
-    quote: 'Believe in yourself',
+    quote: 'Geloof in jezelf en vertrouw het proces, resultaten volgen',
     frameIndex: 0,
     flipFrame: true
   },
