@@ -18,6 +18,7 @@ export default function CTAFooterCombined() {
   const digit2Ref = useRef<HTMLDivElement>(null);
   const digit3Ref = useRef<HTMLDivElement>(null);
   const footerWrapRef = useRef<HTMLDivElement>(null);
+  const shadowOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // CTA Counter Animation
@@ -96,6 +97,52 @@ export default function CTAFooterCombined() {
     };
   }, []);
 
+  // Shadow overlay mouse parallax effect for CTA section
+  useEffect(() => {
+    if (!ctaSectionRef.current || !shadowOverlayRef.current) return;
+
+    const ctaSection = ctaSectionRef.current;
+    const shadowOverlay = shadowOverlayRef.current;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = ctaSection.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const deltaX = (x - centerX) / centerX;
+      const deltaY = (y - centerY) / centerY;
+
+      const maxMove = 20;
+
+      gsap.to(shadowOverlay, {
+        x: deltaX * maxMove,
+        y: deltaY * maxMove,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(shadowOverlay, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
+    };
+
+    ctaSection.addEventListener('mousemove', handleMouseMove);
+    ctaSection.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      ctaSection.removeEventListener('mousemove', handleMouseMove);
+      ctaSection.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       {/* Outer Content Container - buiten clip-path */}
@@ -124,14 +171,16 @@ export default function CTAFooterCombined() {
             }}
           />
 
-          {/* Shadow/Light Overlay */}
-          <div className={styles.shadowOverlay}>
-            <Image
-              src={`${basePath}/assets/overlays/shadow_overlay.png`}
-              alt=""
-              fill
-              className={styles.shadowOverlayImage}
-            />
+          {/* Shadow Overlay Wrapper - clips the overflow */}
+          <div className={styles.shadowOverlayWrapper}>
+            <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
+              <Image
+                src={`${basePath}/assets/overlays/shadow_overlay.png`}
+                alt=""
+                fill
+                className={styles.shadowOverlayImage}
+              />
+            </div>
           </div>
           <div className={styles.ctaContainer}>
             {/* Content Wrapper - centered */}
@@ -228,7 +277,6 @@ export default function CTAFooterCombined() {
                 </div>
                 <div className={styles.footerLinks}>
                   <a href="mailto:info@hal13.nl" className={styles.footerLink}>info@hal13.nl</a>
-                  <a href="https://wa.me/31612345678" className={styles.footerLink}>stuur ons een bericht</a>
                 </div>
                 <div className={styles.socialIcons}>
                   <a href="https://instagram.com/hall_xiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
