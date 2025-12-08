@@ -572,6 +572,33 @@ export default function DienstenSection() {
       observer.observe(item, { attributes: true, attributeFilter: ['data-flick-cards-item-status'] });
     });
 
+    // ScrollTrigger to activate underline on first active card when scrolling into view (mobile only)
+    const isMobile = window.matchMedia("(max-width: 991px)").matches;
+    const dienstenSection = document.querySelector('[data-diensten-section]');
+
+    if (isMobile && dienstenSection) {
+      const st = ScrollTrigger.create({
+        trigger: dienstenSection,
+        start: 'top 10%',
+        once: true,
+        onEnter: () => {
+          // Find the active card and activate its draw effect
+          const activeCard = document.querySelector('[data-flick-cards-item-status="active"]');
+          if (activeCard) {
+            const box = activeCard.querySelector('[data-draw-line-box]');
+            if (box && !box.innerHTML) {
+              activateDrawEffect(box);
+            }
+          }
+        }
+      });
+
+      return () => {
+        observer.disconnect();
+        st.kill();
+      };
+    }
+
     return () => {
       observer.disconnect();
     };
@@ -635,7 +662,7 @@ export default function DienstenSection() {
   };
 
   return (
-    <section id="diensten" className={styles.section}>
+    <section id="diensten" className={styles.section} data-diensten-section="">
       <div className={styles.container}>
         {/* Title */}
         <h2 className={styles.title}>diensten</h2>
