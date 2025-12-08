@@ -6,6 +6,14 @@
   padding-top: 2em; /* Space for pin */
 }
 
+/* Match Hero section padding on mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;

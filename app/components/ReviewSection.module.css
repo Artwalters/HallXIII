@@ -12,6 +12,13 @@
   position: relative;
 }
 
+/* More internal spacing on desktop */
+@media (min-width: 769px) {
+  .container {
+    padding: 0 calc(var(--container-padding) * 2);
+  }
+}
+
 @media (max-width: 991px) {
   .container {
     max-width: var(--container-width-full);
@@ -276,7 +283,7 @@
 
 .reviewText {
   font-family: var(--font-card);
-  font-size: 1.2em;
+  font-size: var(--relost-poloroid-small);
   font-weight: normal; /* Reset inherited weight for handwritten font */
   color: var(--color-black);
   line-height: 1.3;
@@ -436,6 +443,12 @@
 
   .ctaText {
     font-size: var(--relost-caption-big);
+  }
+
+  /* Scale down underline SVG for mobile */
+  .ctaDrawBox {
+    transform: scale(0.7);
+    transform-origin: center bottom;
   }
 
   /* Hide desktop text, show mobile text */

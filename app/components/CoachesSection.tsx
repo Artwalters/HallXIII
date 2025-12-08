@@ -178,7 +178,6 @@ export default function CoachesSection() {
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
-          <p className={styles.subtitle}>ONTMOET DE</p>
           <h1 className={styles.title}>COACHES</h1>
         </div>
 

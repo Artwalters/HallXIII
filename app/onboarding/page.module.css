@@ -215,3 +215,13 @@
   min-width: 31em;
 }
 
+/* Mobile: Match Hero section padding */
+@media (max-width: 768px) {
+  .formContainer {
+    width: calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+    min-width: unset;
+    padding: 0 0.5rem;
+  }
+}
+
