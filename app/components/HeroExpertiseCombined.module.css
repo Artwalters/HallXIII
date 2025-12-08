@@ -13,7 +13,7 @@
   right: 0.5rem;
   width: calc(100% - 1rem);
   height: calc(100svh - 1.2rem);
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   margin: 0 auto;
   padding: 0;
   display: flex;
@@ -84,23 +84,23 @@
   mix-blend-mode: screen;
 }
 
-/* Keyframe for shadow breathing effect - desktop */
+/* Keyframe for shadow breathing effect - desktop (more intense) */
 @keyframes shadowBreathe {
   0%, 100% {
-    opacity: 0.95;
+    opacity: 1;
   }
   50% {
-    opacity: 0.85;
+    opacity: 0.95;
   }
 }
 
-/* Keyframe for shadow breathing effect - mobile (more visible) */
+/* Keyframe for shadow breathing effect - mobile (more intense) */
 @keyframes shadowBreatheMobile {
   0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.75;
+    opacity: 0.9;
   }
 }
 
@@ -152,7 +152,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: 10;
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   margin-left: auto;
   margin-right: auto;
 }
@@ -385,7 +385,7 @@
 .tagline {
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: var(--relost-button-size); /* Kleiner: 1.75em ipv 2em */
+  font-size: var(--relost-caption-big); /* Kleiner: 1.75em ipv 2em */
   color: var(--color-white);
   margin: 0;
   transform: rotate(-1.659deg);
@@ -430,7 +430,7 @@
 /* Container */
 .expertiseContainer {
   position: relative;
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   z-index: 2;
@@ -439,7 +439,7 @@
 /* Desktop: use narrow container */
 @media (min-width: 769px) {
   .expertiseContainer {
-    max-width: var(--container-max-width-narrow);
+    max-width: var(--container-width-narrow);
   }
 }
 
@@ -489,7 +489,7 @@
 .imageContainer {
   position: relative;
   overflow: hidden;
-  max-width: 112.5rem;
+  max-width: calc(var(--container-width-full) * 1.2);
   margin: 0 auto;
   height: 24rem;
   background-color: var(--color-black);

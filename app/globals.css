@@ -205,6 +205,11 @@
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
+  /* Osmo Container Width System */
+  --container-width-full: var(--size-container);
+  --container-width-medium: calc(var(--size-container) * 0.85);
+  --container-width-narrow: calc(var(--size-container) * 0.70);
+
   /* Typography Scale - Osmo Design System */
   --font-h1: 10em;     /* 84px - Main page titles */
   --font-h2: 7em;      /* 72px - Section titles */
@@ -216,7 +221,7 @@
   --relost-button-size: 2em; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
   --relost-poloroid: 1.5em; /* 34px - Relost captions/taglines */
-
+  --relost-poloroid-small: 1em; /* 34px - Relost captions/taglines */
 
   /* Container System */
   --container-max-width: 75vw;
@@ -249,6 +254,11 @@
     --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
     --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
+    /* Osmo Container Width System - Tablet */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.90);
+    --container-width-narrow: calc(var(--size-container) * 0.85);
+
     /* Container System - Tablet */
     --container-max-width: 90vw;
     --container-max-width-hero: 90vw;
@@ -264,6 +274,11 @@
     --size-container-max: 767px;
     --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
     --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+    /* Osmo Container Width System - Tablet Portrait */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.92);
+    --container-width-narrow: calc(var(--size-container) * 0.88);
 
     /* Container System - Tablet Portrait */
     --container-max-width: 91vw;
@@ -282,6 +297,11 @@
     --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
     --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
+    /* Osmo Container Width System - Mobile Landscape */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.95);
+    --container-width-narrow: calc(var(--size-container) * 0.92);
+
     /* Container System - Mobile Landscape */
     --container-max-width: 92vw;
     --container-max-width-hero: 92vw;
@@ -289,13 +309,19 @@
   }
 }
 
-/* Mobile Portrait (320px - 479px) */@media screen and (max-width: 479px) {
+/* Mobile Portrait (320px - 479px) */
+@media screen and (max-width: 479px) {
   :root {
     --size-container-ideal: 562; /* Mobile portrait - adjusted for smaller h2 */
     --size-container-min: 320px;
     --size-container-max: 479px;
     --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
     --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+    /* Osmo Container Width System - Mobile Portrait */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.98);
+    --container-width-narrow: calc(var(--size-container) * 0.95);
 
     /* Container System - Mobile Portrait */
     --container-max-width: 95vw;
