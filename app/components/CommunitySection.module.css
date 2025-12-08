@@ -86,7 +86,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   padding-bottom: 12rem; /* Push looping words up for social section space */
@@ -105,7 +105,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   text-align: center;
   z-index: 50;
 }

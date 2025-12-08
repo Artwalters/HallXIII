@@ -19,7 +19,7 @@
 
 /* Container */
 .container {
-  max-width: var(--container-max-width);
+  max-width: var(--container-width-full);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   position: relative;
@@ -29,7 +29,7 @@
 /* Desktop: use narrow container */
 @media (min-width: 769px) {
   .container {
-    max-width: var(--container-max-width-narrow);
+    max-width: var(--container-width-narrow);
     padding-bottom: 5rem;
   }
 }

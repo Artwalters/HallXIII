@@ -208,7 +208,7 @@
   /* Osmo Container Width System */
   --container-width-full: var(--size-container);
   --container-width-medium: calc(var(--size-container) * 0.85);
-  --container-width-narrow: calc(var(--size-container) * 0.70);
+  --container-width-narrow: calc(var(--size-container) * 0.75);
 
   /* Typography Scale - Osmo Design System */
   --font-h1: 10em;     /* 84px - Main page titles */
@@ -223,9 +223,7 @@
   --relost-poloroid: 1.5em; /* 34px - Relost captions/taglines */
   --relost-poloroid-small: 1em; /* 34px - Relost captions/taglines */
 
-  /* Container System */
-  --container-max-width: 75vw;
-  --container-max-width-narrow: 60vw;
+  /* Container Padding */
   --container-padding: 4rem;
 
   /* Standard Breakpoints */
@@ -233,16 +231,6 @@
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;
   --breakpoint-wide: 1280px;
-}
-
-/* Small Desktop (992px - 1700px) */
-@media screen and (max-width: 1700px) {
-  :root {
-    /* Container System - Small Desktop */
-    --container-max-width: 90vw;
-    --container-max-width-narrow: 90vw;
-    --container-padding: 4rem;
-  }
 }
 
 /* Tablet (768px - 991px) */
@@ -259,9 +247,7 @@
     --container-width-medium: calc(var(--size-container) * 0.90);
     --container-width-narrow: calc(var(--size-container) * 0.85);
 
-    /* Container System - Tablet */
-    --container-max-width: 90vw;
-    --container-max-width-hero: 90vw;
+    /* Container Padding - Tablet */
     --container-padding: 3rem;
   }
 }
@@ -280,9 +266,7 @@
     --container-width-medium: calc(var(--size-container) * 0.92);
     --container-width-narrow: calc(var(--size-container) * 0.88);
 
-    /* Container System - Tablet Portrait */
-    --container-max-width: 91vw;
-    --container-max-width-hero: 91vw;
+    /* Container Padding - Tablet Portrait */
     --container-padding: 2.5rem;
   }
 }
@@ -302,9 +286,7 @@
     --container-width-medium: calc(var(--size-container) * 0.95);
     --container-width-narrow: calc(var(--size-container) * 0.92);
 
-    /* Container System - Mobile Landscape */
-    --container-max-width: 92vw;
-    --container-max-width-hero: 92vw;
+    /* Container Padding - Mobile Landscape */
     --container-padding: 2rem;
   }
 }
@@ -323,9 +305,7 @@
     --container-width-medium: calc(var(--size-container) * 0.98);
     --container-width-narrow: calc(var(--size-container) * 0.95);
 
-    /* Container System - Mobile Portrait */
-    --container-max-width: 95vw;
-    --container-max-width-hero: 95vw;
+    /* Container Padding - Mobile Portrait */
     --container-padding: 1rem;
   }
 }
