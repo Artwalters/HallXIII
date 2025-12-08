@@ -196,19 +196,19 @@
 /* ------------------------- Osmo Scaling System -------------------------  */
 /* Professional rem-based scaling system for consistent typography and spacing */
 
-/* Desktop (992px - 1920px) */
+/* Base Desktop (992px - 1439px) */
 :root {
   --size-unit: 16; /* body font-size in design - no px */
-  --size-container-ideal: 1440; /* screen-size in design - no px */
+  --size-container-ideal: 1200; /* screen-size in design - no px */
   --size-container-min: 992px;
-  --size-container-max: 1920px;
+  --size-container-max: 1439px;
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
   /* Osmo Container Width System */
   --container-width-full: var(--size-container);
-  --container-width-medium: calc(var(--size-container) * 0.90);
-  --container-width-narrow: calc(var(--size-container) * 0.85);
+  --container-width-medium: calc(var(--size-container) * 0.85);
+  --container-width-narrow: calc(var(--size-container) * 0.75);
 
   /* Typography Scale - Osmo Design System */
   --font-h1: 10em;     /* 84px - Main page titles */
@@ -224,7 +224,7 @@
   --relost-poloroid-small: 1em; /* 34px - Relost captions/taglines */
 
   /* Container Padding */
-  --container-padding: 4rem;
+  --container-padding: 2rem;
 
   /* Standard Breakpoints */
   --breakpoint-mobile: 480px;
@@ -232,6 +232,44 @@
   --breakpoint-desktop: 1024px;
   --breakpoint-wide: 1280px;
 }
+
+
+/* Extra Large Desktop (2000px+) */
+@media screen and (min-width: 2000px) {
+  :root {
+    --size-container-ideal: 1920;
+    --size-container-min: 2000px;
+    --size-container-max: 2560px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+    /* Osmo Container Width System - Even more narrow on XL screens */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.75);
+    --container-width-narrow: calc(var(--size-container) * 0.60);
+
+    --container-padding: 2rem;
+  }
+}
+
+/* Large Desktop (1440px - 1999px) */
+@media screen and (min-width: 1440px) and (max-width: 1999px) {
+  :root {
+    --size-container-ideal: 1440;
+    --size-container-min: 1440px;
+    --size-container-max: 1999px;
+    --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+    --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+    /* Osmo Container Width System - More narrow on large screens */
+    --container-width-full: var(--size-container);
+    --container-width-medium: calc(var(--size-container) * 0.80);
+    --container-width-narrow: calc(var(--size-container) * 0.70);
+
+    --container-padding: 2rem;
+  }
+}
+
 
 /* Tablet (768px - 991px) */
 @media screen and (max-width: 991px) {

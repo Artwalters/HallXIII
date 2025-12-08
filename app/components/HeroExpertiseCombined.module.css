@@ -13,7 +13,7 @@
   right: 0.5rem;
   width: calc(100% - 1rem);
   height: calc(100svh - 1.2rem);
-  max-width: var(--container-width-full);
+  max-width: var(--container-width-medium);
   margin: 0 auto;
   padding: 0;
   display: flex;
@@ -152,7 +152,7 @@
   flex-direction: column;
   justify-content: center;
   z-index: 10;
-  max-width: var(--container-width-full);
+  max-width: var(--container-width-medium);
   margin-left: auto;
   margin-right: auto;
 }
@@ -350,7 +350,8 @@
   gap: 2rem;
   width: 100%;
   display: flex;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 var(--container-padding);;
+  padding-bottom: 2rem;
 }
 
 /* Desktop: more padding at top to push content up */
@@ -392,7 +393,8 @@
   line-height: 1.15;
   text-transform: lowercase;
   max-width: 12.5em;
-  text-align: right;
+  text-align: left;
+  margin-top: 2em;
 }
 
 /* ===== EXPERTISE SECTION ===== */
