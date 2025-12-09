@@ -19,7 +19,7 @@
   left: 0;
   width: 100%;
   height: 110svh;
-  max-width: var(--container-width-full);
+  max-width: var(--container-width-medium);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   display: flex;
@@ -73,6 +73,9 @@
   height: 100%;
   border-radius: inherit;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 /* Texture Overlay */
@@ -138,7 +141,6 @@
   padding: 0 var(--container-padding);
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
   z-index: 100;
   container-type: inline-size;
@@ -225,11 +227,17 @@
 
 /* CTA Bottom Row */
 .ctaBottomRow {
+  width: 100%;
+  max-width: var(--container-width-medium);
+  padding: 0 var(--container-padding);
+  padding-bottom: 1rem;
+  z-index: 100;
   justify-content: space-between;
   align-items: flex-end;
   gap: 2rem;
-  width: 100%;
+  margin: 0 auto;
   display: flex;
+  position: relative;
 }
 
 .ctaFormWrapper {
@@ -239,31 +247,24 @@
 .ctaOptionWrapper {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-end;
   text-align: right;
+  align-self: flex-start;
+  margin-top: 4rem;
 }
 
 .ctaOptionText {
   font-family: var(--font-accent);
   font-weight: normal; /* Relost should maintain natural weight */
-  font-size: var(--relost-button-size);
+  font-size: var(--relost-caption-big);
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1.2;
+  transform: rotate(-3deg);
 }
 
-@media (min-width: 768px) {
-  .ctaOptionText {
-    font-size: var(--relost-button-size);
-  }
-}
 
-@media (min-width: 1024px) {
-  .ctaOptionText {
-    font-size: var(--relost-button-size);
-  }
-}
 /* ===== FOOTER SECTION ===== */
 
 /* Footer Wrapper */
@@ -291,7 +292,7 @@
 /* Container */
 .footerContainer {
   position: relative;
-  max-width: var(--container-width-full);
+  max-width: var(--container-width-medium);
   margin: 0 auto;
   padding: 1rem var(--container-padding) 3rem;
   z-index: 2;
@@ -832,11 +833,6 @@
   .mainText {
     text-align: left;
   }
-
-  /* Verberg eerste cijfer (linker 0) op kleine desktop */
-  .digit1 {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -853,7 +849,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: translateY(-22vh);
+    transform: translateY(-8vh);
   }
 
   /* Make numbers full width and centered */
@@ -864,11 +860,6 @@
 
   .numberGroup {
     height: 0.95em;
-  }
-
-  /* Show all 3 digits on mobile */
-  .digit1 {
-    display: flex;
   }
 
   /* Hide desktop text on mobile */
@@ -911,7 +902,6 @@
     flex-direction: column-reverse;
     align-items: stretch;
     gap: 1.5rem;
-    margin-bottom: 6vh;
   }
 
   .ctaFormWrapper {

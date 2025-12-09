@@ -129,7 +129,7 @@
 .loopingWords {
   height: 2.7em;
   font-family: var(--font-heading);
-  font-size: 30cqw;
+  font-size: 25cqw;
   font-weight: normal;
   line-height: 1;
   position: relative;
@@ -198,7 +198,7 @@
   align-items: center;
   gap: 1.25em;
   position: absolute;
-  bottom: 10vh;
+  bottom: 7vh;
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
@@ -228,8 +228,8 @@
 
 .socialIcon {
   position: relative;
-  width: 6.48em;
-  height: 6.48em;
+  width: 5.832em;
+  height: 5.832em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,8 +378,8 @@
   }
 
   .socialIcon {
-    width: 6.075em;
-    height: 6.075em;
+    width: 5.4675em;
+    height: 5.4675em;
   }
 
   .socialIcons {
