@@ -6,7 +6,7 @@
 }
 
 .container {
-  max-width: var(--container-width-narrow);
+  max-width: var(--container-width-medium);
   padding: 0 var(--container-padding);
   margin: 0 auto;
   position: relative;
@@ -185,18 +185,34 @@
 
 /* Larger polaroids on desktop - combined with vertical offsets */
 @media (min-width: 1024px) {
-  .reviewItem:nth-child(1) { transform: translateY(-0.9375em) scale(1.15); }
-  .reviewItem:nth-child(2) { transform: translateY(1.25em) scale(1.15); }
-  .reviewItem:nth-child(3) { transform: translateY(-0.5em) scale(1.15); }
-  .reviewItem:nth-child(4) { transform: translateY(1.5625em) scale(1.15); }
-  .reviewItem:nth-child(5) { transform: translateY(-1.125em) scale(1.15); }
-  .reviewItem:nth-child(6) { transform: translateY(0.75em) scale(1.15); }
-  .reviewItem:nth-child(7) { transform: translateY(-1.375em) scale(1.15); }
-  .reviewItem:nth-child(8) { transform: translateY(1.125em) scale(1.15); }
-  .reviewItem:nth-child(9) { transform: translateY(-0.625em) scale(1.15); }
-  .reviewItem:nth-child(10) { transform: translateY(0.9375em) scale(1.15); }
-  .reviewItem:nth-child(11) { transform: translateY(-1.5625em) scale(1.15); }
-  .reviewItem:nth-child(12) { transform: translateY(0.5em) scale(1.15); }
+  .reviewItem:nth-child(1) { transform: translateY(-0.9375em) scale(1.20); }
+  .reviewItem:nth-child(2) { transform: translateY(1.25em) scale(1.20); }
+  .reviewItem:nth-child(3) { transform: translateY(-0.5em) scale(1.20); }
+  .reviewItem:nth-child(4) { transform: translateY(1.5625em) scale(1.20); }
+  .reviewItem:nth-child(5) { transform: translateY(-1.125em) scale(1.20); }
+  .reviewItem:nth-child(6) { transform: translateY(0.75em) scale(1.20); }
+  .reviewItem:nth-child(7) { transform: translateY(-1.375em) scale(1.20); }
+  .reviewItem:nth-child(8) { transform: translateY(1.125em) scale(1.20); }
+  .reviewItem:nth-child(9) { transform: translateY(-0.625em) scale(1.20); }
+  .reviewItem:nth-child(10) { transform: translateY(0.9375em) scale(1.20); }
+  .reviewItem:nth-child(11) { transform: translateY(-1.5625em) scale(1.20); }
+  .reviewItem:nth-child(12) { transform: translateY(0.5em) scale(1.20); }
+}
+
+/* Smaller polaroids on very large screens */
+@media (min-width: 1500px) {
+  .reviewItem:nth-child(1) { transform: translateY(-0.9375em) scale(0.95); }
+  .reviewItem:nth-child(2) { transform: translateY(1.25em) scale(0.95); }
+  .reviewItem:nth-child(3) { transform: translateY(-0.5em) scale(0.95); }
+  .reviewItem:nth-child(4) { transform: translateY(1.5625em) scale(0.95); }
+  .reviewItem:nth-child(5) { transform: translateY(-1.125em) scale(0.95); }
+  .reviewItem:nth-child(6) { transform: translateY(0.75em) scale(0.95); }
+  .reviewItem:nth-child(7) { transform: translateY(-1.375em) scale(0.95); }
+  .reviewItem:nth-child(8) { transform: translateY(1.125em) scale(0.95); }
+  .reviewItem:nth-child(9) { transform: translateY(-0.625em) scale(0.95); }
+  .reviewItem:nth-child(10) { transform: translateY(0.9375em) scale(0.95); }
+  .reviewItem:nth-child(11) { transform: translateY(-1.5625em) scale(0.95); }
+  .reviewItem:nth-child(12) { transform: translateY(0.5em) scale(0.95); }
 }
 
 /* Polaroid Card */

@@ -564,11 +564,11 @@
   margin: 0;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .descriptionText {
     font-size: 1.125rem;
   }
-}
+} */
 
 /* Stacked Coach Photos Container */
 .coachPhotosContainer {
@@ -583,17 +583,17 @@
   .coachPhotosContainer {
     display: block;
     position: absolute;
-    top: 8em;
-    left: 4rem;
-    width: 25.3rem;
+    top: 13em;
+    left: 2rem;
+    width: 22.3em;
     height: 32.2rem;
   }
 }
 
 @media (min-width: 1280px) {
   .coachPhotosContainer {
-    width: 27.6rem;
-    height: 36.8rem;
+    width: 22.6rem;
+    top: 10em;
   }
 }
 

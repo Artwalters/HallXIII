@@ -1,7 +1,7 @@
 /* Section */
 .section {
   background-color: var(--color-cream);
-  padding: 5rem 0 5rem;
+  padding: 7rem 0 5rem;
   position: relative;
 }
 
@@ -34,7 +34,7 @@
 
 /* Title */
 .title {
-  font-size: var(--font-h3);
+  font-size: var(--font-h1);
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.94;
@@ -50,7 +50,7 @@
 @media (max-width: 999px) {
   .title {
     padding: 0 var(--container-padding);
-    margin-bottom: 3rem;
+    margin-bottom: 0rem;
   }
 }
 
@@ -168,7 +168,6 @@
 .flickGroup {
   position: relative;
   display: none;
-  margin-top: 2rem;
 }
 
 /* Show flick cards only on mobile */

@@ -211,14 +211,14 @@
   --container-width-narrow: calc(var(--size-container) * 0.75);
 
   /* Typography Scale - Osmo Design System */
-  --font-h1: 10em;     /* 84px - Main page titles */
-  --font-h2: 7em;      /* 72px - Section titles */
-  --font-h3: 5em;        /* 48px - Subsection titles */
+  --font-h1: 8em;     /* 84px - Main page titles */
+  --font-h2: 6em;      /* 72px - Section titles */
+  --font-h3: 3.5em;        /* 48px - Subsection titles */
   --font-h4: 3em;        /* 32px - Small titles */
-  --font-body: 1.2em;      /* 16px - Body text */
+  --font-body: 1.1em;      /* 16px - Body text */
   --font-body-large: 1.5em; /* 18px - Large body text */
   --font-body-small: 1em; /* 14px - Small body text */
-  --relost-button-size: 2em; /* 28px - Relost buttons/links */
+  --relost-button-size: 1.5em; /* 28px - Relost buttons/links */
   --relost-caption-big: 2em; /* 34px - Relost captions/taglines */
   --relost-poloroid: 1.5em; /* 34px - Relost captions/taglines */
   --relost-poloroid-small: 1em; /* 34px - Relost captions/taglines */
@@ -359,7 +359,7 @@
   /* Font Weights - Default weights per font family */
   --weight-heading: normal;   /* SCHABO default weight */
   --weight-accent: normal;    /* Relost default weight */
-  --weight-par: 700;          /* Helvetica Now Display default weight (Bold) */
+  --weight-par: 500;          /* Helvetica Now Display default weight (Bold) */
 
  
 

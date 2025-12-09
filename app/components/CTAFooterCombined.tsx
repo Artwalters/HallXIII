@@ -145,19 +145,6 @@ export default function CTAFooterCombined() {
 
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
-      {/* Outer Content Container - buiten clip-path */}
-      <div className={styles.outerContentContainer}>
-        {/* Bottom Section - Onboarding Form + CTA Options */}
-        <div className={styles.ctaBottomRow}>
-          <div className={styles.ctaFormWrapper}>
-            <OnboardingForm />
-          </div>
-          <div className={styles.ctaOptionWrapper}>
-            <span className={styles.ctaOptionText}>bekijk onze coaching pakketten</span>
-          </div>
-        </div>
-      </div>
-
       {/* CTA SECTION */}
       <section className={styles.ctaSection} ref={ctaSectionRef}>
         <div className={styles.clippedContent}>
@@ -239,6 +226,15 @@ export default function CTAFooterCombined() {
                   </svg>
                 </p>
               </div>
+            </div>
+          </div>
+          {/* Bottom Section - Onboarding Form + CTA Options */}
+          <div className={styles.ctaBottomRow}>
+            <div className={styles.ctaFormWrapper}>
+              <OnboardingForm />
+            </div>
+            <div className={styles.ctaOptionWrapper}>
+              <span className={styles.ctaOptionText}>bekijk onze coaching pakketten</span>
             </div>
           </div>
         </div>

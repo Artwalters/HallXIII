@@ -351,7 +351,7 @@
   width: 100%;
   display: flex;
   padding: 0 var(--container-padding);;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 /* Desktop: more padding at top to push content up */
@@ -403,13 +403,13 @@
 .expertiseWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 110svh;
+  padding-top: 100svh;
 }
 
 /* Fallback for browsers that don't support svh */
 @supports not (padding-top: 100svh) {
   .expertiseWrap {
-    padding-top: 110vh;
+    padding-top: 100vh;
   }
 }
 
@@ -419,13 +419,13 @@
   width: 100%;
   min-height: 80vh;
   background-color: var(--color-cream);
-  padding: 8rem 0;
+  padding: 15rem 0 0 0;
 }
 
 /* Mobile: smaller padding */
 @media (max-width: 768px) {
   .expertise {
-    padding: 3rem 0;
+    padding: 7rem 0 0 0;
   }
 }
 
@@ -470,7 +470,7 @@
 }
 
 .title {
-  font-size: var(--font-h3);
+  font-size: var(--font-h2);
   color: var(--color-black);
   text-transform: uppercase;
   line-height: 0.94;

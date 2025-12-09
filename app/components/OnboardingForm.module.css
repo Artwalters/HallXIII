@@ -218,6 +218,7 @@
   gap: 0.75em;
   padding: 0.75em 1.5em;
   min-width: 14em;
+  max-width: 20em;
   height: fit-content;
   width: fit-content;
   background: none;
@@ -290,6 +291,9 @@
   font-weight: 400;
   z-index: 2;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
 }
 
 /* Dropdown Chevron - Stop Motion */
