@@ -271,13 +271,13 @@
 .footerWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 120svh;
+  padding-top: 110svh;
 }
 
 /* Fallback for browsers that don't support svh */
 @supports not (height: 100svh) {
   .footerWrap {
-    padding-top: 120vh;
+    padding-top: 110vh;
   }
 }
 
@@ -377,17 +377,14 @@
 }
 
 .footerLink {
-  font-family: var(--font-par);
-  font-weight: var(--weight-par);
-  font-size: var(--font-body-large);
+  font-family: var(--font-heading);
+  font-weight: normal;
+  font-size: var(--font-h4);
   color: var(--color-black);
   text-decoration: none;
-  text-transform: lowercase;
-  transition: opacity 0.2s ease;
-}
-
-.footerLink:hover {
-  opacity: 0.7;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .footerFollowText {
@@ -399,11 +396,12 @@
 }
 
 .footerText {
-  font-family: var(--font-par);
-  font-weight: var(--weight-par);
-  font-size: var(--font-body-large);
+  font-family: var(--font-heading);
+  font-weight: normal;
+  font-size: var(--font-h4);
   color: var(--color-black);
-  text-transform: lowercase;
+  text-transform: uppercase;
+  line-height: 1;
 }
 
 .footerSmallLink {
@@ -537,7 +535,7 @@
   height: 100%;
   object-fit: contain;
   filter: brightness(0);
-  opacity: 0.4;
+  opacity: 0.25;
   transition: opacity 0.2s ease;
 }
 
@@ -915,14 +913,18 @@
 
   /* Footer padding on mobile */
   .footerWrap {
-    padding-top: 115svh;
+    padding-top: 110svh;
+  }
+
+  .footerContainer {
+    padding-bottom: 6rem;
   }
 }
 
 @supports not (height: 100svh) {
   @media (max-width: 768px) {
     .footerWrap {
-      padding-top: 115vh;
+      padding-top: 110vh;
     }
   }
 }

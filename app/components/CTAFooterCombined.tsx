@@ -411,7 +411,6 @@ export default function CTAFooterCombined() {
                   <span className={styles.footerLabelText}>gym</span>
                 </div>
                 <div className={styles.footerLinks}>
-                  <span className={styles.footerText}>waalbroek 3</span>
                   <span className={styles.footerText}>6369 te simpelveld</span>
                 </div>
                 <div data-draw-line-trigger="">
@@ -446,6 +445,7 @@ export default function CTAFooterCombined() {
                   </div>
                   <span className={styles.footerLabelText}>nieuwsbrief</span>
                 </div>
+                <span className={styles.footerText}>sign me up</span>
                 <div className={styles.newsletterForm}>
                   {/* Input Field - Stop Motion Style */}
                   <div className={styles.newsletterInputWrapper}>
@@ -491,7 +491,6 @@ export default function CTAFooterCombined() {
                     </svg>
                   </button>
                 </div>
-                <span className={styles.newsletterCaption}>sign me up for the newsletter</span>
               </div>
             </div>
 
