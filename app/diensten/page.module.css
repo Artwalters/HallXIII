@@ -1,8 +1,19 @@
 /* ===== DIENSTEN PAGE - HERO STYLE ===== */
 
 .pageWrapper {
-  min-height: 100vh;
+  height: 100svh;
   position: relative;
+  overflow: hidden;
+  /* Prevent page drag on mobile */
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+/* Fallback for browsers that don't support svh */
+@supports not (height: 100svh) {
+  .pageWrapper {
+    height: 100vh;
+  }
 }
 
 .heroSection {
@@ -17,6 +28,8 @@
   z-index: 10;
   border-radius: 1.5rem;
   overflow: hidden;
+  /* Prevent drag on mobile */
+  touch-action: none;
 }
 
 /* Fallback for browsers that don't support svh */
