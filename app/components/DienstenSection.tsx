@@ -35,6 +35,8 @@ const desktopCards = [
     textRotation: textRotations[0],
     magnetPosition: { top: '3%', left: '8%', rotation: -8 },
     serviceId: 'dagpas-opengym',
+    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonSize: 120,
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -46,6 +48,8 @@ const desktopCards = [
     textRotation: textRotations[1],
     magnetPosition: { top: '5%', right: '5%', rotation: 12 },
     serviceId: 'open-gym',
+    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonSize: 120,
   },
   {
     image: '/assets/expertise-3.jpg',
@@ -58,6 +62,8 @@ const desktopCards = [
     magnetPosition: { top: '2%', left: '6%', rotation: -5 },
     link: '#coaching-trajecten',
     isExternal: false,
+    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonSize: 138,
   },
 ];
 
@@ -71,9 +77,11 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -0.8,
-    magnetPosition: { top: '-8%', right: '5%', rotation: 15 },
+    magnetPosition: { top: '-8%', right: '5%', rotation: -12 },
     link: '#coaching-trajecten',
     isExternal: false,
+    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonSize: 161,
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -83,8 +91,10 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 1.2,
-    magnetPosition: { top: '-6%', right: '3%', rotation: 18 },
+    magnetPosition: { top: '-6%', right: '3%', rotation: 8 },
     serviceId: 'dagpas-opengym',
+    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonSize: 140,
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -94,8 +104,10 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.5,
-    magnetPosition: { top: '-10%', right: '8%', rotation: 12 },
+    magnetPosition: { top: '-10%', right: '8%', rotation: -15 },
     serviceId: 'open-gym',
+    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonSize: 140,
   },
   {
     image: '/assets/expertise-3.jpg',
@@ -105,9 +117,11 @@ const gymCards = [
     frameIndex: 3,
     flipFrame: true,
     textRotation: 1.8,
-    magnetPosition: { top: '-5%', right: '6%', rotation: 22 },
+    magnetPosition: { top: '-5%', right: '6%', rotation: 18 },
     link: '#coaching-trajecten',
     isExternal: false,
+    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonSize: 161,
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -117,8 +131,10 @@ const gymCards = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: -1.2,
-    magnetPosition: { top: '-7%', right: '4%', rotation: 16 },
+    magnetPosition: { top: '-7%', right: '4%', rotation: -10 },
     serviceId: 'dagpas-opengym',
+    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonSize: 140,
   },
   {
     image: '/assets/expertise-2.jpg',
@@ -128,8 +144,10 @@ const gymCards = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: 0.9,
-    magnetPosition: { top: '-9%', right: '7%', rotation: 20 },
+    magnetPosition: { top: '-9%', right: '7%', rotation: 14 },
     serviceId: 'open-gym',
+    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonSize: 140,
   },
   {
     image: '/assets/expertise-1.jpg',
@@ -139,8 +157,10 @@ const gymCards = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: -1.8,
-    magnetPosition: { top: '-6%', right: '5%', rotation: 14 },
+    magnetPosition: { top: '-6%', right: '5%', rotation: -8 },
     serviceId: 'dagpas-opengym',
+    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonSize: 140,
   },
 ];
 
@@ -727,10 +747,10 @@ export default function DienstenSection() {
                       style={{ transform: `rotate(${card.magnetPosition.rotation}deg)` }}
                     >
                       <Image
-                        src="/assets/buttons/XIII_button.png"
+                        src={card.buttonImage}
                         alt=""
-                        width={120}
-                        height={120}
+                        width={card.buttonSize}
+                        height={card.buttonSize}
                         className={styles.magnetImage}
                       />
                     </div>
@@ -799,10 +819,10 @@ export default function DienstenSection() {
                         }}
                       >
                         <Image
-                          src="/assets/buttons/XIII_button.png"
+                          src={card.buttonImage}
                           alt=""
-                          width={140}
-                          height={140}
+                          width={card.buttonSize}
+                          height={card.buttonSize}
                           className={styles.flickMagnetImage}
                         />
                       </div>

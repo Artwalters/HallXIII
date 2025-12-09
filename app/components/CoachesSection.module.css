@@ -339,7 +339,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 3.17rem;
+  gap: 1.5rem;
   z-index: 1;
   flex: 1;
 }
@@ -485,6 +485,17 @@
   line-height: 1;
   margin: 0;
   font-weight: normal;
+}
+
+.coachRole {
+  font-family: var(--font-accent);
+  font-weight: normal;
+  font-size: var(--font-body-small);
+  color: var(--color-white);
+  opacity: 0.6;
+  text-transform: lowercase;
+  line-height: 1;
+  margin-left: 0.4em;
 }
 
 /* Accordion Icon */

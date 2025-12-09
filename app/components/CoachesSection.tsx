@@ -7,6 +7,7 @@ import styles from './CoachesSection.module.css';
 
 interface Coach {
   name: string;
+  role: string;
   image: string;
   description: string;
   largeImage: string;
@@ -26,6 +27,7 @@ const frames = [
 const coaches: Coach[] = [
   {
     name: 'RIM',
+    role: 'krachttrainer & coach',
     image: '/assets/expertise-1.jpg',
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
     largeImage: '/assets/expertise-1.jpg',
@@ -36,6 +38,7 @@ const coaches: Coach[] = [
   },
   {
     name: 'DYLAN',
+    role: 'coach & sportmasseur',
     image: '/assets/expertise-2.jpg',
     description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
     largeImage: '/assets/expertise-2.jpg',
@@ -46,6 +49,7 @@ const coaches: Coach[] = [
   },
   {
     name: 'NOAH',
+    role: 'powerlifter & coach',
     image: '/assets/expertise-3.jpg',
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
     largeImage: '/assets/expertise-3.jpg',
@@ -56,8 +60,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'MAARTEN',
+    role: 'fysiotherapeut & personal coach',
     image: '/assets/expertise-4.jpg',
-    description: 'Maarten combineert jarenlange ervaring in powerlifting met moderne trainingsmethoden.',
+    description: 'Maarten, fysiotherapeut en personal coach met een diepe passie voor krachtsport. Van jongs af aan gefascineerd door de kracht en mogelijkheden van het menselijk lichaam. Combineert zijn therapeutische achtergrond met praktijkervaring om anderen te inspireren en begeleiden naar hun fysieke en mentale topvorm.',
     largeImage: '/assets/expertise-4.jpg',
     rotation: 3,
     quote: 'Consistentie wint altijd van talent dat niet komt opdagen',
@@ -66,8 +71,9 @@ const coaches: Coach[] = [
   },
   {
     name: 'MEREL',
+    role: 'leefstijlcoach & personal coach',
     image: '/assets/expertise-5.jpg',
-    description: 'Merel is gespecialiseerd in begeleiding en coaching voor zowel beginners als gevorderden.',
+    description: 'Merel, fervent krachtsporter, leefstijlcoach en personal coach. Vanuit haar eigen worsteling met zelfbeeld en gezondheid ontdekte ze hoe voeding en beweging bijdragen aan fysiek én mentaal herstel. Helpt anderen naar een gezonder, gebalanceerd leven met zelfacceptatie als fundament.',
     largeImage: '/assets/expertise-5.jpg',
     rotation: -4,
     quote: 'Geloof in jezelf en vertrouw het proces, resultaten volgen',
@@ -214,6 +220,7 @@ export default function CoachesSection() {
                         </div>
                       </div>
                       <h3 className={styles.coachName}>{coach.name}</h3>
+                      <span className={styles.coachRole}>{coach.role}</span>
                     </div>
                     <div className={styles.accordionIcon}>
                       <div className={styles.accordionIconInner}>

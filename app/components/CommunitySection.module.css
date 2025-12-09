@@ -370,8 +370,27 @@
   }
 }
 
+/* Medium screens - taller section */
+@media (min-width: 1200px) and (max-width: 1800px) {
+  .section {
+    height: 120vh;
+  }
+
+  .topText {
+    top: 6rem;
+  }
+
+  .loopingWords {
+    font-size: 22cqw;
+  }
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
+  .section {
+    height: 90vh;
+  }
+
   .container {
     padding-bottom: 0;
     max-width: none;
