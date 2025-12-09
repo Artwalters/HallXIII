@@ -14,7 +14,7 @@
 
 @media (max-width: 991px) {
   .container {
-    max-width: var(--container-width-full);
+    max-width: var(--container-width-medium);
   }
 }
 

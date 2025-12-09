@@ -319,6 +319,10 @@
   transform: translateX(-50%);
   text-align: center;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8em;
 }
 
 .ctaText {
@@ -326,17 +330,24 @@
   font-size: var(--relost-caption-big);
   color: var(--color-black);
   text-decoration: none;
-  line-height: 1.2;
+  line-height: 1.3;
   display: inline-block;
+  white-space: normal;
+  transition: transform 0.2s ease;
 }
 
-/* Show desktop text, hide mobile text by default */
-.ctaTextDesktop {
-  display: inline-block;
+.ctaText:hover {
+  animation: ctaWiggle 0.6s steps(2, end) infinite;
 }
 
-.ctaTextMobile {
-  display: none;
+/* Keyframes for subtle wiggle animation */
+@keyframes ctaWiggle {
+  0%, 100% {
+    transform: rotate(-0.2deg);
+  }
+  50% {
+    transform: rotate(0.2deg);
+  }
 }
 
 /* Underline text with draw effect */
@@ -348,25 +359,20 @@
 
 .ctaDrawBox {
   color: var(--color-accent);
-  width: 100%;
+  width: 50%;
   height: 0.5em;
   position: absolute;
-  left: 0;
+  left: 40%;
   bottom: 0;
   pointer-events: none;
 }
 
 /* Google Reviews Badge */
 .googleBadge {
-  position: absolute;
-  bottom: 3em;
-  right: 2em;
   display: flex;
   align-items: center;
-  gap: 0.9em;
+  gap: 0.6em;
   text-decoration: none;
-  transform: scale(1.2);
-  transform-origin: right center;
 }
 
 .googleBadgeLogo {
@@ -442,7 +448,7 @@
   }
 
   .titleWrapper {
-    margin-bottom: 5em;
+    margin-bottom: 7em;
   }
 
   .gridContainer {
@@ -454,46 +460,22 @@
   }
 
   .ctaWrapper {
-    bottom: 5em;
+    bottom: 8em;
+    width: 80%;
+    max-width: none;
   }
 
   .ctaText {
     font-size: var(--relost-caption-big);
+    width: 100%;
+    display: block;
   }
 
-  /* Scale down underline SVG for mobile */
   .ctaDrawBox {
-    transform: scale(0.7);
+    transform: scale(0.5);
     transform-origin: center bottom;
-  }
-
-  /* Hide desktop text, show mobile text */
-  .ctaTextDesktop {
-    display: none;
-  }
-
-  .ctaTextMobile {
-    display: inline-block;
-  }
-
-  .googleBadge {
-    bottom: 2em;
-    right: 1.5em;
-    gap: 0.6em;
-  }
-
-  .googleBadgeLogo {
-    height: 1em;
-  }
-
-  .googleBadgeRating {
-    min-width: 2.2em;
-    height: 2.2em;
-    border-width: 2px;
-  }
-
-  .googleBadgeScore {
-    font-size: 0.8em;
+    left: 25%;
+    bottom: 0.15em;
   }
 
   /* Minder extreme offsets op tablet */
@@ -513,57 +495,41 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 6em 0 20em 0;
+    padding: 6em 0 30em;
   }
 
   .titleWrapper {
-    margin-bottom: 3em;
+    margin-bottom: 10em;
   }
 
   .ctaWrapper {
-    bottom: 5em;
+    bottom: 10em;
+    width: 90%;
+    max-width: none;
   }
 
   .ctaText {
-    font-size: var(--relost-caption-big);
+    width: 100%;
+    display: block;
   }
 
-  /* Hide desktop text, show mobile text */
-  .ctaTextDesktop {
-    display: none;
-  }
-
-  .ctaTextMobile {
-    display: inline-block;
-  }
-
-  .googleBadge {
-    bottom: 2em;
-    right: 2em;
-    padding: 0.7em 1em;
-    gap: 0.7em;
-  }
-
-  .googleBadgeLogo {
-    height: 1.1em;
-  }
-
-  .googleBadgeRating {
-    min-width: 2.5em;
-    height: 2.5em;
-    border-width: 2px;
-  }
-
-  .ratingCircleSvg {
-    width: 2.5em;
-    height: 2.5em;
-  }
-
-  .googleBadgeScore {
-    font-size: 0.85em;
+  .ctaDrawBox {
+    transform: scale(0.5);
+    transform-origin: center bottom;
+    left: 25%;
+    bottom: 0.15em;
   }
 
   /* Minimale offsets op mobiel */
   .reviewItem:nth-child(odd) { transform: translateY(-0.5em); }
   .reviewItem:nth-child(even) { transform: translateY(0.5em); }
+}
+
+@media (min-width: 481px) and (max-width: 1200px) {
+  .ctaDrawBox {
+    transform: scale(0.65);
+    transform-origin: center bottom;
+    left: 28%;
+    bottom: 0.25em;
+  }
 }
