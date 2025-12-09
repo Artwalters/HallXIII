@@ -151,29 +151,32 @@ export default function CTAFooterCombined() {
     const paper = waltersPaperRef.current;
     const footer = footerWrapRef.current;
 
-    // Set initial state - hidden off screen to the right
+    // Set initial state - hidden below and to the right, tilted
     gsap.set(paper, {
-      x: '100%',
-      rotation: 15
+      yPercent: 80,
+      xPercent: 40,
+      rotation: -25,
     });
 
-    // Animate paper in when footer comes into view
+    // Animate paper with a subtle scoop movement
     const st = ScrollTrigger.create({
       trigger: footer,
-      start: 'top 60%',
-      end: 'bottom bottom',
+      start: 'top 50%',
       onEnter: () => {
         gsap.to(paper, {
-          x: '-20%',
-          rotation: 10,
-          duration: 1,
-          ease: 'power2.out'
+          yPercent: 0,
+          xPercent: 0,
+          rotation: -5,
+          duration: 1.4,
+          delay: 0.5,
+          ease: 'power3.out'
         });
       },
       onLeaveBack: () => {
         gsap.to(paper, {
-          x: '100%',
-          rotation: 15,
+          yPercent: 80,
+          xPercent: 40,
+          rotation: -25,
           duration: 0.6,
           ease: 'power2.in'
         });
@@ -493,22 +496,21 @@ export default function CTAFooterCombined() {
             </div>
 
           </div>
+          {/* Walters Studio Paper Note */}
+          <div ref={waltersPaperRef} className={styles.waltersPaper}>
+            <div className={styles.waltersPaperInner}>
+              <div className={styles.waltersPaperOverlay}>
+                <Image
+                  src="/assets/overlays/overlay.jpg"
+                  alt=""
+                  fill
+                  className={styles.waltersPaperOverlayImage}
+                />
+              </div>
+              <span className={styles.waltersPaperText}>by walters.studio</span>
+            </div>
+          </div>
         </footer>
-      </div>
-
-      {/* Walters Studio Paper Note */}
-      <div ref={waltersPaperRef} className={styles.waltersPaper}>
-        <div className={styles.waltersPaperInner}>
-          <div
-            className={styles.waltersPaperOverlay}
-            style={{
-              backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
-              backgroundRepeat: 'repeat',
-              backgroundSize: 'auto'
-            }}
-          />
-          <span className={styles.waltersPaperText}>by walters.studio</span>
-        </div>
       </div>
     </div>
   );
