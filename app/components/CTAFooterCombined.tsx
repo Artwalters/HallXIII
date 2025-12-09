@@ -151,30 +151,30 @@ export default function CTAFooterCombined() {
     const paper = waltersPaperRef.current;
     const footer = footerWrapRef.current;
 
-    // Set initial state - hidden off screen
+    // Set initial state - hidden off screen to the right
     gsap.set(paper, {
-      xPercent: 100,
-      rotation: 12
+      x: '100%',
+      rotation: 15
     });
 
     // Animate paper in when footer comes into view
     const st = ScrollTrigger.create({
       trigger: footer,
-      start: 'top 80%',
+      start: 'top 60%',
       end: 'bottom bottom',
       onEnter: () => {
         gsap.to(paper, {
-          xPercent: 30,
-          rotation: 8,
-          duration: 0.8,
+          x: '-20%',
+          rotation: 10,
+          duration: 1,
           ease: 'power2.out'
         });
       },
       onLeaveBack: () => {
         gsap.to(paper, {
-          xPercent: 100,
-          rotation: 12,
-          duration: 0.5,
+          x: '100%',
+          rotation: 15,
+          duration: 0.6,
           ease: 'power2.in'
         });
       }

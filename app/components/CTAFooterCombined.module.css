@@ -931,12 +931,11 @@
 
 .waltersPaper {
   position: fixed;
-  bottom: -2rem;
-  right: -3rem;
-  width: 12rem;
-  height: 5rem;
-  z-index: 9999;
-  transform: rotate(12deg) translateX(100%);
+  bottom: 1rem;
+  right: 0;
+  width: 14rem;
+  height: 6rem;
+  z-index: 99999;
   pointer-events: none;
 }
 
