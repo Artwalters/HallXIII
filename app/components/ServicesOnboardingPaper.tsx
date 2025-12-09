@@ -127,14 +127,24 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
           </div>
 
           {/* Service Title */}
-          <h3 className={styles.serviceTitle}>{selectedService.title}</h3>
+          <h3 className={styles.serviceTitle}>
+            {selectedService.title}
+            {selectedService.price && <span className={styles.servicePrice}>{selectedService.price}</span>}
+          </h3>
 
-          {/* Description */}
-          <p className={styles.description}>{selectedService.description}</p>
+          {/* Description Section */}
+          <div className={styles.descriptionSection}>
+            <h4 className={styles.sectionTitle}>Over dit pakket</h4>
+            <div className={styles.description}>
+              {selectedService.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className={styles.descriptionParagraph}>{paragraph}</p>
+              ))}
+            </div>
+          </div>
 
           {/* Benefits */}
           <div className={styles.benefits}>
-            <h4 className={styles.benefitsTitle}>Wat krijg je:</h4>
+            <h4 className={styles.sectionTitle}>Wat krijg je</h4>
             <ul className={styles.benefitsList}>
               {selectedService.benefits.map((benefit, index) => (
                 <li key={index} className={styles.benefitItem}>

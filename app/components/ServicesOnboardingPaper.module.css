@@ -3,10 +3,18 @@
   position: relative;
   background: transparent;
   width: 100%;
-  max-width: 36em;
+  max-width: 42em;
   margin: 0 auto;
   padding-top: 3em; /* Space for pin */
-  font-size: 14px;
+  font-size: 16px;
+}
+
+/* Slightly smaller on smaller desktops */
+@media (max-width: 1200px) {
+  .wrapper {
+    max-width: 38em;
+    font-size: 15px;
+  }
 }
 
 /* Match Hero section padding on mobile */
@@ -424,8 +432,8 @@
   width: 1em;
   height: 1em;
   flex-shrink: 0;
-  color: var(--color-black);
-  fill: var(--color-black);
+  color: var(--color-accent);
+  fill: var(--color-accent);
 }
 
 @keyframes circleStopMotion {
@@ -459,27 +467,50 @@
   line-height: 1.2;
 }
 
-/* Description */
+/* Service Price */
+.servicePrice {
+  display: block;
+  font-family: var(--font-accent);
+  font-weight: normal;
+  font-size: 0.5em;
+  color: var(--color-black);
+  text-transform: none;
+  margin-top: 0.3em;
+}
+
+/* Section Title - Relost font for section headers */
+.sectionTitle {
+  font-family: var(--font-accent);
+  font-weight: normal;
+  font-size: var(--font-body-large);
+  color: var(--color-black);
+  text-transform: uppercase;
+  margin: 0 0 0.5em 0;
+}
+
+/* Description Section */
+.descriptionSection {
+  margin-bottom: 1.5em;
+}
+
 .description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
+
+.descriptionParagraph {
   font-family: var(--font-par);
   font-weight: var(--weight-par);
   font-size: var(--font-body-small);
   color: var(--color-black);
   line-height: 1.6;
-  margin: 0 0 1.5em 0;
+  margin: 0;
 }
 
 /* Benefits */
 .benefits {
   margin-bottom: 1.5em;
-}
-
-.benefitsTitle {
-  font-family: var(--font-par);
-  font-weight: 900;
-  font-size: var(--font-body-small);
-  color: var(--color-black);
-  margin: 0 0 0.75em 0;
 }
 
 .benefitsList {

@@ -2,114 +2,59 @@ export interface ServiceData {
   id: string;
   category: string;
   title: string;
+  price?: string;
   description: string;
   benefits: string[];
 }
 
 export const servicesData: ServiceData[] = [
   {
-    id: 'training-begeleiding',
-    category: 'Training Begeleiding',
-    title: 'Zelfstandig trainen met ondersteuning',
-    description: 'Bij Trainingsbegeleiding krijg je alles wat je nodig hebt om zelfstandig aan de slag te gaan, mét de steun van jouw persoonlijke coach. Je ontvangt een op maat gemaakt trainingsplan dat aansluit op jouw niveau, wensen, behoeften en doelen. We starten met een uitgebreide intake waarin we precies in kaart brengen waar je nu staat en waar je naartoe wilt. Op basis hiervan stellen we een trainingsschema samen dat perfect bij jou past. Of je nu wilt afvallen, spiermassa wilt opbouwen, sterker wilt worden of gewoon fitter wilt worden: wij zorgen ervoor dat je trainingen effectief en efficiënt zijn. Tijdens je traject blijf je in contact met je coach via wekelijkse check-ins. Hierin bespreken we je voortgang, passen we waar nodig het schema aan en zorgen we ervoor dat je gemotiveerd blijft. Je traint zelfstandig, maar je staat er nooit alleen voor.',
-    benefits: [
-      'Uitgebreide intake en doelstellingen',
-      'Persoonlijk trainingsplan op maat',
-      'Wekelijkse check-ins met je coach',
-      'Aanpassingen op basis van voortgang',
-      'Toegang tot de gym tijdens openingstijden',
-      'Online begeleiding en ondersteuning',
-      'Maandelijkse voortgangsevaluaties',
-      'Video-instructies van oefeningen',
-      'Toegang tot onze online community',
-      'Periodieke trainingsplan updates',
-      'Basisvoedingsadvies',
-      'Motivatie en accountability'
-    ]
-  },
-  {
-    id: 'dagpas-opengym',
-    category: 'Dagpas Open Gym',
-    title: 'Probeer een dag uit in onze gym',
-    description: 'Wil je eerst ervaren hoe het is om bij ons te trainen? Met een dagpas krijg je volledige toegang tot onze gym voor één dag. Perfect om kennis te maken met onze faciliteiten, de sfeer te proeven en te ontdekken of Hal13 bij jou past. Je hebt toegang tot alle apparatuur en faciliteiten, net zoals onze leden. Geen verplichtingen, geen abonnement, gewoon een dag trainen wanneer het jou uitkomt. Ideaal voor bezoekers, als je op vakantie bent in de buurt, of als je gewoon eens iets anders wilt proberen. Onze coaches zijn aanwezig om je wegwijs te maken en eventuele vragen te beantwoorden.',
-    benefits: [
-      'Volledige toegang voor één dag',
-      'Gebruik van alle apparatuur',
-      'Toegang tot kleedkamers en douches',
-      'Gratis wifi en parkeren',
-      'Kennismaking met onze coaches',
-      'Geen abonnement nodig',
-      'Flexibel inzetbaar',
-      'Ideaal om uit te proberen',
-      'Direct online te boeken',
-      'Begeleiding bij eerste bezoek'
-    ]
-  },
-  {
     id: 'open-gym',
     category: 'Open Gym',
     title: 'Train wanneer het jou uitkomt',
-    description: 'Met een Open Gym abonnement heb je onbeperkte toegang tot onze volledig uitgeruste gym. Train op jouw eigen tempo, volg je eigen schema en gebruik alle faciliteiten die we te bieden hebben. Perfect voor de zelfstandige sporter die weet wat hij of zij wil. Onze gym is uitgerust met alles wat je nodig hebt: van free weights tot machines, van cardio-apparatuur tot functionele trainingstools. Je kunt komen en gaan wanneer het jou uitkomt binnen onze ruime openingstijden. Geen vaste afspraken, geen druk, gewoon jouw training wanneer het jou past. De gym biedt een inspirerende omgeving waar gemotiveerde sporters samenkomen. Of je nu een ochtendmens bent die graag vroeg start, of liever\'s avonds na je werk komt: er is altijd ruimte voor jou. Met je Open Gym membership maak je onderdeel uit van een community die elkaar vooruit helpt en motiveert.',
+    price: 'vanaf €60,- p.m.',
+    description: 'Bij een Open Gym-abonnement heb je onbeperkt toegang tot de gym binnen de openingstijden: maandag t/m vrijdag van 07.00 tot 22.00 uur, zaterdag van 08.00 tot 15.00 uur en zondag van 08.00 tot 13.00 uur.\n\nJe traint zelfstandig, maar nooit alleen: je bent omringd door gemotiveerde sporters en hebt alle ruimte om op jouw manier te werken aan je doelen. Met hoogwaardige materialen haal je meer uit elke training: Gymleco, ATX, Strength-Shop, Kingsbox, Concept 2 en verschillende cardiomachines. Daarnaast vind je bij ons dumbbells tot 50 kg, meerdere squatrekken, comboracks, powerlifting barbells, speciality barbells, gekalibreerde schijven en nog veel meer.\n\nOf je nu gaat voor Hyrox, Powerlifting, Bodybuilding, sportspecifieke prestaties, conditie, simpelweg meer vitaliteit of als je helemaal nieuw bent: bij ons vind je de juiste omgeving én de juiste materialen om stap voor stap dichter bij jouw doel te komen.',
     benefits: [
-      'Onbeperkte toegang tijdens openingstijden',
-      'Volledige beschikking over alle apparatuur',
-      'Toegang tot kleedkamers en douches',
-      'Gratis wifi en parkeren',
-      'Community van gemotiveerde sporters',
-      'Optioneel: persoonlijke locker',
-      'Moderne cardio-apparatuur',
-      'Uitgebreid aanbod free weights',
-      'Functionele trainingszone',
-      'Veilige en schone omgeving',
-      'Flexibele openingstijden',
-      'Geen bindingsperiode'
+      'Onbeperkte vrije toegang tot de gym binnen de openingstijden',
+      'Gebruik van premium materiaal',
+      'Mogelijkheid tot het kopen van sportdranken en supplementen',
+      'Een motiverende omgeving waar jij het maximale uit jezelf kunt halen'
     ]
   },
   {
-    id: 'personal-training',
-    category: 'Personal Training',
-    title: 'Een-op-een trainen onder begeleiding',
-    description: 'Bij Personal Training ligt de focus volledig op een-op-een trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd. Tijdens elke sessie staat jouw coach naast je om je door de training te begeleiden. Dit betekent dat elk aspect van je training wordt gemonitord en waar nodig bijgestuurd. Van de warming-up tot de cooling-down, van techniek tot intensiteit: alles wordt nauwkeurig in de gaten gehouden. Dit zorgt niet alleen voor veiligheid, maar ook voor maximale effectiviteit. Je trainingsplan wordt speciaal voor jou ontworpen en wordt voortdurend aangepast op basis van jouw voortgang en feedback. Geen generieke schema\'s, maar een volledig gepersonaliseerde aanpak die past bij jouw lichaam, jouw doelen en jouw leven.',
+    id: 'training-begeleiding',
+    category: 'Trainingsbegeleiding',
+    title: 'Zelfstandig trainen met ondersteuning',
+    price: 'vanaf €85,- p.m.',
+    description: 'Bij Trainingsbegeleiding krijg je alles wat je nodig hebt om zelfstandig aan de slag te gaan, mét de steun van jouw persoonlijke coach. Je ontvangt een op maat gemaakt trainingsplan dat aansluit bij jouw niveau, wensen, behoeften en doelen.\n\nVoordat je zelf aan de slag gaat, neemt je coach de oefeningen met je door in een technieksessie. Zo weet je precies hoe je ze moet uitvoeren en start je met zelfvertrouwen aan je trainingen. Je voortgang houd je overzichtelijk bij in jouw persoonlijke logboek.\n\nElke vier weken heb je een coachingsgesprek van circa 30 minuten. Tijdens dit gesprek bespreken we je progressie, beantwoorden we je vragen, maken we nieuwe afspraken voor het vervolg en wordt je schema opnieuw doorgeprogrammeerd.\n\nDit pakket is ideaal als je zelfstandig wilt trainen, maar graag een stok achter de deur hebt met een persoonlijk schema, technieksessie en regelmatige check-ins met je coach.',
     benefits: [
-      'Persoonlijke begeleiding tijdens elke sessie',
-      'Trainingsplan volledig op maat',
-      'Directe feedback en correctie',
-      'Flexibele planning afgestemd op jouw agenda',
-      'Maximale focus en motivatie',
-      'Snellere resultaten door individuele aandacht',
-      'Techniekscholing en bewegingsanalyse',
-      'Voedingsadvies op maat',
-      'Continue monitoring van je voortgang',
-      'Aanpassing van oefeningen bij blessures',
-      'Mentale coaching en mindset training',
-      'Toegang tot exclusieve trainingsmomenten'
-    ]
-  },
-  {
-    id: 'leefstijl-coaching',
-    category: 'Leefstijl Coaching',
-    title: 'Het aanpakken van jouw leefstijl',
-    description: 'Leefstijlcoaching gaat verder dan alleen trainen en voeding. Met dit abonnement werk je aan álle leefstijlfactoren die invloed hebben op jouw gezondheid en prestaties: stress, slaap, herstel, je privéleven én natuurlijk beweging en voeding. We nemen de tijd om jouw hele levensstijl in kaart te brengen. Hoe ziet je dagelijkse routine eruit? Hoe ga je om met stress? Hoe is je slaapkwaliteit? Wat eet je en wanneer? Al deze factoren spelen een cruciale rol in hoe je je voelt en presteert. Samen stellen we een plan op dat niet alleen gericht is op korte termijn resultaten, maar op duurzame verandering. We werken aan gewoontes die je een leven lang kunt volhouden. Kleine stappen die samen een groot verschil maken. Je coach begeleidt je bij elke stap en helpt je obstakels te overwinnen.',
-    benefits: [
-      'Uitgebreide intake en analyse',
-      'Persoonlijk leefstijlplan op maat',
-      'Wekelijkse check-ins met je coach',
-      'Focus op stress, slaap en herstel',
-      'Voedings- en bewegingsadvies',
-      'Aanpasbaar schema naarmate je vordert',
-      'Toegang tot de gym tijdens openingstijden',
-      'Stressmanagement technieken',
-      'Slaapoptimalisatie strategieën',
-      'Educatie over gezonde gewoontes',
-      'Ondersteuning bij gedragsverandering',
-      'Maandelijkse evaluaties en bijsturing'
+      'Intakegesprek',
+      'Persoonlijk, op maat gemaakt trainingsschema',
+      'Eenmalige technieksessie met uitleg van de oefeningen',
+      'Elke vier weken een fysiek evaluatiegesprek met jouw persoonlijke coach',
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
     ]
   },
   {
     id: 'performance-coaching',
     category: 'Performance Coaching',
     title: 'Haal het maximale uit je prestaties',
-    description: 'Bij Performance Begeleiding staat alles in het teken van het verbeteren van jouw prestaties. Of dit nu sportspecifiek is, powerlifting, krachtsport of conditietraining: het maakt niet uit. Afhankelijk van jouw niveau, doelstellingen en wensen stellen we de programmering samen die het beste bij jou past. Denk bijvoorbeeld aan een schema op basis van RIR of RPE. We werken met de nieuwste trainingsmethodieken en wetenschappelijke inzichten om jouw prestaties naar een hoger niveau te tillen. Of je nu meedoet aan wedstrijden, een PR wilt halen of gewoon sterker wilt worden: we zorgen ervoor dat je training optimaal is afgestemd. Je krijgt niet alleen een trainingsschema, maar een complete performance plan waarin training, voeding, herstel en mentale voorbereiding samenkomen. We monitoren je voortgang nauwkeurig en passen je programma wekelijks aan op basis van hoe je reageert op de training.',
+    price: 'vanaf €85,- p.m.',
+    description: 'Bij Performance Begeleiding staat alles in het teken van het verbeteren van jouw prestaties. Of dit nu sportspecifiek is, powerlifting, krachtsport of conditietraining: het maakt niet uit. Afhankelijk van jouw niveau, doelstellingen en wensen stellen we de programmering samen die het beste bij jou past. Denk bijvoorbeeld aan een schema op basis van RIR of RPE.\n\nVoordat je zelfstandig aan de slag gaat, neemt je coach de oefeningen met je door in een technieksessie. Zo weet je precies hoe je de bewegingen correct uitvoert en kun je met vertrouwen starten.\n\nDaarnaast heb je wekelijks contact met je coach. Op basis van de gesprekken en de video\'s die jij instuurt, krijg je uitgebreide feedback op je techniek. Jouw trainingsschema wordt continu doorgeprogrammeerd en bijgesteld, zodat je altijd uitgedaagd blijft en stap voor stap progressie boekt.\n\nNa een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. Je ontvangt twee voedingsschema\'s waarmee je direct praktisch aan de slag kunt.\n\nElke twee weken heb je een coachingsgesprek van circa 30 minuten. Tijdens dit gesprek doen we een meting, kijken we terug op de afgelopen periode en bespreken we waar je eventueel tegenaan loopt.\n\nDit pakket is ideaal als je jouw voeding wilt verbeteren, resultaatgericht wilt leren eten en praktische handvatten zoekt die passen bij jouw levensstijl.',
+    benefits: [
+      'Intakegesprek',
+      '0-meting',
+      'Twee persoonlijke voedingsschema\'s',
+      'Elke twee weken een persoonlijk coachgesprek',
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
+    ]
+  },
+  {
+    id: 'leefstijl-coaching',
+    category: 'Leefstijlcoaching',
+    title: 'Het aanpakken van jouw leefstijl',
+    price: 'vanaf €150,- p.m.',
+    description: 'Leefstijlcoaching gaat verder dan alleen trainen en voeding. Met dit abonnement werk je aan álle leefstijlfactoren die invloed hebben op jouw gezondheid en prestaties: stress, slaap, herstel, je privéleven én natuurlijk beweging en voeding. We kijken dus niet alleen naar je schema, maar naar jou als persoon.\n\nWe starten met een uitgebreide intake om jouw beginsituatie helder in kaart te brengen. Vanuit die inzichten maken we een persoonlijk leefstijlplan en trainingsplan, gericht op de lange termijn. Geen korte hype, maar een aanpak die écht bij jou past en vol te houden is.\n\nJe krijgt een technieksessie zodat je vol vertrouwen in de gym aan de slag gaat met je persoonlijke trainingsschema. Tijdens de wekelijkse online contactmomenten bespreken we jouw progressie, stuur je videobeelden in voor feedback en wordt je plan direct bijgestuurd. Zo blijft het altijd maatwerk.\n\nDaarnaast plannen we elke maand een fysieke evaluatie op locatie, waarbij we jouw voortgang monitoren met o.a. omtrekmetingen, vetpercentage, foto\'s en gewicht.\n\nDoor de combinatie van leefstijl, voeding, training én aandacht voor stress, slaap en balans in je privéleven pak je alle factoren aan die cruciaal zijn om het maximale uit jouw leven te halen.\n\nDit pakket is perfect als jij je leefstijl wilt verbeteren, op zoek bent naar een gelukkigere versie van jezelf en het maximale uit je leven én sportprestaties wilt halen.',
     benefits: [
       'Uitgebreide intake',
       'Persoonlijk leefstijlplan én trainingsplan op maat',
@@ -118,78 +63,58 @@ export const servicesData: ServiceData[] = [
       'Feedback op beeldmateriaal van je trainingen',
       'Plan wordt wekelijks bijgesteld en doorgeprogrammeerd',
       'Maandelijkse fysieke evaluatie inclusief voortgangsmetingen',
-      'Onbeperkte vrije toegang tot de gym binnen de openingstijden',
-      'Periodisatie en peak planning',
-      'Competitie voorbereiding',
-      'Krachtmetingen en testing',
-      'Supplementatie advies',
-      'Herstel monitoring en optimalisatie',
-      'Videoanalyse van techniek'
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
     ]
   },
   {
-    id: 'leefstijl-coaching-2',
-    category: 'Leefstijl Coaching',
-    title: 'Holistische benadering van gezondheid',
-    description: 'Leefstijlcoaching biedt een complete aanpak waarbij we kijken naar jou als geheel. We richten ons niet alleen op fysieke training, maar ook op voeding, mentale veerkracht, slaap en stressmanagement. Samen bouwen we aan een duurzame, gezonde levensstijl die past bij jouw persoonlijke situatie en ambities. Bij deze vorm van coaching krijg je toegang tot alle aspecten die bijdragen aan een gezond en energiek leven. We helpen je niet alleen met wat je in de gym doet, maar ook met hoe je leeft buiten de sportschool. Van je dagelijkse routines tot je sociale gewoontes: alles komt aan bod. Het doel is om een balans te vinden die voor jou werkt, waarbij je je vitaal voelt en doelen bereikt zonder dat het ten koste gaat van je levenskwaliteit. We begeleiden je stap voor stap naar een levensstijl die je kunt volhouden, omdat het aanvoelt als een natuurlijk onderdeel van wie je bent.',
+    id: 'personal-training',
+    category: 'Personal Training',
+    title: 'Eén-op-één trainen onder begeleiding',
+    price: 'prijs op aanvraag',
+    description: 'Bij Personal Training ligt de focus volledig op één-op-één trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd, geeft je een duwtje waar nodig of trapt juist even op de rem als dat beter is. Zo haal je elke sessie het maximale uit je training.\n\nHet is meer dan een uur sporten. Je ziet je trainer wekelijks en bouwt samen een vertrouwensband op. Er wordt niet alleen gekeken naar je training, maar ook naar voeding, slaap, herstel en je dagelijkse leven. Iedere sessie wordt afgestemd op wat jij op dat moment nodig hebt: techniek verbeteren, kennis opdoen, reflecteren of gewoon keihard knallen.\n\nNaast de persoonlijke begeleiding ontvang je een uitgebreid trainingsschema en logboek waarmee je ook zelfstandig aan de slag kunt. Dankzij de combinatie van sessies in de gym, continue bijsturing en feedback op ingestuurd beeldmateriaal ben je verzekerd van constante progressie.\n\nDit pakket is ideaal als je maximale persoonlijke aandacht wilt, een vertrouwensband met je coach belangrijk vindt en alles uit je trainingen én je leven wilt halen.',
     benefits: [
-      'Holistische intake en doelstellingen',
-      'Maatwerk leefstijlplan inclusief voeding',
-      'Wekelijkse coaching sessies',
-      'Focus op duurzame gewoontes',
-      'Mentale coaching en mindset training',
-      'Toegang tot alle gym faciliteiten',
-      'Maandelijkse voortgangsevaluaties',
-      'Stressreductie en energiemanagement',
-      'Slaapoptimalisatie programma',
-      'Werk-leven balans coaching',
-      'Sociale steun en accountability',
-      'Gezondheidsrisico analyse en preventie',
-      'Leefstijl educatie en workshops'
+      'Intakegesprek',
+      '0-meting',
+      'Persoonlijk, op maat gemaakt trainingsschema + logboek',
+      'Eenmalige technieksessie met uitleg van de oefeningen',
+      'Wekelijkse personal training sessies (of vaker)',
+      'Wekelijks online feedbackmoment met je coach (incl. feedback op ingestuurde trainingsvideo\'s)',
+      'Trainingsplan wordt wekelijks bijgesteld en doorgeprogrammeerd',
+      'Elke 4 weken een evaluatiegesprek op locatie inclusief voortgangsmeting',
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
+    ]
+  },
+  {
+    id: 'personal-training-leefstijl',
+    category: 'Personal Training & Leefstijlcoaching',
+    title: 'Het complete pakket',
+    price: 'prijs op aanvraag',
+    description: 'Ons meest intensieve pakket: de perfecte combinatie van Personal Training en Leefstijlcoaching. Hier krijg je maximale één-op-één begeleiding én een compleet plan voor jouw leefstijl. Alles staat in het teken van het verbeteren van jouw gezondheid, prestaties en kwaliteit van leven.\n\nTijdens de wekelijkse personal training sessies ligt de focus volledig op jou. Je coach zorgt dat je oefeningen altijd correct en veilig worden uitgevoerd, pusht je op de juiste momenten en helpt je grenzen verleggen. Iedere sessie wordt afgestemd op wat jij nodig hebt: techniek verfijnen, kennis opdoen, reflecteren of simpelweg het uiterste uit jezelf halen.\n\nNaast de trainingen werk je met een uitgebreid leefstijlplan en voedingsplan. Dit is geen tijdelijk schema, maar een traject waarin jij leert hoe je van A tot Z je doelen kunt behalen én volhouden. Elke week wordt je plan geëvalueerd en bijgesteld, zodat je leert omgaan met alle situaties die op je pad komen.\n\nMet dit pakket pak je dus álle factoren aan die bepalend zijn voor jouw succes: training, voeding, slaap, stress, herstel en balans in je privéleven. Dankzij regelmatige evaluaties en de continue bijsturing van je coach blijft jouw plan altijd maatwerk.\n\nDit pakket is ideaal als je écht alles wilt aanpakken: persoonlijke training, voeding, leefstijl, stress, slaap en herstel. Voor wie maximale begeleiding wil en stap voor stap wil leren hoe je dit in elke situatie volhoudt en blijvend resultaat behaalt.',
+    benefits: [
+      'Intakegesprek',
+      '0-meting',
+      'Persoonlijk leefstijlplan én voedingsplan + trainingsplan op maat + logboek',
+      'Eenmalige technieksessie met uitleg van de oefeningen',
+      'Wekelijkse personal training sessies (of vaker)',
+      'Wekelijks online contactmoment met je coach',
+      'Feedback op ingestuurd beeldmateriaal van je trainingen',
+      'Leefstijl-, voedings- en trainingsplan worden wekelijks geëvalueerd en bijgesteld',
+      'Maandelijkse fysieke evaluatie inclusief voortgangsmetingen',
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
     ]
   },
   {
     id: 'fysiotherapie',
-    category: 'Fysiotherapie',
+    category: 'Fysiotherapie & Fysiocoaching',
     title: 'Herstel en preventie zonder beperkingen',
-    description: 'Bij MAE Fysiotherapie kijken we anders naar revalidatie. Waar veel zorgprofessionals vooral beperkingen opleggen, geloven wij in een doelgerichte, persoonlijke en stapsgewijze aanpak. Het doel: jou weer laten functioneren zonder belemmeringen. We werken met bewezen behandelmethoden en richten ons op het herstel van blessures, maar ook op het voorkomen ervan. Of je nu last hebt van een acute blessure, chronische klachten of gewoon wilt werken aan preventie: we stellen een behandelplan op dat past bij jouw situatie. Onze fysiotherapeuten werken nauw samen met de coaches in de gym, zodat je behandeling en training optimaal op elkaar aansluiten. We geloven in een actieve aanpak waarbij je zelf een belangrijke rol speelt in je herstel. Door middel van hands-on therapie, oefenprogramma\'s en educatie helpen we je weer terug te keren naar wat je graag doet, of dat nu sport is of dagelijkse activiteiten.',
+    price: 'prijs op aanvraag',
+    description: 'Bij M.A.E. Fysiotherapie kijken we anders naar revalidatie. Waar veel zorgprofessionals vooral beperkingen opleggen, geloven wij in een doelgerichte, persoonlijke en stapsgewijze aanpak. Het doel: jou weer laten functioneren zonder belemmeringen.\n\nSamen met jou stellen we een revalidatieplan op dat volledig aansluit op jouw lichaam, klachten en doelen. We beginnen niet telkens opnieuw, maar bouwen stap voor stap je belastbaarheid op. Zo werk je gestructureerd en doelgericht aan herstel.\n\nJe staat er nooit alleen voor. Met wekelijkse contactmomenten en regelmatige feedback blijf je gemotiveerd en uitgedaagd. Je stuurt video\'s van je oefeningen in, zodat je fysiotherapeut direct feedback kan geven op je uitvoering en je plan kan bijstellen waar nodig. Daarnaast heb je maandelijks een afspraak op locatie om je voortgang uitgebreid te bespreken en nieuwe stappen te zetten.\n\nDit pakket is ideaal als je doelgericht wilt revalideren met maximale begeleiding, je belastbaarheid veilig wilt opbouwen en op een persoonlijke manier wilt toewerken naar pijnvrij bewegen en presteren.',
     benefits: [
-      'Grondige intake en bewegingsanalyse',
-      'Persoonlijk behandelplan',
-      'Hands-on therapie en oefenprogramma',
-      'Preventie en hersteladvies',
-      'Samenwerking met coaches voor optimaal herstel',
-      'Behandeling in de gym of aparte behandelruimte',
-      'Focus op terug naar sport of dagelijks leven',
-      'Manuele therapie en mobilisaties',
-      'Dry needling en tape technieken',
-      'Sportspecifieke revalidatie',
-      'Pre- en post-operatieve begeleiding',
-      'Chronische pijnbehandeling',
-      'Bewegingsscreening en analyse',
-      'Ergonomisch advies'
-    ]
-  },
-  {
-    id: 'voeding-begeleiding',
-    category: 'Voeding Begeleiding',
-    title: 'Voeding die bijdraagt aan je doelen',
-    description: 'Heb jij je training goed onder controle en wil je vooral ondersteuning op het gebied van voeding? Dan sluit dit pakket perfect bij jou aan. Na een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. We gaan samen kijken naar jouw huidige eetgewoontes, je dagelijkse routine en je persoonlijke voorkeuren. Op basis hiervan ontwerpen we voedingsschema\'s die niet alleen effectief zijn, maar ook haalbaar en lekker. Want voeding moet geen straf zijn, maar een tool om je doelen te bereiken terwijl je geniet van wat je eet. Tijdens het traject krijg je wekelijkse begeleiding waarbij we je voortgang monitoren en waar nodig bijsturen. Je leert niet alleen wat je moet eten, maar ook waarom. We geven je de kennis en tools om zelfstandig gezonde keuzes te maken, ook in uitdagende situaties zoals sociale gelegenheden of tijdens vakanties. Het doel is dat je na afloop van de begeleiding zelfstandig verder kunt met een gezonde voedingspatroon dat bij jou past.',
-    benefits: [
-      'Uitgebreide voedingsintake',
-      'Twee voedingsschema\'s op maat',
-      'Wekelijkse check-ins en bijsturing',
-      'Praktische recepten en maaltijdideeën',
-      'Macro- en calorieadvies',
-      'Educatie over voeding en supplementen',
-      'Ondersteuning bij sociale situaties',
-      'Flexibele voedingsopties',
-      'Boodschappenlijsten en meal prep tips',
-      'Portie controle en timing strategieën',
-      'Supplementatie protocollen',
-      'Voedingsdagboek analyse',
-      'Periodieke metingen en evaluaties',
-      'Levenslange voedingskennis'
+      'Uitgebreide intake, screening en onderzoek',
+      'Persoonlijk revalidatieplan, eenvoudig online te volgen',
+      'Wekelijkse online contactmomenten met je fysiotherapeut',
+      'Feedback op ingestuurde trainingsvideo\'s',
+      'Maandelijkse afspraak op locatie (in overleg vaker mogelijk)'
     ]
   }
 ];
