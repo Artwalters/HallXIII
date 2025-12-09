@@ -15,15 +15,7 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Grifter';
-  src: url('/fonts/GRIFTER-Variable.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Hairline */
+/* Helvetica Now Display - Hairline (100) */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('/fonts/HelveticaNowDisplay-Hairline.ttf') format('truetype');
@@ -32,49 +24,7 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-HairlineI.ttf') format('truetype');
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Thin */
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-Thin.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ThinIta.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Extra Light */
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtLt.ttf') format('truetype');
-  font-weight: 250;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtLtIta.ttf') format('truetype');
-  font-weight: 250;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Light */
+/* Helvetica Now Display - Light (300) */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('/fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
@@ -91,7 +41,7 @@
   font-display: swap;
 }
 
-/* Helvetica Now Display - Regular */
+/* Helvetica Now Display - Regular (400) */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('/fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
@@ -100,15 +50,7 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Medium */
+/* Helvetica Now Display - Medium (500) - Default */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('/fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
@@ -125,71 +67,12 @@
   font-display: swap;
 }
 
-/* Helvetica Now Display - Bold */
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-BoldIta.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Extra Bold */
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtBdIta.ttf') format('truetype');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Black */
+/* Helvetica Now Display - Black (900) */
 @font-face {
   font-family: 'Helvetica Now Display';
   src: url('/fonts/HelveticaNowDisplay-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-BlackIta.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Helvetica Now Display - Extra Black */
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtBlk.ttf') format('truetype');
-  font-weight: 950;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Now Display';
-  src: url('/fonts/HelveticaNowDisplay-ExtBlkIta.ttf') format('truetype');
-  font-weight: 950;
-  font-style: italic;
   font-display: swap;
 }
 
