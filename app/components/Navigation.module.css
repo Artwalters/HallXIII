@@ -1,6 +1,6 @@
 /* Navigation Container */
 .navigation {
-  z-index: 1000;
+  z-index: 99999;
   pointer-events: none;
   position: fixed;
   inset: 0;
@@ -12,6 +12,7 @@
   top: 1.75rem;
   left: 1.65rem;
   pointer-events: auto;
+  z-index: 100000;
 }
 
 
@@ -37,7 +38,7 @@
   position: fixed;
   top: calc(1.75rem - 2px);
   right: 1.65rem;
-  z-index: 1001;
+  z-index: 100000;
   display: flex;
   align-items: center;
   justify-content: center;

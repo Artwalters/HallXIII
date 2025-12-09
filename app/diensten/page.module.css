@@ -1,5 +1,10 @@
 /* ===== DIENSTEN PAGE - HERO STYLE ===== */
 
+.pageWrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
 .heroSection {
   background-color: var(--color-primary);
   position: absolute;

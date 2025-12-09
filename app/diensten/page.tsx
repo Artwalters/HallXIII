@@ -60,7 +60,7 @@ export default function DienstenPage() {
   }, []);
 
   return (
-    <>
+    <div className={styles.pageWrapper} data-nav-dark="">
       <BackNavigation />
 
       {/* Hero Section - Fullscreen */}
@@ -118,6 +118,6 @@ export default function DienstenPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

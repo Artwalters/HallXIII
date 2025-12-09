@@ -294,7 +294,7 @@
   position: relative;
   max-width: var(--container-width-medium);
   margin: 0 auto;
-  padding: 1rem var(--container-padding) 3rem;
+  padding: 5rem var(--container-padding) 3rem;
   z-index: 2;
 }
 

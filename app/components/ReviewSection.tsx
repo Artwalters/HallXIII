@@ -415,7 +415,7 @@ export default function ReviewSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section} data-momentum-hover-init="">
+    <section ref={sectionRef} className={styles.section} data-momentum-hover-init="" data-nav-dark="">
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
