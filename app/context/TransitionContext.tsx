@@ -33,7 +33,17 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     // Don't transition to same page
     if (href === pathname || isTransitioning.current) return;
 
+    // Check if shapes are ready
+    if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) {
+      // Fallback: just navigate without animation
+      router.push(href);
+      return;
+    }
+
     isTransitioning.current = true;
+
+    // Prefetch the page first
+    router.prefetch(href);
 
     // Stop Lenis scroll
     if (typeof window !== 'undefined' && window.lenis) {
@@ -46,8 +56,10 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
     // Exit animation: paper shapes animate in from outside
     const exitTimeline = gsap.timeline({
       onComplete: () => {
-        // Navigate to new page
-        router.push(href);
+        // Small delay to ensure page is prefetched
+        setTimeout(() => {
+          router.push(href);
+        }, 50);
       }
     });
 
@@ -55,19 +67,19 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
       .to(shape1Ref.current, {
         x: 0,
         y: 0,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power2.inOut'
       })
       .to(shape2Ref.current, {
         y: 0,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power2.inOut'
-      }, '-=0.45')
+      }, '-=0.35')
       .to(shape3Ref.current, {
         x: 0,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power2.inOut'
-      }, '-=0.45');
+      }, '-=0.35');
   }, [pathname, router]);
 
   return (

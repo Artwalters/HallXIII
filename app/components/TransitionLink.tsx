@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useTransition } from '../context/TransitionContext';
-import { ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent, TouchEvent, useCallback } from 'react';
 
 interface TransitionLinkProps {
   href: string;
@@ -21,27 +21,28 @@ export default function TransitionLink({
 }: TransitionLinkProps) {
   const { triggerTransition } = useTransition();
 
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    // Allow cmd/ctrl click for new tab
-    if (e.metaKey || e.ctrlKey) return;
+  const handleNavigation = useCallback((e: MouseEvent<HTMLAnchorElement> | TouchEvent<HTMLAnchorElement>) => {
+    // Allow cmd/ctrl click for new tab (mouse only)
+    if ('metaKey' in e && (e.metaKey || e.ctrlKey)) return;
 
     // Allow external links to work normally
     if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
 
     e.preventDefault();
+    e.stopPropagation();
 
-    // Call custom onClick if provided
-    if (onClick) onClick(e);
+    // Call custom onClick if provided (mouse only)
+    if (onClick && 'button' in e) onClick(e as MouseEvent<HTMLAnchorElement>);
 
     // Trigger the transition
     triggerTransition(href);
-  };
+  }, [href, onClick, triggerTransition]);
 
   return (
     <Link
       href={href}
       className={className}
-      onClick={handleClick}
+      onClick={handleNavigation}
       {...props}
     >
       {children}

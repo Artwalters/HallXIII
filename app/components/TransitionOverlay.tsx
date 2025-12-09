@@ -44,49 +44,61 @@ export default function TransitionOverlay() {
     // Reset scroll position
     window.scrollTo(0, 0);
 
-    // Enter animation: paper shapes animate back out
-    const enterTimeline = gsap.timeline({
-      onComplete: () => {
-        // Reset transition state so next transition can happen
-        resetTransition();
+    // Wait for page content to be rendered before animating out
+    // Use requestAnimationFrame to ensure browser has painted
+    const startEnterAnimation = () => {
+      // Enter animation: paper shapes animate back out
+      const enterTimeline = gsap.timeline({
+        onComplete: () => {
+          // Reset transition state so next transition can happen
+          resetTransition();
 
-        // Resume Lenis scroll and resize
-        if (typeof window !== 'undefined' && window.lenis) {
-          window.lenis.start();
-          window.lenis.resize();
+          // Resume Lenis scroll and resize
+          if (typeof window !== 'undefined' && window.lenis) {
+            window.lenis.start();
+            window.lenis.resize();
+          }
+
+          // Refresh ScrollTrigger for new page content
+          // Multiple refreshes to ensure layout is fully settled
+          ScrollTrigger.refresh();
+          setTimeout(() => {
+            ScrollTrigger.refresh();
+            if (window.lenis) window.lenis.resize();
+          }, 100);
+          setTimeout(() => {
+            ScrollTrigger.refresh();
+            if (window.lenis) window.lenis.resize();
+          }, 300);
         }
+      });
 
-        // Refresh ScrollTrigger for new page content
-        // Multiple refreshes to ensure layout is fully settled
-        ScrollTrigger.refresh();
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-          if (window.lenis) window.lenis.resize();
-        }, 100);
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-          if (window.lenis) window.lenis.resize();
-        }, 300);
-      }
+      enterTimeline
+        .to(shape3Ref.current, {
+          x: '100%',
+          duration: 0.4,
+          ease: 'power2.out'
+        })
+        .to(shape2Ref.current, {
+          y: '100%',
+          duration: 0.4,
+          ease: 'power2.out'
+        }, '-=0.35')
+        .to(shape1Ref.current, {
+          x: '-100%',
+          y: '-100%',
+          duration: 0.4,
+          ease: 'power2.out'
+        }, '-=0.35');
+    };
+
+    // Wait for next frame + small delay to ensure page content is rendered
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        // Additional delay for mobile devices and slow connections
+        setTimeout(startEnterAnimation, 100);
+      });
     });
-
-    enterTimeline
-      .to(shape3Ref.current, {
-        x: '100%',
-        duration: 0.4,
-        ease: 'power2.out'
-      })
-      .to(shape2Ref.current, {
-        y: '100%',
-        duration: 0.4,
-        ease: 'power2.out'
-      }, '-=0.35')
-      .to(shape1Ref.current, {
-        x: '-100%',
-        y: '-100%',
-        duration: 0.4,
-        ease: 'power2.out'
-      }, '-=0.35');
   }, [pathname, searchParams, shape1Ref, shape2Ref, shape3Ref, resetTransition]);
 
   const overlay = (
