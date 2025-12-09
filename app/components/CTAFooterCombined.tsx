@@ -19,6 +19,7 @@ export default function CTAFooterCombined() {
   const digit3Ref = useRef<HTMLDivElement>(null);
   const footerWrapRef = useRef<HTMLDivElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
+  const waltersPaperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // CTA Counter Animation
@@ -140,6 +141,47 @@ export default function CTAFooterCombined() {
     return () => {
       ctaSection.removeEventListener('mousemove', handleMouseMove);
       ctaSection.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // Walters Studio paper scroll animation
+  useEffect(() => {
+    if (!waltersPaperRef.current || !footerWrapRef.current) return;
+
+    const paper = waltersPaperRef.current;
+    const footer = footerWrapRef.current;
+
+    // Set initial state - hidden off screen
+    gsap.set(paper, {
+      xPercent: 100,
+      rotation: 12
+    });
+
+    // Animate paper in when footer comes into view
+    const st = ScrollTrigger.create({
+      trigger: footer,
+      start: 'top 80%',
+      end: 'bottom bottom',
+      onEnter: () => {
+        gsap.to(paper, {
+          xPercent: 30,
+          rotation: 8,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(paper, {
+          xPercent: 100,
+          rotation: 12,
+          duration: 0.5,
+          ease: 'power2.in'
+        });
+      }
+    });
+
+    return () => {
+      st.kill();
     };
   }, []);
 
@@ -452,6 +494,21 @@ export default function CTAFooterCombined() {
 
           </div>
         </footer>
+      </div>
+
+      {/* Walters Studio Paper Note */}
+      <div ref={waltersPaperRef} className={styles.waltersPaper}>
+        <div className={styles.waltersPaperInner}>
+          <div
+            className={styles.waltersPaperOverlay}
+            style={{
+              backgroundImage: `url(${basePath}/assets/overlays/noise_repeat_texture.webp)`,
+              backgroundRepeat: 'repeat',
+              backgroundSize: 'auto'
+            }}
+          />
+          <span className={styles.waltersPaperText}>by walters.studio</span>
+        </div>
       </div>
     </div>
   );
