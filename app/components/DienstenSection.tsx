@@ -682,7 +682,7 @@ export default function DienstenSection() {
   };
 
   return (
-    <section id="diensten" className={styles.section} data-diensten-section="">
+    <section id="diensten" className={styles.section} data-diensten-section="" data-nav-dark>
       <div className={styles.container}>
         {/* Title */}
         <h2 className={styles.title}>diensten</h2>

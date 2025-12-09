@@ -18,8 +18,11 @@ const frames = [
 ];
 
 const pins = [
-  '/assets/pins/pin1.png',
-  '/assets/pins/pin2.png',
+  '/assets/pins/pin1v2.png',
+  '/assets/pins/pin2v2.png',
+  '/assets/pins/pin3v2.png',
+  '/assets/pins/pin4v2.png',
+  '/assets/pins/pin5v2.png',
 ];
 
 const textRotations = [
@@ -72,7 +75,7 @@ const reviewItems = [
     frameIndex: 3,
     flipFrame: false,
     textRotation: textRotations[2],
-    pinIndex: 1,
+    pinIndex: 2,
   },
   {
     id: 4,
@@ -84,7 +87,7 @@ const reviewItems = [
     frameIndex: 1,
     flipFrame: true,
     textRotation: textRotations[3],
-    pinIndex: 0,
+    pinIndex: 3,
   },
   {
     id: 5,
@@ -96,7 +99,7 @@ const reviewItems = [
     frameIndex: 0,
     flipFrame: false,
     textRotation: textRotations[4],
-    pinIndex: 1,
+    pinIndex: 4,
   },
   {
     id: 6,
@@ -132,7 +135,7 @@ const reviewItems = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: textRotations[7],
-    pinIndex: 0,
+    pinIndex: 2,
   },
   {
     id: 9,
@@ -144,7 +147,7 @@ const reviewItems = [
     frameIndex: 2,
     flipFrame: false,
     textRotation: textRotations[8],
-    pinIndex: 1,
+    pinIndex: 3,
   },
   {
     id: 10,
@@ -156,7 +159,7 @@ const reviewItems = [
     frameIndex: 3,
     flipFrame: true,
     textRotation: textRotations[9],
-    pinIndex: 0,
+    pinIndex: 4,
   },
   {
     id: 11,
@@ -168,7 +171,7 @@ const reviewItems = [
     frameIndex: 0,
     flipFrame: true,
     textRotation: textRotations[10],
-    pinIndex: 1,
+    pinIndex: 0,
   },
   {
     id: 12,
@@ -180,7 +183,7 @@ const reviewItems = [
     frameIndex: 1,
     flipFrame: false,
     textRotation: textRotations[11],
-    pinIndex: 0,
+    pinIndex: 1,
   },
 ];
 
