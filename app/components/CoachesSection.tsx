@@ -193,9 +193,6 @@ export default function CoachesSection() {
                 onMouseEnter={() => handleMouseEnter(coach.name)}
                 onMouseLeave={() => handleMouseLeave(coach.name)}
               >
-                {/* Border element - sibling, niet geclipt */}
-                <div className={styles.accordionBorder} />
-                {/* Accordion item met clip-path */}
                 <div className={styles.accordionItem}>
                   <div data-accordion-toggle="" className={styles.accordionItemTop}>
                     <div className={styles.coachContent}>
