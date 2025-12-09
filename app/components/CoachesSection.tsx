@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import styles from './CoachesSection.module.css';
 
@@ -86,47 +87,91 @@ export default function CoachesSection() {
   const photoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const activeAccordion = useRef<string | null>(null);
+  const pathname = usePathname();
+
+  // Memoize bringToFront to use in useEffect
+  const bringToFrontCallback = useCallback((coachName: string) => {
+    const targetPhoto = photoRefs.current[coachName];
+    if (!targetPhoto) return;
+
+    Object.entries(photoRefs.current).forEach(([name, photo]) => {
+      if (photo && name !== coachName) {
+        gsap.to(photo, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+        photo.style.zIndex = '1';
+      }
+    });
+
+    targetPhoto.style.zIndex = '10';
+    gsap.to(targetPhoto, {
+      scale: 1.02,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+
+    setActiveCard(coachName);
+  }, []);
 
   useEffect(() => {
-    function initAccordionCSS() {
-      document.querySelectorAll('[data-accordion-css-init]').forEach((accordion) => {
-        const closeSiblings = accordion.getAttribute('data-accordion-close-siblings') === 'true';
+    // Reset state when pathname changes (navigating back)
+    activeAccordion.current = null;
+    setActiveCard(null);
 
-        accordion.addEventListener('click', (event) => {
-          const toggle = (event.target as HTMLElement).closest('[data-accordion-toggle]');
-          if (!toggle) return;
+    // Reset all accordion items to not-active
+    document.querySelectorAll('[data-accordion-status]').forEach((item) => {
+      item.setAttribute('data-accordion-status', 'not-active');
+    });
 
-          const singleAccordion = toggle.closest('[data-accordion-status]');
-          if (!singleAccordion) return;
+    const handleAccordionClick = (event: Event) => {
+      const toggle = (event.target as HTMLElement).closest('[data-accordion-toggle]');
+      if (!toggle) return;
 
-          const coachName = singleAccordion.getAttribute('data-coach-name');
-          const wasActive = singleAccordion.getAttribute('data-accordion-status') === 'active';
+      const singleAccordion = toggle.closest('[data-accordion-status]');
+      if (!singleAccordion) return;
 
-          singleAccordion.setAttribute('data-accordion-status', wasActive ? 'not-active' : 'active');
+      const accordion = singleAccordion.closest('[data-accordion-css-init]');
+      const closeSiblings = accordion?.getAttribute('data-accordion-close-siblings') === 'true';
 
-          if (wasActive) {
-            activeAccordion.current = null;
-            setActiveCard(null);
-          } else {
-            activeAccordion.current = coachName;
-            if (coachName) {
-              bringToFront(coachName);
-            }
-          }
+      const coachName = singleAccordion.getAttribute('data-coach-name');
+      const wasActive = singleAccordion.getAttribute('data-accordion-status') === 'active';
 
-          if (closeSiblings && !wasActive) {
-            accordion.querySelectorAll('[data-accordion-status="active"]').forEach((sibling) => {
-              if (sibling !== singleAccordion) {
-                sibling.setAttribute('data-accordion-status', 'not-active');
-              }
-            });
+      singleAccordion.setAttribute('data-accordion-status', wasActive ? 'not-active' : 'active');
+
+      if (wasActive) {
+        activeAccordion.current = null;
+        setActiveCard(null);
+      } else {
+        activeAccordion.current = coachName;
+        if (coachName) {
+          bringToFrontCallback(coachName);
+        }
+      }
+
+      if (closeSiblings && !wasActive && accordion) {
+        accordion.querySelectorAll('[data-accordion-status="active"]').forEach((sibling) => {
+          if (sibling !== singleAccordion) {
+            sibling.setAttribute('data-accordion-status', 'not-active');
           }
         });
-      });
-    }
+      }
+    };
 
-    initAccordionCSS();
-  }, []);
+    // Add event listeners to all accordions
+    const accordions = document.querySelectorAll('[data-accordion-css-init]');
+    accordions.forEach((accordion) => {
+      accordion.addEventListener('click', handleAccordionClick);
+    });
+
+    // Cleanup
+    return () => {
+      accordions.forEach((accordion) => {
+        accordion.removeEventListener('click', handleAccordionClick);
+      });
+    };
+  }, [pathname, bringToFrontCallback]);
 
   const bringToFront = (coachName: string) => {
     const targetPhoto = photoRefs.current[coachName];

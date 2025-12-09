@@ -1,9 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
+import { useTransition } from '../context/TransitionContext';
 
 const coachingItems = [
   {
@@ -70,14 +70,10 @@ const partnersItem = {
 };
 
 export default function CoachingSection() {
-  const router = useRouter();
+  const { triggerTransition } = useTransition();
 
   const handleServiceClick = (serviceId: string) => {
-    // Save section identifier before navigating
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('returnToSection', 'coaching');
-    }
-    router.push(`/diensten?service=${serviceId}`);
+    triggerTransition(`/diensten?service=${serviceId}`);
   };
 
   return (

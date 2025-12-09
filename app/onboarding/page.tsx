@@ -12,6 +12,7 @@ const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 export default function OnboardingPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
+  const darkOverlayRef = useRef<HTMLDivElement>(null);
 
   // Prevent pull-to-refresh and scrolling on mobile (except in scrollable containers)
   useEffect(() => {
@@ -107,6 +108,23 @@ export default function OnboardingPage() {
     };
   }, []);
 
+  // Dark overlay enter animation - fade from darker to semi-transparent
+  useEffect(() => {
+    if (!darkOverlayRef.current) return;
+
+    // Start darker/more visible
+    gsap.set(darkOverlayRef.current, {
+      backgroundColor: 'rgba(0, 0, 0, 0.7)'
+    });
+
+    // Animate to final semi-transparent state
+    gsap.to(darkOverlayRef.current, {
+      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+      duration: 6,
+      ease: 'none'
+    });
+  }, []);
+
   return (
     <>
       {/* SVG Filter Definition for Emboss Effect */}
@@ -177,7 +195,7 @@ export default function OnboardingPage() {
           </div>
 
           {/* Dark Overlay - dims everything */}
-          <div className={styles.darkOverlay}></div>
+          <div ref={darkOverlayRef} className={styles.darkOverlay}></div>
 
           <div className={styles.heroContainer}>
             {/* Main Content */}

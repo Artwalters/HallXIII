@@ -1,14 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import styles from './DienstenSection.module.css';
+import { useTransition } from '../context/TransitionContext';
 
 gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
 
@@ -165,7 +164,7 @@ const gymCards = [
 ];
 
 export default function DienstenSection() {
-  const router = useRouter();
+  const { triggerTransition } = useTransition();
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
   const titlesRef = useRef<HTMLDivElement>(null);
@@ -658,12 +657,8 @@ export default function DienstenSection() {
   // Card click handler
   const handleCardClick = (card: any) => {
     if (card.serviceId) {
-      // Save section identifier before navigating
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('returnToSection', 'diensten');
-      }
       // Navigate to diensten page with service parameter
-      router.push(`/diensten?service=${card.serviceId}`);
+      triggerTransition(`/diensten?service=${card.serviceId}`);
     } else if (card.link && card.isExternal) {
       // Navigate to external page
       window.location.href = card.link;
