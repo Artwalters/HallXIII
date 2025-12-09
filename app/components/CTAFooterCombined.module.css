@@ -271,13 +271,13 @@
 .footerWrap {
   position: relative;
   overflow: hidden;
-  padding-top: 110svh;
+  padding-top: 120svh;
 }
 
 /* Fallback for browsers that don't support svh */
 @supports not (height: 100svh) {
   .footerWrap {
-    padding-top: 110vh;
+    padding-top: 120vh;
   }
 }
 
