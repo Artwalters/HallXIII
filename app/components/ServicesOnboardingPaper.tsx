@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
 import { servicesData, ServiceData } from '../data/servicesData';
 import styles from './ServicesOnboardingPaper.module.css';
 
@@ -13,6 +14,50 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
   const [selectedService, setSelectedService] = useState<ServiceData>(servicesData[0]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
+
+  // Page load animation
+  useEffect(() => {
+    if (!wrapperRef.current || !pinRef.current) return;
+
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+
+    // Set initial state - paper far below screen, rotated and slightly scaled
+    gsap.set(wrapper, {
+      y: '150%',
+      rotation: 15,
+      scale: 0.9,
+      transformOrigin: 'center bottom'
+    });
+
+    // Set initial state for pin - invisible and scaled down
+    gsap.set(pin, {
+      scale: 0,
+      opacity: 0
+    });
+
+    // Animate paper up with slight rotation correction
+    const tl = gsap.timeline();
+
+    tl.to(wrapper, {
+      y: 0,
+      rotation: 0,
+      scale: 1,
+      duration: 0.8,
+      ease: 'power3.out',
+      delay: 0.2
+    })
+    // Then pop the pin
+    .to(pin, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.4,
+      ease: 'back.out(1.7)'
+    }, '-=0.1');
+
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -32,15 +77,41 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
   };
 
   const handleStart = () => {
-    if (onStart) {
-      onStart(selectedService.id);
-    }
+    if (!wrapperRef.current || !pinRef.current) return;
+
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+
+    // Exit animation - reverse of enter
+    const tl = gsap.timeline({
+      onComplete: () => {
+        if (onStart) {
+          onStart(selectedService.id);
+        }
+      }
+    });
+
+    // First scale down pin
+    tl.to(pin, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.3,
+      ease: 'back.in(1.7)'
+    })
+    // Then animate paper out
+    .to(wrapper, {
+      y: '150%',
+      rotation: 15,
+      scale: 0.9,
+      duration: 0.6,
+      ease: 'power3.in'
+    }, '-=0.1');
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={wrapperRef} className={styles.wrapper}>
       {/* Pin at top */}
-      <div className={styles.pin}>
+      <div ref={pinRef} className={styles.pin}>
         <Image
           src="/assets/buttons/XIII_button.png"
           alt=""
@@ -108,24 +179,6 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
 
         {/* Scrollable Content Section */}
         <div className={styles.scrollableContent} data-lenis-prevent>
-          {/* Category Tag */}
-          <div className={styles.categoryTag}>
-            <div className={styles.categoryCircle}>
-              <div className={styles.categoryCircleSprite}>
-                <svg className={styles.categoryCircleSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
-                  <circle cx="50" cy="50" r="48" />
-                </svg>
-                <svg className={styles.categoryCircleSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
-                  <circle cx="52" cy="48" r="47" />
-                </svg>
-                <svg className={styles.categoryCircleSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
-                  <circle cx="49" cy="51" r="49" />
-                </svg>
-              </div>
-            </div>
-            <span className={styles.categoryText}>{selectedService.category}</span>
-          </div>
-
           {/* Service Title */}
           <h3 className={styles.serviceTitle}>
             {selectedService.title}

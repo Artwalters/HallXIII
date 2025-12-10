@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import BackNavigation from '../components/BackNavigation';
 import ServicesOnboardingPaper from '../components/ServicesOnboardingPaper';
+import ServicesRegistrationPaper from '../components/ServicesRegistrationPaper';
 import styles from './page.module.css';
 
 const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
@@ -12,6 +13,8 @@ const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 export default function DienstenPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
+  const [currentView, setCurrentView] = useState<'selection' | 'registration'>('selection');
+  const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
 
   // Prevent pull-to-refresh and scrolling on mobile
   useEffect(() => {
@@ -84,7 +87,20 @@ export default function DienstenPage() {
       <section className={styles.heroSection} ref={heroSectionRef}>
         {/* Services Content - First in DOM, on top of everything */}
         <div className={styles.contentContainer}>
-          <ServicesOnboardingPaper />
+          {currentView === 'selection' && (
+            <ServicesOnboardingPaper
+              onStart={(serviceId) => {
+                setSelectedServiceId(serviceId);
+                setCurrentView('registration');
+              }}
+            />
+          )}
+          {currentView === 'registration' && (
+            <ServicesRegistrationPaper
+              serviceId={selectedServiceId}
+              onBack={() => setCurrentView('selection')}
+            />
+          )}
         </div>
 
         <div className={styles.clippedContent}>

@@ -382,7 +382,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 1.5em;
+  padding: 1em 2em;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
 }
@@ -404,56 +404,6 @@
 
 .scrollableContent::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
-}
-
-/* Category Tag */
-.categoryTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  margin-bottom: 0.75em;
-}
-
-.categoryCircle {
-  position: relative;
-  width: 1em;
-  height: 1em;
-  overflow: hidden;
-}
-
-.categoryCircleSprite {
-  display: flex;
-  width: 300%;
-  height: 100%;
-  animation: circleStopMotion 0.5s steps(1, end) infinite;
-}
-
-.categoryCircleSvg {
-  width: 1em;
-  height: 1em;
-  flex-shrink: 0;
-  color: var(--color-accent);
-  fill: var(--color-accent);
-}
-
-@keyframes circleStopMotion {
-  0%, 33.32% {
-    transform: translateX(0%);
-  }
-  33.33%, 66.65% {
-    transform: translateX(-33.33%);
-  }
-  66.66%, 99.99% {
-    transform: translateX(-66.66%);
-  }
-}
-
-.categoryText {
-  font-family: var(--font-par);
-  font-weight: 900;
-  font-size: var(--font-body-small);
-  color: var(--color-black);
-  text-transform: uppercase;
 }
 
 /* Service Title */
