@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function TransitionOverlay() {
   const { shape1Ref, shape2Ref, resetTransition, currentVariant, onVariantChange } = useTransition();
-  const [variant, setVariant] = useState<'horizontal' | 'vertical' | 'diagonal'>('horizontal');
+  const [variant, setVariant] = useState<'horizontal' | 'vertical' | 'diagonal' | 'diagonalMirrored'>('horizontal');
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
@@ -83,8 +83,8 @@ export default function TransitionOverlay() {
 
       // Shapes animeren UIT - altijd horizontaal (container roteert)
       enterTimeline
-        .to(shape1Ref.current, { x: '-100%', duration: 0.5, ease: 'power2.out' })
-        .to(shape2Ref.current, { x: '100%', duration: 0.5, ease: 'power2.out' }, '-=0.45');
+        .to(shape1Ref.current, { x: '-100%', duration: 0.6, ease: 'power1.inOut' })
+        .to(shape2Ref.current, { x: '100%', duration: 0.6, ease: 'power1.inOut' }, '-=0.55');
     };
 
     // Wait for next frame + small delay to ensure page content is rendered
@@ -100,6 +100,7 @@ export default function TransitionOverlay() {
     switch (variant) {
       case 'vertical': return styles.innerVertical;
       case 'diagonal': return styles.innerDiagonal;
+      case 'diagonalMirrored': return styles.innerDiagonalMirrored;
       default: return styles.innerHorizontal;
     }
   };

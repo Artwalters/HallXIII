@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type TransitionVariant = 'horizontal' | 'vertical' | 'diagonal';
+type TransitionVariant = 'horizontal' | 'vertical' | 'diagonal' | 'diagonalMirrored';
 
 interface TransitionContextType {
   triggerTransition: (href: string) => void;
@@ -20,7 +20,7 @@ interface TransitionContextType {
 
 const TransitionContext = createContext<TransitionContextType | null>(null);
 
-const variants: TransitionVariant[] = ['horizontal', 'vertical', 'diagonal'];
+const variants: TransitionVariant[] = ['horizontal', 'vertical', 'diagonal', 'diagonalMirrored'];
 
 export function TransitionProvider({ children }: { children: ReactNode }) {
   const shape1Ref = useRef<HTMLDivElement>(null);
@@ -81,8 +81,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
 
     // Altijd horizontale animatie - container roteert voor variatie
     exitTimeline
-      .to(shape1Ref.current, { x: 0, duration: 0.5, ease: 'power2.inOut' })
-      .to(shape2Ref.current, { x: 0, duration: 0.5, ease: 'power2.inOut' }, '-=0.45');
+      .to(shape1Ref.current, { x: 0, duration: 0.6, ease: 'power1.inOut' })
+      .to(shape2Ref.current, { x: 0, duration: 0.6, ease: 'power1.inOut' }, '-=0.55');
   }, [pathname, router]);
 
   return (
