@@ -4,10 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import styles from './OnboardingForm.module.css';
 
-gsap.registerPlugin(InertiaPlugin);
+gsap.registerPlugin(ScrollTrigger, InertiaPlugin);
 
 const fitnessGoals = [
   'Sterker worden',
@@ -20,13 +21,18 @@ const fitnessGoals = [
   'Stressvrij leven',
 ];
 
-export default function OnboardingForm() {
+interface OnboardingFormProps {
+  animateOnScroll?: boolean;
+}
+
+export default function OnboardingForm({ animateOnScroll = false }: OnboardingFormProps) {
   const [step, setStep] = useState(0);
   const totalSteps = 4;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -39,6 +45,97 @@ export default function OnboardingForm() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Paper animation - slides up from below, then pin pops in
+  // On page load (hero): 500ms delay
+  // On scroll (CTA): ScrollTrigger when in view
+  useEffect(() => {
+    if (!wrapperRef.current || !pinRef.current) return;
+
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+    // Use parent element as trigger for ScrollTrigger (wrapper itself is animated/hidden)
+    const triggerElement = wrapper.parentElement;
+
+    // Set initial state - paper below screen, rotated and scaled down
+    gsap.set(wrapper, {
+      y: '150%',
+      rotation: 15,
+      scale: 0.9,
+      transformOrigin: 'center bottom'
+    });
+
+    // Pin invisible and scaled down
+    gsap.set(pin, {
+      scale: 0,
+      opacity: 0
+    });
+
+    if (animateOnScroll) {
+      // ScrollTrigger animation for CTA section
+      const st = ScrollTrigger.create({
+        trigger: triggerElement,
+        start: 'top 70%',
+        onEnter: () => {
+          const tl = gsap.timeline();
+
+          // Paper slides up
+          tl.to(wrapper, {
+            y: 0,
+            rotation: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out'
+          })
+          // Then pin pops in
+          .to(pin, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: 'back.out(1.7)'
+          }, '-=0.1');
+        },
+        onLeaveBack: () => {
+          // Reset animation when scrolling back up
+          gsap.to(wrapper, {
+            y: '150%',
+            rotation: 15,
+            scale: 0.9,
+            duration: 0.6,
+            ease: 'power2.in'
+          });
+          gsap.to(pin, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.3
+          });
+        }
+      });
+
+      return () => {
+        st.kill();
+      };
+    } else {
+      // Page load animation with 500ms delay (hero)
+      const tl = gsap.timeline({ delay: 0.5 });
+
+      // Paper slides up
+      tl.to(wrapper, {
+        y: 0,
+        rotation: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out'
+      })
+      // Then pin pops in
+      .to(pin, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.4,
+        ease: 'back.out(1.7)'
+      }, '-=0.1');
+    }
+  }, [animateOnScroll]);
 
   // Desktop: Momentum-based hover animation with inertia (30% less intense than DienstenSection)
   useEffect(() => {
@@ -141,7 +238,7 @@ export default function OnboardingForm() {
   return (
     <div className={styles.wrapper} ref={wrapperRef}>
       {/* Pin/Thumbtack */}
-      <div className={styles.pin}>
+      <div className={styles.pin} ref={pinRef}>
         <Image
           src="/assets/buttons/XIII_button.png"
           alt=""

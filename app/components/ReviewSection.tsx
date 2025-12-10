@@ -6,9 +6,10 @@ import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import styles from './ReviewSection.module.css';
 
-gsap.registerPlugin(InertiaPlugin, DrawSVGPlugin, ScrollTrigger);
+gsap.registerPlugin(InertiaPlugin, DrawSVGPlugin, ScrollTrigger, SplitText);
 
 const frames = [
   '/assets/frames poloroid/frame 1.png',
@@ -393,6 +394,67 @@ export default function ReviewSection() {
     return () => {
       st.kill();
       trigger.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, []);
+
+  // Category label animation: circle pops in first, then text reveals
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const labels = section.querySelectorAll(`.${styles.categoryTag}`);
+    const splits: SplitText[] = [];
+
+    labels.forEach((label) => {
+      const circle = label.querySelector(`.${styles.titleCircle}`);
+      const text = label.querySelector(`.${styles.categoryText}`);
+
+      if (!circle || !text) return;
+
+      // Hide initially
+      gsap.set(circle, { scale: 0, opacity: 0 });
+      gsap.set(text, { autoAlpha: 0 });
+
+      const split = SplitText.create(text, {
+        type: 'chars',
+        mask: 'lines',
+        onSplit: (instance) => {
+          // Set chars to starting position
+          gsap.set(instance.chars, { yPercent: 110 });
+
+          // Create timeline for sequenced animation
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: label,
+              start: 'top 85%',
+              once: true
+            }
+          });
+
+          // Circle pops in first
+          tl.to(circle, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: 'back.out(1.7)'
+          })
+          // Then text reveals
+          .set(text, { autoAlpha: 1 })
+          .to(instance.chars, {
+            yPercent: 0,
+            duration: 0.6,
+            ease: 'expo.out'
+          }, '-=0.1');
+
+          return tl;
+        }
+      });
+
+      splits.push(split);
+    });
+
+    return () => {
+      splits.forEach(split => split.revert());
     };
   }, []);
 

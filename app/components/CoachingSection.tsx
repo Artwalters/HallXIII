@@ -1,9 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
 import { useRouter } from 'next/navigation';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const coachingItems = [
   {
@@ -71,13 +77,75 @@ const partnersItem = {
 
 export default function CoachingSection() {
   const router = useRouter();
+  const sectionRef = useRef<HTMLElement>(null);
 
   const handleServiceClick = (serviceId: string) => {
     router.push(`/diensten?service=${serviceId}`);
   };
 
+  // Category label animation: circle pops in first, then text reveals
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const labels = section.querySelectorAll(`.${styles.categoryTag}`);
+    const splits: SplitText[] = [];
+
+    labels.forEach((label) => {
+      const circle = label.querySelector(`.${styles.categoryCircle}`);
+      const text = label.querySelector(`.${styles.categoryText}`);
+
+      if (!circle || !text) return;
+
+      // Hide initially
+      gsap.set(circle, { scale: 0, opacity: 0 });
+      gsap.set(text, { autoAlpha: 0 });
+
+      const split = SplitText.create(text, {
+        type: 'chars',
+        mask: 'lines',
+        onSplit: (instance) => {
+          // Set chars to starting position
+          gsap.set(instance.chars, { yPercent: 110 });
+
+          // Create timeline for sequenced animation
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: label,
+              start: 'top 85%',
+              once: true
+            }
+          });
+
+          // Circle pops in first
+          tl.to(circle, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: 'back.out(1.7)'
+          })
+          // Then text reveals
+          .set(text, { autoAlpha: 1 })
+          .to(instance.chars, {
+            yPercent: 0,
+            duration: 0.6,
+            ease: 'expo.out'
+          }, '-=0.1');
+
+          return tl;
+        }
+      });
+
+      splits.push(split);
+    });
+
+    return () => {
+      splits.forEach(split => split.revert());
+    };
+  }, []);
+
   return (
-    <section id="coaching-trajecten" className={styles.section}>
+    <section id="coaching-trajecten" className={styles.section} ref={sectionRef}>
       {/* Top Marquee */}
       <MarqueeScroll
         title="COACHING TRAJECTEN"

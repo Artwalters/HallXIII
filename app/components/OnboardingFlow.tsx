@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
 import styles from './OnboardingFlow.module.css';
 
 // Step 2: Goals options
@@ -41,18 +42,125 @@ export default function OnboardingFlow() {
     phone: '',
     email: '',
   });
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const totalSteps = 4;
+  const totalSteps = 5;
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
+
+  // Page load animation - paper and pin enter
+  useEffect(() => {
+    if (!wrapperRef.current || !pinRef.current) return;
+
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+
+    // Set initial state - paper far below screen, rotated and slightly scaled
+    gsap.set(wrapper, {
+      y: '150%',
+      rotation: 15,
+      scale: 0.9,
+      transformOrigin: 'center bottom'
+    });
+
+    // Set initial state for pin - invisible and scaled down
+    gsap.set(pin, {
+      scale: 0,
+      opacity: 0
+    });
+
+    // Animate paper up with slight rotation correction
+    const tl = gsap.timeline();
+
+    tl.to(wrapper, {
+      y: 0,
+      rotation: 0,
+      scale: 1,
+      duration: 0.8,
+      ease: 'power3.out',
+      delay: 0.2
+    })
+    // Then pop the pin
+    .to(pin, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.4,
+      ease: 'back.out(1.7)'
+    }, '-=0.1');
+  }, []);
+
+  // Animate card exit then enter for step change
+  const animateStepChange = useCallback((direction: 'next' | 'back', callback: () => void) => {
+    if (!wrapperRef.current || !pinRef.current || isAnimating) return;
+
+    setIsAnimating(true);
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+
+    // Exit animation
+    const exitTl = gsap.timeline({
+      onComplete: () => {
+        // Call the callback to change step
+        callback();
+
+        // Enter animation
+        const enterTl = gsap.timeline({
+          onComplete: () => setIsAnimating(false)
+        });
+
+        // Set initial state for enter
+        gsap.set(wrapper, {
+          y: direction === 'next' ? '150%' : '-150%',
+          rotation: direction === 'next' ? 15 : -15,
+          scale: 0.9
+        });
+        gsap.set(pin, { scale: 0, opacity: 0 });
+
+        enterTl.to(wrapper, {
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          duration: 0.6,
+          ease: 'power3.out'
+        })
+        .to(pin, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.3,
+          ease: 'back.out(1.7)'
+        }, '-=0.1');
+      }
+    });
+
+    // Exit: first pin out, then paper out
+    exitTl.to(pin, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.25,
+      ease: 'back.in(1.7)'
+    })
+    .to(wrapper, {
+      y: direction === 'next' ? '-150%' : '150%',
+      rotation: direction === 'next' ? -15 : 15,
+      scale: 0.9,
+      duration: 0.5,
+      ease: 'power3.in'
+    }, '-=0.1');
+  }, [isAnimating]);
 
   const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
+    if (currentStep < totalSteps && !isAnimating) {
+      animateStepChange('next', () => {
+        setCurrentStep(prev => prev + 1);
+      });
     }
   };
 
   const handleBack = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+    if (currentStep > 1 && !isAnimating) {
+      animateStepChange('back', () => {
+        setCurrentStep(prev => prev - 1);
+      });
     }
   };
 
@@ -67,16 +175,23 @@ export default function OnboardingFlow() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Handle form submission
+    // TODO: Handle actual form submission (API call, etc.)
+    // For now, just animate to success step
+    if (!isAnimating) {
+      animateStepChange('next', () => {
+        setCurrentStep(5);
+      });
+    }
   };
 
   // Handle Enter key press for "volgende" button
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only trigger if Enter is pressed and we're not in an input/textarea
+      // Only trigger if Enter is pressed, not animating, and we're not in an input/textarea
       if (
         e.key === 'Enter' &&
         currentStep < totalSteps &&
+        !isAnimating &&
         !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement)
       ) {
         handleNext();
@@ -85,12 +200,12 @@ export default function OnboardingFlow() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentStep, totalSteps]);
+  }, [currentStep, totalSteps, isAnimating]);
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={wrapperRef} className={styles.wrapper}>
       {/* Pin/Thumbtack */}
-      <div className={styles.pin}>
+      <div ref={pinRef} className={styles.pin}>
         <Image
           src="/assets/buttons/XIII_button.png"
           alt=""
@@ -101,16 +216,18 @@ export default function OnboardingFlow() {
       </div>
 
       <div className={styles.container}>
-      {/* Progress */}
-      <div className={styles.progressRow}>
-        <span className={styles.stepLabel}>STAP {currentStep}/{totalSteps}</span>
-        <div className={styles.progressBar}>
-          <div
-            className={styles.progressFill}
-            style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-          />
+      {/* Progress - hidden on success step */}
+      {currentStep < 5 && (
+        <div className={styles.progressRow}>
+          <span className={styles.stepLabel}>STAP {currentStep}/4</span>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${(currentStep / 4) * 100}%` }}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Step 1: Name */}
       {currentStep === 1 && (
@@ -383,19 +500,112 @@ export default function OnboardingFlow() {
         </div>
       )}
 
-      {/* Navigation */}
-      <div className={styles.navigation}>
-        {currentStep > 1 && (
-          <button onClick={handleBack} className={styles.backButton} type="button">
-            terug
-          </button>
-        )}
-        {currentStep < totalSteps && (
-          <button onClick={handleNext} className={styles.nextButton} type="button">
-            volgende
-          </button>
-        )}
-      </div>
+      {/* Step 5: Success/Bedankt */}
+      {currentStep === 5 && (
+        <div className={styles.stepContent}>
+          <div className={styles.successContent}>
+            <h1 className={styles.successTitle}>Bedankt!</h1>
+            <p className={styles.successText}>
+              Wij nemen zo snel mogelijk contact met je op.
+            </p>
+            <p className={styles.successText}>
+              Je krijgt een bevestiging op je mail.
+            </p>
+
+            {/* Social Icons */}
+            <div className={styles.socialSection}>
+              <p className={styles.socialText}>volg ons</p>
+              <div className={styles.socialIcons}>
+                <a href="https://instagram.com/hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
+                  <div className={styles.socialIconBorder}>
+                    <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconBack}>
+                    <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconInner}>
+                    <div className={styles.socialIconSprite}>
+                      <Image src="/assets/stopmotion_icons/insta1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/insta2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/insta3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                    </div>
+                  </div>
+                </a>
+                <a href="https://tiktok.com/@hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="TikTok">
+                  <div className={styles.socialIconBorder}>
+                    <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconBack}>
+                    <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconInner}>
+                    <div className={styles.socialIconSprite}>
+                      <Image src="/assets/stopmotion_icons/tiktok1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/tiktok2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/tiktok3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                    </div>
+                  </div>
+                </a>
+                <a href="https://facebook.com/hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Facebook">
+                  <div className={styles.socialIconBorder}>
+                    <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconBack}>
+                    <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                      <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                      <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                      <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <div className={styles.socialIconInner}>
+                    <div className={styles.socialIconSprite}>
+                      <Image src="/assets/stopmotion_icons/facebook1.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/facebook2.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                      <Image src="/assets/stopmotion_icons/facebook3.svg" alt="" width={20} height={20} className={styles.socialIconImg} />
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Navigation - hidden on success step */}
+      {currentStep < 5 && (
+        <div className={styles.navigation}>
+          {currentStep > 1 && (
+            <button onClick={handleBack} className={styles.backButton} type="button">
+              terug
+            </button>
+          )}
+          {currentStep < 4 && (
+            <button onClick={handleNext} className={styles.nextButton} type="button">
+              volgende
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Texture Overlay */}
       <div className={styles.overlay}>
