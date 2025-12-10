@@ -7,86 +7,52 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type TransitionVariant = 'horizontal' | 'vertical' | 'diagonal' | 'diagonalMirrored';
-
 interface TransitionContextType {
   triggerTransition: (href: string) => void;
-  resetTransition: () => void;
-  shape1Ref: React.RefObject<HTMLDivElement | null>;
-  shape2Ref: React.RefObject<HTMLDivElement | null>;
-  currentVariant: React.MutableRefObject<TransitionVariant>;
-  onVariantChange: React.MutableRefObject<((variant: TransitionVariant) => void) | null>;
 }
 
 const TransitionContext = createContext<TransitionContextType | null>(null);
 
-const variants: TransitionVariant[] = ['horizontal', 'vertical', 'diagonal', 'diagonalMirrored'];
-
 export function TransitionProvider({ children }: { children: ReactNode }) {
-  const shape1Ref = useRef<HTMLDivElement>(null);
-  const shape2Ref = useRef<HTMLDivElement>(null);
-  const currentVariant = useRef<TransitionVariant>('horizontal');
-  const onVariantChange = useRef<((variant: TransitionVariant) => void) | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const isTransitioning = useRef(false);
 
-  const resetTransition = useCallback(() => {
-    isTransitioning.current = false;
-  }, []);
-
   const triggerTransition = useCallback((href: string) => {
-    // Don't transition to same page
     if (href === pathname || isTransitioning.current) return;
-
-    // Check if shapes are ready
-    if (!shape1Ref.current || !shape2Ref.current) {
-      // Fallback: just navigate without animation
-      router.push(href);
-      return;
-    }
 
     isTransitioning.current = true;
 
-    // Pick random variant and notify listener
-    currentVariant.current = variants[Math.floor(Math.random() * variants.length)];
-    if (onVariantChange.current) {
-      onVariantChange.current(currentVariant.current);
-    }
-
-    // Prefetch the page first
-    router.prefetch(href);
-
-    // Stop Lenis scroll
+    // Stop scroll (desktop: Lenis, mobile: CSS)
     if (typeof window !== 'undefined' && window.lenis) {
       window.lenis.stop();
     }
+    document.body.style.overflow = 'hidden';
 
-    // Kill any active ScrollTriggers to prevent issues
+    // Kill ScrollTriggers
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    // Set initial positions - altijd horizontaal (container roteert)
-    gsap.set(shape1Ref.current, { x: '-100%' });
-    gsap.set(shape2Ref.current, { x: '100%' });
+    // Get shapes by ID
+    const shape1 = document.getElementById('transition-shape-1');
+    const shape2 = document.getElementById('transition-shape-2');
+    const shape3 = document.getElementById('transition-shape-3');
 
-    // Exit animation: paper shapes animate in from outside
+    // Exit animation: shapes IN
     const exitTimeline = gsap.timeline({
       onComplete: () => {
-        // Small delay to ensure page is prefetched
-        setTimeout(() => {
-          router.push(href);
-        }, 50);
+        isTransitioning.current = false;
+        router.push(href);
       }
     });
 
-    // Altijd horizontale animatie - container roteert voor variatie
     exitTimeline
-      .to(shape1Ref.current, { x: 0, duration: 0.6, ease: 'power1.inOut' })
-      .to(shape2Ref.current, { x: 0, duration: 0.6, ease: 'power1.inOut' }, '-=0.55');
+      .to(shape1, { x: 0, y: 0, duration: 0.5, ease: 'power2.inOut' })
+      .to(shape2, { y: 0, duration: 0.5, ease: 'power2.inOut' }, '-=0.45')
+      .to(shape3, { x: 0, duration: 0.5, ease: 'power2.inOut' }, '-=0.45');
   }, [pathname, router]);
 
   return (
-    <TransitionContext.Provider value={{ triggerTransition, resetTransition, shape1Ref, shape2Ref, currentVariant, onVariantChange }}>
+    <TransitionContext.Provider value={{ triggerTransition }}>
       {children}
     </TransitionContext.Provider>
   );
