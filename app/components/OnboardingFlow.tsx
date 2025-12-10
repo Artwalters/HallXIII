@@ -67,8 +67,7 @@ export default function OnboardingFlow() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    // TODO: Handle form submission
   };
 
   // Handle Enter key press for "volgende" button

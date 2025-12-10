@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import styles from './DienstenSection.module.css';
-import { useTransition } from '../context/TransitionContext';
+import { useRouter } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
 
@@ -164,7 +164,7 @@ const gymCards = [
 ];
 
 export default function DienstenSection() {
-  const { triggerTransition } = useTransition();
+  const router = useRouter();
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
   const titlesRef = useRef<HTMLDivElement>(null);
@@ -623,42 +623,11 @@ export default function DienstenSection() {
     };
   }, []);
 
-  // Lenis smooth scroll initialization
-  useEffect(() => {
-    // Dynamically load Lenis if not already loaded
-    if (typeof window !== 'undefined' && !(window as any).Lenis) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js';
-      script.async = true;
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        const lenis = new (window as any).Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          smooth: true,
-        });
-
-        function raf(time: number) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        (window as any).lenisInstance = lenis;
-      };
-
-      return () => {
-        document.head.removeChild(script);
-      };
-    }
-  }, []);
-
   // Card click handler
   const handleCardClick = (card: any) => {
     if (card.serviceId) {
       // Navigate to diensten page with service parameter
-      triggerTransition(`/diensten?service=${card.serviceId}`);
+      router.push(`/diensten?service=${card.serviceId}`);
     } else if (card.link && card.isExternal) {
       // Navigate to external page
       window.location.href = card.link;
@@ -667,11 +636,14 @@ export default function DienstenSection() {
       const targetId = card.link.replace('#', '');
       const targetElement = document.getElementById(targetId);
 
-      if (targetElement && (window as any).lenisInstance) {
-        (window as any).lenisInstance.scrollTo(targetElement, {
+      if (targetElement && window.lenis) {
+        window.lenis.scrollTo(targetElement, {
           offset: 0,
           duration: 1.5,
         });
+      } else if (targetElement) {
+        // Fallback for mobile (no Lenis)
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, Suspense } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import BackNavigation from '../components/BackNavigation';
@@ -12,6 +12,23 @@ const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 export default function DienstenPage() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
+
+  // Prevent pull-to-refresh and scrolling on mobile
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+    document.body.style.overscrollBehavior = 'none';
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.height = '';
+      document.body.style.overscrollBehavior = '';
+    };
+  }, []);
 
   // Shadow overlay mouse parallax effect
   useEffect(() => {
@@ -67,9 +84,7 @@ export default function DienstenPage() {
       <section className={styles.heroSection} ref={heroSectionRef}>
         {/* Services Content - First in DOM, on top of everything */}
         <div className={styles.contentContainer}>
-          <Suspense fallback={<div>Loading...</div>}>
-            <ServicesOnboardingPaper />
-          </Suspense>
+          <ServicesOnboardingPaper />
         </div>
 
         <div className={styles.clippedContent}>

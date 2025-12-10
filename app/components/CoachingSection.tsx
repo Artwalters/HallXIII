@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
-import { useTransition } from '../context/TransitionContext';
+import { useRouter } from 'next/navigation';
 
 const coachingItems = [
   {
@@ -70,10 +70,10 @@ const partnersItem = {
 };
 
 export default function CoachingSection() {
-  const { triggerTransition } = useTransition();
+  const router = useRouter();
 
   const handleServiceClick = (serviceId: string) => {
-    triggerTransition(`/diensten?service=${serviceId}`);
+    router.push(`/diensten?service=${serviceId}`);
   };
 
   return (

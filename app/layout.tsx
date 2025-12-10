@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
-import { TransitionProvider } from "./context/TransitionContext";
-import TransitionOverlay from "./components/TransitionOverlay";
 
 export const metadata: Metadata = {
   title: "Hall XIII - Sportschool met diverse expertises",
@@ -23,12 +20,7 @@ export default function RootLayout({
       </head>
       <body>
         <SmoothScroll />
-        <TransitionProvider>
-          <Suspense fallback={null}>
-            <TransitionOverlay />
-          </Suspense>
-          {children}
-        </TransitionProvider>
+        {children}
       </body>
     </html>
   );

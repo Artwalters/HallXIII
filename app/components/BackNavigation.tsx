@@ -1,15 +1,15 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navigation.module.css';
-import { useTransition } from '../context/TransitionContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BackNavigation() {
-  const { triggerTransition } = useTransition();
+  const router = useRouter();
   const menuTextRef = useRef<HTMLSpanElement>(null);
   const whatsappRef = useRef<HTMLAnchorElement>(null);
   const menuButtonRef = useRef<HTMLAnchorElement>(null);
@@ -120,7 +120,7 @@ export default function BackNavigation() {
 
   const handleBackClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    triggerTransition('/');
+    router.push('/');
   };
 
   return (
