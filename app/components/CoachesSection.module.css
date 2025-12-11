@@ -79,6 +79,12 @@
   font-weight: 100;
 }
 
+/* Main title wrapper for split animation */
+.mainTitle {
+  display: inline-block;
+  visibility: hidden;
+}
+
 /* Wrapper for title text to position tag relative to text */
 .titleText {
   position: relative;
@@ -97,6 +103,7 @@
   text-transform: uppercase;
   transform: rotate(-3deg);
   white-space: nowrap;
+  z-index: 10;
 }
 
 /* Black text layer on top */

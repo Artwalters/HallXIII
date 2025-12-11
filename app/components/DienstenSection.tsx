@@ -6,12 +6,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+import { SplitText } from 'gsap/SplitText';
 import styles from './DienstenSection.module.css';
 import { useRouter } from 'next/navigation';
 
 // Register GSAP plugins only on client side
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
+  gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin, SplitText);
 }
 
 // Polaroid frames
@@ -171,6 +172,7 @@ export default function DienstenSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
   const titlesRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   // Desktop: Momentum-based hover animation with inertia (only on desktop)
   useEffect(() => {
@@ -651,14 +653,59 @@ export default function DienstenSection() {
     }
   };
 
+  // Title text reveal animation
+  useEffect(() => {
+    const title = titleRef.current;
+    if (!title) return;
+
+    // Wait for fonts to load
+    document.fonts.ready.then(() => {
+      // Get the main title wrapper
+      const mainTitleWrapper = title.querySelector(`.${styles.mainTitle}`) as HTMLElement;
+
+      if (!mainTitleWrapper) return;
+
+      // Make main title visible
+      gsap.set(mainTitleWrapper, { autoAlpha: 1 });
+
+      // Split the main title into chars with mask on lines
+      SplitText.create(mainTitleWrapper, {
+        type: 'lines, words, chars',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit: (instance) => {
+          return gsap.from(instance.chars, {
+            yPercent: 110,
+            duration: 0.6,
+            stagger: 0.03,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: title,
+              start: 'clamp(top 80%)',
+              toggleActions: 'play none none reset',
+            }
+          });
+        }
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === title) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
   return (
     <section id="diensten" className={styles.section} data-diensten-section="" data-nav-dark>
       <div className={styles.container}>
         {/* Title */}
-        <h2 className={styles.title}>
+        <h2 ref={titleRef} className={styles.title}>
           <span className={styles.titleText}>
             <span className={styles.titleTag} data-text="ontdek onze">ontdek onze</span>
-            diensten
+            <span className={styles.mainTitle}>diensten</span>
           </span>
         </h2>
 

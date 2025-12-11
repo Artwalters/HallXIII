@@ -4,7 +4,14 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import styles from './CoachesSection.module.css';
+
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+}
 
 interface Coach {
   name: string;
@@ -85,6 +92,7 @@ const coaches: Coach[] = [
 
 export default function CoachesSection() {
   const photoRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const activeAccordion = useRef<string | null>(null);
   const pathname = usePathname();
@@ -173,6 +181,51 @@ export default function CoachesSection() {
     };
   }, [pathname, bringToFrontCallback]);
 
+  // Title text reveal animation
+  useEffect(() => {
+    const title = titleRef.current;
+    if (!title) return;
+
+    // Wait for fonts to load
+    document.fonts.ready.then(() => {
+      // Get the main title wrapper
+      const mainTitleWrapper = title.querySelector(`.${styles.mainTitle}`) as HTMLElement;
+
+      if (!mainTitleWrapper) return;
+
+      // Make main title visible
+      gsap.set(mainTitleWrapper, { autoAlpha: 1 });
+
+      // Split the main title into chars with mask on lines
+      SplitText.create(mainTitleWrapper, {
+        type: 'lines, words, chars',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit: (instance) => {
+          return gsap.from(instance.chars, {
+            yPercent: 110,
+            duration: 0.6,
+            stagger: 0.03,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: title,
+              start: 'clamp(top 80%)',
+              toggleActions: 'play none none reset',
+            }
+          });
+        }
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === title) {
+          trigger.kill();
+        }
+      });
+    };
+  }, []);
+
   const bringToFront = (coachName: string) => {
     const targetPhoto = photoRefs.current[coachName];
     if (!targetPhoto) return;
@@ -229,10 +282,10 @@ export default function CoachesSection() {
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>
+          <h1 ref={titleRef} className={styles.title}>
             <span className={styles.titleText}>
               <span className={styles.titleTag} data-text="ontmoet de">ontmoet de</span>
-              COACHES
+              <span className={styles.mainTitle}>COACHES</span>
             </span>
           </h1>
         </div>
