@@ -58,14 +58,14 @@
 .title {
   font-family: var(--font-heading);
   font-size: var(--font-h1);
-  font-weight: 100;
+  font-weight: normal;
   color: var(--color-white);
   text-transform: uppercase;
   line-height: 1;
   margin: 0;
   white-space: nowrap;
   user-select: none;
-  transform: translateY(0.1em);
+  transform: translateY(0em);
 }
 
 /* Mobile: adjust title position for better vertical centering */
