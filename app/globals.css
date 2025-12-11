@@ -90,8 +90,8 @@
 
   /* Osmo Container Width System */
   --container-width-full: var(--size-container);
-  --container-width-medium: calc(var(--size-container) * 0.85);
-  --container-width-narrow: calc(var(--size-container) * 0.75);
+  --container-width-medium: calc(var(--size-container) * 0.80);
+  --container-width-narrow: calc(var(--size-container) * 0.70);
 
   /* Typography Scale - Osmo Design System */
   --font-h1: 8em;     /* 84px - Main page titles */
