@@ -205,15 +205,15 @@ export default function CTAFooterCombined() {
 
       if (!circle || !text) return;
 
-      // Hide initially
-      gsap.set(circle, { scale: 0, opacity: 0 });
+      // Circle stays visible, only hide text initially
       gsap.set(text, { autoAlpha: 0 });
 
       const split = SplitText.create(text, {
-        type: 'chars',
+        type: 'lines, words, chars',
         mask: 'lines',
+        autoSplit: true,
         onSplit: (instance) => {
-          // Set chars to starting position
+          // Set chars to starting position (below the mask)
           gsap.set(instance.chars, { yPercent: 110 });
 
           // Create timeline for sequenced animation
@@ -221,24 +221,18 @@ export default function CTAFooterCombined() {
             scrollTrigger: {
               trigger: label,
               start: 'top 85%',
-              once: true
+              toggleActions: 'play none none reset'
             }
           });
 
-          // Circle pops in first
-          tl.to(circle, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            ease: 'back.out(1.7)'
-          })
-          // Then text reveals
-          .set(text, { autoAlpha: 1 })
+          // Text reveals smoothly from behind mask
+          tl.set(text, { autoAlpha: 1 })
           .to(instance.chars, {
             yPercent: 0,
-            duration: 0.6,
-            ease: 'expo.out'
-          }, '-=0.1');
+            duration: 0.8,
+            stagger: 0.024,
+            ease: 'power3.out'
+          });
 
           return tl;
         }
@@ -571,6 +565,15 @@ export default function CTAFooterCombined() {
                 />
               </div>
               <span className={styles.waltersPaperText}>by walters.studio</span>
+              <div className={styles.waltersPaperLogo}>
+                <Image
+                  src="/assets/walters-studio.png"
+                  alt="walters.studio logo"
+                  width={120}
+                  height={60}
+                  className={styles.waltersPaperLogoImage}
+                />
+              </div>
             </div>
           </div>
         </footer>

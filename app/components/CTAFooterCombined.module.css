@@ -1040,6 +1040,23 @@
   }
 }
 
+/* Walters Studio Logo */
+.waltersPaperLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -10%) rotate(-3deg);
+  z-index: 3;
+  opacity: 0.85;
+}
+
+.waltersPaperLogoImage {
+  width: auto;
+  height: auto;
+  max-width: 9.075rem;
+  filter: brightness(0.3);
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .waltersPaper {
@@ -1051,6 +1068,10 @@
 
   .waltersPaperText {
     font-size: 0.9rem;
+  }
+
+  .waltersPaperLogoImage {
+    max-width: 6.6rem;
   }
 }
 
