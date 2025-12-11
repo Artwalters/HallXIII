@@ -250,7 +250,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
       {/* Pin/Thumbtack */}
       <div className={styles.pin} ref={pinRef}>
         <Image
-          src="/assets/buttons/XIII_button.png"
+          src="/assets/buttons/XIII_button_blue.png"
           alt=""
           width={80}
           height={80}

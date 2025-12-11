@@ -79,10 +79,9 @@
   font-weight: 100;
 }
 
-/* Main title wrapper for split animation */
+/* Main title */
 .mainTitle {
   display: inline-block;
-  visibility: hidden;
 }
 
 /* Wrapper for title text to position tag relative to text */
@@ -94,17 +93,26 @@
 /* Tag positioned top-left of title text */
 .titleTag {
   position: absolute;
-  top: 0.1em;
-  left: -0.3em;
+  top: 0.5em;
+  left: -1.5em;
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
   font-weight: 800;
-  font-size: 0.28em;
+  font-size: 0.2em;
   color: var(--color-cream);
   text-transform: uppercase;
-  transform: rotate(-3deg);
   white-space: nowrap;
   z-index: 10;
+  animation: captionWiggle 0.6s steps(2, end) infinite;
+}
+
+@keyframes captionWiggle {
+  0%, 100% {
+    transform: rotate(-3.3deg);
+  }
+  50% {
+    transform: rotate(-2.7deg);
+  }
 }
 
 /* Black text layer on top */
