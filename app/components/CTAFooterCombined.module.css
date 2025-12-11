@@ -194,6 +194,7 @@
   position: relative;
   text-align: center;
   width: 100%;
+  transform: translateY(-0.05em);
 }
 
 /* Main Text */
