@@ -118,11 +118,6 @@
   text-transform: uppercase;
   line-height: 1.1;
   margin: 0;
-  /* Embossed effect */
-  filter:
-    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
-    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
-    brightness(0.96);
 }
 
 /* Looping Words */
@@ -160,11 +155,6 @@
 .loopingWordsText {
   margin: 0;
   color: var(--color-dark-brown);
-  /* Embossed effect */
-  filter:
-    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
-    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
-    brightness(0.96);
 }
 
 .loopingWordsFade {
@@ -212,11 +202,6 @@
   text-transform: lowercase;
   margin: 0;
   line-height: 1;
-  /* Embossed effect */
-  filter:
-    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
-    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
-    brightness(0.96);
 }
 
 .socialIcons {
@@ -234,11 +219,6 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  /* Embossed effect */
-  filter:
-    drop-shadow(-1px -1px 6px rgba(0, 0, 0, 0.4))
-    drop-shadow(1px 1px 6px rgba(255, 255, 255, 0.6))
-    brightness(0.96);
 }
 
 /* Social Icon Border - white, behind dark */
