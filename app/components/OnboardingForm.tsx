@@ -137,6 +137,13 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
         duration: 0.4,
         ease: 'back.out(1.7)'
       }, '-=0.1');
+
+      // Cleanup on unmount
+      return () => {
+        tl.kill();
+        gsap.killTweensOf(wrapper);
+        gsap.killTweensOf(pin);
+      };
     }
   }, [animateOnScroll]);
 

@@ -46,8 +46,8 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
       opacity: 0
     });
 
-    // Small delay before animation starts
-    const tl = gsap.timeline({ delay: 0.1 });
+    // Delay to allow previous component's exit animation to complete
+    const tl = gsap.timeline({ delay: 0.5 });
 
     tl.to(wrapper, {
       y: 0,
@@ -63,6 +63,12 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
       ease: 'back.out(1.7)'
     }, '-=0.1');
 
+    // Cleanup on unmount
+    return () => {
+      tl.kill();
+      gsap.killTweensOf(wrapper);
+      gsap.killTweensOf(pin);
+    };
   }, []);
 
   const handleBack = () => {

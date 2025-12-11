@@ -57,6 +57,12 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
       ease: 'back.out(1.7)'
     }, '-=0.1');
 
+    // Cleanup on unmount
+    return () => {
+      tl.kill();
+      gsap.killTweensOf(wrapper);
+      gsap.killTweensOf(pin);
+    };
   }, []);
 
   // Close dropdown when clicking outside

@@ -63,10 +63,9 @@ export default function CTAFooterCombined() {
         }, 0);
       });
 
-      // Refresh ScrollTrigger after layout settles
-      setTimeout(() => ScrollTrigger.refresh(), 100);
-
-      return () => ctx.revert();
+      return () => {
+        ctx.revert();
+      };
     }
   }, []);
 
