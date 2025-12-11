@@ -281,8 +281,8 @@
   height: auto;
   color: var(--color-white);
   filter:
-    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
-    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
+    drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3))
+    drop-shadow(-2px -2px 3px rgba(255, 255, 255, 0.15))
     brightness(0.98);
 }
 
