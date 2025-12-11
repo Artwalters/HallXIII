@@ -246,7 +246,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  text-align: right;
+  text-align: left;
   align-self: flex-start;
   margin-top: 4rem;
 }
@@ -258,8 +258,37 @@
   font-size: var(--relost-caption-big);
   color: var(--color-white);
   text-transform: lowercase;
-  line-height: 1.2;
+  line-height: 0.9px;
   transform: rotate(-3deg);
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.arrowUpIcon {
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--color-white);
+  flex-shrink: 0;
+  transform: scaleY(-1) translateY(0.25em);
+  display: inline-block;
+  margin-left: 0.3em;
+}
+
+/* Wiggle animation for arrow on hover */
+.ctaOptionText:hover .arrowUpIcon {
+  animation: arrowWiggle 0.6s steps(2, end) infinite;
+}
+
+@keyframes arrowWiggle {
+  0%, 100% {
+    transform: scaleY(-1) translateY(0.25em) rotate(-3deg);
+  }
+  50% {
+    transform: scaleY(-1) translateY(0.25em) rotate(3deg);
+  }
 }
 
 
