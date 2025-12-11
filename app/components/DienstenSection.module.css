@@ -19,7 +19,7 @@
 
 /* Container */
 .container {
-  max-width: var(--container-width-narrow);
+  max-width: var(--container-width-medium);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   position: relative;

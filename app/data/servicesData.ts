@@ -9,6 +9,19 @@ export interface ServiceData {
 
 export const servicesData: ServiceData[] = [
   {
+    id: 'dagpas',
+    category: 'Dagpas',
+    title: 'Eén dag trainen bij Hal13',
+    price: '€10,-',
+    description: 'Met een dagpas heb je één dag toegang tot de gym. Perfect als je een keer wilt proberen hoe het is om bij Hal13 te trainen, of als je op doorreis bent en toch je training niet wilt missen.\n\nJe krijgt toegang tot alle faciliteiten en hoogwaardige materialen: Gymleco, ATX, Strength-Shop, Kingsbox, Concept 2 en verschillende cardiomachines. Daarnaast vind je bij ons dumbbells tot 50 kg, meerdere squatrekken, comboracks, powerlifting barbells, speciality barbells, gekalibreerde schijven en nog veel meer.\n\nOf je nu gaat voor Hyrox, Powerlifting, Bodybuilding, sportspecifieke prestaties, conditie of simpelweg meer vitaliteit: bij ons vind je de juiste omgeving én de juiste materialen.',
+    benefits: [
+      'Eén dag volledige toegang tot de gym',
+      'Gebruik van premium materiaal',
+      'Mogelijkheid tot het kopen van sportdranken en supplementen',
+      'Een motiverende omgeving om te trainen'
+    ]
+  },
+  {
     id: 'open-gym',
     category: 'Open Gym',
     title: 'Train wanneer het jou uitkomt',
@@ -41,6 +54,20 @@ export const servicesData: ServiceData[] = [
     title: 'Haal het maximale uit je prestaties',
     price: 'vanaf €85,- p.m.',
     description: 'Bij Performance Begeleiding staat alles in het teken van het verbeteren van jouw prestaties. Of dit nu sportspecifiek is, powerlifting, krachtsport of conditietraining: het maakt niet uit. Afhankelijk van jouw niveau, doelstellingen en wensen stellen we de programmering samen die het beste bij jou past. Denk bijvoorbeeld aan een schema op basis van RIR of RPE.\n\nVoordat je zelfstandig aan de slag gaat, neemt je coach de oefeningen met je door in een technieksessie. Zo weet je precies hoe je de bewegingen correct uitvoert en kun je met vertrouwen starten.\n\nDaarnaast heb je wekelijks contact met je coach. Op basis van de gesprekken en de video\'s die jij instuurt, krijg je uitgebreide feedback op je techniek. Jouw trainingsschema wordt continu doorgeprogrammeerd en bijgesteld, zodat je altijd uitgedaagd blijft en stap voor stap progressie boekt.\n\nNa een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. Je ontvangt twee voedingsschema\'s waarmee je direct praktisch aan de slag kunt.\n\nElke twee weken heb je een coachingsgesprek van circa 30 minuten. Tijdens dit gesprek doen we een meting, kijken we terug op de afgelopen periode en bespreken we waar je eventueel tegenaan loopt.\n\nDit pakket is ideaal als je jouw voeding wilt verbeteren, resultaatgericht wilt leren eten en praktische handvatten zoekt die passen bij jouw levensstijl.',
+    benefits: [
+      'Intakegesprek',
+      '0-meting',
+      'Twee persoonlijke voedingsschema\'s',
+      'Elke twee weken een persoonlijk coachgesprek',
+      'Open Gym inbegrepen: onbeperkte toegang tot de gym'
+    ]
+  },
+  {
+    id: 'voeding-begeleiding',
+    category: 'Voedingsbegeleiding',
+    title: 'Voeding die bijdraagt aan je doelen',
+    price: 'vanaf €75,- p.m.',
+    description: 'Heb jij je training goed onder controle en wil je vooral ondersteuning op het gebied van voeding? Dan sluit dit pakket perfect bij jou aan. Na een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. Je ontvangt twee voedingsschema\'s waarmee je direct praktisch aan de slag kunt.\n\nElke twee weken heb je een coachingsgesprek van circa 30 minuten. Tijdens dit gesprek doen we een meting, kijken we terug op de afgelopen periode en bespreken we waar je eventueel tegenaan loopt.\n\nDit pakket is ideaal als je jouw voeding wilt verbeteren, resultaatgericht wilt leren eten en praktische handvatten zoekt die passen bij jouw levensstijl.',
     benefits: [
       'Intakegesprek',
       '0-meting',

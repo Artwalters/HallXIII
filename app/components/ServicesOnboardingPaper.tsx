@@ -8,14 +8,34 @@ import styles from './ServicesOnboardingPaper.module.css';
 
 interface ServicesOnboardingPaperProps {
   onStart?: (serviceId: string) => void;
+  initialServiceId?: string | null;
 }
 
-export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingPaperProps) {
-  const [selectedService, setSelectedService] = useState<ServiceData>(servicesData[0]);
+export default function ServicesOnboardingPaper({ onStart, initialServiceId }: ServicesOnboardingPaperProps) {
+  // Find the initial service based on the serviceId prop, or default to first service
+  const getInitialService = () => {
+    if (initialServiceId) {
+      const found = servicesData.find(s => s.id === initialServiceId);
+      if (found) return found;
+    }
+    return servicesData[0];
+  };
+
+  const [selectedService, setSelectedService] = useState<ServiceData>(getInitialService);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
+
+  // Update selected service when initialServiceId changes
+  useEffect(() => {
+    if (initialServiceId) {
+      const found = servicesData.find(s => s.id === initialServiceId);
+      if (found) {
+        setSelectedService(found);
+      }
+    }
+  }, [initialServiceId]);
 
   // Page load animation
   useEffect(() => {

@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import BackNavigation from '../components/BackNavigation';
@@ -10,11 +11,22 @@ import styles from './page.module.css';
 
 const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 
-export default function DienstenPage() {
+// Wrapper component to read URL params
+function DienstenContent() {
   const heroSectionRef = useRef<HTMLElement>(null);
   const shadowOverlayRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
   const [currentView, setCurrentView] = useState<'selection' | 'registration'>('selection');
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
+  const [initialServiceId, setInitialServiceId] = useState<string | null>(null);
+
+  // Read service query parameter from URL
+  useEffect(() => {
+    const serviceParam = searchParams.get('service');
+    if (serviceParam) {
+      setInitialServiceId(serviceParam);
+    }
+  }, [searchParams]);
 
   // Prevent pull-to-refresh and scrolling on mobile
   useEffect(() => {
@@ -89,6 +101,7 @@ export default function DienstenPage() {
         <div className={styles.contentContainer}>
           {currentView === 'selection' && (
             <ServicesOnboardingPaper
+              initialServiceId={initialServiceId}
               onStart={(serviceId) => {
                 setSelectedServiceId(serviceId);
                 setCurrentView('registration');
@@ -163,5 +176,14 @@ export default function DienstenPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Main export wrapped in Suspense for useSearchParams
+export default function DienstenPage() {
+  return (
+    <Suspense fallback={<div className={styles.pageWrapper} />}>
+      <DienstenContent />
+    </Suspense>
   );
 }

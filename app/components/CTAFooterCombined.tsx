@@ -198,8 +198,8 @@ export default function CTAFooterCombined() {
           tl.set(text, { autoAlpha: 1 })
           .to(instance.chars, {
             yPercent: 0,
-            duration: 0.8,
-            stagger: 0.024,
+            duration: 0.53,
+            stagger: 0.012,
             ease: 'power3.out'
           });
 
