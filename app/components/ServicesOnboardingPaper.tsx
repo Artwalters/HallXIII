@@ -98,10 +98,10 @@ export default function ServicesOnboardingPaper({ onStart }: ServicesOnboardingP
       duration: 0.3,
       ease: 'back.in(1.7)'
     })
-    // Then animate paper out
+    // Then animate paper out (upwards)
     .to(wrapper, {
-      y: '150%',
-      rotation: 15,
+      y: '-150%',
+      rotation: -15,
       scale: 0.9,
       duration: 0.6,
       ease: 'power3.in'

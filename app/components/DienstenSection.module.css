@@ -19,7 +19,7 @@
 
 /* Container */
 .container {
-  max-width: var(--container-width-medium);
+  max-width: var(--container-width-narrow);
   margin: 0 auto;
   padding: 0 var(--container-padding);
   position: relative;
@@ -44,6 +44,36 @@
   margin-bottom: 1rem;
   position: relative;
   z-index: 10;
+}
+
+/* Wrapper for title text to position tag relative to text */
+.titleText {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tag positioned top-left of title text */
+.titleTag {
+  position: absolute;
+  top: -0.55em;
+  left: -0.3em;
+  font-family: var(--font-accent);
+  font-weight: 800;
+  font-size: 0.28em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+/* Black text layer on top */
+.titleTag::after {
+  content: attr(data-text);
+  position: absolute;
+  top: -0.03em;
+  left: 0.03em;
+  color: var(--color-black);
+  font-weight: normal;
 }
 
 /* Add padding to title on mobile since container has no padding */

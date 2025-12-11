@@ -655,7 +655,12 @@ export default function DienstenSection() {
     <section id="diensten" className={styles.section} data-diensten-section="" data-nav-dark>
       <div className={styles.container}>
         {/* Title */}
-        <h2 className={styles.title}>diensten</h2>
+        <h2 className={styles.title}>
+          <span className={styles.titleText}>
+            <span className={styles.titleTag} data-text="ontdek onze">ontdek onze</span>
+            diensten
+          </span>
+        </h2>
 
         {/* Desktop: Cards Grid with Momentum Hover (hidden on mobile) */}
         <div

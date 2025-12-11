@@ -151,6 +151,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   z-index: 10;
   max-width: var(--container-width-medium);
   margin-left: auto;
@@ -202,22 +203,27 @@
 
 /* Main Content */
 .mainContent {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: center;
   gap: 1.5rem;
   padding: 0;
-  margin-top: 0;
+  width: 100%;
 }
 
 /* Meet Hall13 Button */
 .meetHall13Container {
-  align-self: flex-start;
-  margin-top: 12vh;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  position: absolute;
+  top: 18%;
+  left: 0;
+  z-index: 20;
+}
+
+@media (min-width: 1024px) {
+  .meetHall13Container {
+    top: 18%;
+  }
 }
 
 .meetHall13Button {
@@ -267,7 +273,6 @@
   justify-content: center;
   align-items: center;
   container-type: inline-size;
-  margin-top: -8vh;
 }
 
 .hallLogo {
@@ -345,19 +350,23 @@
 
 /* Bottom Row - OnboardingForm (left) + Tagline (right) */
 .bottomRow {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   justify-content: space-between;
   align-items: flex-end;
   gap: 2rem;
   width: 100%;
+  max-width: var(--container-width-medium);
+  padding: 0 var(--container-padding);
   display: flex;
-  padding: 0 var(--container-padding);;
-  padding-bottom: 1rem;
 }
 
-/* Desktop: more padding at top to push content up */
+/* Desktop: more padding at bottom */
 @media (min-width: 769px) {
   .bottomRow {
-    padding: 0 2rem 2rem 2rem;
+    bottom: 2rem;
     align-items: flex-start;
   }
 }
@@ -380,6 +389,13 @@
     display: block;
     align-self: flex-start;
     margin-top: 0.5rem;
+  }
+}
+
+/* Small laptops: more margin for tagline */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .taglineWrapper {
+    margin-top: 3rem;
   }
 }
 
@@ -459,7 +475,7 @@
   gap: 1.5rem;
   align-items: center;
   text-align: center;
-  margin: 0 auto 9rem;
+  margin: 0 auto 5em;
 }
 
 /* Mobile: smaller spacing between text and slider */
@@ -493,14 +509,14 @@
   overflow: hidden;
   max-width: calc(var(--container-width-full) * 1.2);
   margin: 0 auto;
-  height: 24rem;
+  height: 30em;
   background-color: var(--color-black);
 }
 
 /* Desktop: original height */
 @media (min-width: 769px) {
   .imageContainer {
-    height: 45rem;
+    height: 30em;
   }
 }
 

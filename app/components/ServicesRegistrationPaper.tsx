@@ -84,9 +84,10 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
       duration: 0.3,
       ease: 'back.in(1.7)'
     })
+    // Animate paper out (upwards)
     .to(wrapper, {
-      y: '150%',
-      rotation: 15,
+      y: '-150%',
+      rotation: -15,
       scale: 0.9,
       duration: 0.6,
       ease: 'power3.in'
@@ -134,12 +135,88 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
         <div className={styles.scrollableContent} data-lenis-prevent>
           {isSubmitted ? (
             <div className={styles.successMessage}>
-              <p className={styles.successText}>
-                We hebben je aanmelding ontvangen voor {selectedService.title}.
+              <p className={styles.personalMessage}>
+                Yes! Je bent aangemeld voor {selectedService.category}. We kunnen niet wachten om samen aan de slag te gaan!
               </p>
               <p className={styles.successText}>
-                We nemen zo snel mogelijk contact met je op om de volgende stappen te bespreken.
+                <em>Check je inbox voor een bevestiging. We nemen snel contact op om alles verder te bespreken.</em>
               </p>
+
+              {/* Social Icons */}
+              <div className={styles.socialSection}>
+                <p className={styles.socialText}>volg ons</p>
+                <div className={styles.socialIcons}>
+                  <a href="https://instagram.com/hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
+                    <div className={styles.socialIconBorder}>
+                      <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconBack}>
+                      <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconInner}>
+                      <div className={styles.socialIconSprite}>
+                        <img src="/assets/stopmotion_icons/insta1.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/insta2.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/insta3.svg" alt="" className={styles.socialIconImg} />
+                      </div>
+                    </div>
+                  </a>
+                  <a href="https://tiktok.com/@hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="TikTok">
+                    <div className={styles.socialIconBorder}>
+                      <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconBack}>
+                      <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconInner}>
+                      <div className={styles.socialIconSprite}>
+                        <img src="/assets/stopmotion_icons/tiktok1.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/tiktok2.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/tiktok3.svg" alt="" className={styles.socialIconImg} />
+                      </div>
+                    </div>
+                  </a>
+                  <a href="https://facebook.com/hallxiii" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Facebook">
+                    <div className={styles.socialIconBorder}>
+                      <svg className={styles.socialIconBorderSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconBack}>
+                      <svg className={styles.socialIconBackSvg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="none" preserveAspectRatio="none">
+                        <ellipse cx="50" cy="50" rx="46" ry="48" fill="currentColor" />
+                        <ellipse cx="150" cy="50" rx="48" ry="46" fill="currentColor" />
+                        <ellipse cx="250" cy="50" rx="46" ry="47" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className={styles.socialIconInner}>
+                      <div className={styles.socialIconSprite}>
+                        <img src="/assets/stopmotion_icons/facebook1.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/facebook2.svg" alt="" className={styles.socialIconImg} />
+                        <img src="/assets/stopmotion_icons/facebook3.svg" alt="" className={styles.socialIconImg} />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className={styles.form}>

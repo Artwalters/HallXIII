@@ -229,7 +229,12 @@ export default function CoachesSection() {
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>COACHES</h1>
+          <h1 className={styles.title}>
+            <span className={styles.titleText}>
+              <span className={styles.titleTag} data-text="ontmoet de">ontmoet de</span>
+              COACHES
+            </span>
+          </h1>
         </div>
 
         {/* Coaches List - Accordion */}

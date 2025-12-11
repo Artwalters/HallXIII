@@ -30,13 +30,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6em 0;
+  padding: 4em 0;
   gap: 4em;
 }
 
 /* Partners Item - extra spacing */
 .partnersItem {
-  padding: 10em 0;
+  padding: 4em 0;
 }
 
 /* Text Content */

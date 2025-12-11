@@ -79,6 +79,36 @@
   font-weight: 100;
 }
 
+/* Wrapper for title text to position tag relative to text */
+.titleText {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tag positioned top-left of title text */
+.titleTag {
+  position: absolute;
+  top: 0.1em;
+  left: -0.3em;
+  font-family: var(--font-accent);
+  font-weight: 800;
+  font-size: 0.28em;
+  color: var(--color-cream);
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+/* Black text layer on top */
+.titleTag::after {
+  content: attr(data-text);
+  position: absolute;
+  top: -0.03em;
+  left: 0.03em;
+  color: var(--color-black);
+  font-weight: normal;
+}
+
 @media (max-width: 767px) {
   .subtitle {
     font-size: 1.5rem;
