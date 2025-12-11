@@ -163,11 +163,9 @@
   font-size: 44cqw;
   display: flex;
   position: relative;
-  /* Embossed effect - same technique as hero logo */
-  filter:
-    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
-    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
-    brightness(0.98);
+  text-shadow:
+    -2px -2px 3px rgba(0, 0, 0, 0.3),
+    2px 2px 3px rgba(255, 255, 255, 0.15);
 }
 
 .numberGroup {
@@ -213,11 +211,9 @@
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0;
-  /* Embossed effect - same technique as hero logo */
-  filter:
-    drop-shadow(-2px -2px 3px rgba(0, 0, 0, 0.3))
-    drop-shadow(2px 2px 3px rgba(255, 255, 255, 0.15))
-    brightness(0.98);
+  text-shadow:
+    -2px -2px 3px rgba(0, 0, 0, 0.3),
+    2px 2px 3px rgba(255, 255, 255, 0.15);
 }
 
 /* Main Text Mobile - Hidden by default, shown on mobile */
