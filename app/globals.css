@@ -9,13 +9,10 @@
 
 @font-face {
   font-family: 'SCHABO Condensed';
-  src: url('/fonts/SCHABO-Condensed.otf') format('opentype');
-  font-weight: 100;
+  src: url('/fonts/SCHABO-Condensed.woff2') format('woff2');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
-  ascent-override: 85%;
-  descent-override: 20%;
-  line-gap-override: 0%;
 }
 
 /* Helvetica Now Display - Hairline (100) */

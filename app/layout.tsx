@@ -15,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <head>
+        <link rel="preload" href="/fonts/SCHABO-Condensed.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
