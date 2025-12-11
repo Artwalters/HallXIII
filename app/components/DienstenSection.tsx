@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Draggable } from 'gsap/Draggable';
@@ -170,6 +170,16 @@ export default function DienstenSection() {
   const router = useRouter();
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
+  const [showSwipeHints, setShowSwipeHints] = useState(true);
+  const hasSwipedRef = useRef(false);
+
+  // Hide swipe hints after first swipe
+  const hideSwipeHints = () => {
+    if (!hasSwipedRef.current) {
+      hasSwipedRef.current = true;
+      setShowSwipeHints(false);
+    }
+  };
 
   // Desktop: Momentum-based hover animation with inertia (only on desktop)
   useEffect(() => {
@@ -398,6 +408,7 @@ export default function DienstenSection() {
         if (shift !== 0) {
           activeIndex = (activeIndex + shift + total) % total;
           renderCards(activeIndex);
+          hideSwipeHints();
         }
 
         gsap.to(this.target, {
@@ -813,6 +824,26 @@ export default function DienstenSection() {
               ))}
             </div>
           </div>
+
+          {/* Swipe Hint Arrows */}
+          {showSwipeHints && (
+            <>
+              <div className={styles.swipeHintLeft}>
+                <div className={styles.swipeHintSprite}>
+                  <Image src="/assets/stopmotion_icons/right1.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                  <Image src="/assets/stopmotion_icons/right2.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                  <Image src="/assets/stopmotion_icons/right3.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                </div>
+              </div>
+              <div className={styles.swipeHintRight}>
+                <div className={styles.swipeHintSprite}>
+                  <Image src="/assets/stopmotion_icons/right1.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                  <Image src="/assets/stopmotion_icons/right2.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                  <Image src="/assets/stopmotion_icons/right3.svg" alt="" width={24} height={24} className={styles.swipeHintIcon} />
+                </div>
+              </div>
+            </>
+          )}
 
         </div>
       </div>
