@@ -8,7 +8,10 @@ import Navigation from './Navigation';
 import OnboardingForm from './OnboardingForm';
 import styles from './HeroExpertiseCombined.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 

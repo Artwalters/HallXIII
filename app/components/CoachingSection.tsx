@@ -9,7 +9,10 @@ import MarqueeScroll from './MarqueeScroll';
 import styles from './CoachingSection.module.css';
 import { useRouter } from 'next/navigation';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+}
 
 const coachingItems = [
   {

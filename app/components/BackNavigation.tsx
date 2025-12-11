@@ -6,7 +6,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navigation.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function BackNavigation() {
   const router = useRouter();

@@ -9,7 +9,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import styles from './ReviewSection.module.css';
 
-gsap.registerPlugin(InertiaPlugin, DrawSVGPlugin, ScrollTrigger, SplitText);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(InertiaPlugin, DrawSVGPlugin, ScrollTrigger, SplitText);
+}
 
 const frames = [
   '/assets/frames poloroid/frame 1.png',

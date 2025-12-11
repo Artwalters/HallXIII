@@ -9,7 +9,10 @@ import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import styles from './DienstenSection.module.css';
 import { useRouter } from 'next/navigation';
 
-gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, Draggable, DrawSVGPlugin);
+}
 
 // Polaroid frames
 const frames = [

@@ -8,7 +8,10 @@ import { SplitText } from 'gsap/SplitText';
 import OnboardingForm from './OnboardingForm';
 import styles from './CTAFooterCombined.module.css';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+}
 
 const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 

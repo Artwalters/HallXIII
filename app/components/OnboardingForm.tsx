@@ -8,7 +8,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import styles from './OnboardingForm.module.css';
 
-gsap.registerPlugin(ScrollTrigger, InertiaPlugin);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, InertiaPlugin);
+}
 
 const fitnessGoals = [
   'Sterker worden',

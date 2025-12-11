@@ -6,7 +6,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './MarqueeScroll.module.css';
 
-gsap.registerPlugin(ScrollTrigger);
+// Register GSAP plugins only on client side
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const basePath = process.env.NODE_ENV === 'production' ? '/HallXIII' : '';
 
