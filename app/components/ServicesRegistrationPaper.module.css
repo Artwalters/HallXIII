@@ -133,6 +133,7 @@
 
 .title {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--font-body-large);
   color: var(--color-black);
@@ -157,6 +158,7 @@
 .servicePrice {
   display: block;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--font-body-large);
   color: var(--color-black);
@@ -269,6 +271,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   text-transform: uppercase;
   z-index: 2;
@@ -428,6 +431,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   z-index: 2;
   text-transform: uppercase;
@@ -463,6 +467,7 @@
 /* Personal Message - Relost font */
 .personalMessage {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--relost-caption-big);
   color: var(--color-black);
@@ -482,6 +487,7 @@
 
 .socialText {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--relost-caption-big);
   color: var(--color-black);

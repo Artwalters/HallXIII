@@ -43,8 +43,39 @@ export default function OnboardingFlow() {
     email: '',
   });
   const [isAnimating, setIsAnimating] = useState(false);
+  const [validationError, setValidationError] = useState('');
+  const [errorKey, setErrorKey] = useState(0);
 
   const totalSteps = 5;
+
+  // Grappige validatie berichten per stap
+  const validationMessages = {
+    name: [
+      'He, heb jij geen naam?',
+      'Zonder naam kunnen we je niet helpen!',
+      'Psst... je naam mag er wel bij!',
+    ],
+    goals: [
+      'Selecteer minimaal 1 uitdaging',
+      'Waar loop je tegenaan? Kies er minimaal 1!',
+    ],
+    investment: [
+      'Maak een keuze!',
+      'Investeren in jezelf is nooit een fout!',
+    ],
+    age: [
+      'Selecteer je leeftijdscategorie',
+      'Leeftijd is maar een nummer... maar wel eentje die we nodig hebben!',
+    ],
+    contact: [
+      'Vul je contactgegevens in zodat we je kunnen bereiken!',
+    ],
+  };
+
+  const getRandomMessage = (type: keyof typeof validationMessages) => {
+    const messages = validationMessages[type];
+    return messages[Math.floor(Math.random() * messages.length)];
+  };
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
 
@@ -148,8 +179,45 @@ export default function OnboardingFlow() {
     }, '-=0.1');
   }, [isAnimating]);
 
+  const validateStep = (): boolean => {
+    switch (currentStep) {
+      case 1:
+        if (!formData.name.trim()) {
+          setValidationError(getRandomMessage('name'));
+          setErrorKey(prev => prev + 1);
+          return false;
+        }
+        break;
+      case 2:
+        if (formData.goals.length === 0) {
+          setValidationError(getRandomMessage('goals'));
+          setErrorKey(prev => prev + 1);
+          return false;
+        }
+        break;
+      case 3:
+        if (!formData.investment) {
+          setValidationError(getRandomMessage('investment'));
+          setErrorKey(prev => prev + 1);
+          return false;
+        }
+        break;
+      case 4:
+        if (!formData.age) {
+          setValidationError(getRandomMessage('age'));
+          setErrorKey(prev => prev + 1);
+          return false;
+        }
+        break;
+    }
+    return true;
+  };
+
   const handleNext = () => {
     if (currentStep < totalSteps && !isAnimating) {
+      if (!validateStep()) return;
+
+      setValidationError('');
       animateStepChange('next', () => {
         setCurrentStep(prev => prev + 1);
       });
@@ -158,6 +226,7 @@ export default function OnboardingFlow() {
 
   const handleBack = () => {
     if (currentStep > 1 && !isAnimating) {
+      setValidationError('');
       animateStepChange('back', () => {
         setCurrentStep(prev => prev - 1);
       });
@@ -165,6 +234,7 @@ export default function OnboardingFlow() {
   };
 
   const toggleGoal = (goal: string) => {
+    setValidationError('');
     setFormData(prev => ({
       ...prev,
       goals: prev.goals.includes(goal)
@@ -251,7 +321,7 @@ export default function OnboardingFlow() {
             <input
               type="text"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) => { setValidationError(''); setFormData({ ...formData, name: e.target.value }); }}
               placeholder="Je naam"
               className={styles.input}
             />
@@ -297,7 +367,13 @@ export default function OnboardingFlow() {
               </div>
             ))}
           </div>
-          <p className={styles.helper}>Je mag meerdere opties selecteren</p>
+          {formData.goals.length === 6 ? (
+            <p className={styles.selectionCount}>Oei, jij hebt hulp nodig ;) Klik snel op volgende!</p>
+          ) : formData.goals.length > 0 ? (
+            <p className={styles.selectionCount}>{formData.goals.length} geselecteerd</p>
+          ) : (
+            <p className={styles.helper}>Je mag meerdere opties selecteren</p>
+          )}
         </div>
       )}
 
@@ -325,7 +401,7 @@ export default function OnboardingFlow() {
             </div>
             <select
               value={formData.investment}
-              onChange={(e) => setFormData({ ...formData, investment: e.target.value })}
+              onChange={(e) => { setValidationError(''); setFormData({ ...formData, investment: e.target.value }); }}
               className={styles.dropdown}
             >
               <option value="">Maak een keuze</option>
@@ -373,7 +449,7 @@ export default function OnboardingFlow() {
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) => { setValidationError(''); setFormData({ ...formData, name: e.target.value }); }}
                 placeholder="Je naam"
                 className={styles.input}
                 required
@@ -397,7 +473,7 @@ export default function OnboardingFlow() {
               </div>
               <select
                 value={formData.age}
-                onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                onChange={(e) => { setValidationError(''); setFormData({ ...formData, age: e.target.value }); }}
                 className={styles.dropdown}
                 required
               >
@@ -435,7 +511,10 @@ export default function OnboardingFlow() {
               <input
                 type="tel"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/[^0-9+\-\s()]/g, '');
+                  setFormData({ ...formData, phone: value });
+                }}
                 placeholder="Je telefoonnummer"
                 className={styles.input}
                 required
@@ -589,6 +668,11 @@ export default function OnboardingFlow() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Validation Error */}
+      {validationError && (
+        <p key={errorKey} className={styles.validationError}>{validationError}</p>
       )}
 
       {/* Navigation - hidden on success step */}

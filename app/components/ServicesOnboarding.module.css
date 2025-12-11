@@ -115,6 +115,7 @@
 .menuItemText {
   position: relative;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--relost-button-size);
   color: var(--color-white);
@@ -377,6 +378,7 @@
 .startButtonText {
   position: relative;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--relost-button-size);
   color: var(--color-white);

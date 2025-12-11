@@ -106,6 +106,7 @@
 /* Subtitle */
 .subtitle {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--relost-caption-big); /* Global Relost caption size */
   color: var(--color-black);
@@ -299,6 +300,7 @@
 
 .reviewText {
   font-family: var(--font-card);
+  letter-spacing: var(--letter-spacing-accent);
   font-size: var(--relost-poloroid-small);
   font-weight: normal; /* Reset inherited weight for handwritten font */
   color: var(--color-black);
@@ -327,6 +329,7 @@
 
 .ctaText {
   font-family: var(--font-card);
+  letter-spacing: var(--letter-spacing-accent);
   font-size: var(--relost-caption-big);
   color: var(--color-black);
   text-decoration: none;

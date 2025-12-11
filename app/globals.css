@@ -244,6 +244,9 @@
   --weight-accent: normal;    /* Relost default weight */
   --weight-par: 500;          /* Helvetica Now Display default weight (Bold) */
 
+  /* Letter Spacing */
+  --letter-spacing-accent: 0.10em;  /* Relost font spacing */
+
  
 
   /* ========== DESIGN SYSTEM COLORS ========== */
@@ -310,6 +313,9 @@ body *[style*="font-family: var(--font-accent)"],
 body *[style*="font-family:var(--font-accent)"] {
   font-weight: var(--weight-accent) !important;
 }
+
+
+
 
 /* ========== CUSTOM CURSORS ========== */
 

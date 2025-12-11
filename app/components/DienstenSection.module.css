@@ -64,6 +64,7 @@
   top: -0.55em;
   left: -0.3em;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: 800;
   font-size: 0.28em;
   color: var(--color-cream);
@@ -437,6 +438,7 @@
 
 .textDrawSpan {
   font-family: var(--font-card);
+  letter-spacing: var(--letter-spacing-accent);
   font-size: var(--relost-poloroid);
   font-weight: normal;
   color: var(--color-black);

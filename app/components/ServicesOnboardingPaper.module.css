@@ -179,6 +179,7 @@
 
 .title {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--font-body-large);
   color: var(--color-black);
@@ -272,6 +273,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   z-index: 2;
   white-space: nowrap;
@@ -421,6 +423,7 @@
 .servicePrice {
   display: block;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: 0.5em;
   color: var(--color-black);
@@ -431,6 +434,7 @@
 /* Section Title - Relost font for section headers */
 .sectionTitle {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   font-size: var(--font-body-large);
   color: var(--color-black);
@@ -570,6 +574,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   z-index: 2;
   text-transform: uppercase;

@@ -192,6 +192,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-weight: 400;
   z-index: 2;

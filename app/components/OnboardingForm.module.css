@@ -168,6 +168,7 @@
   text-transform: uppercase;
   white-space: nowrap;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-weight: 400;
 }
@@ -199,6 +200,7 @@
   letter-spacing: 0.025em;
   line-height: 1.25;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
   text-transform: uppercase;
 }
@@ -287,6 +289,7 @@
   color: var(--color-white);
   font-size: var(--relost-button-size);
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-weight: 400;
   z-index: 2;
@@ -423,6 +426,7 @@
   transform: translateY(-50%);
   pointer-events: none;
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-weight: 400;
 }

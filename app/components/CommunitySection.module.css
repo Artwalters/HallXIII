@@ -112,6 +112,7 @@
 
 .topLine {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--relost-caption-big); /* Global Relost caption size */
   color: var(--color-dark-brown);
@@ -196,6 +197,7 @@
 
 .socialText {
   font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
   font-weight: normal; /* Relost should maintain natural weight */
   font-size: var(--relost-caption-big);
   color: var(--color-dark-brown);
