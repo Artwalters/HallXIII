@@ -1,10 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { servicesData, ServiceData } from '../data/servicesData';
 import styles from './ServicesOnboardingPaper.module.css';
+
+// Available pin button images
+const PIN_BUTTONS = [
+  '/assets/buttons/XIII_button.png',
+  '/assets/buttons/XIII_button_blue.png',
+  '/assets/buttons/XIII_button_red.png',
+];
 
 interface ServicesOnboardingPaperProps {
   onStart?: (serviceId: string) => void;
@@ -27,6 +34,11 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
 
+  // Select a random pin button on mount
+  const pinButtonSrc = useMemo(() => {
+    return PIN_BUTTONS[Math.floor(Math.random() * PIN_BUTTONS.length)];
+  }, []);
+
   // Update selected service when initialServiceId changes
   useEffect(() => {
     if (initialServiceId) {
@@ -45,17 +57,19 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
     const pin = pinRef.current;
 
     // Set initial state - paper far below screen, rotated and slightly scaled
+    // Using autoAlpha (visibility + opacity) to prevent FOUC
     gsap.set(wrapper, {
       y: '150%',
       rotation: 15,
       scale: 0.9,
-      transformOrigin: 'center bottom'
+      transformOrigin: 'center bottom',
+      autoAlpha: 1 // Makes visible after CSS hides it
     });
 
     // Set initial state for pin - invisible and scaled down
     gsap.set(pin, {
       scale: 0,
-      opacity: 0
+      autoAlpha: 0
     });
 
     // Animate paper up with slight rotation correction
@@ -72,7 +86,7 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
     // Then pop the pin
     .to(pin, {
       scale: 1,
-      opacity: 1,
+      autoAlpha: 1,
       duration: 0.4,
       ease: 'back.out(1.7)'
     }, '-=0.1');
@@ -120,7 +134,7 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
     // First scale down pin
     tl.to(pin, {
       scale: 0,
-      opacity: 0,
+      autoAlpha: 0,
       duration: 0.3,
       ease: 'back.in(1.7)'
     })
@@ -139,7 +153,7 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
       {/* Pin at top */}
       <div ref={pinRef} className={styles.pin}>
         <Image
-          src="/assets/buttons/XIII_button.png"
+          src={pinButtonSrc}
           alt=""
           width={112}
           height={112}

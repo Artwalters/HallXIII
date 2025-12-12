@@ -1,10 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { servicesData } from '../data/servicesData';
 import styles from './ServicesRegistrationPaper.module.css';
+
+// Available pin button images
+const PIN_BUTTONS = [
+  '/assets/buttons/XIII_button.png',
+  '/assets/buttons/XIII_button_blue.png',
+  '/assets/buttons/XIII_button_red.png',
+];
 
 interface ServicesRegistrationPaperProps {
   serviceId: string | null;
@@ -22,6 +29,14 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
   const [isSubmitted, setIsSubmitted] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Select a random pin button on mount
+  const pinButtonSrc = useMemo(() => {
+    return PIN_BUTTONS[Math.floor(Math.random() * PIN_BUTTONS.length)];
+  }, []);
 
   const selectedService = servicesData.find(s => s.id === serviceId) || servicesData[0];
 
@@ -33,17 +48,19 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
     const pin = pinRef.current;
 
     // Set initial state - paper far below screen, rotated and slightly scaled
+    // Using autoAlpha (visibility + opacity) to prevent FOUC
     gsap.set(wrapper, {
       y: '150%',
       rotation: 15,
       scale: 0.9,
-      transformOrigin: 'center bottom'
+      transformOrigin: 'center bottom',
+      autoAlpha: 1 // Makes visible after CSS hides it
     });
 
     // Set initial state for pin - invisible and scaled down
     gsap.set(pin, {
       scale: 0,
-      opacity: 0
+      autoAlpha: 0
     });
 
     // Delay to allow previous component's exit animation to complete
@@ -58,7 +75,7 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
     })
     .to(pin, {
       scale: 1,
-      opacity: 1,
+      autoAlpha: 1,
       duration: 0.4,
       ease: 'back.out(1.7)'
     }, '-=0.1');
@@ -86,7 +103,7 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
 
     tl.to(pin, {
       scale: 0,
-      opacity: 0,
+      autoAlpha: 0,
       duration: 0.3,
       ease: 'back.in(1.7)'
     })
@@ -102,13 +119,88 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Custom validation: at least phone or email required
+    const trimmedPhone = formData.phone.trim();
+    const trimmedEmail = formData.email.trim();
+
+    if (!trimmedPhone && !trimmedEmail) {
+      // Show native browser validation popup on phone field
+      phoneRef.current?.setCustomValidity('Vul je telefoonnummer of e-mailadres in');
+      phoneRef.current?.reportValidity();
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    // Animate out before showing success, then animate back in
+    if (!wrapperRef.current || !pinRef.current) {
+      setIsSubmitted(true);
+      return;
+    }
+
+    const wrapper = wrapperRef.current;
+    const pin = pinRef.current;
+
+    // Exit animation
+    const exitTl = gsap.timeline({
+      onComplete: () => {
+        // Update state after exit animation
+        setIsSubmitted(true);
+
+        // Reset position for enter animation (from bottom)
+        gsap.set(wrapper, {
+          y: '150%',
+          rotation: 15,
+          scale: 0.9,
+          transformOrigin: 'center bottom',
+          autoAlpha: 1
+        });
+
+        gsap.set(pin, {
+          scale: 0,
+          autoAlpha: 0
+        });
+
+        // Enter animation
+        const enterTl = gsap.timeline();
+
+        enterTl.to(wrapper, {
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: 'power3.out'
+        })
+        .to(pin, {
+          scale: 1,
+          autoAlpha: 1,
+          duration: 0.4,
+          ease: 'back.out(1.7)'
+        }, '-=0.1');
+      }
+    });
+
+    // First scale down pin
+    exitTl.to(pin, {
+      scale: 0,
+      autoAlpha: 0,
+      duration: 0.3,
+      ease: 'back.in(1.7)'
+    })
+    // Then animate paper out (upwards)
+    .to(wrapper, {
+      y: '-150%',
+      rotation: -15,
+      scale: 0.9,
+      duration: 0.6,
+      ease: 'power3.in'
+    }, '-=0.1');
   };
 
   return (
@@ -116,7 +208,7 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
       {/* Pin at top */}
       <div ref={pinRef} className={styles.pin}>
         <Image
-          src="/assets/buttons/XIII_button.png"
+          src={pinButtonSrc}
           alt=""
           width={112}
           height={112}
@@ -225,7 +317,7 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
               {/* Name Input */}
               <div className={styles.inputWrapper}>
                 <div className={styles.inputBorder}>
@@ -269,12 +361,18 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
                   </svg>
                 </div>
                 <input
+                  ref={phoneRef}
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    // Only allow digits and phone-related symbols
+                    const filtered = e.target.value.replace(/[^0-9+\-() ]/g, '');
+                    setFormData({ ...formData, phone: filtered });
+                    // Reset custom validity when user types
+                    phoneRef.current?.setCustomValidity('');
+                  }}
                   placeholder="Je telefoonnummer"
                   className={styles.input}
-                  required
                 />
               </div>
 
@@ -295,12 +393,16 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
                   </svg>
                 </div>
                 <input
+                  ref={emailRef}
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    // Reset custom validity on phone field when user types email
+                    phoneRef.current?.setCustomValidity('');
+                  }}
                   placeholder="Je e-mail"
                   className={styles.input}
-                  required
                 />
               </div>
 
@@ -363,7 +465,7 @@ export default function ServicesRegistrationPaper({ serviceId, onBack }: Service
               </button>
               <button
                 className={styles.submitButton}
-                onClick={handleSubmit}
+                onClick={() => formRef.current?.requestSubmit()}
                 type="button"
                 disabled={isSubmitting}
               >

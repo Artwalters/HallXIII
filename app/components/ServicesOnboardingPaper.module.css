@@ -7,6 +7,8 @@
   margin: 0 auto;
   padding-top: 3em; /* Space for pin */
   font-size: 16px;
+  /* Initial state for GSAP animation - prevents FOUC */
+  visibility: hidden;
 }
 
 /* Slightly smaller on smaller desktops */

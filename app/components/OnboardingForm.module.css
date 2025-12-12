@@ -4,6 +4,8 @@
   background: transparent;
   width: 100%;
   padding-top: 2em; /* Space for pin */
+  /* Initial state for GSAP animation - prevents FOUC */
+  visibility: hidden;
 }
 
 

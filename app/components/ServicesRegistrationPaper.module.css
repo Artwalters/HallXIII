@@ -7,6 +7,8 @@
   margin: 0 auto;
   padding-top: 3em;
   font-size: 16px;
+  /* Initial state for GSAP animation - prevents FOUC */
+  visibility: hidden;
 }
 
 /* Slightly smaller on smaller desktops */
@@ -273,7 +275,7 @@
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
-  text-transform: uppercase;
+  font-variant-caps: small-caps;
   z-index: 2;
 }
 

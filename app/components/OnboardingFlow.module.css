@@ -5,6 +5,10 @@
   width: 100%;
   padding-top: 3em; /* Space for pin */
   font-size: 14px; /* Fixed base size - smaller to match button sizes on other pages */
+  /* Ensure children with transforms don't overflow during animations */
+  isolation: isolate;
+  /* Initial state for GSAP animation - prevents FOUC */
+  visibility: hidden;
 }
 
 /* Match Hero section padding on mobile */
@@ -23,22 +27,9 @@
   width: 100%;
   flex-shrink: 0;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   max-height: 80vh;
-}
-
-/* Paper background with clip-path */
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-beige);
-  z-index: -1;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-  /* Paper rip clip-path effect */
+  /* Paper rip clip-path effect - on container to clip all children including overlay */
   clip-path: polygon(
     /* Top ripped edge */
     0% 3%,
@@ -88,6 +79,21 @@
     /* Left edge */
     0% 0%
   );
+  /* Hint browser about transform changes from parent animation */
+  will-change: transform;
+}
+
+/* Paper background with clip-path */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-beige);
+  z-index: -1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
 /* Pin/thumbtack positioned at top */
@@ -118,7 +124,7 @@
   z-index: 60;
   pointer-events: none;
   opacity: 0.3;
-  /* Match the clip-path of the background */
+  /* Apply same clip-path to overlay for animation consistency */
   clip-path: polygon(
     0% 3%, 5% 2.5%, 10% 3.5%, 15% 2.8%, 20% 3.2%, 25% 2.6%, 30% 3.4%, 35% 2.9%, 40% 3.3%, 45% 2.7%,
     50% 3.1%, 55% 2.8%, 60% 3.4%, 65% 2.9%, 70% 3.2%, 75% 2.7%, 80% 3.3%, 85% 2.8%, 90% 3.1%, 95% 2.9%, 100% 3.2%,
@@ -127,6 +133,8 @@
     50% 97.2%, 45% 97.6%, 40% 97.3%, 35% 97.7%, 30% 97.2%, 25% 97.5%, 20% 97.1%, 15% 97.6%, 10% 97.3%, 5% 97.8%, 0% 97.4%,
     0% 0%
   );
+  /* Hint browser about transform changes from parent animation */
+  will-change: transform, clip-path;
 }
 
 .overlayImage {
@@ -1058,4 +1066,102 @@
   66.66%, 99.99% {
     transform: translateX(-66.66%);
   }
+}
+
+/* Home Button - Stop Motion Style */
+.homeButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em 1.5em;
+  margin-top: 1.5em;
+  min-width: 12em;
+  height: fit-content;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Home Button Border - white, behind dark */
+.homeButtonBorder {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.homeButton:hover .homeButtonBorder {
+  opacity: 1;
+}
+
+.homeButtonBorderSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-white);
+}
+
+.homeButton:hover .homeButtonBorderSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Home Button Background - dark */
+.homeButtonBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.homeButtonBackSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  max-width: none;
+  color: var(--color-black);
+}
+
+.homeButton:hover .homeButtonBackSvg {
+  animation: spriteBackground 0.5s steps(1, end) infinite;
+}
+
+/* Home Button Text */
+.homeButtonText {
+  position: relative;
+  color: var(--color-white);
+  font-size: var(--relost-button-size);
+  font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
+  font-weight: normal;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+/* Text Wiggle Animation on hover */
+@keyframes homeButtonWiggle {
+  0%, 100% {
+    transform: rotate(-0.5deg);
+  }
+  50% {
+    transform: rotate(0.5deg);
+  }
+}
+
+.homeButton:hover .homeButtonText {
+  animation: homeButtonWiggle 0.6s steps(2, end) infinite;
 }

@@ -33,9 +33,18 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
   const totalSteps = 4;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const [hasCompletedOnboarding, setHasCompletedOnboarding] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pinRef = useRef<HTMLDivElement>(null);
+
+  // Check if user has completed onboarding
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const completed = localStorage.getItem('hall13_onboarding_completed') === 'true';
+      setHasCompletedOnboarding(completed);
+    }
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -61,17 +70,19 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
     const triggerElement = wrapper.parentElement;
 
     // Set initial state - paper below screen, rotated and scaled down
+    // Use autoAlpha to make visible now that GSAP has control (prevents FOUC)
     gsap.set(wrapper, {
       y: '150%',
       rotation: 15,
       scale: 0.9,
-      transformOrigin: 'center bottom'
+      transformOrigin: 'center bottom',
+      autoAlpha: 1
     });
 
     // Pin invisible and scaled down
     gsap.set(pin, {
       scale: 0,
-      opacity: 0
+      autoAlpha: 0
     });
 
     if (animateOnScroll) {
@@ -93,7 +104,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
           // Then pin pops in
           .to(pin, {
             scale: 1,
-            opacity: 1,
+            autoAlpha: 1,
             duration: 0.4,
             ease: 'back.out(1.7)'
           }, '-=0.1');
@@ -109,7 +120,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
           });
           gsap.to(pin, {
             scale: 0,
-            opacity: 0,
+            autoAlpha: 0,
             duration: 0.3
           });
         }
@@ -133,7 +144,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
       // Then pin pops in
       .to(pin, {
         scale: 1,
-        opacity: 1,
+        autoAlpha: 1,
         duration: 0.4,
         ease: 'back.out(1.7)'
       }, '-=0.1');
@@ -370,7 +381,9 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
       {/* Subtitle */}
       <div className={styles.subtitleRow}>
         <p className={styles.subtitleText}>
-          Check vrijblijvend of hall13 past bij jouw doelen
+          {hasCompletedOnboarding
+            ? 'Bedankt! Check je mail voor de bevestiging'
+            : 'Check vrijblijvend of hall13 past bij jouw doelen'}
         </p>
       </div>
 
