@@ -346,8 +346,9 @@ export default function ReviewSection() {
     // Create scroll trigger animation - draws once on scroll
     const st = ScrollTrigger.create({
       trigger: trigger,
-      start: 'top 80%',
+      start: 'top 85%',
       once: true,
+      invalidateOnRefresh: true,
       onEnter: () => {
         gsap.to(path, {
           duration: 0.8,
@@ -429,8 +430,9 @@ export default function ReviewSection() {
           const tl = gsap.timeline({
             scrollTrigger: {
               trigger: label,
-              start: 'top 85%',
-              toggleActions: 'play none none reset'
+              start: 'top 90%',
+              toggleActions: 'play none none reset',
+              invalidateOnRefresh: true
             }
           });
 

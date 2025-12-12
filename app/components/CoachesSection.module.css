@@ -63,6 +63,12 @@
   margin-bottom: 3rem;
 }
 
+@media (max-width: 767px) {
+  .titleWrapper {
+    text-align: center;
+  }
+}
+
 @media (min-width: 1024px) {
   .titleWrapper {
     margin-bottom: 0;
