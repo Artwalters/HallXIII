@@ -153,7 +153,7 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
           <h2 className={styles.title}>Kies je traject</h2>
 
           {/* Dropdown */}
-          <div className={styles.dropdownWrapper} ref={dropdownRef}>
+          <div className={`${styles.dropdownWrapper} ${isDropdownOpen ? styles.dropdownWrapperOpen : ''}`} ref={dropdownRef}>
             <button
               className={`${styles.dropdownButton} ${isDropdownOpen ? styles.dropdownButtonOpen : ''}`}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}

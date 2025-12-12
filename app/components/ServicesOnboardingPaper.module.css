@@ -194,6 +194,13 @@
   width: 100%;
 }
 
+/* Only raise z-index when dropdown is open (on large screens) */
+@media (min-width: 1200px) {
+  .dropdownWrapperOpen {
+    z-index: 100;
+  }
+}
+
 .dropdownButton {
   position: relative;
   display: inline-flex;
