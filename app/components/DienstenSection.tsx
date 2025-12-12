@@ -16,10 +16,10 @@ if (typeof window !== 'undefined') {
 
 // Polaroid frames
 const frames = [
-  '/assets/frames poloroid/frame 1.png',
-  '/assets/frames poloroid/frame2.png',
-  '/assets/frames poloroid/frame 3.png',
-  '/assets/frames poloroid/frame4.png',
+  '/assets/frames poloroid/frame 1.webp',
+  '/assets/frames poloroid/frame2.webp',
+  '/assets/frames poloroid/frame 3.webp',
+  '/assets/frames poloroid/frame4.webp',
 ];
 
 // Text rotations for organic look
@@ -28,7 +28,7 @@ const textRotations = [-1.5, 1.2, -0.8];
 // 3 cards for desktop momentum hover
 const desktopCards = [
   {
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     title: 'dagpas (opengym)',
     caption: 'dagpas (opengym)',
     rotation: 2,
@@ -37,11 +37,11 @@ const desktopCards = [
     textRotation: textRotations[0],
     magnetPosition: { top: '3%', left: '8%', rotation: -8 },
     serviceId: 'dagpas-opengym',
-    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonImage: '/assets/buttons/XIII_button_red.webp',
     buttonSize: 120,
   },
   {
-    image: '/assets/expertise-2.jpg',
+    image: '/assets/expertise-2.webp',
     title: 'lid worden (opengym)',
     caption: 'lid worden (opengym)',
     rotation: -1,
@@ -50,11 +50,11 @@ const desktopCards = [
     textRotation: textRotations[1],
     magnetPosition: { top: '5%', right: '5%', rotation: 12 },
     serviceId: 'open-gym',
-    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonImage: '/assets/buttons/XIII_button.webp',
     buttonSize: 120,
   },
   {
-    image: '/assets/expertise-3.jpg',
+    image: '/assets/expertise-3.webp',
     title: 'coaching trajecten',
     caption: 'coaching trajecten',
     rotation: 4,
@@ -64,7 +64,7 @@ const desktopCards = [
     magnetPosition: { top: '2%', left: '6%', rotation: -5 },
     link: '#coaching-trajecten',
     isExternal: false,
-    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonImage: '/assets/buttons/MAE_button.webp',
     buttonSize: 138,
   },
 ];
@@ -72,7 +72,7 @@ const desktopCards = [
 // 7 cards for mobile flick - ordered to avoid same card on wraparound
 const gymCards = [
   {
-    image: '/assets/expertise-3.jpg',
+    image: '/assets/expertise-3.webp',
     title: 'coaching trajecten',
     caption: 'coaching trajecten',
     rotation: 3,
@@ -82,11 +82,11 @@ const gymCards = [
     magnetPosition: { top: '-8%', right: '5%', rotation: -12 },
     link: '#coaching-trajecten',
     isExternal: false,
-    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonImage: '/assets/buttons/MAE_button.webp',
     buttonSize: 161,
   },
   {
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     title: 'dagpas (opengym)',
     caption: 'dagpas (opengym)',
     rotation: -2,
@@ -95,11 +95,11 @@ const gymCards = [
     textRotation: 1.2,
     magnetPosition: { top: '-6%', right: '3%', rotation: 8 },
     serviceId: 'dagpas-opengym',
-    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonImage: '/assets/buttons/XIII_button_red.webp',
     buttonSize: 140,
   },
   {
-    image: '/assets/expertise-2.jpg',
+    image: '/assets/expertise-2.webp',
     title: 'lid worden (opengym)',
     caption: 'lid worden (opengym)',
     rotation: 4,
@@ -108,11 +108,11 @@ const gymCards = [
     textRotation: -1.5,
     magnetPosition: { top: '-10%', right: '8%', rotation: -15 },
     serviceId: 'open-gym',
-    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonImage: '/assets/buttons/XIII_button.webp',
     buttonSize: 140,
   },
   {
-    image: '/assets/expertise-3.jpg',
+    image: '/assets/expertise-3.webp',
     title: 'coaching trajecten',
     caption: 'coaching trajecten',
     rotation: -3,
@@ -122,11 +122,11 @@ const gymCards = [
     magnetPosition: { top: '-5%', right: '6%', rotation: 18 },
     link: '#coaching-trajecten',
     isExternal: false,
-    buttonImage: '/assets/buttons/MAE_button.png',
+    buttonImage: '/assets/buttons/MAE_button.webp',
     buttonSize: 161,
   },
   {
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     title: 'dagpas (opengym)',
     caption: 'dagpas (opengym)',
     rotation: 2,
@@ -135,11 +135,11 @@ const gymCards = [
     textRotation: -1.2,
     magnetPosition: { top: '-7%', right: '4%', rotation: -10 },
     serviceId: 'dagpas-opengym',
-    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonImage: '/assets/buttons/XIII_button_red.webp',
     buttonSize: 140,
   },
   {
-    image: '/assets/expertise-2.jpg',
+    image: '/assets/expertise-2.webp',
     title: 'lid worden (opengym)',
     caption: 'lid worden (opengym)',
     rotation: -4,
@@ -148,11 +148,11 @@ const gymCards = [
     textRotation: 0.9,
     magnetPosition: { top: '-9%', right: '7%', rotation: 14 },
     serviceId: 'open-gym',
-    buttonImage: '/assets/buttons/XIII_button.png',
+    buttonImage: '/assets/buttons/XIII_button.webp',
     buttonSize: 140,
   },
   {
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     title: 'dagpas (opengym)',
     caption: 'dagpas (opengym)',
     rotation: 5,
@@ -161,7 +161,7 @@ const gymCards = [
     textRotation: -1.8,
     magnetPosition: { top: '-6%', right: '5%', rotation: -8 },
     serviceId: 'dagpas-opengym',
-    buttonImage: '/assets/buttons/XIII_button_red.png',
+    buttonImage: '/assets/buttons/XIII_button_red.webp',
     buttonSize: 140,
   },
 ];

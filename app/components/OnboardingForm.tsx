@@ -261,7 +261,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
       {/* Pin/Thumbtack */}
       <div className={styles.pin} ref={pinRef}>
         <Image
-          src="/assets/buttons/XIII_button_blue.png"
+          src="/assets/buttons/XIII_button_blue.webp"
           alt=""
           width={80}
           height={80}
@@ -390,7 +390,7 @@ export default function OnboardingForm({ animateOnScroll = false }: OnboardingFo
       {/* Texture Overlay */}
       <div className={styles.overlay}>
         <Image
-          src="/assets/overlays/overlay.jpg"
+          src="/assets/overlays/overlay.webp"
           alt=""
           fill
           className={styles.overlayImage}

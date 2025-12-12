@@ -20,7 +20,7 @@ const coachingItems = [
     category: 'training begeleiding',
     title: 'zelfstandig trainen met ondersteuning',
     description: 'Bij Trainingsbegeleiding krijg je alles wat je nodig hebt om zelfstandig aan de slag te gaan, mét de steun van jouw persoonlijke coach. Je ontvangt een op maat gemaakt trainingsplan dat aansluit op jouw niveau, wensen, behoeften en doelen.',
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     imageAlt: 'Training begeleiding',
     imagePosition: 'right', // Text left, Image right
     serviceId: 'training-begeleiding'
@@ -30,7 +30,7 @@ const coachingItems = [
     category: 'performance coaching',
     title: 'haal het maximale uit je prestaties',
     description: 'Bij Performance Begeleiding staat alles in het teken van het verbeteren van jouw prestaties. Of dit nu sportspecifiek is, powerlifting, krachtsport of conditietraining: het maakt niet uit. Afhankelijk van jouw niveau, doelstellingen en wensen stellen we de programmering samen die het beste bij jou past. Denk bijvoorbeeld aan een schema op basis van RIR of RPE.',
-    image: '/assets/expertise-2.jpg',
+    image: '/assets/expertise-2.webp',
     imageAlt: 'Performance coaching',
     imagePosition: 'left', // Image left, Text right
     serviceId: 'performance-coaching'
@@ -40,7 +40,7 @@ const coachingItems = [
     category: 'voeding begeleiding',
     title: 'voeding die bijdraagt aan je doelen',
     description: 'Heb jij je training goed onder controle en wil je vooral ondersteuning op het gebied van voeding? Dan sluit dit pakket perfect bij jou aan. Na een uitgebreide intake stellen we een persoonlijk plan van aanpak op, volledig afgestemd op jouw situatie en doelen. Je ontvangt twee voedingsschema\'s waarmee je direct praktisch aan de slag kunt.',
-    image: '/assets/expertise-3.jpg',
+    image: '/assets/expertise-3.webp',
     imageAlt: 'Voeding begeleiding',
     imagePosition: 'right', // Text left, Image right
     serviceId: 'voeding-begeleiding'
@@ -50,7 +50,7 @@ const coachingItems = [
     category: 'leefstijl coaching',
     title: 'het aanpakken van jouw leefstijl',
     description: 'Leefstijlcoaching gaat verder dan alleen trainen en voeding. Met dit abonnement werk je aan álle leefstijlfactoren die invloed hebben op jouw gezondheid en prestaties: stress, slaap, herstel, je privéleven én natuurlijk beweging en voeding. We kijken dus niet alleen naar je schema, maar naar jou als persoon.',
-    image: '/assets/expertise-4.jpg',
+    image: '/assets/expertise-4.webp',
     imageAlt: 'Leefstijl coaching',
     imagePosition: 'left', // Image left, Text right
     serviceId: 'leefstijl-coaching'
@@ -60,7 +60,7 @@ const coachingItems = [
     category: 'Personal training',
     title: 'een-op-een trainen onder begeleiding',
     description: 'Bij Personal Training ligt de focus volledig op een-op-een trainen onder begeleiding van jouw coach. Alle aandacht gaat naar jou: hoe jij traint, hoe jij beweegt en hoe jij het meeste uit jezelf haalt. Je coach zorgt ervoor dat je oefeningen altijd correct en veilig worden uitgevoerd, geeft je een duwtje waar nodig of trapt juist even op de rem als dat beter is. Zo haal je elke sessie het maximale uit je training.',
-    image: '/assets/expertise-5.jpg',
+    image: '/assets/expertise-5.webp',
     imageAlt: 'Personal training',
     imagePosition: 'right', // Text left, Image right
     serviceId: 'personal-training'
@@ -72,7 +72,7 @@ const partnersItem = {
   category: 'MAE Fysiotherapie',
   title: 'Fysiotherapie zonder beperkingen',
   description: 'Bij M.A.E. Fysiotherapie kijken we anders naar revalidatie. Waar veel zorgprofessionals vooral beperkingen opleggen, geloven wij in een doelgerichte, persoonlijke en stapsgewijze aanpak. Het doel: jou weer laten functioneren zonder belemmeringen.',
-  image: '/assets/expertise-6.jpg',
+  image: '/assets/expertise-6.webp',
   imageAlt: 'MAE Fysiotherapie',
   imagePosition: 'left', // Image left, Text right
   serviceId: 'fysiotherapie'
@@ -226,7 +226,7 @@ export default function CoachingSection() {
                   />
                   <div className={styles.kodakFrameOverlay}>
                     <Image
-                      src="/assets/frames_kodak/fame1.png"
+                      src="/assets/frames_kodak/fame1.webp"
                       alt=""
                       fill
                       className={styles.kodakFrameImage}
@@ -246,7 +246,7 @@ export default function CoachingSection() {
                   />
                   <div className={styles.kodakFrameOverlay}>
                     <Image
-                      src="/assets/frames_kodak/fame1.png"
+                      src="/assets/frames_kodak/fame1.webp"
                       alt=""
                       fill
                       className={styles.kodakFrameImage}
@@ -341,7 +341,7 @@ export default function CoachingSection() {
             />
             <div className={styles.kodakFrameOverlay}>
               <Image
-                src="/assets/frames_kodak/fame1.png"
+                src="/assets/frames_kodak/fame1.webp"
                 alt=""
                 fill
                 className={styles.kodakFrameImage}

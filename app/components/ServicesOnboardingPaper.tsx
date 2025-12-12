@@ -8,9 +8,9 @@ import styles from './ServicesOnboardingPaper.module.css';
 
 // Available pin button images
 const PIN_BUTTONS = [
-  '/assets/buttons/XIII_button.png',
-  '/assets/buttons/XIII_button_blue.png',
-  '/assets/buttons/XIII_button_red.png',
+  '/assets/buttons/XIII_button.webp',
+  '/assets/buttons/XIII_button_blue.webp',
+  '/assets/buttons/XIII_button_red.webp',
 ];
 
 interface ServicesOnboardingPaperProps {
@@ -275,7 +275,7 @@ export default function ServicesOnboardingPaper({ onStart, initialServiceId }: S
         {/* Texture Overlay */}
         <div className={styles.overlay}>
           <Image
-            src="/assets/overlays/overlay.jpg"
+            src="/assets/overlays/overlay.webp"
             alt=""
             fill
             className={styles.overlayImage}

@@ -247,7 +247,7 @@ export default function HeroExpertiseCombined() {
           <div className={styles.shadowOverlayWrapper}>
             <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
               <Image
-                src={`${basePath}/assets/overlays/shadow_overlay.png`}
+                src={`${basePath}/assets/overlays/shadow_overlay.webp`}
                 alt=""
                 fill
                 className={styles.shadowOverlayImage}
@@ -277,7 +277,7 @@ export default function HeroExpertiseCombined() {
                   </div>
                   <div className={styles.btnStopMotionImage}>
                     <Image
-                      src="/assets/meet-preview.jpg"
+                      src="/assets/meet-preview.webp"
                       alt=""
                       fill
                       className={styles.meetPreviewImage}
@@ -374,37 +374,37 @@ export default function HeroExpertiseCombined() {
                 <div ref={leftColumnRef} className={styles.column}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-1.webp" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-4.webp" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-1.webp" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-4.webp" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-1.jpg" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-1.webp" alt="Powerlifting training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-4.jpg" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-4.webp" alt="Running training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
@@ -416,37 +416,37 @@ export default function HeroExpertiseCombined() {
                 <div ref={middleColumnRef} className={styles.column}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-2.webp" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-5.webp" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-2.webp" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-5.webp" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-2.jpg" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-2.webp" alt="Personal training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-5.jpg" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-5.webp" alt="Strength training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
@@ -458,37 +458,37 @@ export default function HeroExpertiseCombined() {
                 <div ref={rightColumnRef} className={`${styles.column} ${styles.rightColumn}`}>
                   <div data-collection className={styles.imageCollection}>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-3.webp" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-6.webp" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-3.webp" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-6.webp" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-3.jpg" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-3.webp" alt="Athletic training" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>
                     </div>
                     <div className={styles.imageWrapper}>
-                      <Image src="/assets/expertise-6.jpg" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
+                      <Image src="/assets/expertise-6.webp" alt="Physiotherapy" fill sizes="(max-width: 768px) 100vw, 33vw" className={styles.carouselImage} />
                       <div className={styles.kodakFrameOverlay}>
                         <Image src="/assets/frames_kodak/fame2.png" alt="" fill className={styles.kodakFrameImage} />
                       </div>

@@ -234,7 +234,7 @@ export default function CTAFooterCombined() {
           <div className={styles.shadowOverlayWrapper}>
             <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
               <Image
-                src={`${basePath}/assets/overlays/shadow_overlay.png`}
+                src={`${basePath}/assets/overlays/shadow_overlay.webp`}
                 alt=""
                 fill
                 className={styles.shadowOverlayImage}
@@ -545,7 +545,7 @@ export default function CTAFooterCombined() {
             <div className={styles.waltersPaperInner}>
               <div className={styles.waltersPaperOverlay}>
                 <Image
-                  src="/assets/overlays/overlay.jpg"
+                  src="/assets/overlays/overlay.webp"
                   alt=""
                   fill
                   className={styles.waltersPaperOverlayImage}

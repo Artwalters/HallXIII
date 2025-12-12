@@ -25,19 +25,19 @@ interface Coach {
 }
 
 const frames = [
-  '/assets/frames poloroid/frame 1.png',
-  '/assets/frames poloroid/frame2.png',
-  '/assets/frames poloroid/frame 3.png',
-  '/assets/frames poloroid/frame4.png',
+  '/assets/frames poloroid/frame 1.webp',
+  '/assets/frames poloroid/frame2.webp',
+  '/assets/frames poloroid/frame 3.webp',
+  '/assets/frames poloroid/frame4.webp',
 ];
 
 const coaches: Coach[] = [
   {
     name: 'RIM',
     role: 'krachttrainer & coach',
-    image: '/assets/expertise-1.jpg',
+    image: '/assets/expertise-1.webp',
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
-    largeImage: '/assets/expertise-1.jpg',
+    largeImage: '/assets/expertise-1.webp',
     rotation: -3,
     quote: 'Train hard, blijf nederig en blijf altijd je grenzen verleggen',
     frameIndex: 0,
@@ -46,9 +46,9 @@ const coaches: Coach[] = [
   {
     name: 'DYLAN',
     role: 'coach & sportmasseur',
-    image: '/assets/expertise-2.jpg',
+    image: '/assets/expertise-2.webp',
     description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
-    largeImage: '/assets/expertise-2.jpg',
+    largeImage: '/assets/expertise-2.webp',
     rotation: 4,
     quote: 'Je mindset bepaalt alles, je lichaam volgt waar je geest leidt',
     frameIndex: 1,
@@ -57,9 +57,9 @@ const coaches: Coach[] = [
   {
     name: 'NOAH',
     role: 'powerlifter & coach',
-    image: '/assets/expertise-3.jpg',
+    image: '/assets/expertise-3.webp',
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
-    largeImage: '/assets/expertise-3.jpg',
+    largeImage: '/assets/expertise-3.webp',
     rotation: -5,
     quote: 'Elke dag een beetje sterker worden, één rep per keer',
     frameIndex: 2,
@@ -68,9 +68,9 @@ const coaches: Coach[] = [
   {
     name: 'MAARTEN',
     role: 'fysiotherapeut & coach',
-    image: '/assets/expertise-4.jpg',
+    image: '/assets/expertise-4.webp',
     description: 'Maarten, fysiotherapeut en personal coach met een diepe passie voor krachtsport. Van jongs af aan gefascineerd door de kracht en mogelijkheden van het menselijk lichaam. Combineert zijn therapeutische achtergrond met praktijkervaring om anderen te inspireren en begeleiden naar hun fysieke en mentale topvorm.',
-    largeImage: '/assets/expertise-4.jpg',
+    largeImage: '/assets/expertise-4.webp',
     rotation: 3,
     quote: 'Consistentie wint altijd van talent dat niet komt opdagen',
     frameIndex: 3,
@@ -79,9 +79,9 @@ const coaches: Coach[] = [
   {
     name: 'MEREL',
     role: 'leefstijl & coach',
-    image: '/assets/expertise-5.jpg',
+    image: '/assets/expertise-5.webp',
     description: 'Merel, fervent krachtsporter, leefstijlcoach en personal coach. Vanuit haar eigen worsteling met zelfbeeld en gezondheid ontdekte ze hoe voeding en beweging bijdragen aan fysiek én mentaal herstel. Helpt anderen naar een gezonder, gebalanceerd leven met zelfacceptatie als fundament.',
-    largeImage: '/assets/expertise-5.jpg',
+    largeImage: '/assets/expertise-5.webp',
     rotation: -4,
     quote: 'Geloof in jezelf en vertrouw het proces, resultaten volgen',
     frameIndex: 0,

@@ -186,7 +186,7 @@ export default function OnboardingPage() {
           <div className={styles.shadowOverlayWrapper}>
             <div ref={shadowOverlayRef} className={styles.shadowOverlay}>
               <Image
-                src={`${basePath}/assets/overlays/shadow_overlay.png`}
+                src={`${basePath}/assets/overlays/shadow_overlay.webp`}
                 alt=""
                 fill
                 className={styles.shadowOverlayImage}

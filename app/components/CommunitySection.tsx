@@ -157,7 +157,7 @@ export default function CommunitySection() {
       {/* Texture Overlay - bovenop alles */}
       <div className={styles.overlay}>
         <Image
-          src="/assets/overlays/overlay.jpg"
+          src="/assets/overlays/overlay_big.webp"
           alt=""
           fill
           className={styles.overlayImage}
