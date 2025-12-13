@@ -44,36 +44,14 @@ const coaches: Coach[] = [
     flipFrame: false
   },
   {
-    name: 'DYLAN',
-    role: 'coach & sportmasseur',
-    image: '/assets/coach-dylan.webp',
-    description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
-    largeImage: '/assets/coach-dylan.webp',
-    rotation: 4,
-    quote: 'Je mindset bepaalt alles, je lichaam volgt waar je geest leidt',
-    frameIndex: 1,
-    flipFrame: true
-  },
-  {
-    name: 'NOAH',
-    role: 'powerlifter & coach',
-    image: '/assets/coach_noa.webp',
-    description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
-    largeImage: '/assets/coach_noa.webp',
-    rotation: -5,
-    quote: 'Elke dag een beetje sterker worden, één rep per keer',
-    frameIndex: 2,
-    flipFrame: false
-  },
-  {
     name: 'MAARTEN',
     role: 'fysiotherapeut & coach',
     image: '/assets/coach_maarten.webp',
     description: 'Maarten, fysiotherapeut en personal coach met een diepe passie voor krachtsport. Van jongs af aan gefascineerd door de kracht en mogelijkheden van het menselijk lichaam. Combineert zijn therapeutische achtergrond met praktijkervaring om anderen te inspireren en begeleiden naar hun fysieke en mentale topvorm.',
     largeImage: '/assets/coach_maarten.webp',
-    rotation: 3,
+    rotation: 4,
     quote: 'Consistentie wint altijd van talent dat niet komt opdagen',
-    frameIndex: 3,
+    frameIndex: 1,
     flipFrame: true
   },
   {
@@ -82,8 +60,30 @@ const coaches: Coach[] = [
     image: '/assets/coach_merel2.webp',
     description: 'Merel, fervent krachtsporter, leefstijlcoach en personal coach. Vanuit haar eigen worsteling met zelfbeeld en gezondheid ontdekte ze hoe voeding en beweging bijdragen aan fysiek én mentaal herstel. Helpt anderen naar een gezonder, gebalanceerd leven met zelfacceptatie als fundament.',
     largeImage: '/assets/coach_merel2.webp',
-    rotation: -4,
+    rotation: -5,
     quote: 'Geloof in jezelf en vertrouw het proces, resultaten volgen',
+    frameIndex: 2,
+    flipFrame: false
+  },
+  {
+    name: 'NOAH',
+    role: 'powerlifter & coach',
+    image: '/assets/coach_noa.webp',
+    description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
+    largeImage: '/assets/coach_noa.webp',
+    rotation: 3,
+    quote: 'Elke dag een beetje sterker worden, één rep per keer',
+    frameIndex: 3,
+    flipFrame: true
+  },
+  {
+    name: 'DYLAN',
+    role: 'coach & sportmasseur',
+    image: '/assets/coach-dylan.webp',
+    description: 'Dylan Strik, 23 jaar. CIOS-afgestudeerd coach met ervaring in wielrennen op hoog niveau. Specialiseert zich in krachttraining en conditionele begeleiding. Benadrukt het mentale aspect en voeding voor optimale resultaten. Combineert coaching met sportmassage als Athlete Reliëf binnen Hal13.',
+    largeImage: '/assets/coach-dylan.webp',
+    rotation: -4,
+    quote: 'Je mindset bepaalt alles, je lichaam volgt waar je geest leidt',
     frameIndex: 0,
     flipFrame: true
   },
