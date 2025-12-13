@@ -29,6 +29,8 @@
   position: relative;
   overflow: hidden;
   max-height: calc(80 * var(--avh));
+  /* Ensure flex children respect the max-height */
+  min-height: 0;
   /* Paper rip clip-path effect - on container to clip all children including overlay */
   clip-path: polygon(
     /* Top ripped edge */
@@ -181,6 +183,33 @@
   display: flex;
   flex-direction: column;
   gap: 1.5em;
+  /* Allow scrolling when content is too tall */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Ensure proper sizing in flex container */
+  min-height: 0;
+  /* Add some padding for scrollbar */
+  padding-right: 0.5em;
+  margin-right: -0.5em;
+}
+
+/* Custom scrollbar for stepContent */
+.stepContent::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+.stepContent::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+}
+
+.stepContent::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 9999px;
+}
+
+.stepContent::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .title {
@@ -828,9 +857,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2em;
+  margin-top: auto; /* Push to bottom */
   padding-top: 1.5em;
   border-top: 0.0625em solid rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Never shrink or get pushed out */
 }
 
 .backButton,
@@ -882,13 +912,35 @@
     padding-top: 2em;
   }
 
+  .container {
+    gap: 0.8em;
+    padding: 2em 1em;
+  }
+
   .pin {
     width: 6em;
     height: 6em;
   }
 
+  .progressRow {
+    margin-bottom: 1.5em;
+  }
+
+  .stepContent {
+    gap: 1em;
+  }
+
+  .title {
+    font-size: var(--font-body);
+  }
+
   .optionsGrid {
     grid-template-columns: 1fr;
+    max-height: 15em;
+  }
+
+  .navigation {
+    padding-top: 1em;
   }
 
   .socialAvatars {
