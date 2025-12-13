@@ -9,7 +9,7 @@
   position: relative;
   overflow: visible;
   width: 100vw;
-  height: 110vh;
+  height: calc(110 * var(--avh));
   min-height: 37.5rem; /* 600px / 16 = 37.5rem */
   display: flex;
   align-items: center;
@@ -189,7 +189,7 @@
   align-items: center;
   gap: 1.25em;
   position: absolute;
-  bottom: 7vh;
+  bottom: calc(7 * var(--avh));
   left: 50%;
   transform: translateX(-50%);
   z-index: 50;
@@ -355,7 +355,7 @@
 /* Medium screens - taller section */
 @media (min-width: 1200px) and (max-width: 1800px) {
   .section {
-    height: 120vh;
+    height: calc(120 * var(--avh));
   }
 
   .topText {
@@ -370,7 +370,7 @@
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .section {
-    height: 90vh;
+    height: calc(90 * var(--avh));
   }
 
   .container {

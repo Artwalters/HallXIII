@@ -8,7 +8,7 @@ import FooterSection from './components/CTAFooterCombined';
 
 export default function Home() {
   return (
-    <main style={{ width: '100%', minHeight: '100vh' }}>
+    <main style={{ width: '100%', minHeight: 'calc(100 * var(--avh))' }}>
       <HeroExpertiseCombined />
       <DienstenSection />
       <CoachingSection />

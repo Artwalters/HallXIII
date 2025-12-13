@@ -28,7 +28,7 @@
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
-  max-height: 80vh;
+  max-height: calc(80 * var(--avh));
   /* Paper rip clip-path effect - on container to clip all children including overlay */
   clip-path: polygon(
     /* Top ripped edge */

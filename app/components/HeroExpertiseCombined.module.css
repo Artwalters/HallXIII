@@ -2,7 +2,7 @@
 .wrapper {
   background: var(--color-cream);
   position: relative;
-  min-height: 180vh;
+  min-height: calc(180 * var(--avh));
 }
 
 /* Outer Content Container - buiten clip-path maar met zelfde max-width als hero */
@@ -330,7 +330,7 @@
   .taglineWrapper {
     align-self: stretch;
     margin-bottom: 0;
-    margin-top: 3vh;
+    margin-top: calc(3 * var(--avh));
   }
 
   .tagline {
@@ -438,7 +438,7 @@
 .expertise {
   position: relative;
   width: 100%;
-  min-height: 80vh;
+  min-height: calc(80 * var(--avh));
   background-color: var(--color-cream);
   padding: 15rem 0 0 0;
 }
