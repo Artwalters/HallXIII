@@ -471,7 +471,7 @@
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
-  font-size: var(--relost-caption-big);
+  font-size: var(--relost-button-size);
   color: var(--color-black);
   line-height: 1.2;
   margin: 0;
