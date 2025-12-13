@@ -21,6 +21,24 @@ declare global {
 export default function SmoothScroll() {
   const pathname = usePathname();
 
+  // Viewport height fix for Instagram/mobile browsers
+  // Sets --avh once on load to prevent layout shift when browser UI changes
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const avh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--avh', `${avh}px`);
+    };
+
+    setViewportHeight();
+
+    // Only update on orientation change, not on scroll/UI changes
+    window.addEventListener('orientationchange', setViewportHeight);
+
+    return () => {
+      window.removeEventListener('orientationchange', setViewportHeight);
+    };
+  }, []);
+
   // Mobile ScrollTrigger refresh - ensures triggers work after viewport settles
   // Also refreshes on route change (client-side navigation)
   useEffect(() => {
