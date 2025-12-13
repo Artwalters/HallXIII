@@ -28,7 +28,7 @@
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
-  max-height: calc(80 * var(--avh));
+  max-height: 80svh;
   /* Ensure flex children respect the max-height */
   min-height: 0;
   /* Paper rip clip-path effect - on container to clip all children including overlay */
