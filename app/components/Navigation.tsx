@@ -14,10 +14,9 @@ if (typeof window !== 'undefined') {
 // Menu items configuration
 const menuItems = [
   { label: 'Diensten', target: 'diensten' },
-  { label: 'Opengym', target: 'coaching-trajecten' },
-  { label: 'Openingstijden', target: 'footer-section' },
+  { label: 'Coaches', target: 'coaches-section' },
+  { label: 'Openingstijden', target: 'community-section' },
   { label: 'Reviews', target: 'reviews-section' },
-  { label: 'Start nu', target: 'community-section' },
   { label: 'Contact', target: 'footer-section' },
 ];
 

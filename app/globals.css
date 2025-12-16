@@ -281,6 +281,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: var(--color-cream);
 }
 
 /* Hide scrollbar */

@@ -6,6 +6,28 @@
   inset: 0;
 }
 
+/* Safe area coverage - cream backgrounds that sit above dark overlay */
+.navigation::before,
+.navigation::after {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: var(--color-cream);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.navigation::before {
+  top: 0;
+  height: env(safe-area-inset-top, 0);
+}
+
+.navigation::after {
+  bottom: 0;
+  height: env(safe-area-inset-bottom, 0);
+}
+
 /* Dark Overlay */
 .darkOverlay {
   opacity: 0;
@@ -254,7 +276,7 @@
   position: relative;
   display: block;
   width: 100%;
-  padding: 0.2em 0 1em 0;
+  padding: 0.4em 0 1.4em 0;
   background: transparent;
   border: none;
   cursor: pointer;
