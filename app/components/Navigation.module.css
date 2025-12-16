@@ -499,17 +499,12 @@
 
 /* Responsive - Mobile */
 @media screen and (max-width: 767px) {
-  /* Hide WhatsApp panel on mobile */
-  .whatsappPanel {
-    display: none;
-  }
-
-  /* Menu panel takes full width on mobile */
+  /* Menu panel - leave space for WhatsApp icon on right */
   .menuPanel {
     width: auto;
     top: 1em;
     left: 1em;
-    right: 1em;
+    right: 5em;
   }
 
   /* Disable hover effects on mobile - use click instead */
@@ -518,14 +513,28 @@
     left: 1em;
   }
 
-  /* Show background when active (clicked) on mobile */
-  .mobile.active .menuPanelBg {
-    opacity: 1;
-    transform: scale(1);
+  /* WhatsApp panel - just the icon, no dropdown */
+  .whatsappPanel {
+    width: auto;
   }
 
-  .mobile.active .overlay {
-    opacity: 0.3;
+  .whatsappPanel:hover {
+    top: 1em;
+    right: 1em;
+  }
+
+  /* Hide dropdown content on mobile */
+  .whatsappPanel .whatsappPanelBg,
+  .whatsappPanel .whatsappOverlay,
+  .whatsappPanel .whatsappContent {
+    display: none;
+  }
+
+  /* Disable dark overlay on WhatsApp hover for mobile */
+  .navigation:has(.whatsappPanel:hover) .darkOverlay {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   /* Menu button is always clickable on mobile */

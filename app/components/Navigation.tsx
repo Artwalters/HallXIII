@@ -310,23 +310,6 @@ export default function Navigation() {
                   </button>
                 </li>
               ))}
-              {/* WhatsApp link - only visible on mobile */}
-              {isMobile && (
-                <li
-                  className={styles.menuItem}
-                  style={{ transitionDelay: `${menuItems.length * 0.05}s` }}
-                >
-                  <a
-                    href="https://wa.me/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.menuLink}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <span className={styles.menuLinkText}>WhatsApp</span>
-                  </a>
-                </li>
-              )}
             </ul>
           </div>
         </div>
