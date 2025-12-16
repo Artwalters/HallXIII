@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import BackNavigation from '../components/BackNavigation';
+import Navigation from '../components/Navigation';
 import OnboardingFlow from '../components/OnboardingFlow';
 import styles from './page.module.css';
 
@@ -163,7 +163,7 @@ export default function OnboardingPage() {
         </defs>
       </svg>
 
-      <BackNavigation />
+      <Navigation backMode />
 
       {/* Hero Section - Fullscreen */}
       <section className={styles.heroSection} ref={heroSectionRef}>

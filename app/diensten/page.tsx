@@ -4,7 +4,7 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { gsap } from 'gsap';
-import BackNavigation from '../components/BackNavigation';
+import Navigation from '../components/Navigation';
 import ServicesOnboardingPaper from '../components/ServicesOnboardingPaper';
 import ServicesRegistrationPaper from '../components/ServicesRegistrationPaper';
 import styles from './page.module.css';
@@ -93,7 +93,7 @@ function DienstenContent() {
 
   return (
     <div className={styles.pageWrapper}>
-      <BackNavigation />
+      <Navigation backMode />
 
       {/* Hero Section - Fullscreen */}
       <section className={styles.heroSection} ref={heroSectionRef}>
