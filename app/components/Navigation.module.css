@@ -105,8 +105,8 @@
   transform: none;
 }
 
-/* Back Text - smaller than menu text */
-.backText {
+/* Back Text - smaller than menu text (higher specificity to override menuText) */
+.menuText.backText {
   font-size: 1.75em;
 }
 
