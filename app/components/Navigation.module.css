@@ -34,8 +34,8 @@
   width: 18em;
   display: flex;
   position: fixed;
-  top: 0.5rem;
-  left: 0.4rem;
+  top: 1em;
+  left: 1em;
 }
 
 /* Menu Panel Background */
@@ -71,7 +71,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  padding: 1.25rem;
+  padding: 1.25em;
   display: flex;
   position: relative;
   z-index: 100000;
@@ -83,7 +83,7 @@
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
-  font-size: 2rem;
+  font-size: 2.5em;
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1;
@@ -202,8 +202,8 @@
 /* WhatsApp Link */
 .whatsappLink {
   position: fixed;
-  top: calc(1.75rem - 2px);
-  right: 1.65rem;
+  top: calc(1.75em - 2px);
+  right: 1.65em;
   z-index: 100000;
   display: flex;
   align-items: center;
