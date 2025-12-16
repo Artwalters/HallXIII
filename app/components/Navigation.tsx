@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navigation.module.css';
@@ -11,11 +10,24 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+// Menu items configuration
+const menuItems = [
+  { label: 'Home', target: 'top' },
+  { label: 'Expertise', target: 'expertise-section' },
+  { label: 'Diensten', target: 'diensten' },
+  { label: 'Coaching', target: 'coaching-trajecten' },
+  { label: 'Coaches', target: 'coaches-section' },
+  { label: 'Community', target: 'community-section' },
+  { label: 'Reviews', target: 'reviews-section' },
+  { label: 'Contact', target: 'footer-section' },
+];
+
 export default function Navigation() {
   const menuTextRef = useRef<HTMLSpanElement>(null);
   const whatsappRef = useRef<HTMLAnchorElement>(null);
-  const menuButtonRef = useRef<HTMLDivElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Get all cream sections
@@ -55,13 +67,16 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    if (!menuButtonRef.current || !whatsappRef.current) return;
+    if (!menuPanelRef.current || !whatsappRef.current) return;
 
     let scrollTimeout: NodeJS.Timeout;
 
     const handleScroll = () => {
+      // Don't animate when menu is open
+      if (isMenuOpen) return;
+
       // Subtiel naar binnen tijdens scroll
-      gsap.to(menuButtonRef.current, {
+      gsap.to(menuPanelRef.current, {
         top: '1.5rem',
         left: '1.4rem',
         duration: 0.3,
@@ -80,7 +95,7 @@ export default function Navigation() {
 
       // Return to default position after scrolling stops
       scrollTimeout = setTimeout(() => {
-        gsap.to(menuButtonRef.current, {
+        gsap.to(menuPanelRef.current, {
           top: '1.75rem',
           left: '1.65rem',
           duration: 0.5,
@@ -102,30 +117,147 @@ export default function Navigation() {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (!menuTextRef.current || !whatsappRef.current) return;
 
-    gsap.to(menuTextRef.current, {
-      color: isDark ? 'var(--color-black)' : 'var(--color-white)',
-      duration: 0.3,
-      ease: 'power2.out'
-    });
+    // Only change colors when menu is closed
+    if (!isMenuOpen) {
+      gsap.to(menuTextRef.current, {
+        color: isDark ? 'var(--color-black)' : 'var(--color-white)',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    }
 
     gsap.to(whatsappRef.current.querySelector('path'), {
       fill: isDark ? 'var(--color-black)' : 'white',
       duration: 0.3,
       ease: 'power2.out'
     });
-  }, [isDark]);
+  }, [isDark, isMenuOpen]);
+
+  // Handle menu toggle
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => {
+      const newState = !prev;
+      if (newState) {
+        // Stop Lenis when menu opens
+        window.lenis?.stop();
+      } else {
+        // Start Lenis when menu closes
+        window.lenis?.start();
+      }
+      return newState;
+    });
+  }, []);
+
+  // Handle menu close
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+    window.lenis?.start();
+  }, []);
+
+  // Handle navigation click
+  const handleNavClick = useCallback((target: string) => {
+    closeMenu();
+
+    // Small delay to let menu close animation start
+    setTimeout(() => {
+      if (target === 'top') {
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { duration: 1.5 });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      } else {
+        const element = document.getElementById(target);
+        if (element) {
+          if (window.lenis) {
+            window.lenis.scrollTo(element, { duration: 1.5 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    }, 100);
+  }, [closeMenu]);
+
+  // ESC key handler
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen, closeMenu]);
+
+  // Set menu text color when menu is open (always dark on cream bg)
+  useEffect(() => {
+    if (!menuTextRef.current) return;
+
+    if (isMenuOpen) {
+      gsap.to(menuTextRef.current, {
+        color: 'var(--color-black)',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    }
+  }, [isMenuOpen]);
 
   return (
-    <nav className={styles.navigation}>
-      {/* Menu Button Container */}
-      <div ref={menuButtonRef} className={styles.menuButton}>
-        {/* Menu Text */}
-        <span ref={menuTextRef} className={styles.menuText}>menu</span>
+    <nav className={`${styles.navigation} ${isMenuOpen ? styles.active : ''}`}>
+      {/* Dark Overlay */}
+      <div
+        className={styles.darkOverlay}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+
+      {/* Menu Panel */}
+      <div ref={menuPanelRef} className={styles.menuPanel}>
+        {/* Menu Panel Background */}
+        <div className={styles.menuPanelBg} />
+
+        {/* Menu Header */}
+        <div className={styles.menuHeader}>
+          <button
+            className={styles.menuButton}
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Sluit menu' : 'Open menu'}
+          >
+            <span ref={menuTextRef} className={styles.menuText}>
+              {isMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
+
+        {/* Menu Content */}
+        <div className={styles.menuContent}>
+          <div className={styles.menuInner}>
+            <ul className={styles.menuList}>
+              {menuItems.map((item, index) => (
+                <li
+                  key={item.target}
+                  className={styles.menuItem}
+                  style={{ transitionDelay: `${index * 0.05}s` }}
+                >
+                  <button
+                    className={styles.menuLink}
+                    onClick={() => handleNavClick(item.target)}
+                  >
+                    <span className={styles.menuLinkText}>{item.label}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
 
       {/* WhatsApp Icon */}

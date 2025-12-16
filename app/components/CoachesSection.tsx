@@ -231,7 +231,7 @@ export default function CoachesSection() {
   };
 
   return (
-    <section className={styles.section} data-nav-dark>
+    <section id="coaches-section" className={styles.section} data-nav-dark>
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleWrapper}>

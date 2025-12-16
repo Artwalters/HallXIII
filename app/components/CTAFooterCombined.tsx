@@ -339,7 +339,7 @@ export default function CTAFooterCombined() {
         ref={footerWrapRef}
         className={styles.footerWrap}
       >
-        <footer className={styles.footer}>
+        <footer id="footer-section" className={styles.footer}>
           <div className={styles.footerContainer}>
             {/* Top Row - 3 Columns */}
             <div className={styles.footerGrid}>

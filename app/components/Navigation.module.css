@@ -6,24 +6,84 @@
   inset: 0;
 }
 
-/* Menu Button Container */
-.menuButton {
-  position: fixed;
-  top: 1.75rem;
-  left: 1.65rem;
-  pointer-events: auto;
-  z-index: 100000;
+/* Dark Overlay */
+.darkOverlay {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  background-color: #000;
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.5s cubic-bezier(0.5, 0.5, 0, 1),
+              visibility 0.5s cubic-bezier(0.5, 0.5, 0, 1);
 }
 
+.active .darkOverlay {
+  opacity: 0.15;
+  visibility: visible;
+  pointer-events: auto;
+  cursor: pointer;
+}
 
+/* Menu Panel */
+.menuPanel {
+  border-radius: 0.75em;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 18em;
+  display: flex;
+  position: fixed;
+  top: 0.5rem;
+  left: 0.4rem;
+}
+
+/* Menu Panel Background */
+.menuPanelBg {
+  background-color: var(--color-cream);
+  border-radius: 0.75em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s cubic-bezier(0.5, 0.5, 0, 1),
+              transform 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+.active .menuPanelBg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Menu Header */
+.menuHeader {
+  z-index: 1;
+  padding: 0;
+  display: flex;
+  position: relative;
+}
+
+/* Menu Button */
+.menuButton {
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 1.25rem;
+  display: flex;
+  position: relative;
+  z-index: 100000;
+}
 
 /* Menu Text */
 .menuText {
   position: relative;
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
-  font-weight: normal; /* Relost should maintain natural weight */
-  font-size: var(--relost-button-size);
+  font-weight: normal;
+  font-size: 2rem;
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1;
@@ -32,7 +92,112 @@
   display: inline-block;
 }
 
+/* Menu Content */
+.menuContent {
+  border-bottom-right-radius: 0.75em;
+  border-bottom-left-radius: 0.75em;
+  display: grid;
+  grid-template-rows: 0fr;
+  position: relative;
+  overflow: hidden;
+  transition: grid-template-rows 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+}
 
+.active .menuContent {
+  grid-template-rows: 1fr;
+}
+
+/* Menu Inner */
+.menuInner {
+  pointer-events: auto;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Menu List */
+.menuList {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0 1.25em 1.25em;
+  display: flex;
+  position: relative;
+  list-style: none;
+}
+
+/* Menu Item */
+.menuItem {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+/* Menu Link */
+.menuLink {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.75em 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menuLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-black);
+  opacity: 0.15;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
+  transition-delay: inherit;
+}
+
+.active .menuLink::after {
+  transform: scaleX(1);
+}
+
+.menuLink:hover::after {
+  opacity: 0.3;
+}
+
+/* Menu Link Text */
+.menuLinkText {
+  font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
+  font-size: 1.25em;
+  color: var(--color-black);
+  text-transform: lowercase;
+  line-height: 1.2;
+  display: block;
+  transform: translateY(120%);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
+  transition-delay: inherit;
+}
+
+.active .menuLinkText {
+  transform: translateY(0);
+}
+
+.menuLink:hover .menuLinkText {
+  opacity: 0.7;
+}
 
 /* WhatsApp Link */
 .whatsappLink {
@@ -50,4 +215,14 @@
 .whatsappLink svg {
   width: 2.5em;
   height: 2.5em;
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+  .menuPanel {
+    width: auto;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+  }
 }
