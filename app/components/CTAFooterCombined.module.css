@@ -258,7 +258,7 @@
   font-size: var(--relost-caption-big);
   color: var(--color-white);
   text-transform: lowercase;
-  line-height: 0.9px;
+  line-height: 1.15;
   transform: rotate(-3deg);
   white-space: nowrap;
   background: none;

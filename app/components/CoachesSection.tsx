@@ -35,7 +35,7 @@ const coaches: Coach[] = [
   {
     name: 'RIM',
     role: 'krachttrainer & coach',
-    image: '/assets/coach_rim.webp',
+    image: '/assets/coaches/rim2.png',
     description: 'Rim Pinckers, 32 jaar. Sinds 2015 krachttrainer en coach met HBO Sportkunde Wellness. Traint zelf al 13 jaar: van gewichtheffen en competitief bodybuilden tot powerlifting. Combineert theoretische kennis met praktijkervaring, discipline en empathie voor een unieke coachingstijl.',
     largeImage: '/assets/coach_rim.webp',
     rotation: -3,
@@ -46,7 +46,7 @@ const coaches: Coach[] = [
   {
     name: 'MAARTEN',
     role: 'fysiotherapeut & coach',
-    image: '/assets/coach_maarten.webp',
+    image: '/assets/coaches/maarten2.png',
     description: 'Maarten, fysiotherapeut en personal coach met een diepe passie voor krachtsport. Van jongs af aan gefascineerd door de kracht en mogelijkheden van het menselijk lichaam. Combineert zijn therapeutische achtergrond met praktijkervaring om anderen te inspireren en begeleiden naar hun fysieke en mentale topvorm.',
     largeImage: '/assets/coach_maarten.webp',
     rotation: 4,
@@ -57,7 +57,7 @@ const coaches: Coach[] = [
   {
     name: 'MEREL',
     role: 'leefstijl & coach',
-    image: '/assets/coach_merel2.webp',
+    image: '/assets/coaches/merel2.png',
     description: 'Merel, fervent krachtsporter, leefstijlcoach en personal coach. Vanuit haar eigen worsteling met zelfbeeld en gezondheid ontdekte ze hoe voeding en beweging bijdragen aan fysiek én mentaal herstel. Helpt anderen naar een gezonder, gebalanceerd leven met zelfacceptatie als fundament.',
     largeImage: '/assets/coach_merel2.webp',
     rotation: -5,
@@ -68,7 +68,7 @@ const coaches: Coach[] = [
   {
     name: 'NOAH',
     role: 'powerlifter & coach',
-    image: '/assets/coach_noa.webp',
+    image: '/assets/coaches/noah2.png',
     description: 'Noah Sipsma, 23 jaar. Sportkunde student en powerlifter op hoog niveau met Nederlands record squat. Meerdere podiumplaatsen bij Nederlandse Junioren Kampioenschappen. Helpt je zowel fysiek als mentaal sterker worden, van algemene fitness tot powerlifting op wedstrijdniveau.',
     largeImage: '/assets/coach_noa.webp',
     rotation: 3,

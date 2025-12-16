@@ -416,6 +416,11 @@
   max-width: 12.5em;
   text-align: left;
   margin-top: 2em;
+  /* Button reset */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .taglineArrow {
