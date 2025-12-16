@@ -23,6 +23,7 @@ const menuItems = [
 export default function Navigation() {
   const menuTextRef = useRef<HTMLSpanElement>(null);
   const whatsappRef = useRef<HTMLAnchorElement>(null);
+  const mobileWhatsappRef = useRef<HTMLAnchorElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,6 +89,15 @@ export default function Navigation() {
         duration: 0.3,
         ease: 'power2.out'
       });
+
+      // Mobile WhatsApp icon color
+      if (isMobile && mobileWhatsappRef.current) {
+        gsap.to(mobileWhatsappRef.current.querySelector('path'), {
+          fill: isDark ? 'var(--color-black)' : 'white',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      }
     }
 
     // Only change whatsapp color when not hovered (desktop only)
@@ -179,7 +189,7 @@ export default function Navigation() {
   }, [isMenuOpen, closeMenu]);
 
 
-  // Set menu text color when menu is open (always dark on cream bg)
+  // Set menu text and mobile WhatsApp color when menu is open (always dark on cream bg)
   useEffect(() => {
     if (!menuTextRef.current) return;
 
@@ -189,8 +199,17 @@ export default function Navigation() {
         duration: 0.3,
         ease: 'power2.out'
       });
+
+      // Mobile WhatsApp icon turns black when menu is open
+      if (isMobile && mobileWhatsappRef.current) {
+        gsap.to(mobileWhatsappRef.current.querySelector('path'), {
+          fill: 'var(--color-black)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      }
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isMobile]);
 
   return (
     <nav className={`${styles.navigation} ${isMenuOpen ? styles.active : ''} ${isMobile ? styles.mobile : ''}`}>
@@ -238,6 +257,7 @@ export default function Navigation() {
             {/* WhatsApp icon in menu header on mobile */}
             {isMobile && (
               <a
+                ref={mobileWhatsappRef}
                 href="https://wa.me/"
                 target="_blank"
                 rel="noopener noreferrer"
