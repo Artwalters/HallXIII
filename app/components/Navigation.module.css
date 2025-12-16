@@ -493,34 +493,43 @@
 
 /* Responsive - Mobile */
 @media screen and (max-width: 767px) {
+  /* Menu takes full width */
   .menuPanel {
-    width: auto;
-    flex: 1;
+    width: 100%;
   }
 
-  /* WhatsApp - just icon, no dropdown on mobile */
+  /* Menu header with space for WhatsApp icon */
+  .menuHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Hide separate WhatsApp panel on mobile */
   .whatsappPanel {
-    width: auto;
-  }
-
-  .whatsappPanel:hover .whatsappPanelBg,
-  .whatsappPanel:hover .whatsappOverlay,
-  .whatsappPanel:hover .whatsappContent {
     display: none;
-  }
-
-  .whatsappPanel:hover .whatsappLink {
-    color: var(--color-white);
-  }
-
-  /* No dark overlay on WhatsApp hover for mobile */
-  .navigation:has(.whatsappPanel:hover) .darkOverlay {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
   }
 
   .menuButton {
     cursor: pointer;
   }
+}
+
+/* Mobile WhatsApp icon in menu header */
+.mobileWhatsapp {
+  display: flex;
+  align-items: center;
+  padding: 1.25em;
+  color: var(--color-white);
+  pointer-events: auto;
+}
+
+.active .mobileWhatsapp {
+  color: var(--color-black);
+}
+
+.mobileWhatsapp svg {
+  width: 2.5em;
+  height: 2.5em;
 }
