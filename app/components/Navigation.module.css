@@ -18,30 +18,58 @@
               visibility 0.5s cubic-bezier(0.5, 0.5, 0, 1);
 }
 
-.active .darkOverlay {
+.active .darkOverlay,
+.navigation:has(.whatsappPanel:hover) .darkOverlay,
+.whatsappActive .darkOverlay {
   opacity: 0.15;
   visibility: visible;
   pointer-events: auto;
   cursor: pointer;
 }
 
+/* Back Button (for BackNavigation) */
+.backButton {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 100000;
+  pointer-events: auto;
+}
+
+.backLink {
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 1.25em;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+}
+
 /* Menu Panel */
 .menuPanel {
-  border-radius: 0.75em;
   flex-flow: column;
   justify-content: flex-start;
   align-items: stretch;
-  width: 18em;
+  width: 22em;
   display: flex;
   position: fixed;
   top: 1em;
   left: 1em;
+  transition: top 0.3s cubic-bezier(0.5, 0.5, 0, 1),
+              left 0.3s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+.menuPanel:hover {
+  top: 1.25em;
+  left: 1.25em;
 }
 
 /* Menu Panel Background */
 .menuPanelBg {
   background-color: var(--color-cream);
-  border-radius: 0.75em;
+  border-radius: 0;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -50,11 +78,93 @@
   transform: scale(0.95);
   transition: opacity 0.4s cubic-bezier(0.5, 0.5, 0, 1),
               transform 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  /* Paper rip clip-path effect */
+  clip-path: polygon(
+    /* Top ripped edge - minimal rip */
+    0% 0.5%,
+    5% 0.2%,
+    10% 0.7%,
+    15% 0.3%,
+    20% 0.6%,
+    25% 0.2%,
+    30% 0.7%,
+    35% 0.4%,
+    40% 0.6%,
+    45% 0.3%,
+    50% 0.5%,
+    55% 0.3%,
+    60% 0.7%,
+    65% 0.4%,
+    70% 0.6%,
+    75% 0.3%,
+    80% 0.6%,
+    85% 0.3%,
+    90% 0.5%,
+    95% 0.4%,
+    100% 0.6%,
+    /* Right edge */
+    100% 100%,
+    /* Bottom ripped edge */
+    95% 97.5%,
+    90% 97%,
+    85% 97.6%,
+    80% 97.2%,
+    75% 97.5%,
+    70% 97.1%,
+    65% 97.7%,
+    60% 97.3%,
+    55% 97.5%,
+    50% 97.2%,
+    45% 97.6%,
+    40% 97.3%,
+    35% 97.7%,
+    30% 97.2%,
+    25% 97.5%,
+    20% 97.1%,
+    15% 97.6%,
+    10% 97.3%,
+    5% 97.8%,
+    0% 97.4%,
+    /* Left edge */
+    0% 0%
+  );
 }
 
 .active .menuPanelBg {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Paper Texture Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+  /* Match the clip-path of the background */
+  clip-path: polygon(
+    0% 0.5%, 5% 0.2%, 10% 0.7%, 15% 0.3%, 20% 0.6%, 25% 0.2%, 30% 0.7%, 35% 0.4%, 40% 0.6%, 45% 0.3%,
+    50% 0.5%, 55% 0.3%, 60% 0.7%, 65% 0.4%, 70% 0.6%, 75% 0.3%, 80% 0.6%, 85% 0.3%, 90% 0.5%, 95% 0.4%, 100% 0.6%,
+    100% 100%,
+    95% 97.5%, 90% 97%, 85% 97.6%, 80% 97.2%, 75% 97.5%, 70% 97.1%, 65% 97.7%, 60% 97.3%, 55% 97.5%,
+    50% 97.2%, 45% 97.6%, 40% 97.3%, 35% 97.7%, 30% 97.2%, 25% 97.5%, 20% 97.1%, 15% 97.6%, 10% 97.3%, 5% 97.8%, 0% 97.4%,
+    0% 0%
+  );
+}
+
+.active .overlay {
+  opacity: 0.3;
+}
+
+.overlayImage {
+  object-fit: cover;
+  mix-blend-mode: overlay;
 }
 
 /* Menu Header */
@@ -83,7 +193,7 @@
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
   font-weight: normal;
-  font-size: 2.5em;
+  font-size: 2em;
   color: var(--color-white);
   text-transform: lowercase;
   line-height: 1;
@@ -94,8 +204,6 @@
 
 /* Menu Content */
 .menuContent {
-  border-bottom-right-radius: 0.75em;
-  border-bottom-left-radius: 0.75em;
   display: grid;
   grid-template-rows: 0fr;
   position: relative;
@@ -127,7 +235,7 @@
   align-items: stretch;
   width: 100%;
   margin: 0;
-  padding: 0 1.25em 1.25em;
+  padding: 1em 1.5em 2.5em;
   display: flex;
   position: relative;
   list-style: none;
@@ -146,7 +254,7 @@
   position: relative;
   display: block;
   width: 100%;
-  padding: 0.75em 0;
+  padding: 0.2em 0 1em 0;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -173,18 +281,15 @@
   transform: scaleX(1);
 }
 
-.menuLink:hover::after {
-  opacity: 0.3;
-}
 
 /* Menu Link Text */
 .menuLinkText {
   font-family: var(--font-accent);
   letter-spacing: var(--letter-spacing-accent);
-  font-size: 1.25em;
+  font-size: 1.75em;
   color: var(--color-black);
   text-transform: lowercase;
-  line-height: 1.2;
+  line-height: 1;
   display: block;
   transform: translateY(120%);
   transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
@@ -195,26 +300,179 @@
   transform: translateY(0);
 }
 
-.menuLink:hover .menuLinkText {
-  opacity: 0.7;
+
+/* WhatsApp Panel */
+.whatsappPanel {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 22em;
+  display: flex;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 100000;
+  pointer-events: auto;
+  transition: top 0.3s cubic-bezier(0.5, 0.5, 0, 1),
+              right 0.3s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+.whatsappPanel:hover {
+  top: 1.25em;
+  right: 1.25em;
+}
+
+/* WhatsApp Panel Background */
+.whatsappPanelBg {
+  background-color: var(--color-cream);
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s cubic-bezier(0.5, 0.5, 0, 1),
+              transform 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  /* Paper rip clip-path effect */
+  clip-path: polygon(
+    0% 0.5%, 5% 0.2%, 10% 0.7%, 15% 0.3%, 20% 0.6%, 25% 0.2%, 30% 0.7%, 35% 0.4%, 40% 0.6%, 45% 0.3%,
+    50% 0.5%, 55% 0.3%, 60% 0.7%, 65% 0.4%, 70% 0.6%, 75% 0.3%, 80% 0.6%, 85% 0.3%, 90% 0.5%, 95% 0.4%, 100% 0.6%,
+    100% 100%,
+    95% 97.5%, 90% 97%, 85% 97.6%, 80% 97.2%, 75% 97.5%, 70% 97.1%, 65% 97.7%, 60% 97.3%, 55% 97.5%,
+    50% 97.2%, 45% 97.6%, 40% 97.3%, 35% 97.7%, 30% 97.2%, 25% 97.5%, 20% 97.1%, 15% 97.6%, 10% 97.3%, 5% 97.8%, 0% 97.4%,
+    0% 0%
+  );
+}
+
+.whatsappPanel:hover .whatsappPanelBg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* WhatsApp Paper Texture Overlay */
+.whatsappOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+  clip-path: polygon(
+    0% 0.5%, 5% 0.2%, 10% 0.7%, 15% 0.3%, 20% 0.6%, 25% 0.2%, 30% 0.7%, 35% 0.4%, 40% 0.6%, 45% 0.3%,
+    50% 0.5%, 55% 0.3%, 60% 0.7%, 65% 0.4%, 70% 0.6%, 75% 0.3%, 80% 0.6%, 85% 0.3%, 90% 0.5%, 95% 0.4%, 100% 0.6%,
+    100% 100%,
+    95% 97.5%, 90% 97%, 85% 97.6%, 80% 97.2%, 75% 97.5%, 70% 97.1%, 65% 97.7%, 60% 97.3%, 55% 97.5%,
+    50% 97.2%, 45% 97.6%, 40% 97.3%, 35% 97.7%, 30% 97.2%, 25% 97.5%, 20% 97.1%, 15% 97.6%, 10% 97.3%, 5% 97.8%, 0% 97.4%,
+    0% 0%
+  );
+}
+
+.whatsappPanel:hover .whatsappOverlay {
+  opacity: 0.3;
+}
+
+/* WhatsApp Header */
+.whatsappHeader {
+  z-index: 1;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
 }
 
 /* WhatsApp Link */
 .whatsappLink {
-  position: fixed;
-  top: calc(1.75em - 2px);
-  right: 1.65em;
-  z-index: 100000;
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 1em 1.25em 1.5em;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
-  pointer-events: auto;
+  position: relative;
+  z-index: 100000;
+  color: var(--color-white);
+  transition: color 0.3s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+.whatsappPanel:hover .whatsappLink {
+  color: var(--color-black);
 }
 
 .whatsappLink svg {
   width: 2.5em;
   height: 2.5em;
+}
+
+/* WhatsApp Content */
+.whatsappContent {
+  display: grid;
+  grid-template-rows: 0fr;
+  position: relative;
+  overflow: hidden;
+  transition: grid-template-rows 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.whatsappPanel:hover .whatsappContent {
+  grid-template-rows: 1fr;
+}
+
+/* WhatsApp Content Inner */
+.whatsappContentInner {
+  pointer-events: auto;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  padding: 1em 1.5em 2.5em;
+  gap: 1em;
+}
+
+/* WhatsApp QR Code */
+.whatsappQr {
+  width: 10em;
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(120%);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
+}
+
+.whatsappPanel:hover .whatsappQr {
+  transform: translateY(0);
+}
+
+.whatsappQrImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* WhatsApp Menu Text */
+.whatsappMenuText {
+  font-family: var(--font-accent);
+  letter-spacing: var(--letter-spacing-accent);
+  font-size: 1.5em;
+  color: var(--color-black);
+  text-transform: lowercase;
+  line-height: 1.2;
+  transform: translateY(120%);
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0, 1);
+  transition-delay: 0.05s;
+}
+
+.whatsappPanel:hover .whatsappMenuText {
+  transform: translateY(0);
 }
 
 /* Responsive */
