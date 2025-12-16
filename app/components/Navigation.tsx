@@ -237,7 +237,7 @@ export default function Navigation({ backMode = false }: NavigationProps) {
         {/* Menu Panel / Back Panel */}
         {backMode ? (
           /* Back Mode - Simple back link */
-          <div ref={menuPanelRef} className={styles.menuPanel}>
+          <div ref={menuPanelRef} className={`${styles.menuPanel} ${styles.backPanel}`}>
             {/* Menu Header with back link */}
             <div className={styles.menuHeader}>
               <a
@@ -245,7 +245,7 @@ export default function Navigation({ backMode = false }: NavigationProps) {
                 className={styles.menuButton}
                 onClick={handleBackClick}
               >
-                <span ref={menuTextRef} className={styles.menuText}>
+                <span ref={menuTextRef} className={`${styles.menuText} ${styles.backText}`}>
                   terug
                 </span>
               </a>

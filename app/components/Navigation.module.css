@@ -99,6 +99,17 @@
   transform: translate(0.25em, 0.25em);
 }
 
+/* Back Panel - no transform on hover */
+.backPanel,
+.backPanel:hover {
+  transform: none;
+}
+
+/* Back Text - smaller than menu text */
+.backText {
+  font-size: 1.75em;
+}
+
 /* Menu Panel Background */
 .menuPanelBg {
   background-color: var(--color-cream);
