@@ -39,18 +39,6 @@
   align-items: flex-start;
   pointer-events: none;
   z-index: 100000;
-  transition: top 0.4s cubic-bezier(0.5, 0.5, 0, 1),
-              left 0.4s cubic-bezier(0.5, 0.5, 0, 1),
-              right 0.4s cubic-bezier(0.5, 0.5, 0, 1);
-}
-
-/* Move navBar inward when menu is active, menu panel hovered, or WhatsApp is hovered */
-.navigation.active .navBar,
-.navigation:has(.menuPanel:hover) .navBar,
-.navigation:has(.whatsappPanel:hover) .navBar {
-  top: 1.25em;
-  left: 1.25em;
-  right: 1.25em;
 }
 
 /* Dark Overlay */
@@ -102,6 +90,13 @@
   width: 22em;
   display: flex;
   position: relative;
+  transition: transform 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+/* Move menu panel inward on hover/active */
+.menuPanel:hover,
+.active .menuPanel {
+  transform: translate(0.25em, 0.25em);
 }
 
 /* Menu Panel Background */
@@ -348,6 +343,12 @@
   display: flex;
   position: relative;
   pointer-events: auto;
+  transition: transform 0.4s cubic-bezier(0.5, 0.5, 0, 1);
+}
+
+/* Move WhatsApp panel inward on hover */
+.whatsappPanel:hover {
+  transform: translate(-0.25em, 0.25em);
 }
 
 /* WhatsApp Panel Background */
