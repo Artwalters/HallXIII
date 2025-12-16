@@ -28,6 +28,19 @@
   height: env(safe-area-inset-bottom, 0);
 }
 
+/* Nav Bar - contains menu and WhatsApp, aligns them */
+.navBar {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 100000;
+}
+
 /* Dark Overlay */
 .darkOverlay {
   opacity: 0;
@@ -76,16 +89,7 @@
   align-items: stretch;
   width: 22em;
   display: flex;
-  position: fixed;
-  top: 1em;
-  left: 1em;
-  transition: top 0.3s cubic-bezier(0.5, 0.5, 0, 1),
-              left 0.3s cubic-bezier(0.5, 0.5, 0, 1);
-}
-
-.menuPanel:hover {
-  top: 1.25em;
-  left: 1.25em;
+  position: relative;
 }
 
 /* Menu Panel Background */
@@ -327,21 +331,11 @@
 .whatsappPanel {
   flex-flow: column;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: flex-end;
   width: 22em;
   display: flex;
-  position: fixed;
-  top: 1em;
-  right: 1em;
-  z-index: 100000;
+  position: relative;
   pointer-events: auto;
-  transition: top 0.3s cubic-bezier(0.5, 0.5, 0, 1),
-              right 0.3s cubic-bezier(0.5, 0.5, 0, 1);
-}
-
-.whatsappPanel:hover {
-  top: 1.25em;
-  right: 1.25em;
 }
 
 /* WhatsApp Panel Background */
@@ -501,25 +495,12 @@
 @media screen and (max-width: 767px) {
   .menuPanel {
     width: auto;
-    top: 1em;
-    left: 1em;
-    right: 1em;
-  }
-
-  /* Disable hover effects on mobile */
-  .menuPanel:hover {
-    top: 1em;
-    left: 1em;
+    flex: 1;
   }
 
   /* WhatsApp - just icon, no dropdown on mobile */
   .whatsappPanel {
     width: auto;
-  }
-
-  .whatsappPanel:hover {
-    top: 1em;
-    right: 1em;
   }
 
   .whatsappPanel:hover .whatsappPanelBg,

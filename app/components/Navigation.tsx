@@ -201,69 +201,71 @@ export default function Navigation() {
         aria-hidden="true"
       />
 
-      {/* Menu Panel */}
-      <div
-        ref={menuPanelRef}
-        className={styles.menuPanel}
-        onMouseEnter={openMenu}
-        onMouseLeave={closeMenu}
-      >
-        {/* Menu Panel Background */}
-        <div className={styles.menuPanelBg} />
+      {/* Nav Bar Container - aligns menu and WhatsApp */}
+      <div className={styles.navBar}>
+        {/* Menu Panel */}
+        <div
+          ref={menuPanelRef}
+          className={styles.menuPanel}
+          onMouseEnter={openMenu}
+          onMouseLeave={closeMenu}
+        >
+          {/* Menu Panel Background */}
+          <div className={styles.menuPanelBg} />
 
-        {/* Paper Texture Overlay */}
-        <div className={styles.overlay}>
-          <Image
-            src="/assets/overlays/paper.png"
-            alt=""
-            fill
-            className={styles.overlayImage}
-          />
-        </div>
+          {/* Paper Texture Overlay */}
+          <div className={styles.overlay}>
+            <Image
+              src="/assets/overlays/paper.png"
+              alt=""
+              fill
+              className={styles.overlayImage}
+            />
+          </div>
 
-        {/* Menu Header */}
-        <div className={styles.menuHeader}>
-          <button
-            className={styles.menuButton}
-            onClick={toggleMenu}
-            aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? 'Sluit menu' : 'Open menu'}
-          >
-            <span ref={menuTextRef} className={styles.menuText}>
-              {isMobile && isMenuOpen ? 'close' : 'menu'}
-            </span>
-          </button>
-        </div>
+          {/* Menu Header */}
+          <div className={styles.menuHeader}>
+            <button
+              className={styles.menuButton}
+              onClick={toggleMenu}
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? 'Sluit menu' : 'Open menu'}
+            >
+              <span ref={menuTextRef} className={styles.menuText}>
+                {isMobile && isMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
 
-        {/* Menu Content */}
-        <div className={styles.menuContent}>
-          <div className={styles.menuInner}>
-            <ul className={styles.menuList}>
-              {menuItems.map((item, index) => (
-                <li
-                  key={item.target}
-                  className={styles.menuItem}
-                  style={{ transitionDelay: `${index * 0.05}s` }}
-                >
-                  <button
-                    className={styles.menuLink}
-                    onClick={() => handleNavClick(item.target)}
+          {/* Menu Content */}
+          <div className={styles.menuContent}>
+            <div className={styles.menuInner}>
+              <ul className={styles.menuList}>
+                {menuItems.map((item, index) => (
+                  <li
+                    key={item.target}
+                    className={styles.menuItem}
+                    style={{ transitionDelay: `${index * 0.05}s` }}
                   >
-                    <span className={styles.menuLinkText}>{item.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <button
+                      className={styles.menuLink}
+                      onClick={() => handleNavClick(item.target)}
+                    >
+                      <span className={styles.menuLinkText}>{item.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* WhatsApp Panel */}
-      <div
-        className={styles.whatsappPanel}
-        onMouseEnter={() => setIsWhatsappHovered(true)}
-        onMouseLeave={() => setIsWhatsappHovered(false)}
-      >
+        {/* WhatsApp Panel */}
+        <div
+          className={styles.whatsappPanel}
+          onMouseEnter={() => setIsWhatsappHovered(true)}
+          onMouseLeave={() => setIsWhatsappHovered(false)}
+        >
         {/* WhatsApp Panel Background */}
         <div className={styles.whatsappPanelBg} />
 
@@ -307,6 +309,7 @@ export default function Navigation() {
             <span className={styles.whatsappMenuText}>scan om te chatten</span>
           </div>
         </div>
+      </div>
       </div>
     </nav>
   );
