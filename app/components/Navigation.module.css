@@ -497,12 +497,39 @@
   transform: translateY(0);
 }
 
-/* Responsive */
+/* Responsive - Mobile */
 @media screen and (max-width: 767px) {
+  /* Hide WhatsApp panel on mobile */
+  .whatsappPanel {
+    display: none;
+  }
+
+  /* Menu panel takes full width on mobile */
   .menuPanel {
     width: auto;
     top: 1em;
     left: 1em;
     right: 1em;
+  }
+
+  /* Disable hover effects on mobile - use click instead */
+  .menuPanel:hover {
+    top: 1em;
+    left: 1em;
+  }
+
+  /* Show background when active (clicked) on mobile */
+  .mobile.active .menuPanelBg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mobile.active .overlay {
+    opacity: 0.3;
+  }
+
+  /* Menu button is always clickable on mobile */
+  .menuButton {
+    cursor: pointer;
   }
 }

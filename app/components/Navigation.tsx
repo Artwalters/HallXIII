@@ -27,12 +27,24 @@ export default function Navigation() {
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isWhatsappHovered, setIsWhatsappHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // Get all cream sections
     const creamSections = document.querySelectorAll('[data-nav-dark]');
 
-    if (!creamSections.length || !menuTextRef.current || !whatsappRef.current) return;
+    if (!creamSections.length || !menuTextRef.current) return;
 
     const checkPosition = () => {
       const menuTop = 100; // Position of menu from top
@@ -66,7 +78,8 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    if (!menuPanelRef.current || !whatsappRef.current) return;
+    // Skip scroll animation on mobile
+    if (isMobile || !menuPanelRef.current) return;
 
     let scrollTimeout: NodeJS.Timeout;
 
@@ -82,12 +95,14 @@ export default function Navigation() {
         ease: 'power2.out'
       });
 
-      gsap.to(whatsappRef.current, {
-        top: 'calc(1.5rem - 2px)',
-        right: '1.4rem',
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      if (whatsappRef.current) {
+        gsap.to(whatsappRef.current, {
+          top: 'calc(1.5rem - 2px)',
+          right: '1.4rem',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      }
 
       // Clear existing timeout
       clearTimeout(scrollTimeout);
@@ -101,12 +116,14 @@ export default function Navigation() {
           ease: 'power2.out'
         });
 
-        gsap.to(whatsappRef.current, {
-          top: 'calc(1.75rem - 2px)',
-          right: '1.65rem',
-          duration: 0.5,
-          ease: 'power2.out'
-        });
+        if (whatsappRef.current) {
+          gsap.to(whatsappRef.current, {
+            top: 'calc(1.75rem - 2px)',
+            right: '1.65rem',
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        }
       }, 150); // Wait 150ms after scroll stops
     };
 
@@ -116,10 +133,10 @@ export default function Navigation() {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isMobile]);
 
   useEffect(() => {
-    if (!menuTextRef.current || !whatsappRef.current) return;
+    if (!menuTextRef.current) return;
 
     // Only change colors when menu is closed
     if (!isMenuOpen) {
@@ -130,19 +147,19 @@ export default function Navigation() {
       });
     }
 
-    // Only change whatsapp color when not hovered
-    if (!isWhatsappHovered) {
+    // Only change whatsapp color when not hovered (desktop only)
+    if (!isMobile && whatsappRef.current && !isWhatsappHovered) {
       gsap.to(whatsappRef.current.querySelector('path'), {
         fill: isDark ? 'var(--color-black)' : 'white',
         duration: 0.3,
         ease: 'power2.out'
       });
     }
-  }, [isDark, isMenuOpen, isWhatsappHovered]);
+  }, [isDark, isMenuOpen, isWhatsappHovered, isMobile]);
 
-  // Handle whatsapp hover color change
+  // Handle whatsapp hover color change (desktop only)
   useEffect(() => {
-    if (!whatsappRef.current) return;
+    if (isMobile || !whatsappRef.current) return;
 
     if (isWhatsappHovered) {
       gsap.to(whatsappRef.current.querySelector('path'), {
@@ -157,21 +174,33 @@ export default function Navigation() {
         ease: 'power2.out'
       });
     }
-  }, [isWhatsappHovered, isDark]);
+  }, [isWhatsappHovered, isDark, isMobile]);
 
-  // Handle menu open (hover)
+  // Handle menu open (hover on desktop)
   const openMenu = useCallback(() => {
-    setIsMenuOpen(true);
-  }, []);
+    if (!isMobile) {
+      setIsMenuOpen(true);
+    }
+  }, [isMobile]);
 
-  // Handle menu close
+  // Handle menu close (hover on desktop)
   const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
+    if (!isMobile) {
+      setIsMenuOpen(false);
+    }
+  }, [isMobile]);
+
+  // Handle menu toggle (click on mobile)
+  const toggleMenu = useCallback(() => {
+    if (isMobile) {
+      setIsMenuOpen(prev => !prev);
+    }
+  }, [isMobile]);
 
   // Handle navigation click
   const handleNavClick = useCallback((target: string) => {
-    closeMenu();
+    // Always close menu on navigation (works for both mobile and desktop)
+    setIsMenuOpen(false);
 
     // Small delay to let menu close animation start
     setTimeout(() => {
@@ -192,7 +221,7 @@ export default function Navigation() {
         }
       }
     }, 100);
-  }, [closeMenu]);
+  }, []);
 
   // ESC key handler
   useEffect(() => {
@@ -221,11 +250,11 @@ export default function Navigation() {
   }, [isMenuOpen]);
 
   return (
-    <nav className={`${styles.navigation} ${isMenuOpen ? styles.active : ''}`}>
+    <nav className={`${styles.navigation} ${isMenuOpen ? styles.active : ''} ${isMobile ? styles.mobile : ''}`}>
       {/* Dark Overlay */}
       <div
         className={styles.darkOverlay}
-        onClick={closeMenu}
+        onClick={() => setIsMenuOpen(false)}
         aria-hidden="true"
       />
 
@@ -251,15 +280,16 @@ export default function Navigation() {
 
         {/* Menu Header */}
         <div className={styles.menuHeader}>
-          <div
+          <button
             className={styles.menuButton}
+            onClick={toggleMenu}
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? 'Sluit menu' : 'Open menu'}
           >
             <span ref={menuTextRef} className={styles.menuText}>
-              menu
+              {isMobile && isMenuOpen ? 'close' : 'menu'}
             </span>
-          </div>
+          </button>
         </div>
 
         {/* Menu Content */}
@@ -280,6 +310,23 @@ export default function Navigation() {
                   </button>
                 </li>
               ))}
+              {/* WhatsApp link - only visible on mobile */}
+              {isMobile && (
+                <li
+                  className={styles.menuItem}
+                  style={{ transitionDelay: `${menuItems.length * 0.05}s` }}
+                >
+                  <a
+                    href="https://wa.me/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.menuLink}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span className={styles.menuLinkText}>WhatsApp</span>
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
