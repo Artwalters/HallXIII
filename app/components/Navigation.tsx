@@ -77,63 +77,6 @@ export default function Navigation() {
     };
   }, []);
 
-  useEffect(() => {
-    // Skip scroll animation on mobile
-    if (isMobile || !menuPanelRef.current) return;
-
-    let scrollTimeout: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      // Don't animate when menu is open
-      if (isMenuOpen) return;
-
-      // Subtiel naar binnen tijdens scroll
-      gsap.to(menuPanelRef.current, {
-        top: '1.5rem',
-        left: '1.4rem',
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-
-      if (whatsappRef.current) {
-        gsap.to(whatsappRef.current, {
-          top: 'calc(1.5rem - 2px)',
-          right: '1.4rem',
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      }
-
-      // Clear existing timeout
-      clearTimeout(scrollTimeout);
-
-      // Return to default position after scrolling stops
-      scrollTimeout = setTimeout(() => {
-        gsap.to(menuPanelRef.current, {
-          top: '1.75rem',
-          left: '1.65rem',
-          duration: 0.5,
-          ease: 'power2.out'
-        });
-
-        if (whatsappRef.current) {
-          gsap.to(whatsappRef.current, {
-            top: 'calc(1.75rem - 2px)',
-            right: '1.65rem',
-            duration: 0.5,
-            ease: 'power2.out'
-          });
-        }
-      }, 150); // Wait 150ms after scroll stops
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, [isMenuOpen, isMobile]);
 
   useEffect(() => {
     if (!menuTextRef.current) return;
